@@ -3,9 +3,9 @@
 ## Установка и запуск
 
 ```bash
-  git clone ...
+  git clone https://github.com/car-service-with-geolocation/frontend.git
   npm i
-  npm run start
+  npm run dev
 ```
 
 ---
@@ -77,9 +77,9 @@ _Настроен_
 
 ```json
 {
-  // ...
+  ...
   "scripts": {
-    // ...
+    ...
     "preinstall": "npx --yes force-resolutions"
   },
   "resolutions": {
@@ -88,6 +88,6 @@ _Настроен_
   "overrides": {
     "package-name": "^version"
   }
-  // ...
+  ...
 }
 ```
