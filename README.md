@@ -77,9 +77,7 @@ _Настроен_
 
 ```json
 {
-  ...
   "scripts": {
-    ...
     "preinstall": "npx --yes force-resolutions"
   },
   "resolutions": {
@@ -88,6 +86,5 @@ _Настроен_
   "overrides": {
     "package-name": "^version"
   }
-  ...
 }
 ```
