@@ -9,4 +9,3 @@
 commitlint.config.cjs
 cz.config.cjs
 tsconfig.json
-**/vendor/*

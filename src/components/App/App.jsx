@@ -14,6 +14,8 @@
 // import Registration from '../Registration/Registration';
 // import Profile from '../Profile/Profile';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import '../../index.css';
+
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
 
@@ -37,7 +39,7 @@ function App() {
       <Header />
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/login" 
+        <Route path="/login"
         element={
           <ProtectedRoute onlyUnAuth={true}>
           <Login />
@@ -45,7 +47,7 @@ function App() {
         }
         />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/profile" 
+        <Route path="/profile"
           element={
           <ProtectedRoute>
           <Profile />
