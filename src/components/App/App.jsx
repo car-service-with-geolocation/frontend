@@ -3,10 +3,10 @@
 // import { useEffect } from 'react';
 
 // import Search from '../Search/Search';
-// import AboutService from '../AboutService/AboutService';
 // import Feedback from '../Feedback/Feedback';
 // import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 // import MainPage from '../MainPage/MainPage';
+// import AboutUs from '../AboutUs/AboutUs';
 // import BestService from '../BestService/BestService';
 // import Modal from '../Modal/Modal';
 // import Footer from '../Footer/Footer';
@@ -37,6 +37,7 @@ function App() {
   return (
     <div className={style.app}>
       <Header />
+      {/* <AboutUs /> */}
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
