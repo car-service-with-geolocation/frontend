@@ -1,1 +1,6 @@
 @import url('./vendor/styles/normalize.css');
+@import url('./vendor/fonts/fons.css');
+
+html {
+  background-color: #0a0908;
+}

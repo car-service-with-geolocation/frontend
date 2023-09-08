@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./montserrat/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(./montserrat/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./openSans/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./raleway/Raleway-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(./lato/Lato-Bold.ttf);
+}
