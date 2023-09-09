@@ -5,7 +5,7 @@
 // import Search from '../Search/Search';
 // import AboutService from '../AboutService/AboutService';
 // import Feedback from '../Feedback/Feedback';
-// import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
+import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 // import MainPage from '../MainPage/MainPage';
 // import BestService from '../BestService/BestService';
 // import Modal from '../Modal/Modal';
@@ -37,6 +37,7 @@ function App() {
   return (
     <div className={style.app}>
       <Header />
+      <HowServiceWorks />
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
