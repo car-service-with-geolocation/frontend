@@ -4,7 +4,7 @@
 
 // import Search from '../Search/Search';
 // import AboutService from '../AboutService/AboutService';
-// import Feedback from '../Feedback/Feedback';
+import Feedback from '../Feedback/Feedback';
 import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 // import MainPage from '../MainPage/MainPage';
 // import BestService from '../BestService/BestService';
@@ -38,6 +38,7 @@ function App() {
     <div className={style.app}>
       <Header />
       <HowServiceWorks />
+      <Feedback />
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
