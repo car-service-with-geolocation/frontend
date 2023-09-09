@@ -3,8 +3,13 @@
 // import { useEffect } from 'react';
 
 // import Search from '../Search/Search';
+
 // import Feedback from '../Feedback/Feedback';
 // import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
+// import AboutService from '../AboutService/AboutService';
+import Feedback from '../Feedback/Feedback';
+import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
+
 // import MainPage from '../MainPage/MainPage';
 
 // import BestService from '../BestService/BestService';
@@ -39,6 +44,8 @@ function App() {
     <div className={style.app}>
       <Header />
       <AboutUs />
+      <HowServiceWorks />
+      <Feedback />
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
