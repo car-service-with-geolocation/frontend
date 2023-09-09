@@ -1,0 +1,48 @@
+.section {
+  display: flex;
+  max-width: 1120px;
+  padding-top: 110px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.eclipse {
+  position: absolute;
+  top: 105px;
+  right: 55px;
+  width: 395px;
+  height: 395px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 395px;
+  background: rgba(119, 0, 34, 0.5);
+  filter: blur(450px);
+}
+
+.title {
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29.7px;
+  padding-top: 40px;
+  margin: 0;
+  max-width: 445px;
+}
+
+.img {
+  mix-blend-mode: lighten;
+  width: 550px;
+  height: 317px;
+  object-fit: cover;
+}
