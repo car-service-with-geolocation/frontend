@@ -3,10 +3,15 @@
 // import { useEffect } from 'react';
 
 // import Search from '../Search/Search';
+
+// import Feedback from '../Feedback/Feedback';
+// import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 // import AboutService from '../AboutService/AboutService';
 import Feedback from '../Feedback/Feedback';
 import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
+
 // import MainPage from '../MainPage/MainPage';
+
 // import BestService from '../BestService/BestService';
 // import Modal from '../Modal/Modal';
 // import Footer from '../Footer/Footer';
@@ -16,6 +21,7 @@ import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import '../../index.css';
 
+import AboutUs from '../AboutUs/AboutUs';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
 
@@ -37,6 +43,7 @@ function App() {
   return (
     <div className={style.app}>
       <Header />
+      <AboutUs />
       <HowServiceWorks />
       <Feedback />
       {/* <Routes>
