@@ -10,8 +10,6 @@
 import Feedback from '../Feedback/Feedback';
 import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 
-// import MainPage from '../MainPage/MainPage';
-
 // import BestService from '../BestService/BestService';
 // import Modal from '../Modal/Modal';
 // import Footer from '../Footer/Footer';
@@ -24,6 +22,7 @@ import '../../index.css';
 import AboutUs from '../AboutUs/AboutUs';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
+import MainScreen from '../MainScreen/MainScreen';
 
 function App() {
   // const accessToken = getCookie('accessToken').replace('Bearer', '');
@@ -43,6 +42,7 @@ function App() {
   return (
     <div className={style.app}>
       <Header />
+      <MainScreen />
       <AboutUs />
       <HowServiceWorks />
       <Feedback />
