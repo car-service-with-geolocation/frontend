@@ -1,0 +1,160 @@
+@keyframes openMenu {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.react-select__control {
+  width: 282px !important;
+  height: 60px !important;
+  margin-left: 60px !important;
+  border-radius: 20px !important;
+  background: #dedede !important;
+}
+.react-select__control:hover {
+  cursor: pointer;
+}
+
+.react-select__control--is-focused {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.react-select__placeholder {
+  color: #0a0908 !important;
+  /* Основной текст */
+  font-family: Raleway !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 29.7px !important;
+  padding-left: 25px !important;
+}
+
+.react-select__single-value {
+  color: #0a0908 !important;
+  /* Основной текст */
+  font-family: Raleway !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 29.7px !important;
+  padding-left: 25px !important;
+}
+
+.react-select__input-container {
+  color: #0a0908 !important;
+  /* Основной текст */
+  font-family: Raleway !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 29.7px !important;
+  padding-left: 25px !important;
+}
+
+/* Кнопка открыть меню */
+.css-tj5bde-Svg {
+  fill: #0a0908 !important;
+}
+
+/* Меню */
+.react-select__menu {
+  width: 282px !important;
+  left: 60px;
+  border-radius: 20px !important;
+  background: #dedede !important;
+  animation: openMenu 0.35s ease-in-out;
+}
+
+/* Итем Меню */
+.react-select__menu-list {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  overflow-y: scroll 1px !important;
+
+  /* Основной текст */
+  font-family: Raleway !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 29.7px !important;
+}
+
+/* ОПЦИЯ */
+.react-select__option {
+  color: #0a0908 !important;
+  /* Основной текст */
+  font-family: Raleway !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 29.7px !important;
+  padding-left: 35px !important;
+}
+
+/* ФОКУС ОПЦИИ */
+.react-select__option--is-focused {
+  background-color: #cbcbcb !important;
+}
+
+.react-select__option--is-focused:first-of-type {
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+}
+
+.react-select__option--is-focused:last-of-type {
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+}
+/* АКТИНАЯ ОПЦИЯ*/
+.react-select__option--is-selected {
+  background-color: #3f0012 !important;
+  color: #dedede !important;
+}
+
+.react-select__option--is-selected:first-of-type {
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+}
+
+.react-select__option--is-selected:last-of-type {
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+}
+
+/* скролБар пока что убрал ниже костыли какие-то, верстку ломают*/
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* ползунок скроллбара
+::-webkit-scrollbar-thumb {
+  /* border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 6px solid transparent;
+  box-shadow: inset 1px 1px 10px #702;
+}*/
+
+/* ::-webkit-scrollbar-button:vertical:start:decrement {
+  background: transparent;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background: transparent;
+} */
+
+/* FIREFOX => scrollbar style*/
+/* html, body
+  scrollbar-color: #458245 #714826; /* «цвет ползунка» «цвет полосы скроллбара»
+  scrollbar-width: auto | thin | none;  /* толщина
+}
+*/
