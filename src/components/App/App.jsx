@@ -7,9 +7,6 @@
 // import Feedback from '../Feedback/Feedback';
 // import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 // import AboutService from '../AboutService/AboutService';
-import Feedback from '../Feedback/Feedback';
-import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
-
 // import BestService from '../BestService/BestService';
 // import Modal from '../Modal/Modal';
 // import Footer from '../Footer/Footer';
@@ -20,9 +17,11 @@ import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 import '../../index.css';
 
 import AboutUs from '../AboutUs/AboutUs';
+import Feedback from '../Feedback/Feedback';
 import Header from '../Header/Header';
-import style from './styles/App.module.css';
+import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 import MainScreen from '../MainScreen/MainScreen';
+import style from './styles/App.module.css';
 
 function App() {
   // const accessToken = getCookie('accessToken').replace('Bearer', '');
