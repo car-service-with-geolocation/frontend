@@ -1,6 +1,6 @@
 // import { Routes, Route } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 // import Feedback from '../Feedback/Feedback';
 // import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
@@ -21,16 +21,16 @@ import AboutUs from '../AboutUs/AboutUs';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
 import MainScreen from '../MainScreen/MainScreen';
+import { fetchAutoServices } from '../../store/autoServicesSlice';
 import Search from '../Search/Search';
 
 function App() {
   // const accessToken = getCookie('accessToken').replace('Bearer', '');
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   //
-  // useEffect(() => {
-  //   dispatch(checkUserAuth());
-  //   dispatch(getClosestAutoServices())
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchAutoServices());
+  }, [dispatch]);
   //
   // const { closestAutoServiceRequest } = useSelector((store) => store.closestAutoServiceReducer);
   //
