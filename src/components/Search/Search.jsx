@@ -102,7 +102,7 @@ function Search() {
             required
             className={style.formInput}
             type="text"
-            placeholder="Москва, Хамовники"
+            placeholder="Определить местоположение"
             onChange={onChangeInput}
             value={currentLocation || ''}
           />
