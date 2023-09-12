@@ -2,8 +2,6 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-// import Search from '../Search/Search';
-
 // import Feedback from '../Feedback/Feedback';
 // import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 // import AboutService from '../AboutService/AboutService';
@@ -24,6 +22,7 @@ import Header from '../Header/Header';
 import style from './styles/App.module.css';
 import MainScreen from '../MainScreen/MainScreen';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
+import Search from '../Search/Search';
 
 function App() {
   // const accessToken = getCookie('accessToken').replace('Bearer', '');
@@ -43,6 +42,7 @@ function App() {
     <div className={style.app}>
       <Header />
       <MainScreen />
+      <Search />
       <AboutUs />
       <HowServiceWorks />
       <Feedback />
