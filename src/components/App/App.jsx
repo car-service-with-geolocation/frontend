@@ -23,6 +23,7 @@ import style from './styles/App.module.css';
 import MainScreen from '../MainScreen/MainScreen';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
 import Search from '../Search/Search';
+import Ymap from '../Ymap/Ymap';
 
 function App() {
   // const accessToken = getCookie('accessToken').replace('Bearer', '');
@@ -46,6 +47,7 @@ function App() {
       <AboutUs />
       <HowServiceWorks />
       <Feedback />
+      <Ymap />
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
