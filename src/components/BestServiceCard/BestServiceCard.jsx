@@ -31,11 +31,14 @@ function BestServiceCard({ image, title, rating, votes, address, openfrom, openu
 export default BestServiceCard;
 
 BestServiceCard.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.shape({
+    type: PropTypes.oneOf(['img', 'svg']),
+  }).isRequired,
+  // image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   address: PropTypes.string.isRequired,
-  openfrom: PropTypes.number.isRequired,
-  openuntil: PropTypes.number.isRequired,
+  openfrom: PropTypes.string.isRequired,
+  openuntil: PropTypes.string.isRequired,
 };

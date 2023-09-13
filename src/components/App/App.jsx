@@ -17,6 +17,7 @@
 import '../../index.css';
 
 import AboutUs from '../AboutUs/AboutUs';
+import BestService from '../BestService/BestService';
 import Feedback from '../Feedback/Feedback';
 import Header from '../Header/Header';
 import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
@@ -42,6 +43,7 @@ function App() {
     <div className={style.app}>
       <Header />
       <MainScreen />
+      <BestService />
       <AboutUs />
       <HowServiceWorks />
       <Feedback />
