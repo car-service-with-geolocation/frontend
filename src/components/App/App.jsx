@@ -1,8 +1,6 @@
 // import { Routes, Route } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-
-// import Search from '../Search/Search';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 // import Feedback from '../Feedback/Feedback';
 // import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
@@ -22,16 +20,18 @@ import Feedback from '../Feedback/Feedback';
 import Header from '../Header/Header';
 import HowServiceWorks from '../HowServiceWorks/HowServiceWorks';
 import MainScreen from '../MainScreen/MainScreen';
+import { fetchAutoServices } from '../../store/autoServicesSlice';
+import Search from '../Search/Search';
+// import Ymap from '../Ymap/Ymap';
 import style from './styles/App.module.css';
 
 function App() {
   // const accessToken = getCookie('accessToken').replace('Bearer', '');
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   //
-  // useEffect(() => {
-  //   dispatch(checkUserAuth());
-  //   dispatch(getClosestAutoServices())
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchAutoServices());
+  }, [dispatch]);
   //
   // const { closestAutoServiceRequest } = useSelector((store) => store.closestAutoServiceReducer);
   //
@@ -43,6 +43,7 @@ function App() {
     <div className={style.app}>
       <Header />
       <MainScreen />
+      <Search />
       <BestService />
       <AboutUs />
       <HowServiceWorks />

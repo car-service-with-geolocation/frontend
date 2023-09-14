@@ -1,0 +1,100 @@
+@keyframes rotation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotation {
+  animation: rotation 2s linear infinite;
+}
+
+.section {
+  display: flex;
+  width: 1120px;
+  height: 120px;
+  margin-top: 50px;
+  align-items: center;
+  border-radius: 20px;
+  background: rgba(123, 104, 126, 0.2);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  justify-items: legacy;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.formInput {
+  width: 282px;
+  border-radius: 20px;
+  border: 1px solid #dedede;
+  height: 100%;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29.7px;
+  background-color: transparent;
+  color: #dedede;
+  padding-left: 40px;
+  padding-right: 45px;
+}
+
+.formInput::placeholder {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29.7px;
+  color: #dedede;
+}
+
+.inputButton {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  background-image: url('../../images/rectangle-Search.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 20px;
+  height: 18px;
+  top: 20px;
+  right: 20px;
+}
+
+.formButton {
+  border: none;
+  display: flex;
+  width: 255px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #702;
+
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #dedede;
+}
+
+.inputButton:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.formButton:hover {
+  background-color: #3f0012;
+  cursor: pointer;
+}

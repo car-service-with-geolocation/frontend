@@ -10,7 +10,11 @@
     "prettier",
     "plugin:prettier/recommended" // Make sure this is always the last element in the array.
   ],
+  "globals": {
+    "document": false
+  },
   "rules": {
+    "no-param-reassign": ["error", { "props": false }],
     "react/react-in-jsx-scope": "off",
     "react/function-component-definition": "off",
     "react/jsx-props-no-spreading": "off",
