@@ -5,16 +5,14 @@
 }
 .ballonContainer {
   width: 400px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 250px;
+  margin: 30px 0 0 35px;
 }
 .ymaps-2-1-79-balloon {
   box-shadow: none !important;
   width: 430px;
   height: 219px !important;
-  top: -275px !important;
+  top: -305px !important;
   left: -55px !important;
 }
 
@@ -24,7 +22,7 @@
   backdrop-filter: blur(2px) !important;
   border-radius: 20px;
   width: 400px;
-  height: 220px !important;
+  height: 250px !important;
 }
 
 .ymaps-2-1-79-balloon__close-button {

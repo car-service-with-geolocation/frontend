@@ -69,9 +69,9 @@ function Ymap() {
           /> */}
           <Clusterer
             options={{
-              preset: 'islands#invertedBrownClusterIcons', // "islands#invertedVioletClusterIcons",
+              preset: 'islands#invertedRedClusterIcons', // "islands#invertedVioletClusterIcons",
               groupByCoordinates: false,
-              gridSize: 150, // Размер ячейки кластеризации в пикселях.
+              gridSize: 100, // Размер ячейки кластеризации в пикселях.
             }}
           >
             {clusterPoints.map((coords) => (
