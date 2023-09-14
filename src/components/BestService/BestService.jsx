@@ -6,6 +6,7 @@ import style from './styles/styles.module.css';
 
 const services = [
   {
+    id: 1,
     image: card1,
     title: 'LR Premium',
     rating: '5.0',
@@ -15,6 +16,7 @@ const services = [
     openuntil: '00',
   },
   {
+    id: 2,
     image: card2,
     title: 'Cool service',
     rating: '5.0',
@@ -24,6 +26,7 @@ const services = [
     openuntil: '20',
   },
   {
+    id: 3,
     image: card3,
     title: 'Билпрайм',
     rating: '4.9',
@@ -42,7 +45,7 @@ function BestService() {
         {services.map((service) => {
           return (
             <BestServiceCard
-              key={service.title}
+              key={service.id}
               image={service.image}
               title={service.title}
               rating={service.rating}
