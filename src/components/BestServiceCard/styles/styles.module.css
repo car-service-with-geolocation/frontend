@@ -1,0 +1,69 @@
+.card {
+  position: relative;
+  max-width: 350px;
+  height: 509px;
+  border-radius: 20px;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.cardInfoblock {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px;
+  width: calc(100% - 80px);
+  border-radius: 0px 0px 20px 20px;
+  background: rgba(11, 10, 9, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.cardTitle {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.cardRating {
+  display: flex;
+}
+
+.cardRatingIcon {
+  width: 30px;
+  height: 30px;
+  margin: 0 15px 0 0;
+}
+
+.cardRatingNumbers {
+  margin: 0;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.cardInfoList {
+  margin: 20px 0 0 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.cardInfoText {
+  margin: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+}
