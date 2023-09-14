@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 // import AboutService from '../AboutService/AboutService';
 // import BestService from '../BestService/BestService';
 // import Modal from '../Modal/Modal';
-// import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer';
 // import Login from '../Login/Login';
 // import Registration from '../Registration/Registration';
 // import Profile from '../Profile/Profile';
@@ -48,6 +48,7 @@ function App() {
       <AboutUs />
       <HowServiceWorks />
       <Feedback />
+      <Footer />
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
