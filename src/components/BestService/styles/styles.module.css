@@ -20,4 +20,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 40px 35px;
+  position: relative;
+}
+
+.ellipse {
+  position: absolute;
+  top: 55px;
+  left: -160px;
+  width: 395px;
+  height: 395px;
+  border-radius: 395px;
+  background: rgba(119, 0, 34, 0.3);
+  filter: blur(450px);
 }
