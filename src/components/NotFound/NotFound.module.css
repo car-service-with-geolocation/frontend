@@ -1,0 +1,26 @@
+.notFoundPage {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  min-height: 100vh;
+  grid-template-rows: 35% 65%;
+}
+
+.notFoundPageContainer {
+  grid-row: 2/-1;
+}
+
+.notFoundPageTitle {
+  margin: 0;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+}
+
+.notFoundPageText {
+  margin: 5px 0 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 183px;
+}

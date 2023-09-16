@@ -1,5 +1,59 @@
 .header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 160px 35px;
+  max-width: 1120px;
+  width: 100%;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12.47px;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
+
+.linkText {
+  margin: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #dedede;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.linkText:hover {
+  opacity: 0.7;
+}
+
+.enterText {
+  margin: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #dedede;
+  cursor: pointer;
+}
+
+.enterText:hover {
+  opacity: 0.7;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 94px;
+}
+
