@@ -2,6 +2,7 @@
   border-radius: 20px;
   overflow: hidden;
   display: flex;
+  opacity: 0.8;
 }
 .ballonContainer {
   width: 400px;
