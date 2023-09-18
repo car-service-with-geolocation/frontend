@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 // import BestService from '../BestService/BestService';
 // import Modal from '../Modal/Modal';
 import Footer from '../Footer/Footer';
+import MapPage from '../../Pages/MapPage/MapPage';
 // import Login from '../Login/Login';
 // import Registration from '../Registration/Registration';
 // import Profile from '../Profile/Profile';
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <div className={style.app}>
+      <MapPage />
       <Header />
       <MainScreen />
       <Search />
