@@ -1,8 +1,18 @@
-import star from '../../images/bestService-Star.svg';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import servicePhoto from '../../images/bestService-card1.png';
+import star from '../../images/bestService-Star.svg';
+import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import styles from './styles/styles.module.css';
 
-function ServicePage() {
+function ServicePage({ id }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAutoServiceId(id));
+  }, [dispatch, id]);
   return (
     <section className={styles.wrapper}>
       <p className={styles.way}>Главная / Поиск автосервисов / LR Premium</p>
@@ -71,5 +81,9 @@ function ServicePage() {
     </section>
   );
 }
+
+ServicePage.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default ServicePage;
