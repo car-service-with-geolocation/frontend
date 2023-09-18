@@ -1,19 +1,28 @@
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import style from './styles/Header.module.css';
+import carLogo from '../../images/car-Logo.svg';
+import carServices from '../../images/Car-Services.svg';
 
-import s from './styles/Header.module.css';
-
-function Header({ title, children, ...props }) {
+function Header() {
   return (
-    <div className={s.header}>
-      <h2 {...props}>{title}</h2>
-      {children}
+    <div className={style.header}>
+      <div className={style.block}>
+        <div className={style.logo}>
+          <img src={carLogo} alt="Логотип" />
+          <img src={carServices} alt="Логотип" />
+        </div>
+        <div className={style.link}>
+          <Link className={style.linkText} to="/">
+            Поиск автосервисов
+          </Link>
+          <Link className={style.linkText} to="/">
+            Для автосервисов
+          </Link>
+        </div>
+      </div>
+      <p className={style.enterText}>Вход</p>
     </div>
   );
 }
 
 export default Header;
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
