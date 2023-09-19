@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import autoserviceReducer from './autoServicesSlice';
+import autoServiceReducer from './autoServicesSlice';
+import autoServiceIdSlice from './autoServiceIdSlice';
 
 export const rootReducer = combineReducers({
-  toolkit: autoserviceReducer,
+  autoServiceReducer,
+  autoServiceIdSlice,
 });
 
 export const store = configureStore({
