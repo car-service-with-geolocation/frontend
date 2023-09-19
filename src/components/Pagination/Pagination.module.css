@@ -1,0 +1,26 @@
+.container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  padding: 3px 12px;
+  margin: 0 4px 0 0;
+  color: #dedede;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.link_activ {
+  color: #0a0908;
+  background-color: #dedede;
+  border-radius: 5px;
+}

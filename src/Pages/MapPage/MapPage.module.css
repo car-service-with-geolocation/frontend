@@ -9,7 +9,6 @@
   padding-top: 100px;
   margin: 0;
 }
-
 .options_wrapper {
   display: flex;
   width: 1120px;
@@ -19,7 +18,7 @@
   position: relative;
 }
 
-.eclipse {
+.eclipses {
   position: absolute;
   top: 351px;
   right: 55px;
@@ -29,6 +28,28 @@
   background-position: center;
   background-size: cover;
   flex-shrink: 0;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  max-width: 1120px;
+  padding: 40px 0 60px;
+}
+
+.cardscontainer {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 35px;
+  position: relative;
+}
+
+.ellipse {
+  position: absolute;
+  bottom: -246px;
+  left: -85px;
+  width: 395px;
+  height: 395px;
   border-radius: 395px;
   background: rgba(119, 0, 34, 0.3);
   filter: blur(450px);
@@ -91,4 +112,27 @@
   border-top-left-radius: 0;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.paginationContainer {
+  display: flex;
+}
+
+.prevlink {
+  background-image: url(../../images/prev-arrow.svg);
+}
+
+.nextlink {
+  background-image: url(../../images/next-arrow.svg);
+}
+
+.arrowlink {
+  width: 16px;
+  height: 16px;
+  margin: 8px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
