@@ -5,9 +5,9 @@ import Select from 'react-select';
 
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
+import Ymap from '../../components/Ymap/Ymap';
 import { immediateOptions, services } from '../../utils/constants';
 import style from './MapPage.module.css';
 
@@ -16,6 +16,7 @@ function MapPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const servicesPerPage = 6;
   const totalServices = services.length;
+  const [content, setContent] = useState('card');
 
   const lastServiceIndex = currentPage * servicesPerPage;
   const firstServiceIndex = lastServiceIndex - servicesPerPage;
@@ -27,13 +28,17 @@ function MapPage() {
     pages.push(i);
   }
 
+  function handleChangeContent() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    content === 'map' ? setContent('card') : setContent('map');
+  }
+
   return (
     <>
-      <Header />
       <h1 className={style.title}>Поиск автосервисов</h1>
       <Search />
-      <div className={style.optionsWrapper}>
-        <div className={style.eclipse} />
+      <div className={style.options_wrapper}>
+        <div className={style.eclipses} />
         <Select
           // eslint-disable-next-line react/jsx-no-bind
           // onChange={onChangeSelect}
@@ -52,50 +57,57 @@ function MapPage() {
             id="mapping"
             type="checkbox"
             name="mapping"
+            onChange={handleChangeContent}
           />
           <span className={style.mapping_span} />
           <span className={style.mapping_span_card_image} />
           <span className={style.mapping_span_map_image} />
         </label>
       </div>
-      <section className={style.section} aria-label="Секция лучшие сервисы">
-        <div className={style.cardscontainer}>
-          <div className={style.ellipse} />
-          {currentServices.map((service) => {
-            return (
-              <BestServiceCard
-                key={service.id}
-                image={service.image}
-                title={service.title}
-                rating={service.rating}
-                votes={service.votes}
-                address={service.address}
-                openfrom={service.openfrom}
-                openuntil={service.openuntil}
-              />
-            );
-          })}
-        </div>
-      </section>
-      <div className={style.paginationContainer}>
-        <button
-          className={`${style.prevlink} ${style.arrowlink}`}
-          onClick={() => {
-            setCurrentPage(currentPage === 1 ? 1 : currentPage - 1);
-          }}
-        />
-        <Pagination
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          pages={pages}
-        />
-        <button
-          className={`${style.nextlink} ${style.arrowlink}`}
-          onClick={() => {
-            setCurrentPage(currentPage === pages.length ? 1 : currentPage + 1);
-          }}
-        />
-      </div>
+      {content === 'card' ? (
+        <>
+          <section className={style.section} aria-label="Секция лучшие сервисы">
+            <div className={style.cardscontainer}>
+              <div className={style.ellipse} />
+              {currentServices.map((service) => {
+                return (
+                  <BestServiceCard
+                    key={service.id}
+                    image={service.image}
+                    title={service.title}
+                    rating={service.rating}
+                    votes={service.votes}
+                    address={service.address}
+                    openfrom={service.openfrom}
+                    openuntil={service.openuntil}
+                  />
+                );
+              })}
+            </div>
+          </section>
+          <div className={style.paginationContainer}>
+            <button
+              className={`${style.prevlink} ${style.arrowlink}`}
+              onClick={() => {
+                setCurrentPage(currentPage === 1 ? 1 : currentPage - 1);
+              }}
+            />
+            <Pagination
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              pages={pages}
+            />
+            <button
+              className={`${style.nextlink} ${style.arrowlink}`}
+              onClick={() => {
+                setCurrentPage(currentPage === pages.length ? 1 : currentPage + 1);
+              }}
+            />
+          </div>
+        </>
+      ) : (
+        <Ymap services={services} />
+      )}
       <Footer />
     </>
   );
