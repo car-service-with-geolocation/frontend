@@ -37,42 +37,7 @@
 }
 
 .paginationContainer {
-  padding: 0;
-}
-
-.paginationList {
   display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.paginationElement {
-  margin: 0 4px 0 0;
-  display: flex;
-}
-
-.paginationElement:last-of-type {
-  margin: 0;
-}
-
-.link {
-  padding: 3px 12px;
-  color: #dedede;
-  text-decoration: none;
-  font-family: Montserrat;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 165%;
-  cursor: pointer;
-}
-
-.link_activ {
-  color: #0a0908;
-  background-color: #dedede;
-  border-radius: 5px;
 }
 
 .prevlink {
@@ -86,7 +51,10 @@
 .arrowlink {
   width: 16px;
   height: 16px;
-  padding: 8px;
+  margin: 8px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
