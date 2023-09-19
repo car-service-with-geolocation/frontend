@@ -8,6 +8,11 @@ const options = [
   { value: 'Kia', label: 'Kia' },
 ];
 
+const immediateOptions = [
+  { value: 'Сначала ближайшие', label: 'Сначала ближайшие' },
+  { value: 'По рейтингу', label: 'По рейтингу' },
+];
+
 const clusterPoints = [
   {
     title: 'Placemark 1',
@@ -78,6 +83,7 @@ export {
   DADATA_API,
   DADATA_API_KEY,
   DADATA_SECRET_KEY,
+  immediateOptions,
   navigatorOptions,
   options,
   YMAP_API_KEY,
