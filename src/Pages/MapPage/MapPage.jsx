@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Select from 'react-select';
 
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
-import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
 import Ymap from '../../components/Ymap/Ymap';
@@ -47,6 +46,8 @@ function MapPage() {
           options={immediateOptions}
           isLoading={false}
           isSearchable
+          // eslint-disable-next-line no-unneeded-ternary
+          isDisabled={content === 'card' ? false : true}
           classNamePrefix="immediate-select"
           noOptionsMessage={() => 'Совпадений не найдено'}
           required
@@ -108,7 +109,6 @@ function MapPage() {
       ) : (
         <Ymap services={services} />
       )}
-      <Footer />
     </>
   );
 }
