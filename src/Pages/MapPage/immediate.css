@@ -71,6 +71,10 @@
   animation: openMenu 0.35s ease-in-out;
 }
 
+.immediate-select--is-disabled {
+  opacity: 0.5 !important;
+}
+
 /* Итем Меню */
 .immediate-select__menu-list {
   padding-top: 0 !important;

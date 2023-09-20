@@ -62,6 +62,7 @@
   position: relative; /* Относительное позиционирование */
   background-color: #7b687e33;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .mapping_input {
@@ -100,10 +101,13 @@
   width: 50%;
   height: 100%;
   background: #702;
-  cursor: pointer; /* Курсор в виде руки */
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   transition: all 0.3s ease-in;
+}
+
+.mapping_input:hover + .mapping_span {
+  background-color: #3f0012;
 }
 
 .mapping_input:checked + .mapping_span {
