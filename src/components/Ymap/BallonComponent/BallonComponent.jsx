@@ -4,22 +4,26 @@ import './BallonComponent.css';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import image from '../../../images/YmapDefoltImage.svg';
+// import image from '../../../images/YmapDefoltImage.svg';
 import star from '../../../images/YmapStarIcon.svg';
 
-export function BallonComponent() {
+export function BallonComponent({ point }) {
   return (
     <section className="Ymap">
       <div className="Ymap__wrapper">
-        <h3 className="Ymap__title">LR Premium</h3>
+        <h3 className="Ymap__title">{point.title}</h3>
         <div className="Ymap__rating_wrapper">
           <img className="Ymap__star_icon" src={star} alt="Исзображение звездочки" />
-          <p className="Ymap__rating_subtitle">5.0 (156)</p>
+          <p className="Ymap__rating_subtitle">
+            {point.rating} ({point.votes})
+          </p>
         </div>
-        <address className="Ymap__addres">Пушкина ул. 27А</address>
-        <p className="Ymap__timeWork">Осткрыто с 9 до 00</p>
+        <address className="Ymap__addres">{point.address}</address>
+        <p className="Ymap__timeWork">
+          Осткрыто с {point.openfrom} до {point.openuntil}
+        </p>
       </div>
-      <img className="Ymap__image" src={image} alt="Изображение автосервиса" />
+      <img className="Ymap__image" src={point.image} alt="Изображение автосервиса" />
     </section>
   );
 }
