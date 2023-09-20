@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import icon from '../../images/YmapIcon.svg';
 import style from './Footer.module.css';
 
 function Footer() {
+  const location = useLocation();
+
   return (
     <footer className={style.footer}>
       <Link className={style.logo_wrapper} to="/">
@@ -12,12 +14,26 @@ function Footer() {
       </Link>
       <ul className={style.navigation_wrapper}>
         <li className={style.navigation_wrapper_section}>
-          <Link className={style.link} to="/">
+          <Link
+            className={
+              location.pathname === '/search'
+                ? `${style.link} ${style.link_active}`
+                : `${style.link}`
+            }
+            to="/search"
+          >
             Поиск автосервисов
           </Link>
         </li>
         <li className={style.navigation_wrapper_section}>
-          <Link className={style.link} to="/">
+          <Link
+            className={
+              location.pathname === '/forservices'
+                ? `${style.link} ${style.link_active}`
+                : `${style.link}`
+            }
+            to="/forservices"
+          >
             Для автосервисов
           </Link>
         </li>
