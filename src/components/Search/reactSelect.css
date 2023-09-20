@@ -62,8 +62,14 @@
 }
 
 /* Кнопка открыть меню */
-.css-tj5bde-Svg {
-  fill: #0a0908 !important;
+.react-select__indicator {
+  color: #0a0908 !important;
+  transform: rotate(180deg);
+  transition: all 0.6s linear !important;
+}
+
+.css-1xc3v61-indicatorContainer {
+  transform: rotate(0deg);
 }
 
 /* Меню */
