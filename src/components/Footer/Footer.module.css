@@ -13,6 +13,10 @@
   text-decoration: none;
 }
 
+.logo_wrapper:hover {
+  color: #770022;
+}
+
 .img {
   width: 45px;
   height: 62px;
@@ -57,6 +61,14 @@
   line-height: normal;
 }
 
+.link_active {
+  font-weight: 700;
+}
+
+.link:hover {
+  color: #770022;
+}
+
 .address_wrapper {
   display: flex;
   flex-direction: column;
@@ -77,4 +89,8 @@
   font-weight: 400;
   line-height: normal;
   max-width: 205px;
+}
+
+.address_link:hover {
+  color: #770022;
 }
