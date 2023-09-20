@@ -1,6 +1,7 @@
 import './reactSelect.css';
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import Select from 'react-select';
 
 import { navigatorOptions, options } from '../../utils/constants';
@@ -8,6 +9,8 @@ import { getReverseGeocod } from '../../utils/dadataApi';
 import style from './Search.module.css';
 
 function Search() {
+  const navigate = useNavigate();
+
   const [currentAuto, setCurrentAuto] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
   const [mainlonLat, setMainlonLat] = useState({});
@@ -33,7 +36,6 @@ function Search() {
     setMainlonLat({
       lat: position.coords.latitude,
       lon: position.coords.longitude,
-      count: 1,
     });
     // Убрать после =>
     setTimeout(() => {
@@ -76,12 +78,18 @@ function Search() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log({ currentAuto, currentLocation });
+    console.log(currentAuto ? { currentAuto, mainlonLat } : mainlonLat);
+    navigate('/search');
   }
 
   return (
     <section className={style.section}>
-      <form onSubmit={handleSubmit} className={style.form} action="submit">
+      <form
+        id="search_form"
+        onSubmit={handleSubmit}
+        className={style.form}
+        action="submit"
+      >
         <Select
           // eslint-disable-next-line react/jsx-no-bind
           onChange={onChangeSelect}
@@ -92,13 +100,12 @@ function Search() {
           isSearchable // Возможность вписывать текст в инпут и далее выбирать
           classNamePrefix="react-select"
           noOptionsMessage={() => 'Совпадений не найдено'}
-          required
         />
         <div className={style.inputWrapper}>
           <input
             name="inputLocation"
             minLength="5"
-            maxLength="30"
+            maxLength="45"
             required
             className={style.formInput}
             type="text"
