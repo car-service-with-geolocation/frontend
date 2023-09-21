@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import './Ymap.css';
 
 import {
@@ -14,7 +15,7 @@ import {
 import { useState } from 'react';
 
 import YmapIcon from '../../images/YmapIcon.svg';
-import { clusterPoints, YMAP_VERSION } from '../../utils/constants';
+import { services, YMAP_VERSION } from '../../utils/constants';
 import { BallonComponent, Portal } from './BallonComponent/BallonComponent';
 
 function Ymap() {
@@ -69,19 +70,19 @@ function Ymap() {
           /> */}
           <Clusterer
             options={{
-              preset: 'islands#invertedRedClusterIcons', // "islands#invertedVioletClusterIcons",
+              preset: 'islands#invertedBrownClusterIcons', // "islands#invertedRedClusterIcons",
               groupByCoordinates: false,
               gridSize: 100, // Размер ячейки кластеризации в пикселях.
             }}
           >
-            {clusterPoints.map((coords) => (
+            {services.map((service) => (
               <Placemark
                 modules={['geoObject.addon.balloon']}
-                key={coords.id}
-                geometry={coords.coords}
+                key={service.id}
+                geometry={service.coords}
                 properties={{
-                  iconCaption: `${coords.title.toString()}`,
-                  balloonContent: `<div id=${coords.id.toString()} class="ballonContainer"></div>`,
+                  iconCaption: `${service.title.toString()}`,
+                  balloonContent: `<div id=${service.id.toString()} class="ballonContainer"></div>`,
                 }}
                 options={{
                   // pointOverlay: "default#placemark",
@@ -93,7 +94,7 @@ function Ymap() {
                   iconImageHref: YmapIcon,
                 }}
                 onClick={() => {
-                  setPoint(coords);
+                  setPoint(service);
                   setActivePortal(false);
                   // ставим в очередь промисов, чтобы сработало после отрисовки балуна
                   setTimeout(() => {

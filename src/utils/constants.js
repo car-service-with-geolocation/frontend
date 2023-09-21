@@ -38,57 +38,6 @@ const immediateOptions = [
   { value: 'По рейтингу', label: 'По рейтингу' },
 ];
 
-const clusterPoints = [
-  {
-    title: 'Placemark 1',
-    descr: 'Some description',
-    coords: [55.831903, 37.411961],
-    id: '1',
-  },
-  {
-    title: 'Placemark 2',
-    descr: 'Some description',
-    coords: [55.763338, 37.565466],
-    id: '2',
-  },
-  {
-    title: 'Placemark 3',
-    descr: 'Some description',
-    coords: [55.763338, 37.565467],
-    id: '3',
-  },
-  {
-    title: 'Placemark 4',
-    descr: 'Some description',
-    coords: [55.744522, 37.616378],
-    id: '4',
-  },
-  {
-    title: 'Placemark 5',
-    descr: 'Some description',
-    coords: [55.780898, 37.642889],
-    id: '5',
-  },
-  {
-    title: 'Placemark 6',
-    descr: 'Some description',
-    coords: [55.793559, 37.435983],
-    id: '6',
-  },
-  {
-    title: 'Placemark 7',
-    descr: 'Some description',
-    coords: [55.800584, 37.675638],
-    id: '7',
-  },
-  {
-    title: 'Placemark 8',
-    descr: 'Some description',
-    coords: [55.716733, 37.589988],
-    id: '8',
-  },
-];
-
 // Где это хранить будем? env?
 const YMAP_API_KEY = '4280dfdd-134d-4d56-8683-e770e6093797&lang=ru_RU';
 const YMAP_VERSION = '2.1.79';
@@ -113,6 +62,7 @@ const services = [
     address: 'Пушкина ул. 27А',
     openfrom: '9',
     openuntil: '00',
+    coords: [55.800584, 37.675638],
   },
   {
     id: 2,
@@ -123,6 +73,7 @@ const services = [
     address: 'Киевская ул.14, подъезд 2',
     openfrom: '10',
     openuntil: '20',
+    coords: [55.716733, 37.589988],
   },
   {
     id: 3,
@@ -133,6 +84,7 @@ const services = [
     address: 'Садовая кудринская пер. 2',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.793559, 37.435983],
   },
   {
     id: 4,
@@ -143,6 +95,7 @@ const services = [
     address: 'Московский проспект, 7А',
     openfrom: '10',
     openuntil: '22',
+    coords: [55.780898, 37.642889],
   },
   {
     id: 5,
@@ -153,6 +106,7 @@ const services = [
     address: 'Ул. Главная, 99',
     openfrom: '10',
     openuntil: '23',
+    coords: [55.744522, 37.616378],
   },
   {
     id: 6,
@@ -163,6 +117,7 @@ const services = [
     address: 'Ул. Центральная, 23',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.763338, 37.565467],
   },
   {
     id: 7,
@@ -173,6 +128,7 @@ const services = [
     address: 'Пушкина ул. 27А',
     openfrom: '9',
     openuntil: '00',
+    coords: [55.763338, 37.565466],
   },
   {
     id: 8,
@@ -183,6 +139,7 @@ const services = [
     address: 'Киевская ул.14, подъезд 2',
     openfrom: '10',
     openuntil: '20',
+    coords: [55.831903, 37.411961],
   },
   {
     id: 9,
@@ -193,6 +150,7 @@ const services = [
     address: 'Садовая кудринская пер. 2',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.631903, 37.511961],
   },
   {
     id: 10,
@@ -203,6 +161,7 @@ const services = [
     address: 'Московский проспект, 7А',
     openfrom: '10',
     openuntil: '22',
+    coords: [55.891903, 37.451961],
   },
   {
     id: 11,
@@ -213,6 +172,7 @@ const services = [
     address: 'Ул. Главная, 99',
     openfrom: '10',
     openuntil: '23',
+    coords: [55.839903, 37.419961],
   },
   {
     id: 12,
@@ -223,6 +183,7 @@ const services = [
     address: 'Ул. Центральная, 23',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.331903, 37.211961],
   },
   {
     id: 13,
@@ -233,6 +194,7 @@ const services = [
     address: 'Пушкина ул. 27А',
     openfrom: '9',
     openuntil: '00',
+    coords: [55.231903, 37.111961],
   },
   {
     id: 14,
@@ -243,6 +205,7 @@ const services = [
     address: 'Киевская ул.14, подъезд 2',
     openfrom: '10',
     openuntil: '20',
+    coords: [56.831903, 38.411961],
   },
   {
     id: 15,
@@ -253,6 +216,7 @@ const services = [
     address: 'Садовая кудринская пер. 2',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.898903, 37.445961],
   },
   {
     id: 16,
@@ -263,6 +227,7 @@ const services = [
     address: 'Московский проспект, 7А',
     openfrom: '10',
     openuntil: '22',
+    coords: [55.831903, 37.411961],
   },
   {
     id: 17,
@@ -273,6 +238,7 @@ const services = [
     address: 'Ул. Главная, 99',
     openfrom: '10',
     openuntil: '23',
+    coords: [55.831903, 37.411961],
   },
   {
     id: 18,
@@ -283,6 +249,7 @@ const services = [
     address: 'Ул. Центральная, 23',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.831903, 37.411961],
   },
   {
     id: 19,
@@ -293,6 +260,7 @@ const services = [
     address: 'Пушкина ул. 27А',
     openfrom: '9',
     openuntil: '00',
+    coords: [55.793559, 37.435983],
   },
   {
     id: 20,
@@ -303,6 +271,7 @@ const services = [
     address: 'Киевская ул.14, подъезд 2',
     openfrom: '10',
     openuntil: '20',
+    coords: [55.793559, 37.435983],
   },
   {
     id: 21,
@@ -313,6 +282,7 @@ const services = [
     address: 'Садовая кудринская пер. 2',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.793559, 37.435983],
   },
   {
     id: 22,
@@ -323,6 +293,7 @@ const services = [
     address: 'Московский проспект, 7А',
     openfrom: '10',
     openuntil: '22',
+    coords: [55.793559, 37.435983],
   },
   {
     id: 23,
@@ -333,6 +304,7 @@ const services = [
     address: 'Ул. Главная, 99',
     openfrom: '10',
     openuntil: '23',
+    coords: [55.793559, 37.435983],
   },
   {
     id: 24,
@@ -343,11 +315,11 @@ const services = [
     address: 'Ул. Центральная, 23',
     openfrom: '10',
     openuntil: '21',
+    coords: [55.793559, 37.435983],
   },
 ];
 
 export {
-  clusterPoints,
   DADATA_API,
   DADATA_API_KEY,
   DADATA_SECRET_KEY,
