@@ -21,6 +21,7 @@
 .ymaps-2-1-79-balloon__content {
   padding: 0 !important;
   background-color: rgba(11, 10, 9, 0.85) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
   backdrop-filter: blur(2px) !important;
   border-radius: 20px;
   width: 400px;
