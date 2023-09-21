@@ -1,33 +1,39 @@
-import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import servicePhoto from '../../images/bestService-card1.png';
 import star from '../../images/bestService-Star.svg';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
+import { services } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
-function ServicePage({ id }) {
+function ServicePage() {
   const dispatch = useDispatch();
-
+  const location = useParams();
+  const serviceToRender = services.find((service) => service.id === Number(location.id));
+  console.log(serviceToRender);
   useEffect(() => {
-    dispatch(fetchAutoServiceId(id));
-  }, [dispatch, id]);
+    dispatch(fetchAutoServiceId(location.id));
+  }, [dispatch, location.id]);
   return (
     <section className={styles.wrapper}>
-      <p className={styles.way}>Главная / Поиск автосервисов / LR Premium</p>
+      <p
+        className={styles.way}
+      >{`Главная / Поиск автосервисов / ${serviceToRender.title}`}</p>
       <div className={styles.serviceWrapper}>
         <div className={styles.service}>
-          <h2 className={styles.serviceName}>LR Premium</h2>
+          <h2 className={styles.serviceName}>{serviceToRender.title}</h2>
           <div className={styles.raitingWrappper}>
             <img className={styles.starImg} src={star} alt="star" />
-            <p className={styles.rating}>5.0 (156)</p>
+            <p
+              className={styles.rating}
+            >{`${serviceToRender.rating} (${serviceToRender.votes})`}</p>
           </div>
           <h3 className={styles.aboutHeader}>Об автосервисе</h3>
           {/* Посмотрим как тут будут бэки отдавать. Может сделаем через map */}
           <div className={styles.serviceInfo}>
             <ul className={styles.workInfo}>
-              <li>Открыто с 9 до 00</li>
+              <li>{`Открыто с ${serviceToRender.openfrom} до ${serviceToRender.openuntil}`}</li>
               <li>Суббота 9:00 - 15:00</li>
               <li>Воскресенье: Закрыто</li>
             </ul>
@@ -41,7 +47,11 @@ function ServicePage({ id }) {
             <button className={styles.address}>Сайт</button>
           </div>
         </div>
-        <img className={styles.servicePhoto} src={servicePhoto} alt="autoservice" />
+        <img
+          className={styles.servicePhoto}
+          src={serviceToRender.image}
+          alt="autoservice"
+        />
       </div>
       <article className={styles.serviceJobWrapper}>
         <div className={styles.serviceWorksWrapper}>
@@ -72,18 +82,12 @@ function ServicePage({ id }) {
       <div className={styles.addressWrapper}>
         <div className={styles.addressWithMap}>
           <h3 className={styles.addressHEader}>Адрес</h3>
-          <p className={styles.addressText}>
-            Москва, Красный Октябрь м-н, Киржач, Владимирская область, Пушкина ул. 27А
-          </p>
+          <p className={styles.addressText}>{`${serviceToRender.address}`}</p>
         </div>
         <img src="#" alt="map" />
       </div>
     </section>
   );
 }
-
-ServicePage.propTypes = {
-  id: PropTypes.string.isRequired,
-};
 
 export default ServicePage;

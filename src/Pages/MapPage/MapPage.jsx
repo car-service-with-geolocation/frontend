@@ -81,6 +81,7 @@ function MapPage() {
                     address={service.address}
                     openfrom={service.openfrom}
                     openuntil={service.openuntil}
+                    id={service.id}
                   />
                 );
               })}

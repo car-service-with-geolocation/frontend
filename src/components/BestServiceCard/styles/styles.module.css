@@ -77,3 +77,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+.link {
+  text-decoration: none;
+  color: #dedede;
+}
