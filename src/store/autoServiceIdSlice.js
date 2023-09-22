@@ -5,7 +5,9 @@ export const fetchAutoServiceId = createAsyncThunk(
   'autoServiceId/fetchAutoServiceId',
   async function (id, { rejectWithValue }) {
     try {
-      const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+      const response = await fetch(
+        `http://80.87.107.183/api/v1/autoservice/service/${id}`
+      );
       if (!response.ok) {
         throw new Error('Server Error');
       }
