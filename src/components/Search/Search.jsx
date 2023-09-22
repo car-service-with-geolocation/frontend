@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable no-undef */
 import './reactSelect.css';
 
 import { useEffect, useState } from 'react';
@@ -78,9 +80,18 @@ function Search() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    currentLocation && sessionStorage.setItem('selectedLocation', currentLocation);
+    currentAuto && sessionStorage.setItem('selectedAuto', currentAuto);
     console.log(currentAuto ? { currentAuto, mainlonLat } : mainlonLat);
     navigate('/search');
   }
+
+  useEffect(() => {
+    sessionStorage.getItem('selectedAuto') &&
+      setCurrentAuto(sessionStorage.getItem('selectedAuto'));
+    sessionStorage.getItem('selectedLocation') &&
+      setCurrentLocation(sessionStorage.getItem('selectedLocation'));
+  }, []);
 
   return (
     <section className={style.section}>
