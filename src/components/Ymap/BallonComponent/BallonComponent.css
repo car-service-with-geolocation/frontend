@@ -1,3 +1,9 @@
+.ymap_link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
 .Ymap {
   display: flex;
   gap: 20px;
