@@ -1,16 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // eslint-disable-next-line import/prefer-default-export
-export const fetchAutoServices = createAsyncThunk(
-  'autoService/fetchAutoServices',
-  async function (_, { rejectWithValue }) {
+export const fetchAutoServiceByCoord = createAsyncThunk(
+  'autoServiceByCoord/fetchAutoServiceByCoord',
+  async function (coord, { rejectWithValue }) {
     try {
-      const response = await fetch('http://80.87.107.183/api/v1/autoservice/service/', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await fetch(
+        `http://80.87.107.183/api/v1/autoservice/service/?latitude=${coord.lat}longitude=${coord.lon}`
+      );
       if (!response.ok) {
         throw new Error('Server Error');
       }
@@ -23,27 +20,27 @@ export const fetchAutoServices = createAsyncThunk(
   }
 );
 
-const autoServiceSlice = createSlice({
-  name: 'autoService',
+const autoServiceByCoordSlice = createSlice({
+  name: 'autoServiceByCoord',
   initialState: {
     data: [],
     status: null,
     error: null,
   },
   extraReducers: {
-    [fetchAutoServices.pending]: (state) => {
+    [fetchAutoServiceByCoord.pending]: (state) => {
       state.status = 'loading';
       state.error = null;
     },
-    [fetchAutoServices.fulfilled]: (state, action) => {
+    [fetchAutoServiceByCoord.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.data = action.payload;
     },
-    [fetchAutoServices.rejected]: (state, action) => {
+    [fetchAutoServiceByCoord.rejected]: (state, action) => {
       state.status = 'rejected';
       state.error = action.payload;
     },
   },
 });
 
-export default autoServiceSlice.reducer;
+export default autoServiceByCoordSlice.reducer;
