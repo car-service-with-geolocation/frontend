@@ -1,33 +1,17 @@
 // import { Routes, Route } from 'react-router-dom';
 import '../../index.css';
 
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router';
 
 import MainPage from '../../Pages/MainPage/MainPage';
+import MapPage from '../../Pages/MapPage/MapPage';
+import ServicePage from '../../Pages/ServicePage/ServicePages';
 // import Ymap from '../Ymap/Ymap';
-import { fetchAutoServices } from '../../store/autoServicesSlice';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
-import ServicePage from '../../Pages/ServicePage/ServicePages';
-import MapPage from '../../Pages/MapPage/MapPage';
 
 function App() {
-  // const accessToken = getCookie('accessToken').replace('Bearer', '');
-  const dispatch = useDispatch();
-  //
-  useEffect(() => {
-    dispatch(fetchAutoServices());
-  }, [dispatch]);
-  //
-  // const { closestAutoServiceRequest } = useSelector((store) => store.closestAutoServiceReducer);
-  //
-  // if (closestAutoServiceRequest) {
-  //   return <p>Загрузка</p>;
-  // }
-
   return (
     <div className={style.app}>
       <Header />

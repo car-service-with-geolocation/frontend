@@ -27,19 +27,22 @@ const autoServiceByCoordSlice = createSlice({
     status: null,
     error: null,
   },
-  extraReducers: {
-    [fetchAutoServiceByCoord.pending]: (state) => {
-      state.status = 'loading';
-      state.error = null;
-    },
-    [fetchAutoServiceByCoord.fulfilled]: (state, action) => {
-      state.status = 'resolved';
-      state.data = action.payload;
-    },
-    [fetchAutoServiceByCoord.rejected]: (state, action) => {
-      state.status = 'rejected';
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAutoServiceByCoord.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchAutoServiceByCoord.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.data = action.payload;
+      })
+      .addCase(fetchAutoServiceByCoord.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload;
+      })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .addDefaultCase((state, action) => {});
   },
 });
 
