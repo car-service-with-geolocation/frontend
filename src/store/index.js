@@ -1,14 +1,13 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import autoServiceSlice from './autoServicesSlice';
 import autoServiceIdSlice from './autoServiceIdSlice';
 import autoServiceByCoordSlice from './autoServiceByCoordSlice';
 
-export const rootReducer = combineReducers({
-  autoServiceSlice,
-  autoServiceIdSlice,
-  autoServiceByCoordSlice,
-});
-
+// eslint-disable-next-line import/prefer-default-export
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    mainAutoServices: autoServiceSlice,
+    autoServiceById: autoServiceIdSlice,
+    autoServiceByCoord: autoServiceByCoordSlice,
+  },
 });

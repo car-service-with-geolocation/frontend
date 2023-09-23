@@ -30,19 +30,22 @@ const autoServiceSlice = createSlice({
     status: null,
     error: null,
   },
-  extraReducers: {
-    [fetchAutoServices.pending]: (state) => {
-      state.status = 'loading';
-      state.error = null;
-    },
-    [fetchAutoServices.fulfilled]: (state, action) => {
-      state.status = 'resolved';
-      state.data = action.payload;
-    },
-    [fetchAutoServices.rejected]: (state, action) => {
-      state.status = 'rejected';
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAutoServices.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchAutoServices.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.data = action.payload;
+      })
+      .addCase(fetchAutoServices.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload;
+      })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .addDefaultCase((state, action) => {});
   },
 });
 

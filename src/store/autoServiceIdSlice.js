@@ -23,23 +23,26 @@ export const fetchAutoServiceId = createAsyncThunk(
 const autoServiceSliceId = createSlice({
   name: 'autoServiceId',
   initialState: {
-    data: [],
+    data: null,
     status: null,
     error: null,
   },
-  extraReducers: {
-    [fetchAutoServiceId.pending]: (state) => {
-      state.status = 'loading';
-      state.error = null;
-    },
-    [fetchAutoServiceId.fulfilled]: (state, action) => {
-      state.status = 'resolved';
-      state.data = action.payload;
-    },
-    [fetchAutoServiceId.rejected]: (state, action) => {
-      state.status = 'rejected';
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAutoServiceId.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchAutoServiceId.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.data = action.payload;
+      })
+      .addCase(fetchAutoServiceId.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload;
+      })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .addDefaultCase((state, action) => {});
   },
 });
 
