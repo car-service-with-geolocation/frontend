@@ -1,6 +1,13 @@
+import { useNavigate } from 'react-router';
+
 import style from './NotFound.module.css';
 
 function NotFound() {
+  const navigate = useNavigate();
+  function handleClick(event) {
+    event.preventDefault();
+    navigate('/');
+  }
   return (
     <div className={style.notFoundPage}>
       <div className={style.notFoundPage}>
@@ -9,7 +16,9 @@ function NotFound() {
           <p className={style.notFoundPageText}>
             К сожалению, cтраница, которую вы ищете, не существует.
           </p>
-          <button className={style.notFoundPageBtn}>Перейти на главную</button>
+          <button onClick={handleClick} className={style.notFoundPageBtn}>
+            Перейти на главную
+          </button>
         </div>
       </div>
     </div>
