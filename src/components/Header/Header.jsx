@@ -1,21 +1,32 @@
-import { Link } from 'react-router-dom';
-import style from './styles/Header.module.css';
+import { Link, useLocation } from 'react-router-dom';
+
 import carLogo from '../../images/car-Logo.svg';
-import carServices from '../../images/Car-Services.svg';
+import style from './styles/Header.module.css';
 
 function Header() {
+  const location = useLocation();
   return (
     <div className={style.header}>
       <div className={style.block}>
-        <div className={style.logo}>
+        <Link className={style.logoLink} to="/">
           <img src={carLogo} alt="Логотип" />
-          <img src={carServices} alt="Логотип" />
-        </div>
+          <p className={style.logoText}>Premium Car Services</p>
+        </Link>
         <div className={style.link}>
-          <Link className={style.linkText} to="/">
+          <Link
+            className={`${style.linkText} ${
+              location.pathname === '/search' ? style.active : ''
+            }`}
+            to="/search"
+          >
             Поиск автосервисов
           </Link>
-          <Link className={style.linkText} to="/">
+          <Link
+            className={`${style.linkText} ${
+              location.pathname === '/forservices' ? style.active : ''
+            }`}
+            to="/forservices"
+          >
             Для автосервисов
           </Link>
         </div>
