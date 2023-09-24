@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+import { baseUrl } from '../utils/constants';
+
 // eslint-disable-next-line import/prefer-default-export
 export const fetchAutoServiceId = createAsyncThunk(
   'autoServiceId/fetchAutoServiceId',
   async function (id, { rejectWithValue }) {
     try {
-      const response = await fetch(
-        `http://80.87.107.183/api/v1/autoservice/service/${id}`
-      );
+      const response = await fetch(`${baseUrl}autoservice/service/${id}`);
       if (!response.ok) {
         throw new Error('Server Error');
       }
