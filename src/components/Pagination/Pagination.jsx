@@ -5,10 +5,10 @@ import style from './Pagination.module.css';
 const Pagination = ({ setCurrentPage, currentPage, pages }) => {
   return (
     <div className={style.container}>
-      {pages.map((page, index, value) => {
+      {pages.map((page) => {
         return (
           <button
-            key={value}
+            key={page}
             onClick={() => {
               setCurrentPage(page);
             }}
