@@ -135,6 +135,7 @@ function Search() {
             placeholder="Определить местоположение"
             onChange={onChangeInput}
             value={currentLocation || ''}
+            disabled
           />
           <button
             onClick={handleFindlonLat}
