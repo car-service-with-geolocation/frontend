@@ -1,13 +1,3 @@
-const options = [
-  { value: 'Audi', label: 'Audi' },
-  { value: 'Bmw', label: 'Bmw' },
-  { value: 'Tesla', label: 'Tesla' },
-  { value: 'Nissan', label: 'Nissan' },
-  { value: 'Skoda', label: 'Skoda' },
-  { value: 'Volkswagen', label: 'Volkswagen' },
-  { value: 'Kia', label: 'Kia' },
-];
-
 const immediateOptions = [
   { value: 'Сначала ближайшие', label: 'Сначала ближайшие' },
   { value: 'По рейтингу', label: 'По рейтингу' },
@@ -37,7 +27,6 @@ export {
   DADATA_SECRET_KEY,
   immediateOptions,
   navigatorOptions,
-  options,
   YMAP_API_KEY,
   YMAP_VERSION,
   servicesPerPage,
