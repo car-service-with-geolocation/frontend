@@ -66,7 +66,7 @@
   .css-1xc3v61-indicatorContainer {
     transform: rotate(0deg);
   }
-
+  
   /* Меню */
   .react-select__menu {
     width: 282px;
@@ -122,6 +122,14 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
   }
+}
+
+#react-select-2-listbox {
+  width: 282px;
+  left: 60px;
+  border-radius: 20px;
+  background: #dedede;
+  animation: openMenu 0.35s ease-in-out;
 }
 /* скролБар пока что убрал ниже костыли какие-то, верстку ломают*/
 ::-webkit-scrollbar {

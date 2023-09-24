@@ -1,38 +1,67 @@
+/* eslint-disable no-unneeded-ternary */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable react/jsx-no-bind */
 import './immediate.css';
 
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
 import Ymap from '../../components/Ymap/Ymap';
-import { immediateOptions } from '../../utils/constants';
+import { fetchAutoServices } from '../../store/autoServicesSlice';
+import { immediateOptions, servicesPerPage } from '../../utils/constants';
 import style from './MapPage.module.css';
 
 function MapPage() {
-  // const [services, setServices] = useState([]);
-  const services = useSelector((store) => store.autoServiceByCoord.data);
+  // state
+  const [servicesOnPage, setServicesOnPage] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const servicesPerPage = 6;
-  const totalServices = services.length;
+  const [currentSearchType, setCurrentSearchType] = useState(immediateOptions[1].value);
   const [content, setContent] = useState('card');
 
   const lastServiceIndex = currentPage * servicesPerPage;
   const firstServiceIndex = lastServiceIndex - servicesPerPage;
-  const currentServices = services.slice(firstServiceIndex, lastServiceIndex);
+  const currentServices = servicesOnPage.slice(firstServiceIndex, lastServiceIndex);
+  // store
+  const servicesByCoord = useSelector((store) => store.autoServiceByCoord.data);
+  const servicesByAll = useSelector((store) => store.mainAutoServices.data);
 
+  const totalServices = servicesOnPage.length;
   const pages = [];
+  const dispatch = useDispatch();
 
   for (let i = 1; i <= Math.ceil(totalServices / servicesPerPage); i += 1) {
     pages.push(i);
   }
 
   function handleChangeContent() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     content === 'map' ? setContent('card') : setContent('map');
   }
+
+  function getValue() {
+    return currentSearchType
+      ? immediateOptions.find((SearchType) => SearchType.value === currentSearchType)
+      : '';
+  }
+
+  function onChangeSelect(newValue) {
+    setCurrentSearchType(newValue.value);
+  }
+
+  useEffect(() => {
+    if (currentSearchType === immediateOptions[1].value) {
+      setServicesOnPage(servicesByAll);
+    } else {
+      setServicesOnPage(servicesByCoord);
+    }
+  }, [currentSearchType, servicesByAll, servicesByCoord]);
+
+  useEffect(() => {
+    servicesByAll.length === 0 ? dispatch(fetchAutoServices()) : '';
+  }, [dispatch, servicesByAll]);
 
   return (
     <>
@@ -41,14 +70,12 @@ function MapPage() {
       <div className={style.options_wrapper}>
         <div className={style.eclipses} />
         <Select
-          // eslint-disable-next-line react/jsx-no-bind
-          // onChange={onChangeSelect}
+          onChange={onChangeSelect}
           placeholder="Сначала ближайшие"
-          // value={getValue()}
+          value={getValue()}
           options={immediateOptions}
           isLoading={false}
           isSearchable
-          // eslint-disable-next-line no-unneeded-ternary
           isDisabled={content === 'card' ? false : true}
           classNamePrefix="immediate-select"
           noOptionsMessage={() => 'Совпадений не найдено'}
@@ -110,7 +137,7 @@ function MapPage() {
           </div>
         </>
       ) : (
-        <Ymap services={services} />
+        <Ymap services={servicesByAll} />
       )}
     </>
   );

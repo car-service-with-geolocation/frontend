@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import star from '../../images/bestService-Star.svg';
+import star from '../../images/YmapStarIcon.svg';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import styles from './styles/styles.module.css';
 

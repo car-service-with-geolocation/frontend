@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 
-// import image from '../../../images/YmapDefoltImage.svg';
 import star from '../../../images/YmapStarIcon.svg';
 
 export function BallonComponent({ point }) {
@@ -13,7 +12,7 @@ export function BallonComponent({ point }) {
     <Link className="Ymap_link" to={`/service/${point.id}`}>
       <section className="Ymap">
         <div className="Ymap__wrapper">
-          <h3 className="Ymap__title">{point.title}</h3>
+          <h3 className="Ymap__title">{point.company.title}</h3>
           <div className="Ymap__rating_wrapper">
             <img className="Ymap__star_icon" src={star} alt="Исзображение звездочки" />
             <p className="Ymap__rating_subtitle">
