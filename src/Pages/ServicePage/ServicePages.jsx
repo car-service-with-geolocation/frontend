@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import star from '../../images/YmapStarIcon.svg';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
@@ -8,11 +9,16 @@ import styles from './styles/styles.module.css';
 
 function ServicePage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   useEffect(() => {
     dispatch(fetchAutoServiceId(id));
   }, [dispatch, id]);
   const serviceToRender = useSelector((store) => store.autoServiceById.data);
+  function handleSubmit(event) {
+    event.preventDefault();
+    navigate(`/service/${serviceToRender.id}/application`);
+  }
   return (
     <section className={styles.wrapper}>
       {serviceToRender ? (
@@ -42,7 +48,13 @@ function ServicePage() {
                 </ul>
               </div>
               <div className={styles.buttonsWrapper}>
-                <button className={styles.application}>Оставить заявку</button>
+                <button
+                  className={styles.application}
+                  type="submit"
+                  onClick={handleSubmit}
+                >
+                  Оставить заявку
+                </button>
                 <button className={styles.address}>Сайт</button>
               </div>
             </div>
