@@ -56,7 +56,6 @@
     cursor: pointer;
   }
 
-  /* Кнопка открыть меню */
   .react-select__indicator {
     color: #0a0908;
     transform: rotate(180deg);
@@ -66,8 +65,7 @@
   .css-1xc3v61-indicatorContainer {
     transform: rotate(0deg);
   }
-  
-  /* Меню */
+
   .react-select__menu {
     width: 282px;
     left: 60px;
@@ -76,7 +74,6 @@
     animation: openMenu 0.35s ease-in-out;
   }
 
-  /* Итем Меню */
   .react-select__menu-list {
     padding-top: 0;
     padding-bottom: 0;
@@ -88,12 +85,10 @@
     line-height: 29.7px;
   }
 
-  /* ОПЦИЯ */
   .react-select__option {
     color: #0a0908;
   }
 
-  /* ФОКУС ОПЦИИ */
   .react-select__option--is-focused {
     background-color: #cbcbcb;
   }
@@ -131,30 +126,7 @@
   background: #dedede;
   animation: openMenu 0.35s ease-in-out;
 }
-/* скролБар пока что убрал ниже костыли какие-то, верстку ломают*/
+
 ::-webkit-scrollbar {
   width: 0px;
 }
-
-/* ползунок скроллбара
-::-webkit-scrollbar-thumb {
-  /* border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 6px solid transparent;
-  box-shadow: inset 1px 1px 10px #702;
-}*/
-
-/* ::-webkit-scrollbar-button:vertical:start:decrement {
-  background: transparent;
-}
-
-::-webkit-scrollbar-button:vertical:end:increment {
-  background: transparent;
-} */
-
-/* FIREFOX => scrollbar style*/
-/* html, body
-  scrollbar-color: #458245 #714826; /* «цвет ползунка» «цвет полосы скроллбара»
-  scrollbar-width: auto | thin | none;  /* толщина
-}
-*/
