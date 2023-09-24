@@ -129,13 +129,12 @@ function Search() {
             name="inputLocation"
             minLength="5"
             maxLength="45"
-            required
+            disabled
             className={style.formInput}
             type="text"
             placeholder="Определить местоположение"
             onChange={onChangeInput}
             value={currentLocation || ''}
-            disabled
           />
           <button
             onClick={handleFindlonLat}

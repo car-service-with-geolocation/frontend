@@ -66,6 +66,7 @@
     transform: rotate(0deg);
   }
 
+  /* Меню */
   .react-select__menu {
     width: 282px;
     left: 60px;
