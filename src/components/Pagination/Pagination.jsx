@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 
 import style from './Pagination.module.css';
 
@@ -29,5 +29,5 @@ export default Pagination;
 Pagination.propTypes = {
   setCurrentPage: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
-  pages: PropTypes.number.isRequired,
+  pages: PropTypes.arrayOf(number).isRequired,
 };

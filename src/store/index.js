@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import autoServiceSlice from './autoServicesSlice';
-import autoServiceIdSlice from './autoServiceIdSlice';
+
 import autoServiceByCoordSlice from './autoServiceByCoordSlice';
+import autoServiceIdSlice from './autoServiceIdSlice';
+import autoServiceSlice from './autoServicesSlice';
 
 // eslint-disable-next-line import/prefer-default-export
 export const store = configureStore({

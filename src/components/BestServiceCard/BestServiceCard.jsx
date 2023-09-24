@@ -48,7 +48,7 @@ BestServiceCard.propTypes = {
   }).isRequired,
   // image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
   votes: PropTypes.number.isRequired,
   address: PropTypes.string.isRequired,
   openfrom: PropTypes.string.isRequired,
