@@ -44,7 +44,7 @@
 
   .react-select__input-container {
     color: #0a0908;
-    font-family: Raleway t;
+    font-family: Raleway;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -56,7 +56,6 @@
     cursor: pointer;
   }
 
-  /* Кнопка открыть меню */
   .react-select__indicator {
     color: #0a0908;
     transform: rotate(180deg);
@@ -76,7 +75,6 @@
     animation: openMenu 0.35s ease-in-out;
   }
 
-  /* Итем Меню */
   .react-select__menu-list {
     padding-top: 0;
     padding-bottom: 0;
@@ -88,12 +86,10 @@
     line-height: 29.7px;
   }
 
-  /* ОПЦИЯ */
   .react-select__option {
     color: #0a0908;
   }
 
-  /* ФОКУС ОПЦИИ */
   .react-select__option--is-focused {
     background-color: #cbcbcb;
   }
@@ -131,7 +127,7 @@
   background: #dedede;
   animation: openMenu 0.35s ease-in-out;
 }
-/* скролБар пока что убрал ниже костыли какие-то, верстку ломают*/
+
 ::-webkit-scrollbar {
   width: 0px;
 }

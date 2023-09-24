@@ -3,12 +3,13 @@
 import './reactSelect.css';
 
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import Select from 'react-select';
 
 import { fetchAutoServiceByCoord } from '../../store/autoServiceByCoordSlice';
-import { navigatorOptions, options } from '../../utils/constants';
+import { fetchCars } from '../../store/carsSlice';
+import { navigatorOptions } from '../../utils/constants';
 import { getReverseGeocod } from '../../utils/dadataApi';
 import style from './Search.module.css';
 
@@ -21,6 +22,8 @@ function Search() {
   const [coordinates, setcoordinates] = useState({});
   const [isRotation, setIsRotation] = useState(false);
   const [firstSearch, setFirstSearch] = useState(false);
+
+  const options = useSelector((store) => store.cars.data);
 
   // Далее работа с поиском геолокации юзера =>
   function success(position) {
@@ -57,15 +60,17 @@ function Search() {
   // Ранее работа с поиском геолокации юзера <=
 
   function getValue() {
-    return currentAuto ? options.find((auto) => auto.value === currentAuto) : '';
+    return currentAuto ? options.find((auto) => auto.brand === currentAuto) : '';
   }
 
   function onChangeSelect(newValue) {
-    setCurrentAuto(newValue.value);
+    setCurrentAuto(newValue.brand);
+    currentAuto && sessionStorage.setItem('selectedAuto', newValue.brand);
   }
 
   function onChangeInput(e) {
     setCurrentLocation(e.target.value);
+    currentLocation && sessionStorage.setItem('selectedLocation', e.target.value);
   }
 
   function handleSubmit(event) {
@@ -102,6 +107,7 @@ function Search() {
         fetchAutoServiceByCoord(JSON.parse(sessionStorage.getItem('coordinates')))
       );
     }
+    dispatch(fetchCars());
   }, [coordinates, dispatch, firstSearch]);
 
   return (
@@ -117,6 +123,8 @@ function Search() {
           onChange={onChangeSelect}
           placeholder="Марка Автомобиля"
           value={getValue()}
+          getOptionLabel={(option) => option.brand}
+          getOptionValue={(option) => option.slug}
           options={options}
           isLoading={false} // Небольшая Анимация загрузки данных.
           isSearchable // Возможность вписывать текст в инпут и далее выбирать
