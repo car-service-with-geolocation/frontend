@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import star from '../../images/bestService-Star.svg';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
@@ -12,9 +13,15 @@ function ServicePage() {
   const location = useParams();
   const serviceToRender = services.find((service) => service.id === Number(location.id));
   console.log(serviceToRender);
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchAutoServiceId(location.id));
   }, [dispatch, location.id]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    navigate(`/service/${serviceToRender.id}/application`);
+  }
   return (
     <section className={styles.wrapper}>
       <p
@@ -43,7 +50,9 @@ function ServicePage() {
             </ul>
           </div>
           <div className={styles.buttonsWrapper}>
-            <button className={styles.application}>Оставить заявку</button>
+            <button className={styles.application} type="submit" onClick={handleSubmit}>
+              Оставить заявку
+            </button>
             <button className={styles.address}>Сайт</button>
           </div>
         </div>

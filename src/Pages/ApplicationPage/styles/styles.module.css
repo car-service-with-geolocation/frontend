@@ -1,0 +1,239 @@
+.applicationContainer {
+  margin-bottom: -20px;
+}
+
+.wrapper {
+  max-width: 1120px;
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+
+.way {
+  margin: 40px 0 0;
+  padding: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+}
+
+.title {
+  margin: 100px 0 10px;
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.applicationWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ellipse {
+  position: absolute;
+  width: 395px;
+  height: 395px;
+  border-radius: 395px;
+  background: rgba(119, 0, 34, 0.3);
+  filter: blur(450px);
+}
+
+.ellipse1 {
+  top: 83px;
+  left: -160px;
+}
+
+.ellipse2 {
+  top: 1183px;
+  right: -160px;
+}
+
+.ellipse3 {
+  top: 1423px;
+  left: -160px;
+}
+
+.applicationForm {
+  display: flex;
+  flex-direction: column;
+  width: 645px;
+  margin: 0 115px 0 0;
+}
+
+.subtitle {
+  margin: 60px 0 20px;
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.textAreaTitle {
+  display: flex;
+  margin: 0 0 10px;
+  padding: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #ffffff;
+}
+
+.textAreaTitle:nth-of-type(2) {
+  margin-top: 15px;
+}
+
+.formText {
+  max-width: calc(100% - 60px);
+  width: 100%;
+  height: 30px;
+  border-radius: 20px;
+  padding: 15px 30px;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  border: none;
+  color: #7e7268;
+  resize: none;
+}
+
+.formText[type='textarea'] {
+  height: 150px;
+  margin: 0 0 30px 0;
+}
+
+.aboutUserSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.aboutUserSection:nth-of-type(2) {
+  justify-content: flex-start;
+}
+
+.phoneInfo {
+  display: flex;
+  flex-direction: column;
+  width: 265px;
+  margin: 0 20px 0 0;
+}
+
+.mailInfo {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.checkboxLabel {
+  margin: 0;
+}
+
+.checkboxLabel::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../images/checkbox.svg);
+  margin: 0 10px 0 0;
+}
+
+.textRemark {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #dedede;
+  margin: -15px 0 20px;
+}
+
+.imageInputsContainer {
+  display: flex;
+}
+
+.imageInput {
+  color: transparent;
+  width: 96px;
+  height: 48px;
+  margin: 0 20px 0 0;
+  padding: 35px;
+  border-radius: 20px;
+  border: 2px dashed #dedede;
+  background-image: url(../../../images/cameraIcon.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  cursor: pointer;
+}
+
+.imageInput::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.imageInput2 {
+  background-image: url(../../../images/imagePreloader.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 66.66%;
+}
+
+.imageInput3 {
+  background-image: url(../../../images/imageLoaded.png);
+  background-repeat: no-repeat;
+  background-position: 50% 66.66%;
+}
+
+.inputPreloader {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.preloaderLabel {
+  position: absolute;
+  width: 86px;
+  height: 30px;
+  top: 40px;
+  left: 42px;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #dedede;
+}
+
+.submitButton {
+  margin: 60px 0 0;
+  width: 100%;
+  height: 61px;
+  padding: 20px 80px;
+  border: none;
+  border-radius: 20px;
+  background-color: #702;
+  color: #dedede;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}

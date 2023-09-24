@@ -13,6 +13,7 @@ import Header from '../Header/Header';
 import style from './styles/App.module.css';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
 import MapPage from '../../Pages/MapPage/MapPage';
+import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
 
 function App() {
   // const accessToken = getCookie('accessToken').replace('Bearer', '');
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/service/:id" element={<ServicePage />} />
         <Route path="/search" element={<MapPage />} />
+        <Route path="/service/:id/application" element={<ApplicationPage />} />
       </Routes>
       <Footer />
       {/* <Routes>
