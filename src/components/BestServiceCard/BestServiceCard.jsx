@@ -43,10 +43,7 @@ function BestServiceCard({
 export default BestServiceCard;
 
 BestServiceCard.propTypes = {
-  image: PropTypes.shape({
-    type: PropTypes.oneOf(['img', 'svg']),
-  }).isRequired,
-  // image: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   votes: PropTypes.number.isRequired,

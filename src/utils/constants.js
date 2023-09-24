@@ -27,6 +27,8 @@ const navigatorOptions = {
   timeout: 3600,
 };
 
+const baseUrl = 'https://car-service.hopto.org/api/v1/';
+
 const servicesPerPage = 6;
 
 export {
@@ -39,4 +41,5 @@ export {
   YMAP_API_KEY,
   YMAP_VERSION,
   servicesPerPage,
+  baseUrl,
 };
