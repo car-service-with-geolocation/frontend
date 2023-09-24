@@ -11,132 +11,118 @@
     transform: scale(1);
   }
 }
+.select {
+  .react-select__control {
+    width: 282px;
+    height: 60px;
+    margin-left: 60px;
+    border-radius: 20px;
+    background: #dedede;
+  }
+  .react-select__control--is-focused {
+    box-shadow: none;
+    border: none;
+  }
+  .react-select__placeholder {
+    color: #0a0908;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+    padding-left: 25px;
+  }
+  .react-select__single-value {
+    color: #0a0908;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+    padding-left: 25px;
+  }
 
-.react-select__control {
-  width: 282px !important;
-  height: 60px !important;
-  margin-left: 60px !important;
-  border-radius: 20px !important;
-  background: #dedede !important;
-}
-.react-select__control:hover {
-  cursor: pointer;
-}
+  .react-select__input-container {
+    color: #0a0908;
+    font-family: Raleway t;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+    padding-left: 25px;
+  }
 
-.react-select__control--is-focused {
-  box-shadow: none !important;
-  border: none !important;
-}
+  .react-select__control:hover {
+    cursor: pointer;
+  }
 
-.react-select__placeholder {
-  color: #0a0908 !important;
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-  padding-left: 25px !important;
-}
+  /* Кнопка открыть меню */
+  .react-select__indicator {
+    color: #0a0908;
+    transform: rotate(180deg);
+    transition: all 0.6s linear;
+  }
 
-.react-select__single-value {
-  color: #0a0908 !important;
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-  padding-left: 25px !important;
-}
+  .css-1xc3v61-indicatorContainer {
+    transform: rotate(0deg);
+  }
 
-.react-select__input-container {
-  color: #0a0908 !important;
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-  padding-left: 25px !important;
-}
+  /* Меню */
+  .react-select__menu {
+    width: 282px;
+    left: 60px;
+    border-radius: 20px;
+    background: #dedede;
+    animation: openMenu 0.35s ease-in-out;
+  }
 
-/* Кнопка открыть меню */
-.react-select__indicator {
-  color: #0a0908 !important;
-  transform: rotate(180deg);
-  transition: all 0.6s linear !important;
-}
+  /* Итем Меню */
+  .react-select__menu-list {
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow-y: scroll 1px;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+  }
 
-.css-1xc3v61-indicatorContainer {
-  transform: rotate(0deg);
-}
+  /* ОПЦИЯ */
+  .react-select__option {
+    color: #0a0908;
+  }
 
-/* Меню */
-.react-select__menu {
-  width: 282px !important;
-  left: 60px;
-  border-radius: 20px !important;
-  background: #dedede !important;
-  animation: openMenu 0.35s ease-in-out;
-}
+  /* ФОКУС ОПЦИИ */
+  .react-select__option--is-focused {
+    background-color: #cbcbcb;
+  }
 
-/* Итем Меню */
-.react-select__menu-list {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  overflow-y: scroll 1px !important;
+  .react-select__option--is-focused:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-}
+  .react-select__option--is-focused:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  /* АКТИНАЯ ОПЦИЯ*/
+  .react-select__option--is-selected {
+    background-color: #3f0012;
+    color: #dedede;
+  }
 
-/* ОПЦИЯ */
-.react-select__option {
-  color: #0a0908 !important;
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-  padding-left: 35px !important;
-}
+  .react-select__option--is-selected:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 
-/* ФОКУС ОПЦИИ */
-.react-select__option--is-focused {
-  background-color: #cbcbcb !important;
+  .react-select__option--is-selected:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 }
-
-.react-select__option--is-focused:first-of-type {
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
-}
-
-.react-select__option--is-focused:last-of-type {
-  border-bottom-left-radius: 20px !important;
-  border-bottom-right-radius: 20px !important;
-}
-/* АКТИНАЯ ОПЦИЯ*/
-.react-select__option--is-selected {
-  background-color: #3f0012 !important;
-  color: #dedede !important;
-}
-
-.react-select__option--is-selected:first-of-type {
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
-}
-
-.react-select__option--is-selected:last-of-type {
-  border-bottom-left-radius: 20px !important;
-  border-bottom-right-radius: 20px !important;
-}
-
 /* скролБар пока что убрал ниже костыли какие-то, верстку ломают*/
 ::-webkit-scrollbar {
   width: 0px;
