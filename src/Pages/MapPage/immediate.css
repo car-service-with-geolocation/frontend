@@ -11,122 +11,121 @@
     transform: scale(1);
   }
 }
+.select {
+  color: #fff;
+  .immediate-select__control {
+    max-width: 250px;
+    max-height: 30px;
+    background: transparent;
+    border: none;
+  }
 
-.immediate-select__control {
-  max-width: 250px !important;
-  max-height: 30px !important;
-  background: transparent !important;
-  border: none !important;
-}
+  .immediate-select__control:hover {
+    cursor: pointer;
+  }
 
-.immediate-select__control:hover {
-  cursor: pointer;
-}
+  .immediate-select__control--is-focused {
+    box-shadow: none;
+    border: none;
+  }
 
-.immediate-select__control--is-focused {
-  box-shadow: none !important;
-  border: none !important;
-}
+  /* .immediate-select__placeholder {
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+  } */
 
-.immediate-select__placeholder {
-  color: #fff !important;
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-}
+  .immediate-select__single-value {
+    color: #fff;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+  }
 
-.immediate-select__single-value {
-  color: #fff !important;
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-}
+  .immediate-select__indicator {
+    color: #dedede;
+    padding-left: 10px;
+    transform: rotate(180deg);
+    transition: all 0.6s linear;
+  }
 
-.immediate-select__indicator {
-  color: #dedede !important;
-  padding-left: 10px !important;
-  transform: rotate(180deg);
-  transition: all 0.6s linear !important;
-}
+  .immediate-select__indicator-separator {
+    display: none;
+  }
 
-.immediate-select__indicator-separator {
-  display: none !important;
-}
+  .css-1xc3v61-indicatorContainer {
+    transform: rotate(0deg);
+  }
 
-.css-1xc3v61-indicatorContainer {
-  transform: rotate(0deg);
-}
+  /* Меню */
+  .immediate-select__menu {
+    width: 250px;
+    left: 0;
+    border-radius: 20px;
+    background: #dedede;
+    animation: openMenu 0.35s ease-in-out;
+  }
 
-/* Меню */
-.immediate-select__menu {
-  width: 250px !important;
-  left: 0;
-  border-radius: 20px !important;
-  background: #dedede !important;
-  animation: openMenu 0.35s ease-in-out;
-}
+  .immediate-select--is-disabled {
+    opacity: 0.5;
+  }
 
-.immediate-select--is-disabled {
-  opacity: 0.5 !important;
-}
+  /* Итем Меню */
+  .immediate-select__menu-list {
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow-y: scroll 1px;
 
-/* Итем Меню */
-.immediate-select__menu-list {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  overflow-y: scroll 1px !important;
+    /* Основной текст */
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+  }
 
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-}
+  /* ОПЦИЯ */
+  .immediate-select__option {
+    color: #0a0908;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+    padding-left: 35px;
+  }
 
-/* ОПЦИЯ */
-.immediate-select__option {
-  color: #0a0908 !important;
-  /* Основной текст */
-  font-family: Raleway !important;
-  font-size: 18px !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 29.7px !important;
-  padding-left: 35px !important;
-}
+  /* ФОКУС ОПЦИИ */
+  .immediate-select__option--is-focused {
+    background-color: #cbcbcb;
+  }
 
-/* ФОКУС ОПЦИИ */
-.immediate-select__option--is-focused {
-  background-color: #cbcbcb !important;
-}
+  .immediate-select__option--is-focused:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 
-.immediate-select__option--is-focused:first-of-type {
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
-}
+  .immediate-select__option--is-focused:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  /* АКТИНАЯ ОПЦИЯ*/
+  .immediate-select__option--is-selected {
+    background-color: #3f0012;
+    color: #dedede;
+  }
 
-.immediate-select__option--is-focused:last-of-type {
-  border-bottom-left-radius: 20px !important;
-  border-bottom-right-radius: 20px !important;
-}
-/* АКТИНАЯ ОПЦИЯ*/
-.immediate-select__option--is-selected {
-  background-color: #3f0012 !important;
-  color: #dedede !important;
-}
+  .immediate-select__option--is-selected:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 
-.immediate-select__option--is-selected:first-of-type {
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
-}
-
-.immediate-select__option--is-selected:last-of-type {
-  border-bottom-left-radius: 20px !important;
-  border-bottom-right-radius: 20px !important;
+  .immediate-select__option--is-selected:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 }

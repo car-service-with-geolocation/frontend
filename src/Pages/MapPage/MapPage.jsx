@@ -78,6 +78,7 @@ function MapPage() {
           isSearchable
           isDisabled={content === 'card' ? false : true}
           classNamePrefix="immediate-select"
+          className="select"
           noOptionsMessage={() => 'Совпадений не найдено'}
           required
         />
