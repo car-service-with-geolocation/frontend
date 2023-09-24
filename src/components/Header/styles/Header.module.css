@@ -5,6 +5,11 @@
   padding: 40px 160px 35px;
   max-width: 1120px;
   width: 100%;
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  background-color: rgba(10, 9, 8, 0.5);
+  backdrop-filter: blur(2px);
 }
 
 .link {
