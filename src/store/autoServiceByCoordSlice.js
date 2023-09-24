@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+import { baseUrl } from '../utils/constants';
+
 // eslint-disable-next-line import/prefer-default-export
 export const fetchAutoServiceByCoord = createAsyncThunk(
   'autoServiceByCoord/fetchAutoServiceByCoord',
   async function (coord, { rejectWithValue }) {
     try {
       const response = await fetch(
-        `http://80.87.107.183/api/v1/autoservice/service/?latitude=${coord.lat}&longitude=${coord.lon}`
+        `${baseUrl}autoservice/service/?latitude=${coord.lat}&longitude=${coord.lon}`
       );
       if (!response.ok) {
         throw new Error('Server Error');

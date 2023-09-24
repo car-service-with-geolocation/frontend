@@ -17,6 +17,7 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
+  z-index: 1;
 }
 
 .link_activ {

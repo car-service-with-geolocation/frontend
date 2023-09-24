@@ -3,11 +3,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { baseUrl } from '../utils/constants';
 
 // eslint-disable-next-line import/prefer-default-export
-export const fetchAutoServices = createAsyncThunk(
-  'autoService/fetchAutoServices',
+export const fetchCars = createAsyncThunk(
+  'cars/fetchCars',
   async function (_, { rejectWithValue }) {
     try {
-      const response = await fetch(`${baseUrl}autoservice/service/`, {
+      const response = await fetch(`${baseUrl}car_models/`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export const fetchAutoServices = createAsyncThunk(
 );
 
 const autoServiceSlice = createSlice({
-  name: 'autoService',
+  name: 'cars',
   initialState: {
     data: [],
     status: null,
@@ -34,15 +34,15 @@ const autoServiceSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAutoServices.pending, (state) => {
+      .addCase(fetchCars.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
-      .addCase(fetchAutoServices.fulfilled, (state, action) => {
+      .addCase(fetchCars.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.data = action.payload;
       })
-      .addCase(fetchAutoServices.rejected, (state, action) => {
+      .addCase(fetchCars.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.payload;
       })
