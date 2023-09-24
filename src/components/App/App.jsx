@@ -5,8 +5,8 @@ import { Route, Routes } from 'react-router';
 
 import MainPage from '../../Pages/MainPage/MainPage';
 import MapPage from '../../Pages/MapPage/MapPage';
+import NotFound from '../../Pages/NotFound/NotFound';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
-// import Ymap from '../Ymap/Ymap';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
@@ -20,6 +20,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/service/:id" element={<ServicePage />} />
         <Route path="/search" element={<MapPage />} />
+        <Route path="/*" element={<NotFound />} />
         <Route path="/service/:id/application" element={<ApplicationPage />} />
       </Routes>
       <Footer />
