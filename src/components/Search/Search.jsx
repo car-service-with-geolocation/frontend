@@ -3,39 +3,29 @@
 import './reactSelect.css';
 
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import Select from 'react-select';
 
+import { fetchAutoServiceByCoord } from '../../store/autoServiceByCoordSlice';
 import { navigatorOptions, options } from '../../utils/constants';
 import { getReverseGeocod } from '../../utils/dadataApi';
 import style from './Search.module.css';
 
 function Search() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [currentAuto, setCurrentAuto] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
-  const [mainlonLat, setMainlonLat] = useState({});
+  const [coordinates, setcoordinates] = useState({});
   const [isRotation, setIsRotation] = useState(false);
-
-  // Далее работа с геокодером и запросы к API DADATA =>
-  useEffect(() => {
-    if (mainlonLat.lat && mainlonLat.lon) {
-      getReverseGeocod(mainlonLat)
-        .then((res) => {
-          setCurrentLocation(res.suggestions[0].value);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [mainlonLat]);
-  // Ранее работа с геокодером и запросы к API DADATA <=
+  const [firstSearch, setFirstSearch] = useState(false);
 
   // Далее работа с поиском геолокации юзера =>
   function success(position) {
     // если всё хорошо, собираем ссылку
-    setMainlonLat({
+    setcoordinates({
       lat: position.coords.latitude,
       lon: position.coords.longitude,
     });
@@ -80,18 +70,41 @@ function Search() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    firstSearch ? '' : setFirstSearch(!firstSearch);
+    dispatch(fetchAutoServiceByCoord(coordinates));
     currentLocation && sessionStorage.setItem('selectedLocation', currentLocation);
     currentAuto && sessionStorage.setItem('selectedAuto', currentAuto);
-    console.log(currentAuto ? { currentAuto, mainlonLat } : mainlonLat);
+    coordinates && sessionStorage.setItem('coordinates', JSON.stringify(coordinates));
     navigate('/search');
   }
+
+  // Далее работа с геокодером и запросы к API DADATA =>
+  useEffect(() => {
+    if (coordinates.lat && coordinates.lon) {
+      getReverseGeocod(coordinates)
+        .then((res) => {
+          setCurrentLocation(res.suggestions[0].value);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [coordinates]);
+  // Ранее работа с геокодером и запросы к API DADATA <=
 
   useEffect(() => {
     sessionStorage.getItem('selectedAuto') &&
       setCurrentAuto(sessionStorage.getItem('selectedAuto'));
     sessionStorage.getItem('selectedLocation') &&
       setCurrentLocation(sessionStorage.getItem('selectedLocation'));
-  }, []);
+    // при обновлении страницы если ранее делали запрос за карточками по координатам обновляеться (повторно делаеться запрос)
+    // для избежания двойного запроса идёт проверка на первый запрос (Надо обсудить не костыль ли это часом)
+    if (sessionStorage.getItem('coordinates') && !firstSearch) {
+      dispatch(
+        fetchAutoServiceByCoord(JSON.parse(sessionStorage.getItem('coordinates')))
+      );
+    }
+  }, [coordinates, dispatch, firstSearch]);
 
   return (
     <section className={style.section}>
