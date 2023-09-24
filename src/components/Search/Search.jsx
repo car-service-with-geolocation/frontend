@@ -129,7 +129,7 @@ function Search() {
             name="inputLocation"
             minLength="5"
             maxLength="45"
-            required
+            disabled
             className={style.formInput}
             type="text"
             placeholder="Определить местоположение"
