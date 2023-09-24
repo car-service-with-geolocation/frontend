@@ -10,6 +10,7 @@ import ServicePage from '../../Pages/ServicePage/ServicePages';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
+import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/service/:id" element={<ServicePage />} />
         <Route path="/search" element={<MapPage />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/service/:id/application" element={<ApplicationPage />} />
       </Routes>
       <Footer />
       {/* <Routes>
