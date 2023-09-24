@@ -10,7 +10,6 @@ import ServicePage from '../../Pages/ServicePage/ServicePages';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
-import Preloader from '../Preloader/Preloader';
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
         <Route path="/search" element={<MapPage />} />
       </Routes>
       <Footer />
-      <Preloader />
       {/* <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
