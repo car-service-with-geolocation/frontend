@@ -1,17 +1,19 @@
 import './immediate.css';
 
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Select from 'react-select';
 
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
 import Ymap from '../../components/Ymap/Ymap';
-import { immediateOptions, services } from '../../utils/constants';
+import { immediateOptions } from '../../utils/constants';
 import style from './MapPage.module.css';
 
 function MapPage() {
   // const [services, setServices] = useState([]);
+  const services = useSelector((store) => store.autoServiceByCoord.data);
   const [currentPage, setCurrentPage] = useState(1);
   const servicesPerPage = 6;
   const totalServices = services.length;
@@ -74,8 +76,8 @@ function MapPage() {
                 return (
                   <BestServiceCard
                     key={service.id}
-                    image={service.image}
-                    title={service.title}
+                    image={service.company.logo}
+                    title={service.company.title}
                     rating={service.rating}
                     votes={service.votes}
                     address={service.address}
