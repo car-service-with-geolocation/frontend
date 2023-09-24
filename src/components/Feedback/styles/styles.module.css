@@ -1,0 +1,64 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 65px 95px;
+  background: rgba(123, 104, 126, 0.2);
+  text-align: center;
+  margin: 252px 0 0;
+  border-radius: 20px;
+  width: 550px;
+  max-height: 455px;
+  justify-content: center;
+  align-items: center;
+}
+
+.formHeading {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0 0 25px;
+  padding: 0;
+}
+
+.formDescription {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 40;
+  line-height: 165%;
+  padding: 0;
+  margin: 0;
+  max-width: 480px;
+}
+
+.formText {
+  width: 100%;
+  height: 180px;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 45px 0 45px;
+  font-family: Raleway;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+}
+
+.button {
+  width: 255px;
+  height: 61px;
+  border-radius: 20px;
+  background: #702;
+  border: none;
+  color: #dedede;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  cursor: pointer;
+}

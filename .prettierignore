@@ -1,0 +1,11 @@
+**/node_modules
+**/.DS_Store
+**/build
+**/dist
+**/public
+**/storybook-static
+
+.local
+commitlint.config.cjs
+cz.config.cjs
+tsconfig.json

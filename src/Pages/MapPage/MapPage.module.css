@@ -1,0 +1,143 @@
+.title {
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  align-self: start;
+  padding-left: 160px;
+  padding-top: 100px;
+  margin: 0;
+}
+.options_wrapper {
+  display: flex;
+  width: 1120px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 60px;
+  position: relative;
+}
+
+.eclipses {
+  position: absolute;
+  top: 351px;
+  right: 55px;
+  width: 395px;
+  height: 395px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  flex-shrink: 0;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  max-width: 1120px;
+  padding: 40px 0 60px;
+}
+
+.cardscontainer {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 35px;
+  position: relative;
+}
+
+.ellipse {
+  position: absolute;
+  bottom: -246px;
+  left: -85px;
+  width: 395px;
+  height: 395px;
+  border-radius: 395px;
+  background: rgba(119, 0, 34, 0.3);
+  filter: blur(450px);
+}
+
+.mapping_label {
+  width: 120px; /* Ширина рисунка */
+  height: 60px; /* Высота рисунка */
+  display: flex; /* Блочный элемент */
+  position: relative; /* Относительное позиционирование */
+  background-color: #7b687e33;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.mapping_input {
+  display: none;
+}
+
+.mapping_span_card_image {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  background-image: url('../../images/MapPageCardIcon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  width: 120px;
+  height: 60px;
+  z-index: 1;
+}
+
+.mapping_span_map_image {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-image: url('../../images/MapPageMapIcon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  width: 120px;
+  height: 60px;
+  z-index: 1;
+}
+
+.mapping_input + .mapping_span {
+  position: absolute; /* Абсолютное позиционирование */
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #702;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  transition: all 0.3s ease-in;
+}
+
+.mapping_input:hover + .mapping_span {
+  background-color: #3f0012;
+}
+
+.mapping_input:checked + .mapping_span {
+  left: 60px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.paginationContainer {
+  display: flex;
+}
+
+.prevlink {
+  background-image: url(../../images/prev-arrow.svg);
+}
+
+.nextlink {
+  background-image: url(../../images/next-arrow.svg);
+}
+
+.arrowlink {
+  width: 16px;
+  height: 16px;
+  margin: 8px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}

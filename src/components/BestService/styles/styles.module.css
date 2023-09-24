@@ -1,0 +1,35 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  max-width: 1120px;
+  padding: 250px 0 0 0;
+}
+
+.title {
+  margin: 0 0 50px;
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.cardscontainer {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 35px;
+  position: relative;
+}
+
+.ellipse {
+  position: absolute;
+  top: 55px;
+  left: -160px;
+  width: 395px;
+  height: 395px;
+  border-radius: 395px;
+  background: rgba(119, 0, 34, 0.3);
+  filter: blur(450px);
+}

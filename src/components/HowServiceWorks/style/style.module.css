@@ -1,0 +1,63 @@
+.wrapper {
+  padding-bottom: 2px;
+  max-width: 1125px;
+  margin-top: 250px;
+}
+
+.header {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0 0 50px;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  column-gap: 45px;
+}
+
+.card {
+  max-width: 440px;
+  max-height: 167px;
+  border-radius: 20px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(123, 104, 126, 0.2);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cardStep {
+  padding: 0;
+  margin: 0;
+  font-family: Raleway;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.cardHeader {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 10px 0 15px;
+}
+
+.cardDescription {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+}

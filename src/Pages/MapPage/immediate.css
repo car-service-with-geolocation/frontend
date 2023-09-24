@@ -1,0 +1,131 @@
+@keyframes openMenu {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.select {
+  color: #fff;
+  .immediate-select__control {
+    max-width: 250px;
+    max-height: 30px;
+    background: transparent;
+    border: none;
+  }
+
+  .immediate-select__control:hover {
+    cursor: pointer;
+  }
+
+  .immediate-select__control--is-focused {
+    box-shadow: none;
+    border: none;
+  }
+
+  /* .immediate-select__placeholder {
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+  } */
+
+  .immediate-select__single-value {
+    color: #fff;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+  }
+
+  .immediate-select__indicator {
+    color: #dedede;
+    padding-left: 10px;
+    transform: rotate(180deg);
+    transition: all 0.6s linear;
+  }
+
+  .immediate-select__indicator-separator {
+    display: none;
+  }
+
+  .css-1xc3v61-indicatorContainer {
+    transform: rotate(0deg);
+  }
+
+  /* Меню */
+  .immediate-select__menu {
+    width: 250px;
+    left: 0;
+    border-radius: 20px;
+    background: #dedede;
+    animation: openMenu 0.35s ease-in-out;
+  }
+
+  .immediate-select--is-disabled {
+    opacity: 0.5;
+  }
+
+  /* Итем Меню */
+  .immediate-select__menu-list {
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow-y: scroll 1px;
+
+    /* Основной текст */
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+  }
+
+  /* ОПЦИЯ */
+  .immediate-select__option {
+    color: #0a0908;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29.7px;
+    padding-left: 35px;
+  }
+
+  /* ФОКУС ОПЦИИ */
+  .immediate-select__option--is-focused {
+    background-color: #cbcbcb;
+  }
+
+  .immediate-select__option--is-focused:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .immediate-select__option--is-focused:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  /* АКТИНАЯ ОПЦИЯ*/
+  .immediate-select__option--is-selected {
+    background-color: #3f0012;
+    color: #dedede;
+  }
+
+  .immediate-select__option--is-selected:first-of-type {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .immediate-select__option--is-selected:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+}
