@@ -97,8 +97,6 @@ function Search() {
       setCurrentAuto(sessionStorage.getItem('selectedAuto'));
     sessionStorage.getItem('selectedLocation') &&
       setCurrentLocation(sessionStorage.getItem('selectedLocation'));
-    // при обновлении страницы если ранее делали запрос за карточками по координатам обновляеться (повторно делаеться запрос)
-    // для избежания двойного запроса идёт проверка на первый запрос (Надо обсудить не костыль ли это часом)
     if (sessionStorage.getItem('coordinates') && !firstSearch) {
       dispatch(
         fetchAutoServiceByCoord(JSON.parse(sessionStorage.getItem('coordinates')))

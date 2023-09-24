@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import star from '../../images/bestService-Star.svg';
+import star from '../../images/YmapStarIcon.svg';
 import styles from './styles/styles.module.css';
 
 function BestServiceCard({
