@@ -5,12 +5,11 @@
   padding: 40px 160px 35px;
   max-width: 1120px;
   width: 100%;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12.47px;
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  background-color: rgba(10, 9, 8, 0.5);
+  backdrop-filter: blur(2px);
 }
 
 .link {
@@ -31,8 +30,12 @@
   text-decoration: none;
 }
 
+.active {
+  font-weight: 700;
+}
+
 .linkText:hover {
-  opacity: 0.7;
+  color: #770022;
 }
 
 .enterText {
@@ -47,7 +50,7 @@
 }
 
 .enterText:hover {
-  opacity: 0.7;
+  color: #770022;
 }
 
 .block {
@@ -55,4 +58,27 @@
   flex-direction: row;
   align-items: center;
   gap: 94px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 12.47px;
+  color: #dedede;
+  text-decoration: none;
+}
+
+.logoText {
+  font-family: Lato;
+  font-size: 17.684px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  max-width: 100px;
+  margin: 0;
+  padding-top: 9px;
+}
+
+.logoText:hover {
+  color: #770022;
 }
