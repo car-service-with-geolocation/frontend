@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import './Ymap.css';
 
@@ -15,15 +16,15 @@ import {
 import { useState } from 'react';
 
 import YmapIcon from '../../images/YmapIcon.svg';
-import { services, YMAP_VERSION } from '../../utils/constants';
+import { YMAP_API_KEY, YMAP_VERSION } from '../../utils/constants';
 import { BallonComponent, Portal } from './BallonComponent/BallonComponent';
 
-function Ymap() {
+function Ymap({ services }) {
   const [activePortal, setActivePortal] = useState(false);
   const [point, setPoint] = useState({});
-  // query={{ apikey: YMAP_API_KEY }} //Пока в разработке - использовать не будем (Запросы ограничены - 1000)
+
   return (
-    <YMaps version={YMAP_VERSION}>
+    <YMaps query={{ apikey: YMAP_API_KEY }} version={YMAP_VERSION}>
       <div className="container">
         <Map
           defaultState={{
@@ -70,7 +71,7 @@ function Ymap() {
           /> */}
           <Clusterer
             options={{
-              preset: 'islands#invertedBrownClusterIcons', // "islands#invertedRedClusterIcons",
+              preset: 'islands#invertedBrownClusterIcons',
               groupByCoordinates: false,
               gridSize: 100, // Размер ячейки кластеризации в пикселях.
             }}
@@ -79,10 +80,10 @@ function Ymap() {
               <Placemark
                 modules={['geoObject.addon.balloon']}
                 key={service.id}
-                geometry={service.coords}
+                geometry={[service.geolocation.latitude, service.geolocation.longitude]}
                 properties={{
-                  iconCaption: `${service.title.toString()}`,
-                  balloonContent: `<div id=${service.id.toString()} class="ballonContainer"></div>`,
+                  iconCaption: `${service.company.title}`,
+                  balloonContent: `<div id=${service.id} class="ballonContainer"></div>`,
                 }}
                 options={{
                   // pointOverlay: "default#placemark",

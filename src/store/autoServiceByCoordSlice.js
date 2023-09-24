@@ -6,7 +6,7 @@ export const fetchAutoServiceByCoord = createAsyncThunk(
   async function (coord, { rejectWithValue }) {
     try {
       const response = await fetch(
-        `http://80.87.107.183/api/v1/autoservice/service/?latitude=${coord.lat}longitude=${coord.lon}`
+        `http://80.87.107.183/api/v1/autoservice/service/?latitude=${coord.lat}&longitude=${coord.lon}`
       );
       if (!response.ok) {
         throw new Error('Server Error');
