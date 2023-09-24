@@ -6,7 +6,6 @@ import style from './styles/styles.module.css';
 function BestService() {
   const services = useSelector((store) => store.mainAutoServices.data);
   const servicesToRender = services.slice(0, 3);
-  console.log(servicesToRender);
   return (
     <section className={style.section} aria-label="Секция лучшие сервисы">
       <h2 className={style.title}>Лучшие сервисы</h2>
