@@ -15,7 +15,7 @@ function BestService() {
           return (
             <BestServiceCard
               key={service.id}
-              image={service.image}
+              image={service.company.logo}
               title={service.company.title}
               rating={service.rating}
               votes={service.votes}
