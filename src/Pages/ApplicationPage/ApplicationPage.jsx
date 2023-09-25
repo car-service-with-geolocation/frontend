@@ -162,7 +162,7 @@ function ApplicationPage() {
               Отправить заявку
             </button>
           </form>
-          <article>
+          <article className={styles.card}>
             <h3 className={styles.subtitle}>Автосервис</h3>
             <BestServiceCard
               image={serviceToRender.company.logo}
