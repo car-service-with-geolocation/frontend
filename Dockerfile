@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18.14
 WORKDIR /app
 
 COPY package.json package.json
@@ -10,4 +10,4 @@ COPY . .
 RUN npm run build
 RUN npm install --global http-server
 
-CMD ["npx", "-y", "http-server", "-p", "8000", "/app/build"]
+CMD ["npx", "-y", "http-server", "-p", "3000", "/app/build"]
