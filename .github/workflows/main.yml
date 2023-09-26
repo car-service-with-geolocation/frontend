@@ -1,10 +1,8 @@
 name: Main CarService Workflow
-
 on:
   push:
     branches:
       - main
-
 jobs:
   build_and_push_to_docker_hub:
     name: Push Docker image to DockerHub
@@ -25,20 +23,8 @@ jobs:
         context: ./
         push: true
         tags: apashovkin48/car_service_frontend:latest
-  
+
   deploy:
-    runs-on: ubuntu-latest
-    needs: 
-      - build_and_push_to_docker_hub
-    steps:
-    - name: Executing remote ssh commands to deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        password: ${{ secrets.PASSWORD }}
-        script: |
-          deploy:
     runs-on: ubuntu-latest
     needs: 
       - build_and_push_to_docker_hub
