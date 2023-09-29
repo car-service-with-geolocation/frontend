@@ -21,6 +21,11 @@ const baseUrl = 'https://car-service.hopto.org/api/v1/';
 
 const servicesPerPage = 6;
 
+const allCheckboxes = [
+  { name: 'Срочный ремонт', checked: false },
+  { name: 'Нужен эвакуатор', checked: false },
+];
+
 export {
   DADATA_API,
   DADATA_API_KEY,
@@ -31,4 +36,5 @@ export {
   YMAP_VERSION,
   servicesPerPage,
   baseUrl,
+  allCheckboxes,
 };
