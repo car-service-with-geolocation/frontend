@@ -1,32 +1,37 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { baseUrl } from '../utils/constants';
+import { TService } from '../utils/types';
 
-// eslint-disable-next-line import/prefer-default-export
-export const fetchAutoServiceId = createAsyncThunk(
-  'autoServiceId/fetchAutoServiceId',
-  async function (id, { rejectWithValue }) {
-    try {
-      const response = await fetch(`${baseUrl}autoservice/service/${id}`);
-      if (!response.ok) {
-        throw new Error('Server Error');
-      }
-      const data = await response.json();
+type TInitialState = {
+  data: TService | null;
+  status: null | string;
+  error: undefined | string | null;
+};
 
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+const initialState: TInitialState = {
+  data: null,
+  status: null,
+  error: null,
+};
+
+export const fetchAutoServiceId = createAsyncThunk<
+  TService,
+  string,
+  { rejectValue: string }
+>('autoServiceId/fetchAutoServiceId', async function (id, { rejectWithValue }) {
+  const response = await fetch(`${baseUrl}autoservice/service/${id}`);
+  if (!response.ok) {
+    return rejectWithValue('Server Error!');
   }
-);
+  const data = await response.json();
+
+  return data;
+});
 
 const autoServiceSliceId = createSlice({
   name: 'autoServiceId',
-  initialState: {
-    data: null,
-    status: null,
-    error: null,
-  },
+  initialState,
   extraReducers: (builder) => {
     builder
       .addCase(fetchAutoServiceId.pending, (state) => {
@@ -40,10 +45,9 @@ const autoServiceSliceId = createSlice({
       .addCase(fetchAutoServiceId.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.payload;
-      })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .addDefaultCase((state, action) => {});
+      });
   },
+  reducers: {},
 });
 
 export default autoServiceSliceId.reducer;
