@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/extensions
-import { DADATA_API, DADATA_API_KEY } from './constants.js';
+import { DADATA_API, DADATA_API_KEY } from './constants';
 
-const handleRes = (res) => {
+const handleRes = (res: Response) => {
   if (res.ok) {
     return res.json();
   }
@@ -12,7 +12,7 @@ const handleRes = (res) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getReverseGeocod = async (query) => {
+export const getReverseGeocod = async (query: Response) => {
   const res = await fetch(`${DADATA_API}`, {
     method: 'POST',
     mode: 'cors',

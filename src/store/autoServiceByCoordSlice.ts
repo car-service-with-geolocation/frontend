@@ -1,34 +1,47 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { baseUrl } from '../utils/constants';
+import { TService } from '../utils/types';
 
-// eslint-disable-next-line import/prefer-default-export
-export const fetchAutoServiceByCoord = createAsyncThunk(
+type TInitialState = {
+  data: TService[];
+  status: null | string;
+  error: undefined | string | null;
+};
+
+type TCoord = {
+  lat: string;
+  lon: string;
+};
+
+const initialState: TInitialState = {
+  data: [],
+  status: null,
+  error: null,
+};
+
+export const fetchAutoServiceByCoord = createAsyncThunk<
+  TService[],
+  TCoord,
+  { rejectValue: string }
+>(
   'autoServiceByCoord/fetchAutoServiceByCoord',
   async function (coord, { rejectWithValue }) {
-    try {
-      const response = await fetch(
-        `${baseUrl}autoservice/service/?latitude=${coord.lat}&longitude=${coord.lon}`
-      );
-      if (!response.ok) {
-        throw new Error('Server Error');
-      }
-      const data = await response.json();
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    const response = await fetch(
+      `${baseUrl}autoservice/service/?latitude=${coord.lat}&longitude=${coord.lon}`
+    );
+    if (!response.ok) {
+      return rejectWithValue('Server Error!');
     }
+    const data = await response.json();
+
+    return data;
   }
 );
 
 const autoServiceByCoordSlice = createSlice({
   name: 'autoServiceByCoord',
-  initialState: {
-    data: [],
-    status: null,
-    error: null,
-  },
+  initialState,
   extraReducers: (builder) => {
     builder
       .addCase(fetchAutoServiceByCoord.pending, (state) => {
@@ -42,10 +55,9 @@ const autoServiceByCoordSlice = createSlice({
       .addCase(fetchAutoServiceByCoord.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.payload;
-      })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .addDefaultCase((state, action) => {});
+      });
   },
+  reducers: {},
 });
 
 export default autoServiceByCoordSlice.reducer;
