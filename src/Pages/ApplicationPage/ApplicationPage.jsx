@@ -1,23 +1,41 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
+import Checkbox from '../../components/Checkbox/Checkbox';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
-// import { services } from '../../utils/constants';
+import { allCheckboxes } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
 function ApplicationPage() {
   const dispatch = useDispatch();
   const location = useParams();
   const services = useSelector((store) => store.mainAutoServices.data);
-  // console.log(services);
   const serviceToRender = services.find((service) => service.id === Number(location.id));
-  console.log(serviceToRender);
+  // console.log(serviceToRender);
+  function formSubmitHandler(e) {
+    e.preventDefault();
+  }
+  const [checkboxes, setCheckboxes] = useState(allCheckboxes);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isValid, setIsValid] = useState(true);
+
+  function onHandleChange(index) {
+    setCheckboxes(
+      checkboxes.map((checkbox, currentIndex) => {
+        return currentIndex === index
+          ? { ...checkbox, checked: !checkbox.checked }
+          : checkbox;
+      })
+    );
+  }
+
   useEffect(() => {
     dispatch(fetchAutoServiceId(location.id));
   }, [dispatch, location.id]);
+
   return (
     <div className={styles.applicationContainer}>
       <section className={styles.wrapper}>
@@ -31,9 +49,7 @@ function ApplicationPage() {
         <div className={styles.applicationWrapper}>
           <form
             className={styles.applicationForm}
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
+            onSubmit={formSubmitHandler}
             action="submit"
           >
             <h3 className={styles.subtitle}>Об автомобиле</h3>
@@ -97,38 +113,17 @@ function ApplicationPage() {
               placeholder="Что-то стучит, когда еду..."
             />
             <fieldset className={styles.aboutUserSection}>
-              <div className={styles.phoneInfo}>
-                <label
-                  className={`${styles.textAreaTitle} ${styles.checkboxLabel}`}
-                  htmlFor="repairs"
-                >
-                  <input
-                    className={styles.checkbox}
-                    type="checkbox"
-                    name="checkbox"
-                    id="repairs"
-                    value="repairs"
+              {checkboxes.map((checkbox, index) => {
+                return (
+                  <Checkbox
+                    key={checkbox.name}
+                    isChecked={checkbox.checked}
+                    label={checkbox.name}
+                    checkHandler={() => onHandleChange(index)}
+                    index={index}
                   />
-                  {/* <span className={styles.visibleCheckbox} /> */}
-                  Срочный ремонт
-                </label>
-              </div>
-              <div>
-                <label
-                  className={`${styles.textAreaTitle} ${styles.checkboxLabel}`}
-                  htmlFor="towtruck"
-                >
-                  <input
-                    className={styles.checkbox}
-                    type="checkbox"
-                    name="checkbox"
-                    id="towtruck"
-                    value="towtruck"
-                  />
-                  {/* <span className={styles.visibleCheckbox} /> */}
-                  Нужен эвакуатор
-                </label>
-              </div>
+                );
+              })}
             </fieldset>
             <h3 className={styles.subtitle}>Прикрепите фотографии поломки</h3>
             <h4 className={styles.textRemark}>(по возможности)</h4>
@@ -158,7 +153,13 @@ function ApplicationPage() {
                 placeholder=""
               />
             </div>
-            <button className={styles.submitButton} type="submit">
+            <button
+              className={`${styles.submitButton} ${
+                !isValid ? styles.submitButton_disable : ''
+              }`}
+              type="submit"
+              disabled={!isValid}
+            >
               Отправить заявку
             </button>
           </form>
