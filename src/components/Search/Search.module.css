@@ -98,3 +98,24 @@
   background-color: #3f0012;
   cursor: pointer;
 }
+
+@media (max-width: 376px) {
+  .section {
+    max-width: 335px;
+    margin-top: 50px;
+  }
+
+  .form {
+    grid-template-columns: none;
+    grid-template-rows: repeat(3, 60px);
+    gap: 20px;
+  }
+
+  .formInput {
+    width: 305px;
+  }
+
+  .formButton {
+    width: 335px;
+  }
+}
