@@ -46,6 +46,7 @@
   color: #dedede;
   padding-left: 40px;
   padding-right: 45px;
+  text-overflow: ellipsis;
 }
 
 .formInput::placeholder {
@@ -102,6 +103,7 @@
 @media (max-width: 376px) {
   .section {
     max-width: 335px;
+    height: fit-content;
     margin-top: 50px;
   }
 
@@ -111,8 +113,16 @@
     gap: 20px;
   }
 
+  .inputWrapper {
+    grid-row: 1;
+    margin: 0 auto;
+  }
+
   .formInput {
-    width: 305px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0 50px 0 40px;
   }
 
   .formButton {
