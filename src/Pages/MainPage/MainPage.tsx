@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 import AboutUs from '../../components/AboutUs/AboutUs';
@@ -9,11 +8,12 @@ import HowServiceWorks from '../../components/HowServiceWorks/HowServiceWorks';
 import MainScreen from '../../components/MainScreen/MainScreen';
 import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
 import { fetchCars } from '../../store/carsSlice';
 
 function MainPage() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function MainPage() {
     dispatch(fetchCars());
   }, [dispatch]);
 
-  const { status } = useSelector((store) => store.mainAutoServices);
+  const { status } = useAppSelector((store) => store.mainAutoServices);
 
   if (status === 'loading') {
     return <Preloader />;

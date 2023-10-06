@@ -1,9 +1,14 @@
-// import success from '../../images/success.svg';
-import PropTypes from 'prop-types';
+import { MouseEventHandler } from 'react';
 
 import styles from './styles/styles.module.css';
 
-function ApplicationAccept({ isOpen, onClose, onOverlayClick }) {
+type TPropsApplicationAccept = {
+  isOpen: boolean;
+  onClose: () => void;
+  onOverlayClick: MouseEventHandler<HTMLDivElement>;
+};
+
+function ApplicationAccept({ isOpen, onClose, onOverlayClick }: TPropsApplicationAccept) {
   return (
     <div
       className={`${styles.modalOverlay} ${isOpen ? styles.modalOverlay_isOpened : ''}`}
@@ -28,9 +33,3 @@ function ApplicationAccept({ isOpen, onClose, onOverlayClick }) {
   );
 }
 export default ApplicationAccept;
-
-ApplicationAccept.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onOverlayClick: PropTypes.func.isRequired,
-};

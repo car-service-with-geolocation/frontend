@@ -1,4 +1,6 @@
-const immediateOptions = [
+import { TImidiatevalue } from './types';
+
+const immediateOptions: TImidiatevalue[] = [
   { value: 'Сначала ближайшие', label: 'Сначала ближайшие' },
   { value: 'По рейтингу', label: 'По рейтингу' },
 ];

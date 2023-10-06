@@ -3,6 +3,7 @@ import '../../index.css';
 
 import { Route, Routes } from 'react-router';
 
+import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
 import MainPage from '../../Pages/MainPage/MainPage';
 import MapPage from '../../Pages/MapPage/MapPage';
 import NotFound from '../../Pages/NotFound/NotFound';
@@ -10,7 +11,6 @@ import ServicePage from '../../Pages/ServicePage/ServicePages';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import style from './styles/App.module.css';
-import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
 
 function App() {
   return (

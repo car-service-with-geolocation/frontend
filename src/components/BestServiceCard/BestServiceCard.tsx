@@ -1,8 +1,18 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import star from '../../images/YmapStarIcon.svg';
 import styles from './styles/styles.module.css';
+
+type TPropsBestServiceCard = {
+  image: string;
+  id: number;
+  title: string;
+  rating: number;
+  votes: number;
+  address: string;
+  openfrom: string;
+  openuntil: string;
+};
 
 function BestServiceCard({
   image,
@@ -13,7 +23,7 @@ function BestServiceCard({
   address,
   openfrom,
   openuntil,
-}) {
+}: TPropsBestServiceCard) {
   return (
     <Link className={styles.link} to={`/service/${id}`}>
       <article className={styles.card}>
@@ -41,14 +51,3 @@ function BestServiceCard({
 }
 
 export default BestServiceCard;
-
-BestServiceCard.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  votes: PropTypes.number.isRequired,
-  address: PropTypes.string.isRequired,
-  openfrom: PropTypes.string.isRequired,
-  openuntil: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-};
