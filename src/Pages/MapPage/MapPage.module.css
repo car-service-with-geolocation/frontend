@@ -4,10 +4,13 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  align-self: start;
-  padding-left: 160px;
-  padding-top: 100px;
   margin: 0;
+  display: flex;
+  width: 1120px;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-top: 100px;
 }
 .options_wrapper {
   display: flex;
@@ -145,17 +148,12 @@
   z-index: 1;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1439px) {
   .options_wrapper {
     width: 87.337vw;
   }
   .title {
     font-size: 32px;
-    padding-left: 8vw;
-  }
-}
-@media screen and (max-width: 1120px) {
-  .options_wrapper {
     width: 87.337vw;
   }
 }
