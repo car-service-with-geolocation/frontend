@@ -6,8 +6,13 @@ import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 
 import star from '../../../images/YmapStarIcon.svg';
+import { TService } from '../../../utils/types';
 
-export function BallonComponent({ point }) {
+type TBallonComponentProps = {
+  point: TService;
+};
+
+export function BallonComponent({ point }: TBallonComponentProps) {
   return (
     <Link className="Ymap_link" to={`/service/${point.id}`}>
       <section className="Ymap">
@@ -24,15 +29,24 @@ export function BallonComponent({ point }) {
             Осткрыто с {point.openfrom} до {point.openuntil}
           </p>
         </div>
-        <img className="Ymap__image" src={point.image} alt="Изображение автосервиса" />
+        <img
+          className="Ymap__image"
+          src={point.company.logo}
+          alt="Изображение автосервиса"
+        />
       </section>
     </Link>
   );
 }
 
-export const Portal = ({ children, getHTMLElementId }) => {
+type TPortalProps = {
+  children: React.ReactNode;
+  getHTMLElementId: number;
+};
+
+export const Portal = ({ children, getHTMLElementId }: TPortalProps) => {
   // находим искомый HTML по id
-  const mount = document.getElementById(getHTMLElementId);
+  const mount = document.getElementById(getHTMLElementId.toString());
   // создаём свой div
   const el = document.createElement('div');
 
