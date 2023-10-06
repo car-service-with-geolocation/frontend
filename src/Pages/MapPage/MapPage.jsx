@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-implied-eval */
+/* eslint-disable no-undef */
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
@@ -7,9 +9,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 
-import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
+import SearchServiceCard from '../../components/SearchServiceCard/SearchServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
 import { immediateOptions, servicesPerPage } from '../../utils/constants';
@@ -20,6 +22,7 @@ function MapPage() {
   const [servicesOnPage, setServicesOnPage] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentSearchType, setCurrentSearchType] = useState(immediateOptions[1].value);
+  const [screenWidth, setScreenWidth] = useState('');
   const [content, setContent] = useState('card');
 
   const lastServiceIndex = currentPage * servicesPerPage;
@@ -40,7 +43,7 @@ function MapPage() {
   function handleChangeContent() {
     content === 'map' ? setContent('card') : setContent('map');
   }
-
+  // eslint-disable-next-line no-undef
   function getValue() {
     return currentSearchType
       ? immediateOptions.find((SearchType) => SearchType.value === currentSearchType)
@@ -59,14 +62,30 @@ function MapPage() {
     }
   }, [currentSearchType, servicesByAll, servicesByCoord]);
 
+  function windowWidth() {
+    const width = window.innerWidth;
+
+    if (width >= 1100) {
+      setScreenWidth('desktop');
+    } else {
+      setScreenWidth('mobile');
+    }
+  }
+
+  window.onresize = () => {
+    setTimeout(() => {
+      windowWidth();
+    }, '1000');
+    // проверка ширины экрана с небольшой задержкой
+  };
+
   useEffect(() => {
     servicesByAll.length === 0 ? dispatch(fetchAutoServices()) : '';
   }, [dispatch, servicesByAll]);
-
   return (
     <>
       <h1 className={style.title}>Поиск автосервисов</h1>
-      <Search />
+      {screenWidth === 'desktop' && <Search />}
       <div className={style.options_wrapper}>
         <div className={style.eclipses} />
         <Select
@@ -102,7 +121,7 @@ function MapPage() {
               <div className={style.ellipse} />
               {currentServices.map((service) => {
                 return (
-                  <BestServiceCard
+                  <SearchServiceCard
                     key={service.id}
                     image={service.company.logo}
                     title={service.company.title}
@@ -140,6 +159,7 @@ function MapPage() {
       ) : (
         <Ymap services={servicesByAll} />
       )}
+      {screenWidth === 'mobile' && <Search />}
     </>
   );
 }

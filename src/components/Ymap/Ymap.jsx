@@ -31,9 +31,8 @@ function Ymap({ services }) {
             center: [55.831903, 37.411961],
             zoom: 9,
           }}
-          width="1120px"
-          height="800px"
-          // modules={["templateLayoutFactory", "layout.ImageWithContent"]}
+          width="100%"
+          height="100%"
         >
           <FullscreenControl
             options={{
@@ -56,19 +55,6 @@ function Ymap({ services }) {
               position: { top: 110, right: 10 },
             }}
           />
-          {/* <SearchControl options={{ float: "right" }} /> */}
-
-          {/* <Circle
-            geometry={[[55.76, 37.6], 19800]}
-            options={{
-              draggable: false,
-              fillColor: "#4149B9",
-              strokeColor: "#0D158A",
-              strokeOpacity: 0.3,
-              fillOpacity: 0.2,
-              strokeWidth: 2,
-            }}
-          /> */}
           <Clusterer
             options={{
               preset: 'islands#invertedBrownClusterIcons',
@@ -86,9 +72,6 @@ function Ymap({ services }) {
                   balloonContent: `<div id=${service.id} class="ballonContainer"></div>`,
                 }}
                 options={{
-                  // pointOverlay: "default#placemark",
-                  // iconColor: "black",
-                  // preset: "islands#blueAutoIcon",
                   hideIconOnBalloonOpen: false,
                   iconLayout: 'default#image',
                   iconImageSize: [32, 32],

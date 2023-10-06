@@ -37,9 +37,12 @@
 }
 
 .cardscontainer {
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+  grid-template-rows: auto;
+  max-width: 87.337vw;
+  justify-content: center;
+  align-content: center;
   gap: 40px 35px;
   position: relative;
 }
@@ -140,4 +143,49 @@
   border: none;
   cursor: pointer;
   z-index: 1;
+}
+
+@media screen and (max-width: 1300px) {
+  .options_wrapper {
+    width: 87.337vw;
+  }
+  .title {
+    font-size: 32px;
+    padding-left: 8vw;
+  }
+}
+@media screen and (max-width: 1120px) {
+  .options_wrapper {
+    width: 87.337vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mapping_span_card_image {
+    background-size: 18px 18px;
+    width: 80px;
+    height: 40px;
+  }
+
+  .mapping_span_map_image {
+    background-size: 18px 18px;
+    width: 80px;
+    height: 40px;
+  }
+
+  .mapping_label {
+    width: 80px; /* Ширина рисунка */
+    height: 40px; /* Высота рисунка */
+    background-color: #7b687e33;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .mapping_input:checked + .mapping_span {
+    left: 40px;
+  }
+  .cardscontainer {
+    grid-template-columns: minmax(300px, auto);
+    grid-template-rows: auto;
+    row-gap: 20px;
+  }
 }
