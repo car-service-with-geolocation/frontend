@@ -11,7 +11,9 @@
     "plugin:prettier/recommended" // Make sure this is always the last element in the array.
   ],
   "globals": {
-    "document": false
+    "document": false,
+    "localStorage": true,
+    "sessionStorage":true
   },
   "rules": {
     "no-param-reassign": ["error", { "props": false }],

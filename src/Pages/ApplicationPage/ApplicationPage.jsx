@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import ApplicationAccept from '../../components/ApplicationAccept/ApplicationAccept';
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
@@ -14,13 +15,28 @@ function ApplicationPage() {
   const location = useParams();
   const services = useSelector((store) => store.mainAutoServices.data);
   const serviceToRender = services.find((service) => service.id === Number(location.id));
-  // console.log(serviceToRender);
-  function formSubmitHandler(e) {
-    e.preventDefault();
-  }
+  const [isApplicationAcceptOpen, setIsApplicationAcceptOpen] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [applicationService, setApplicationService] = useState(
+    serviceToRender || JSON.parse(sessionStorage.getItem('applicationService'))
+  );
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isValid, setIsValid] = useState(true);
+
+  useEffect(() => {
+    dispatch(fetchAutoServiceId(location.id));
+  }, [dispatch, location.id]);
+
+  useEffect(() => {
+    if (serviceToRender) {
+      sessionStorage.setItem('applicationService', JSON.stringify(serviceToRender));
+    }
+  });
+
+  function formSubmitHandler(e) {
+    e.preventDefault();
+  }
 
   function onHandleChange(index) {
     setCheckboxes(
@@ -32,16 +48,35 @@ function ApplicationPage() {
     );
   }
 
+  function handleClick() {
+    setIsApplicationAcceptOpen(true);
+  }
+
+  function handleOverlayClick(evt) {
+    if (evt.target === evt.currentTarget) {
+      setIsApplicationAcceptOpen(false);
+    }
+  }
+
+  function handleEscapeClick(evt) {
+    if (evt.key === 'Escape') {
+      setIsApplicationAcceptOpen(false);
+    }
+  }
+
   useEffect(() => {
-    dispatch(fetchAutoServiceId(location.id));
-  }, [dispatch, location.id]);
+    document.addEventListener('keydown', handleEscapeClick);
+    return () => {
+      document.removeEventListener('keydown', handleEscapeClick);
+    };
+  });
 
   return (
     <div className={styles.applicationContainer}>
       <section className={styles.wrapper}>
         <p
           className={styles.way}
-        >{`Главная\u00A0\u00A0 / \u00A0\u00A0Поиск автосервисов\u00A0\u00A0 / \u00A0\u00A0${serviceToRender.company.title}\u00A0\u00A0 / \u00A0\u00A0Создание заявки`}</p>
+        >{`Главная\u00A0\u00A0 / \u00A0\u00A0Поиск автосервисов\u00A0\u00A0 / \u00A0\u00A0${applicationService.company.title}\u00A0\u00A0 / \u00A0\u00A0Создание заявки`}</p>
         <div className={`${styles.ellipse} ${styles.ellipse1}`} />
         <div className={`${styles.ellipse} ${styles.ellipse2}`} />
         <div className={`${styles.ellipse} ${styles.ellipse3}`} />
@@ -153,31 +188,33 @@ function ApplicationPage() {
                 placeholder=""
               />
             </div>
-            <button
-              className={`${styles.submitButton} ${
-                !isValid ? styles.submitButton_disable : ''
-              }`}
-              type="submit"
-              disabled={!isValid}
-            >
+            <button className={styles.submitButton} type="button" onClick={handleClick}>
               Отправить заявку
             </button>
           </form>
           <article className={styles.card}>
             <h3 className={styles.subtitle}>Автосервис</h3>
             <BestServiceCard
-              image={serviceToRender.company.logo}
-              id={serviceToRender.company.id}
-              title={serviceToRender.company.title}
-              rating={serviceToRender.rating}
-              votes={serviceToRender.votes}
-              address={serviceToRender.address}
-              openfrom={serviceToRender.openfrom}
-              openuntil={serviceToRender.openuntil}
+              image={applicationService.company.logo}
+              id={applicationService.company.id}
+              title={applicationService.company.title}
+              rating={applicationService.rating}
+              votes={applicationService.votes}
+              address={applicationService.address}
+              openfrom={applicationService.openfrom}
+              openuntil={applicationService.openuntil}
             />
           </article>
         </div>
       </section>
+      <ApplicationAccept
+        isOpen={isApplicationAcceptOpen}
+        onClose={() => {
+          setIsApplicationAcceptOpen(false);
+        }}
+        onOverlayClick={(evt) => handleOverlayClick(evt)}
+        onEscClick={(evt) => handleEscapeClick(evt)}
+      />
     </div>
   );
 }
