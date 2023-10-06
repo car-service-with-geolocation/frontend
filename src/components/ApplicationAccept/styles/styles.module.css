@@ -1,0 +1,118 @@
+.modalOverlay {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(123, 104, 126, 0.2);
+  justify-content: center;
+  align-items: center;
+  transition:
+    visibility 0.35s linear,
+    opacity 0.35s linear;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modalOverlay_isOpened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  z-index: 2;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 640px;
+  border-radius: 20px;
+  background: #0a0908;
+}
+
+.modalCloseButton {
+  margin: 50px 50px 0 auto;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background-image: url(../../../images/closeButton.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: 50% 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin: 15px auto 106px;
+  text-align: center;
+  background-image: url(../../../images/success.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: 50% calc(50% - 65px);
+  z-index: 5;
+}
+
+.modalTitle {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #dedede;
+}
+
+.modalSubtitle {
+  margin: 140px 0 50px;
+  padding: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #dedede;
+}
+
+.modalButton {
+  width: 276px;
+  padding: 20px 100px;
+  border-radius: 20px;
+  border: none;
+  background-color: #702;
+  color: #dedede;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.modalButton:hover {
+  background-color: #3f0012;
+}
+
+.modalButton:active {
+  background-color: #2e000d;
+}
+
+.ellipse {
+  position: absolute;
+  width: 395px;
+  height: 395px;
+  border-radius: 395px;
+  background: rgba(119, 0, 34, 0.3);
+  filter: blur(450px);
+  top: calc(50% - 395px / 2);
+  left: calc(50% - 395px / 2);
+  z-index: 3;
+}
