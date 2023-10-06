@@ -1,8 +1,18 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import star from '../../images/YmapStarIcon.svg';
 import styles from './SearchServiceCard.module.css';
+
+type TSearchServiceCard = {
+  image: string;
+  id: number;
+  title: string;
+  rating: number;
+  votes: number;
+  address: string;
+  openfrom: string;
+  openuntil: string;
+};
 
 function SearchServiceCard({
   image,
@@ -13,7 +23,7 @@ function SearchServiceCard({
   address,
   openfrom,
   openuntil,
-}) {
+}: TSearchServiceCard) {
   return (
     <Link className={styles.link} to={`/service/${id}`}>
       <article className={styles.card}>
@@ -41,14 +51,3 @@ function SearchServiceCard({
 }
 
 export default SearchServiceCard;
-
-SearchServiceCard.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  votes: PropTypes.number.isRequired,
-  address: PropTypes.string.isRequired,
-  openfrom: PropTypes.string.isRequired,
-  openuntil: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-};

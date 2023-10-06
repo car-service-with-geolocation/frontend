@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-implied-eval */
-/* eslint-disable no-undef */
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
@@ -44,7 +42,7 @@ function MapPage() {
   function handleChangeContent() {
     content === 'map' ? setContent('card') : setContent('map');
   }
-  // eslint-disable-next-line no-undef
+
   function getValue() {
     return currentSearchType
       ? immediateOptions.find((SearchType) => SearchType.value === currentSearchType)
@@ -78,7 +76,7 @@ function MapPage() {
   window.onresize = () => {
     setTimeout(() => {
       windowWidth();
-    }, '1000');
+    }, 1000);
     // проверка ширины экрана с небольшой задержкой
   };
 
