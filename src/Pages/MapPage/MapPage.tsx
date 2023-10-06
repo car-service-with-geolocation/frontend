@@ -6,20 +6,24 @@
 import './immediate.css';
 
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
 import SearchServiceCard from '../../components/SearchServiceCard/SearchServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
 import { immediateOptions, servicesPerPage } from '../../utils/constants';
+import { TImidiatevalue } from '../../utils/types';
 import style from './MapPage.module.css';
 
 function MapPage() {
+  // store
+  const servicesByCoord = useAppSelector((store) => store.autoServiceByCoord.data);
+  const servicesByAll = useAppSelector((store) => store.mainAutoServices.data);
   // state
-  const [servicesOnPage, setServicesOnPage] = useState([]);
+  const [servicesOnPage, setServicesOnPage] = useState(servicesByAll);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentSearchType, setCurrentSearchType] = useState(immediateOptions[1].value);
   const [screenWidth, setScreenWidth] = useState('');
@@ -28,13 +32,10 @@ function MapPage() {
   const lastServiceIndex = currentPage * servicesPerPage;
   const firstServiceIndex = lastServiceIndex - servicesPerPage;
   const currentServices = servicesOnPage.slice(firstServiceIndex, lastServiceIndex);
-  // store
-  const servicesByCoord = useSelector((store) => store.autoServiceByCoord.data);
-  const servicesByAll = useSelector((store) => store.mainAutoServices.data);
 
   const totalServices = servicesOnPage.length;
   const pages = [];
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   for (let i = 1; i <= Math.ceil(totalServices / servicesPerPage); i += 1) {
     pages.push(i);
@@ -50,7 +51,9 @@ function MapPage() {
       : '';
   }
 
-  function onChangeSelect(newValue) {
+  function onChangeSelect(newValue: SingleValue<TImidiatevalue | string>) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     setCurrentSearchType(newValue.value);
   }
 
@@ -149,6 +152,7 @@ function MapPage() {
               pages={pages}
             />
             <button
+              type="button"
               className={`${style.nextlink} ${style.arrowlink}`}
               onClick={() => {
                 setCurrentPage(currentPage === pages.length ? 1 : currentPage + 1);

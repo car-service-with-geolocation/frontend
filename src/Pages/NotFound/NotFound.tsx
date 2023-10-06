@@ -1,10 +1,11 @@
+import { SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router';
 
 import style from './NotFound.module.css';
 
 function NotFound() {
   const navigate = useNavigate();
-  function handleClick(event) {
+  function handleClick(event: SyntheticEvent) {
     event.preventDefault();
     navigate('/');
   }

@@ -17,11 +17,16 @@ import { useState } from 'react';
 
 import YmapIcon from '../../images/YmapIcon.svg';
 import { YMAP_API_KEY, YMAP_VERSION } from '../../utils/constants';
+import { TService } from '../../utils/types';
 import { BallonComponent, Portal } from './BallonComponent/BallonComponent';
 
-function Ymap({ services }) {
+type TYmapProps = {
+  services: TService[];
+};
+
+function Ymap({ services }: TYmapProps) {
   const [activePortal, setActivePortal] = useState(false);
-  const [point, setPoint] = useState({});
+  const [point, setPoint] = useState<TService>();
 
   return (
     <YMaps query={{ apikey: YMAP_API_KEY }} version={YMAP_VERSION}>
@@ -50,8 +55,6 @@ function Ymap({ services }) {
 
           <ZoomControl
             options={{
-              maxWidth: 50,
-              float: 'right',
               position: { top: 110, right: 10 },
             }}
           />
@@ -120,7 +123,7 @@ function Ymap({ services }) {
             }}
           /> */}
         </Map>
-        {activePortal && (
+        {activePortal && point && (
           <Portal getHTMLElementId={point.id}>
             {/* ставим свой компонент */}
             <BallonComponent point={point} />

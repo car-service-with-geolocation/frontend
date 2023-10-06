@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/extensions
 import { DADATA_API, DADATA_API_KEY } from './constants';
+import { TCoord } from './types';
 
 const handleRes = (res: Response) => {
   if (res.ok) {
@@ -12,7 +13,7 @@ const handleRes = (res: Response) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getReverseGeocod = async (query: Response) => {
+export const getReverseGeocod = async (query: TCoord) => {
   const res = await fetch(`${DADATA_API}`, {
     method: 'POST',
     mode: 'cors',

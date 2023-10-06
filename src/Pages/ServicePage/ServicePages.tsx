@@ -1,24 +1,22 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import { useParams } from 'react-router-dom';
 
+import Preloader from '../../components/Preloader/Preloader';
 import star from '../../images/YmapStarIcon.svg';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import styles from './styles/styles.module.css';
 
 function ServicePage() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+  const serviceToRender = useAppSelector((store) => store.autoServiceById.data);
+
   useEffect(() => {
     dispatch(fetchAutoServiceId(id));
   }, [dispatch, id]);
-  const serviceToRender = useSelector((store) => store.autoServiceById.data);
-  function handleSubmit(event) {
-    event.preventDefault();
-    navigate(`/service/${serviceToRender.id}/application`);
-  }
   return (
     <section className={styles.wrapper}>
       {serviceToRender ? (
@@ -51,7 +49,10 @@ function ServicePage() {
                 <button
                   className={styles.application}
                   type="submit"
-                  onClick={handleSubmit}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/service/${serviceToRender.id}/application`);
+                  }}
                 >
                   Оставить заявку
                 </button>
@@ -101,7 +102,7 @@ function ServicePage() {
           </div>
         </>
       ) : (
-        <p>Загрузка</p>
+        <Preloader />
       )}
     </section>
   );

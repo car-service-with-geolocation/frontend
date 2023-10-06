@@ -16,7 +16,6 @@ function Feedback() {
       <textarea
         className={styles.formText}
         wrap="soft"
-        type="textarea"
         name=""
         id=""
         placeholder="Хочу особенно выделить ..."

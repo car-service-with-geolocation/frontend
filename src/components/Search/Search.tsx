@@ -1,32 +1,33 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable no-undef */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 import './reactSelect.css';
 
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceByCoord } from '../../store/autoServiceByCoordSlice';
 import { fetchCars } from '../../store/carsSlice';
 import { navigatorOptions } from '../../utils/constants';
 import { getReverseGeocod } from '../../utils/dadataApi';
+import { TCar, TCoord } from '../../utils/types';
 import style from './Search.module.css';
 
 function Search() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const options = useAppSelector((store) => store.cars.data);
 
-  const [currentAuto, setCurrentAuto] = useState('');
-  const [currentLocation, setCurrentLocation] = useState('');
-  const [coordinates, setcoordinates] = useState({});
+  const [currentAuto, setCurrentAuto] = useState<string | null>();
+  const [currentLocation, setCurrentLocation] = useState<string | null>('');
+  const [coordinates, setcoordinates] = useState<TCoord>();
   const [isRotation, setIsRotation] = useState(false);
   const [firstSearch, setFirstSearch] = useState(false);
 
-  const options = useSelector((store) => store.cars.data);
-
   // Далее работа с поиском геолокации юзера =>
-  function success(position) {
+  function success(position: GeolocationPosition) {
     // если всё хорошо, собираем ссылку
     setcoordinates({
       lat: position.coords.latitude,
@@ -35,24 +36,22 @@ function Search() {
     // Убрать после =>
     setTimeout(() => {
       setIsRotation(false);
-    }, '2000');
+    }, 2000);
   }
   function error() {
     // Убрать после =>
     setTimeout(() => {
       setIsRotation(false);
-    }, '2000');
+    }, 2000);
     // если всё плохо, просто напишем об этом
     console.log('Не получается определить вашу геолокацию'); // Обработать ошибку тут!! + тот-же попап?
   }
 
   function handleFindlonLat() {
-    // eslint-disable-next-line no-undef
     if (!navigator.geolocation) {
       console.log('Ваш браузер не дружит с геолокацией...'); // попап с ошибкой сюда!!
     } else {
       setIsRotation(true);
-      // eslint-disable-next-line no-undef
       navigator.geolocation.getCurrentPosition(success, error, navigatorOptions);
     }
   }
@@ -60,23 +59,27 @@ function Search() {
   // Ранее работа с поиском геолокации юзера <=
 
   function getValue() {
-    return currentAuto ? options.find((auto) => auto.brand === currentAuto) : '';
+    return options.find((auto) => auto.brand === currentAuto);
   }
 
-  function onChangeSelect(newValue) {
-    setCurrentAuto(newValue.brand);
-    currentAuto && sessionStorage.setItem('selectedAuto', newValue.brand);
+  function onChangeSelect(newValue: SingleValue<TCar>) {
+    if (newValue) {
+      setCurrentAuto(newValue.brand);
+      currentAuto && sessionStorage.setItem('selectedAuto', newValue.brand);
+    }
   }
 
-  function onChangeInput(e) {
+  function onChangeInput(e: ChangeEvent<HTMLInputElement>) {
     setCurrentLocation(e.target.value);
     currentLocation && sessionStorage.setItem('selectedLocation', e.target.value);
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
     firstSearch ? '' : setFirstSearch(!firstSearch);
-    dispatch(fetchAutoServiceByCoord(coordinates));
+    if (coordinates) {
+      dispatch(fetchAutoServiceByCoord(coordinates));
+    }
     currentLocation && sessionStorage.setItem('selectedLocation', currentLocation);
     currentAuto && sessionStorage.setItem('selectedAuto', currentAuto);
     coordinates && sessionStorage.setItem('coordinates', JSON.stringify(coordinates));
@@ -85,7 +88,7 @@ function Search() {
 
   // Далее работа с геокодером и запросы к API DADATA =>
   useEffect(() => {
-    if (coordinates.lat && coordinates.lon) {
+    if (coordinates) {
       getReverseGeocod(coordinates)
         .then((res) => {
           setCurrentLocation(res.suggestions[0].value);
@@ -98,12 +101,15 @@ function Search() {
   // Ранее работа с геокодером и запросы к API DADATA <=
 
   useEffect(() => {
-    sessionStorage.getItem('selectedAuto') &&
+    if (sessionStorage.getItem('selectedAuto')) {
       setCurrentAuto(sessionStorage.getItem('selectedAuto'));
+    }
     sessionStorage.getItem('selectedLocation') &&
       setCurrentLocation(sessionStorage.getItem('selectedLocation'));
     if (sessionStorage.getItem('coordinates') && !firstSearch) {
       dispatch(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         fetchAutoServiceByCoord(JSON.parse(sessionStorage.getItem('coordinates')))
       );
     }
@@ -135,8 +141,8 @@ function Search() {
         <div className={style.inputWrapper}>
           <input
             name="inputLocation"
-            minLength="5"
-            maxLength="45"
+            minLength={5}
+            maxLength={45}
             disabled
             className={style.formInput}
             type="text"

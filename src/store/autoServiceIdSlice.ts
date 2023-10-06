@@ -17,7 +17,7 @@ const initialState: TInitialState = {
 
 export const fetchAutoServiceId = createAsyncThunk<
   TService,
-  string,
+  string | undefined,
   { rejectValue: string }
 >('autoServiceId/fetchAutoServiceId', async function (id, { rejectWithValue }) {
   const response = await fetch(`${baseUrl}autoservice/service/${id}`);

@@ -1,8 +1,14 @@
-import PropTypes, { number } from 'prop-types';
+import { Dispatch, SetStateAction } from 'react';
 
 import style from './Pagination.module.css';
 
-const Pagination = ({ setCurrentPage, currentPage, pages }) => {
+type TPropsPagination = {
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+  currentPage: number;
+  pages: number[];
+};
+
+const Pagination = ({ setCurrentPage, currentPage, pages }: TPropsPagination) => {
   return (
     <div className={style.container}>
       {pages.map((page) => {
@@ -25,9 +31,3 @@ const Pagination = ({ setCurrentPage, currentPage, pages }) => {
 };
 
 export default Pagination;
-
-Pagination.propTypes = {
-  setCurrentPage: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  pages: PropTypes.arrayOf(number).isRequired,
-};
