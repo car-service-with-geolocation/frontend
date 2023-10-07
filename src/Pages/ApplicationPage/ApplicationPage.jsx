@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import ApplicationAccept from '../../components/ApplicationAccept/ApplicationAccept';
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
@@ -15,7 +14,6 @@ function ApplicationPage() {
   const location = useParams();
   const services = useSelector((store) => store.mainAutoServices.data);
   const serviceToRender = services.find((service) => service.id === Number(location.id));
-  const [isApplicationAcceptOpen, setIsApplicationAcceptOpen] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [applicationService, setApplicationService] = useState(
     serviceToRender || JSON.parse(sessionStorage.getItem('applicationService'))
@@ -47,29 +45,6 @@ function ApplicationPage() {
       })
     );
   }
-
-  function handleClick() {
-    setIsApplicationAcceptOpen(true);
-  }
-
-  function handleOverlayClick(evt) {
-    if (evt.target === evt.currentTarget) {
-      setIsApplicationAcceptOpen(false);
-    }
-  }
-
-  function handleEscapeClick(evt) {
-    if (evt.key === 'Escape') {
-      setIsApplicationAcceptOpen(false);
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleEscapeClick);
-    return () => {
-      document.removeEventListener('keydown', handleEscapeClick);
-    };
-  });
 
   return (
     <div className={styles.applicationContainer}>
@@ -188,7 +163,13 @@ function ApplicationPage() {
                 placeholder=""
               />
             </div>
-            <button className={styles.submitButton} type="button" onClick={handleClick}>
+            <button
+              className={`${styles.submitButton} ${
+                !isValid ? styles.submitButton_disable : ''
+              }`}
+              type="submit"
+              disabled={!isValid}
+            >
               Отправить заявку
             </button>
           </form>
@@ -207,14 +188,6 @@ function ApplicationPage() {
           </article>
         </div>
       </section>
-      <ApplicationAccept
-        isOpen={isApplicationAcceptOpen}
-        onClose={() => {
-          setIsApplicationAcceptOpen(false);
-        }}
-        onOverlayClick={(evt) => handleOverlayClick(evt)}
-        onEscClick={(evt) => handleEscapeClick(evt)}
-      />
     </div>
   );
 }

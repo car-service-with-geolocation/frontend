@@ -1,0 +1,20 @@
+.ratingContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+.starSvg {
+  cursor: pointer;
+  transform: color 200ms;
+  width: 40px;
+  height: 40px;
+}
+
+.label {
+  margin: 0 5px 0 0;
+}
