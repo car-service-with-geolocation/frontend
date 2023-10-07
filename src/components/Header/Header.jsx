@@ -13,22 +13,28 @@ function Header() {
           <p className={style.logoText}>Premium Car Services</p>
         </Link>
         <div className={style.link}>
-          <Link
-            className={`${style.linkText} ${
-              location.pathname === '/search' ? style.active : ''
-            }`}
-            to="/search"
-          >
-            Поиск автосервисов
-          </Link>
-          <Link
-            className={`${style.linkText} ${
-              location.pathname === '/forservices' ? style.active : ''
-            }`}
-            to="/forservices"
-          >
-            Для автосервисов
-          </Link>
+          <ul className={style.menu}>
+            <li className={style.menu__item}>
+              <Link
+                className={`${style.linkText} ${
+                  location.pathname === '/search' ? style.active : ''
+                }`}
+                to="/search"
+              >
+                Поиск автосервисов
+              </Link>
+            </li>
+            <li className="menu__item">
+              <Link
+                className={`${style.linkText} ${
+                  location.pathname === '/forservices' ? style.active : ''
+                }`}
+                to="/forservices"
+              >
+                Для автосервисов
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
       <p className={style.enterText}>Вход</p>

@@ -109,8 +109,9 @@
 
   .form {
     grid-template-columns: none;
-    grid-template-rows: repeat(3, 60px);
+    grid-template-rows: 60px 60px 0;
     gap: 20px;
+    padding: 30px 0 10px 0;
   }
 
   .inputWrapper {
@@ -119,13 +120,17 @@
   }
 
   .formInput {
+    width: 305px;
     box-sizing: border-box;
     font-size: 16px;
     line-height: 24px;
-    padding: 0 50px 0 40px;
+    padding: 0 50px 0 35px;
   }
 
   .formButton {
     width: 335px;
+    font-size: 16px;
+    position: relative;
+    top: 50px;
   }
 }

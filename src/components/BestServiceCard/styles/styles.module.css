@@ -83,3 +83,41 @@
   text-decoration: none;
   color: #dedede;
 }
+
+@media (max-width: 376px) {
+  .card {
+    width: 230px;
+    height: 330px;
+  }
+
+  .cardInfoblock {
+    padding: 25px 20px;
+    width: fit-content;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 5px;
+  }
+
+  .cardRatingIcon {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px 0 0;
+  }
+
+  .cardRatingNumbers {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .cardInfoList {
+    margin-top: 15px;
+  }
+
+  .cardInfoText {
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
