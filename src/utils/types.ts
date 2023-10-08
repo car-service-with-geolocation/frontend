@@ -34,3 +34,13 @@ export type TCar = {
   brand: string;
   slug: string;
 };
+
+export type TImidiatevalue = {
+  value: string;
+  label: string;
+};
+
+export type TCoord = {
+  lat: number;
+  lon: number;
+};

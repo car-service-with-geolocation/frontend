@@ -17,11 +17,16 @@ import { useState } from 'react';
 
 import YmapIcon from '../../images/YmapIcon.svg';
 import { YMAP_API_KEY, YMAP_VERSION } from '../../utils/constants';
+import { TService } from '../../utils/types';
 import { BallonComponent, Portal } from './BallonComponent/BallonComponent';
 
-function Ymap({ services }) {
+type TYmapProps = {
+  services: TService[];
+};
+
+function Ymap({ services }: TYmapProps) {
   const [activePortal, setActivePortal] = useState(false);
-  const [point, setPoint] = useState({});
+  const [point, setPoint] = useState<TService>();
 
   return (
     <YMaps query={{ apikey: YMAP_API_KEY }} version={YMAP_VERSION}>
@@ -31,9 +36,8 @@ function Ymap({ services }) {
             center: [55.831903, 37.411961],
             zoom: 9,
           }}
-          width="1120px"
-          height="800px"
-          // modules={["templateLayoutFactory", "layout.ImageWithContent"]}
+          width="100%"
+          height="100%"
         >
           <FullscreenControl
             options={{
@@ -51,24 +55,9 @@ function Ymap({ services }) {
 
           <ZoomControl
             options={{
-              maxWidth: 50,
-              float: 'right',
               position: { top: 110, right: 10 },
             }}
           />
-          {/* <SearchControl options={{ float: "right" }} /> */}
-
-          {/* <Circle
-            geometry={[[55.76, 37.6], 19800]}
-            options={{
-              draggable: false,
-              fillColor: "#4149B9",
-              strokeColor: "#0D158A",
-              strokeOpacity: 0.3,
-              fillOpacity: 0.2,
-              strokeWidth: 2,
-            }}
-          /> */}
           <Clusterer
             options={{
               preset: 'islands#invertedBrownClusterIcons',
@@ -86,9 +75,6 @@ function Ymap({ services }) {
                   balloonContent: `<div id=${service.id} class="ballonContainer"></div>`,
                 }}
                 options={{
-                  // pointOverlay: "default#placemark",
-                  // iconColor: "black",
-                  // preset: "islands#blueAutoIcon",
                   hideIconOnBalloonOpen: false,
                   iconLayout: 'default#image',
                   iconImageSize: [32, 32],
@@ -137,7 +123,7 @@ function Ymap({ services }) {
             }}
           /> */}
         </Map>
-        {activePortal && (
+        {activePortal && point && (
           <Portal getHTMLElementId={point.id}>
             {/* ставим свой компонент */}
             <BallonComponent point={point} />

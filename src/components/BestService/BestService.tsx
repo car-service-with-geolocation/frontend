@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
-
+import { useAppSelector } from '../../store';
 import BestServiceCard from '../BestServiceCard/BestServiceCard';
 import style from './styles/styles.module.css';
 
 function BestService() {
-  const services = useSelector((store) => store.mainAutoServices.data);
+  const services = useAppSelector((store) => store.mainAutoServices.data);
   const servicesToRender = services.slice(0, 3);
   return (
     <section className={style.section} aria-label="Секция лучшие сервисы">

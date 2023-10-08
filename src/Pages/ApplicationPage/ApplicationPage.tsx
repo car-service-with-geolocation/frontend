@@ -1,21 +1,23 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Checkbox from '../../components/Checkbox/Checkbox';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import { allCheckboxes } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
 function ApplicationPage() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useParams();
-  const services = useSelector((store) => store.mainAutoServices.data);
+  const services = useAppSelector((store) => store.mainAutoServices.data);
   const serviceToRender = services.find((service) => service.id === Number(location.id));
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [applicationService, setApplicationService] = useState(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     serviceToRender || JSON.parse(sessionStorage.getItem('applicationService'))
   );
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
@@ -32,11 +34,7 @@ function ApplicationPage() {
     }
   });
 
-  function formSubmitHandler(e) {
-    e.preventDefault();
-  }
-
-  function onHandleChange(index) {
+  function onHandleChange(index: number) {
     setCheckboxes(
       checkboxes.map((checkbox, currentIndex) => {
         return currentIndex === index
@@ -59,7 +57,7 @@ function ApplicationPage() {
         <div className={styles.applicationWrapper}>
           <form
             className={styles.applicationForm}
-            onSubmit={formSubmitHandler}
+            onSubmit={(e) => e.preventDefault()}
             action="submit"
           >
             <h3 className={styles.subtitle}>Об автомобиле</h3>
@@ -117,7 +115,6 @@ function ApplicationPage() {
             <textarea
               className={styles.formText}
               wrap="soft"
-              type="textarea"
               name=""
               id=""
               placeholder="Что-то стучит, когда еду..."
