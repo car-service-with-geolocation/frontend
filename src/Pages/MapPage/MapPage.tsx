@@ -6,9 +6,9 @@ import './immediate.css';
 import { useEffect, useState } from 'react';
 import Select, { SingleValue } from 'react-select';
 
-import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
+import SearchServiceCard from '../../components/SearchServiceCard/SearchServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
@@ -24,6 +24,7 @@ function MapPage() {
   const [servicesOnPage, setServicesOnPage] = useState(servicesByAll);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentSearchType, setCurrentSearchType] = useState(immediateOptions[1].value);
+  const [screenWidth, setScreenWidth] = useState('');
   const [content, setContent] = useState('card');
 
   const lastServiceIndex = currentPage * servicesPerPage;
@@ -62,14 +63,30 @@ function MapPage() {
     }
   }, [currentSearchType, servicesByAll, servicesByCoord]);
 
+  function windowWidth() {
+    const width = window.innerWidth;
+
+    if (width >= 1100) {
+      setScreenWidth('desktop');
+    } else {
+      setScreenWidth('mobile');
+    }
+  }
+
+  window.onresize = () => {
+    setTimeout(() => {
+      windowWidth();
+    }, 1000);
+    // проверка ширины экрана с небольшой задержкой
+  };
+
   useEffect(() => {
     servicesByAll.length === 0 ? dispatch(fetchAutoServices()) : '';
   }, [dispatch, servicesByAll]);
-
   return (
     <>
       <h1 className={style.title}>Поиск автосервисов</h1>
-      <Search />
+      {screenWidth === 'desktop' && <Search />}
       <div className={style.options_wrapper}>
         <div className={style.eclipses} />
         <Select
@@ -105,7 +122,7 @@ function MapPage() {
               <div className={style.ellipse} />
               {currentServices.map((service) => {
                 return (
-                  <BestServiceCard
+                  <SearchServiceCard
                     key={service.id}
                     image={service.company.logo}
                     title={service.company.title}
@@ -144,6 +161,7 @@ function MapPage() {
       ) : (
         <Ymap services={servicesByAll} />
       )}
+      {screenWidth === 'mobile' && <Search />}
     </>
   );
 }
