@@ -1,15 +1,19 @@
-import PropTypes from 'prop-types';
+import { ReactElement } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import styles from './styles/styles.module.css';
 
-function Modal({ isOpen, onClose, onOverlayClick, children }) {
+type TPropsModal = {
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactElement;
+};
+
+function Modal({ isOpen, onClose, children }: TPropsModal) {
   const location = useLocation();
   return (
     <div
       className={`${styles.modalOverlay} ${isOpen ? styles.modalOverlay_isOpened : ''}`}
-      onClick={onOverlayClick}
-      role="presentation"
     >
       <div className={styles.modal}>
         <button
@@ -28,11 +32,3 @@ function Modal({ isOpen, onClose, onOverlayClick, children }) {
   );
 }
 export default Modal;
-
-Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onOverlayClick: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  children: PropTypes.element,
-};

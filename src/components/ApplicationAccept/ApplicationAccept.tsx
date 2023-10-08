@@ -1,12 +1,15 @@
-import PropTypes from 'prop-types';
-
 import success from '../../images/success.svg';
 import Modal from '../Modal/Modal';
 import styles from './styles/styles.module.css';
 
-function ApplicationAccept({ isOpen, onClose, onOverlayClick }) {
+type TPropsApplicationAccept = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+function ApplicationAccept({ isOpen, onClose }: TPropsApplicationAccept) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} onOverlayClick={onOverlayClick}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <>
         <div className={styles.modalContainer}>
           <h2 className={styles.modalTitle}>Заявка отправлена</h2>
@@ -24,9 +27,3 @@ function ApplicationAccept({ isOpen, onClose, onOverlayClick }) {
   );
 }
 export default ApplicationAccept;
-
-ApplicationAccept.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onOverlayClick: PropTypes.func.isRequired,
-};

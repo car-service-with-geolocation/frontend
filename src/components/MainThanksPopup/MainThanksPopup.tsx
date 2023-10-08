@@ -1,11 +1,14 @@
-import PropTypes from 'prop-types';
-
 import Modal from '../Modal/Modal';
 import styles from './styles/styles.module.css';
 
-function MainThanksPopup({ isOpen, onClose, onOverlayClick }) {
+type TPropsMainThanksPopup = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+function MainThanksPopup({ isOpen, onClose }: TPropsMainThanksPopup) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} onOverlayClick={onOverlayClick}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <div className={styles.modalContainer}>
         <h2 className={styles.modalTitle}>Спасибо!</h2>
         <h3 className={styles.modalSubtitle}>Мы учтем ваши пожелания и предложения</h3>
@@ -17,9 +20,3 @@ function MainThanksPopup({ isOpen, onClose, onOverlayClick }) {
   );
 }
 export default MainThanksPopup;
-
-MainThanksPopup.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onOverlayClick: PropTypes.func.isRequired,
-};

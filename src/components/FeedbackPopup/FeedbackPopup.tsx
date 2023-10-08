@@ -1,29 +1,32 @@
-import PropTypes from 'prop-types';
+import { SyntheticEvent } from 'react';
 
 import Modal from '../Modal/Modal';
 import StarRating from '../StarRating/StarRating';
 import styles from './styles/styles.module.css';
 
-function FeedbackPopup({ isOpen, onClose, onOverlayClick }) {
-  function handleSubmit(evt) {
+type TPropsFeedbackPopup = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+function FeedbackPopup({ isOpen, onClose }: TPropsFeedbackPopup) {
+  function handleSubmit(evt: SyntheticEvent) {
     evt.preventDefault();
   }
   return (
-    <Modal isOpen={isOpen} onClose={onClose} onOverlayClick={onOverlayClick}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <>
         <div className={styles.modalContainer}>
           <h2 className={styles.modalTitle}>Написать отзыв</h2>
           <div className={styles.formContainer}>
             <form className={styles.form} onSubmit={handleSubmit} action="submit">
               <div className={styles.infoblock}>
-                <div className={styles.subtitle} htmlFor="userName">
-                  Как вас зовут?
-                </div>
+                <p className={styles.subtitle}>Как вас зовут?</p>
                 <input
                   className={styles.input}
                   type="text"
-                  name="userName"
-                  id="userName"
+                  name="name"
+                  id="name"
                   placeholder="Петр"
                   required
                 />
@@ -33,28 +36,23 @@ function FeedbackPopup({ isOpen, onClose, onOverlayClick }) {
                 <StarRating />
               </div>
               <div className={styles.infoblock}>
-                <div className={styles.subtitle} htmlFor="userName">
-                  Ваш отзыв
-                </div>
+                <p className={styles.subtitle}>Ваш отзыв</p>
                 <textarea
                   className={styles.input}
                   wrap="soft"
-                  type="textarea"
-                  name=""
-                  id=""
+                  name="feedback"
+                  id="feedback"
                   placeholder="Напишите здесь ваши впечатления: что вам понравилось, а что нет... Как вам специалист и автосервис в целом?"
                   required
                 />
               </div>
               <div className={styles.infoblock}>
-                <div className={styles.subtitle} htmlFor="userName">
-                  Загрузить фотографию
-                </div>
+                <p className={styles.subtitle}>Загрузить фотографию</p>
                 <input
                   className={styles.imageInput}
                   type="file"
-                  name="imageFile"
-                  id="imageFile"
+                  name="image"
+                  id="image"
                   placeholder=""
                 />
               </div>
@@ -70,9 +68,3 @@ function FeedbackPopup({ isOpen, onClose, onOverlayClick }) {
   );
 }
 export default FeedbackPopup;
-
-FeedbackPopup.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onOverlayClick: PropTypes.func.isRequired,
-};

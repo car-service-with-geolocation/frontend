@@ -1,12 +1,15 @@
-import PropTypes from 'prop-types';
-
 import success from '../../images/ThanksLogo.svg';
 import Modal from '../Modal/Modal';
 import styles from './styles/styles.module.css';
 
-function ServiceThanksPopup({ isOpen, onClose, onOverlayClick }) {
+type TPropsServiceThanksPopup = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+function ServiceThanksPopup({ isOpen, onClose }: TPropsServiceThanksPopup) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} onOverlayClick={onOverlayClick}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <>
         <div className={styles.modalContainer}>
           <h2 className={styles.modalTitle}>Спасибо!</h2>
@@ -24,9 +27,3 @@ function ServiceThanksPopup({ isOpen, onClose, onOverlayClick }) {
   );
 }
 export default ServiceThanksPopup;
-
-ServiceThanksPopup.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onOverlayClick: PropTypes.func.isRequired,
-};

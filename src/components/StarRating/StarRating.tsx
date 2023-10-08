@@ -3,13 +3,13 @@ import { useState } from 'react';
 import styles from './styles/styles.module.css';
 
 function StarRating() {
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null);
+  const [rating, setRating] = useState<number>(0);
+  const [hover, setHover] = useState<number>(0);
 
   return (
     <div className={styles.ratingContainer}>
-      {[...Array(5)].map((star, i) => {
-        const ratingValue = i + 1;
+      {[...Array(5)].map((_star, i) => {
+        const ratingValue: number = i + 1;
 
         return (
           <label key={ratingValue} htmlFor="star" className={styles.label}>
@@ -17,7 +17,7 @@ function StarRating() {
             <svg
               className={styles.starSvg}
               onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(null)}
+              onMouseLeave={() => setHover(0)}
               xmlns="http://www.w3.org/2000/svg"
               width="40"
               height="40"
