@@ -129,3 +129,34 @@
     border-bottom-right-radius: 20px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .select {
+    color: #fff;
+    .immediate-select__control {
+      max-width: 180px;
+      max-height: 30px;
+      padding: 0px;
+    }
+
+    .immediate-select__single-value {
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    .immediate-select__indicator {
+      padding: 0px;
+    }
+
+    .immediate-select__menu {
+      width: 200px;
+      left: 0;
+    }
+
+    .immediate-select__option {
+      font-size: 15px;
+      line-height: 24px;
+      padding-left: 10px;
+    }
+  }
+}

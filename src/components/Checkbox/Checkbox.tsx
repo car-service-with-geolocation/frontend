@@ -2,8 +2,14 @@ import PropTypes from 'prop-types';
 
 import styles from './styles/styles.module.css';
 
-function Checkbox({ isChecked, label, checkHandler, index }) {
-  // console.log(isChecked);
+type TPropsCheckbox = {
+  label: string;
+  isChecked: boolean;
+  checkHandler: () => void;
+  index: number;
+};
+
+function Checkbox({ isChecked, label, checkHandler, index }: TPropsCheckbox) {
   return (
     <div className={styles.phoneInfo}>
       <label

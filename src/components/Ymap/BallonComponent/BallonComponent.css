@@ -90,3 +90,50 @@
   background-size: cover;
   border-radius: 20px;
 }
+
+@media screen and (max-width: 800px) {
+  .Ymap {
+    gap: 10px;
+  }
+  .Ymap__wrapper {
+    max-width: 130px;
+  }
+  .Ymap__title {
+    font-size: 14px;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .Ymap__rating_wrapper {
+    gap: 5px;
+  }
+  .Ymap__star_icon {
+    width: 20px;
+    height: 20px;
+    padding-top: 0;
+  }
+  .Ymap__rating_subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 0;
+  }
+  .Ymap__addres {
+    font-size: 11px;
+    line-height: normal;
+    padding-top: 0;
+  }
+  .Ymap__timeWork {
+    font-size: 11px;
+    line-height: normal;
+    padding-top: 5px;
+  }
+
+  .Ymap__image {
+    width: 105px;
+    height: 110px;
+    border-radius: 20px;
+  }
+}

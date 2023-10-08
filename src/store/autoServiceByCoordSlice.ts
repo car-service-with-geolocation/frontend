@@ -1,17 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { baseUrl } from '../utils/constants';
-import { TService } from '../utils/types';
+import { TCoord, TService } from '../utils/types';
 
 type TInitialState = {
   data: TService[];
   status: null | string;
   error: undefined | string | null;
-};
-
-type TCoord = {
-  lat: string;
-  lon: string;
 };
 
 const initialState: TInitialState = {
