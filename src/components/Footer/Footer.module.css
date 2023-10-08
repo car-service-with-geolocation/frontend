@@ -90,9 +90,3 @@
 .address_link:hover {
   color: #770022;
 }
-
-@media (max-width: 376px) {
-  .footer {
-    display: none;
-  }
-}
