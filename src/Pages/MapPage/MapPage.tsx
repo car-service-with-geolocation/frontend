@@ -82,6 +82,7 @@ function MapPage() {
 
   useEffect(() => {
     servicesByAll.length === 0 ? dispatch(fetchAutoServices()) : '';
+    windowWidth();
   }, [dispatch, servicesByAll]);
   return (
     <>
