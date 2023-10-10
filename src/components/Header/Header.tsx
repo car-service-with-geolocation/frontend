@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import carLogo from '../../images/car-Logo.svg';
@@ -8,6 +8,14 @@ function Header() {
   const location = useLocation();
 
   const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (isActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
+  }, [isActive]);
 
   const handlerClick = () => {
     setIsActive((current) => !current);
