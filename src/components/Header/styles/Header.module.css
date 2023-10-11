@@ -12,10 +12,51 @@
   backdrop-filter: blur(2px);
 }
 
-.link {
+.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 12.47px;
+  color: #dedede;
+  text-decoration: none;
+}
+
+.logoImg {
+  display: block;
+}
+
+.logoText {
+  font-family: Lato;
+  font-size: 17.684px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  max-width: 100px;
+  margin: 0;
+  padding-top: 9px;
+}
+
+.logoText:hover {
+  color: #770022;
+}
+
+.hum__icon {
+  display: none;
+}
+
+.menu__list {
   display: flex;
   flex-direction: row;
   gap: 60px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .linkText {
@@ -30,12 +71,12 @@
   text-decoration: none;
 }
 
-.active {
-  font-weight: 700;
-}
-
 .linkText:hover {
   color: #770022;
+}
+
+.active {
+  font-weight: 700;
 }
 
 .enterText {
@@ -53,32 +94,157 @@
   color: #770022;
 }
 
-.block {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 94px;
-}
+@media (max-width: 376px) {
+  .header {
+    box-sizing: border-box;
+    padding: 15px 20px 10px;
+  }
 
-.logoLink {
-  display: flex;
-  align-items: center;
-  gap: 12.47px;
-  color: #dedede;
-  text-decoration: none;
-}
+  .block {
+    gap: 0;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 70%;
+  }
 
-.logoText {
-  font-family: Lato;
-  font-size: 17.684px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  max-width: 100px;
-  margin: 0;
-  padding-top: 9px;
-}
+  .logoLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-.logoText:hover {
-  color: #770022;
+  .logoImg {
+    height: 48px;
+  }
+
+  .logoText {
+    font-size: 14px;
+    max-width: 80px;
+    padding: 0;
+  }
+
+  .hum__icon {
+    z-index: 50;
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .hum__icon span,
+  .hum__icon::before,
+  .hum__icon::after {
+    left: 20%;
+    position: absolute;
+    width: 60%;
+    height: 8%;
+    transition: all 0.4s ease;
+    background-color: #dedede;
+  }
+
+  .hum__icon::before,
+  .hum__icon::after {
+    content: '';
+  }
+
+  .hum__icon::before {
+    top: 10px;
+  }
+
+  .hum__icon::after {
+    bottom: 10px;
+  }
+
+  .hum__icon span {
+    transform: scale(1) translate(0, -50%);
+  }
+
+  .hum__icon:hover span,
+  .hum__icon:hover::before,
+  .hum__icon:hover::after {
+    background-color: #770022;
+  }
+
+  .hum__icon.menu_active {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+  }
+
+  .hum__icon.menu_active span {
+    transform: scale(0);
+  }
+
+  .hum__icon.menu_active::before {
+    transform: rotate(-45deg);
+    top: 50%;
+  }
+
+  .hum__icon.menu_active::after {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateX(-100%);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .menu.menu_active {
+    transform: translateX(0);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .menu__list {
+    flex-direction: column;
+    gap: 0;
+    margin: 60px 0 0 30px;
+  }
+
+  .menu__item {
+    margin: 0 0 30px 0;
+  }
+
+  .linkText {
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .enterText {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: center;
+    visibility: hidden;
+  }
+
+  .enterText::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #dedede;
+    -webkit-mask-image: url('../../../images/LogInIcon.svg');
+    mask-image: url('../../../images/LogInIcon.svg');
+    visibility: visible;
+  }
+
+  .enterText:hover::before {
+    background-color: #770022;
+  }
 }
