@@ -90,3 +90,35 @@
 .address_link:hover {
   color: #770022;
 }
+
+@media screen and (max-width: 1125px) {
+  .footer {
+    width: 87.337vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    padding-top: 120px;
+  }
+  .img_descrition {
+    display: none;
+  }
+  .address_link {
+    font-size: calc(1rem + 0.5vw);
+  }
+  .link {
+    font-size: calc(1rem + 0.5vw);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    justify-content: start;
+    padding-top: 150px;
+  }
+
+  .link {
+    display: none;
+  }
+}

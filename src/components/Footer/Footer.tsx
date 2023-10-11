@@ -1,15 +1,10 @@
 import { Link } from 'react-router-dom';
-
-import icon from '../../images/YmapIcon.svg';
 import style from './Footer.module.css';
 
 function Footer() {
   return (
     <footer className={style.footer}>
-      <Link className={style.logo_wrapper} to="/">
-        <img className={style.img} src={icon} alt="Логотип приложения" />
-        <p className={style.img_descrition}>Premium Car Services</p>
-      </Link>
+      <p className={style.img_descrition}>Premium Car Services</p>
       <ul className={style.navigation_wrapper}>
         <li className={style.navigation_wrapper_section}>
           <Link className={style.link} to="/search">
