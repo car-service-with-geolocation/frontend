@@ -7,6 +7,7 @@ import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
 import MainPage from '../../Pages/MainPage/MainPage';
 import MapPage from '../../Pages/MapPage/MapPage';
 import NotFound from '../../Pages/NotFound/NotFound';
+import Registration from '../../Pages/Registration/Registration';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/service/:id" element={<ServicePage />} />
         <Route path="/search" element={<MapPage />} />
+        <Route path="/signup" element={<Registration />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/service/:id/application" element={<ApplicationPage />} />
       </Routes>
