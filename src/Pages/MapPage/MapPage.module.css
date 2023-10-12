@@ -156,6 +156,12 @@
     font-size: 32px;
     width: 87.337vw;
   }
+  .ellipse {
+    width: 87.337vw;
+  }
+  .eclipses {
+    width: 87.337vw;
+  }
 }
 
 @media screen and (max-width: 500px) {
