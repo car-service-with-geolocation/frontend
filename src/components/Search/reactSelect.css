@@ -118,6 +118,38 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
   }
+
+  @media (max-width: 376px) {
+    .react-select__control {
+      width: 305px;
+      margin: 0 auto;
+    }
+
+    .react-select__placeholder {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .react-select__single-value {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .react-select__input-container {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .react-select__menu {
+      width: 305px;
+      left: 15px;
+    }
+
+    .react-select__menu-list {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
 }
 
 #react-select-2-listbox {

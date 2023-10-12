@@ -1,0 +1,78 @@
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin: 15px auto 0;
+  text-align: center;
+  z-index: 5;
+}
+
+.modalTitle {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #dedede;
+}
+
+.modalSubtitle {
+  margin: 0 0 50px;
+  padding: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #dedede;
+}
+
+.modalImage {
+  width: 50px;
+  height: 50px;
+  margin: 45px 0;
+}
+
+.ellipse {
+  position: absolute;
+  width: 395px;
+  height: 395px;
+  border-radius: 395px;
+  background: rgba(119, 0, 34, 0.3);
+  filter: blur(450px);
+  top: calc(50% - 395px / 2);
+  left: calc(50% - 395px / 2);
+  z-index: 3;
+}
+
+.modalButton {
+  min-width: 276px;
+  padding: 20px 100px;
+  margin: 0 0 106px;
+  border-radius: 20px;
+  border: none;
+  background-color: #702;
+  color: #dedede;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.modalButton:hover {
+  background-color: #3f0012;
+}
+
+.modalButton:active {
+  background-color: #2e000d;
+}
+
+.modalButton_main {
+  margin: 0 0 65px;
+}

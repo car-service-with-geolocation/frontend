@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  width: 350px;
+  width: 100%;
   height: 509px;
   border-radius: 20px;
 }
@@ -84,40 +84,61 @@
   color: #dedede;
 }
 
-@media (max-width: 376px) {
+@media screen and (max-width: 500px) {
   .card {
-    width: 230px;
-    height: 330px;
+    position: static;
+    width: 80%;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 20px;
+    background: #7b687e33;
+    padding: 28px 28px;
+  }
+
+  .cardImg {
+    width: 100px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 20px;
   }
 
   .cardInfoblock {
-    padding: 25px 20px;
-    width: fit-content;
+    position: static;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
   }
 
   .cardTitle {
-    font-size: 22px;
-    line-height: 140%;
-    margin-bottom: 5px;
+    font-size: 18px;
+    line-height: 27.162px;
+  }
+
+  .cardRating {
+    display: flex;
   }
 
   .cardRatingIcon {
-    width: 20px;
-    height: 20px;
-    margin: 0 10px 0 0;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
   }
 
   .cardRatingNumbers {
+    font-family: Raleway;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 27.162px;
   }
 
   .cardInfoList {
-    margin-top: 15px;
+    margin-top: 12px;
   }
 
   .cardInfoText {
     font-size: 16px;
-    line-height: 150%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 }

@@ -1,0 +1,45 @@
+.phoneInfo {
+  display: flex;
+  flex-direction: column;
+  width: 265px;
+  margin: 0 20px 0 0;
+}
+
+.label {
+  display: flex;
+  padding: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  color: #ffffff;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.checkboxLabel {
+  margin: 0;
+}
+
+.checkboxLabel::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../images/checkbox.svg);
+  margin: 0 10px 0 0;
+}
+
+.checkboxLabel_active::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../images/checkbox-active.svg);
+  margin: 0 10px 0 0;
+}

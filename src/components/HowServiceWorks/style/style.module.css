@@ -61,3 +61,40 @@
   font-weight: 400;
   line-height: 165%;
 }
+
+@media (max-width: 376px) {
+  .wrapper {
+    padding-bottom: 0;
+    max-width: 335px;
+    margin-top: 150px;
+  }
+
+  .header {
+    font-size: 26px;
+    margin: 0 0 30px;
+  }
+
+  .cardsWrapper {
+    row-gap: 20px;
+  }
+
+  .card {
+    max-height: 253px;
+    padding: 40px 30px;
+  }
+
+  .cardStep {
+    font-size: 18px;
+  }
+
+  .cardHeader {
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  .cardDescription {
+    font-size: 16px;
+    line-height: 150%;
+    margin: 0;
+  }
+}

@@ -46,6 +46,7 @@
   color: #dedede;
   padding-left: 40px;
   padding-right: 45px;
+  text-overflow: ellipsis;
 }
 
 .formInput::placeholder {
@@ -97,4 +98,39 @@
 .formButton:hover {
   background-color: #3f0012;
   cursor: pointer;
+}
+
+@media (max-width: 376px) {
+  .section {
+    max-width: 335px;
+    height: fit-content;
+    margin-top: 50px;
+  }
+
+  .form {
+    grid-template-columns: none;
+    grid-template-rows: 60px 60px 0;
+    gap: 20px;
+    padding: 30px 0 10px 0;
+  }
+
+  .inputWrapper {
+    grid-row: 1;
+    margin: 0 auto;
+  }
+
+  .formInput {
+    width: 305px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0 50px 0 35px;
+  }
+
+  .formButton {
+    width: 335px;
+    font-size: 16px;
+    position: relative;
+    top: 50px;
+  }
 }
