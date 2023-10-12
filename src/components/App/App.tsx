@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/service/:id" element={<ServicePage />} />
         <Route path="/search" element={<MapPage />} />
-        <Route path="/signup" element={<Registration />} />
+        <Route path="/registration" element={<Registration />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/service/:id/application" element={<ApplicationPage />} />
       </Routes>
