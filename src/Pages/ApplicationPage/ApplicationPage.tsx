@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ApplicationAccept from '../../components/ApplicationAccept/ApplicationAccept';
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { useAppDispatch, useAppSelector } from '../../store';
@@ -15,7 +14,6 @@ function ApplicationPage() {
   const location = useParams();
   const services = useAppSelector((store) => store.mainAutoServices.data);
   const serviceToRender = services.find((service) => service.id === Number(location.id));
-  const [isApplicationAcceptOpen, setIsApplicationAcceptOpen] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [applicationService, setApplicationService] = useState(
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -45,29 +43,6 @@ function ApplicationPage() {
       })
     );
   }
-
-  function handleClick() {
-    setIsApplicationAcceptOpen(true);
-  }
-
-  function handleOverlayClick(evt: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    if (evt.target === evt.currentTarget) {
-      setIsApplicationAcceptOpen(false);
-    }
-  }
-
-  function handleEscapeClick(evt: KeyboardEvent) {
-    if (evt.key === 'Escape') {
-      setIsApplicationAcceptOpen(false);
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleEscapeClick);
-    return () => {
-      document.removeEventListener('keydown', handleEscapeClick);
-    };
-  });
 
   return (
     <div className={styles.applicationContainer}>
@@ -185,7 +160,13 @@ function ApplicationPage() {
                 placeholder=""
               />
             </div>
-            <button className={styles.submitButton} type="button" onClick={handleClick}>
+            <button
+              className={`${styles.submitButton} ${
+                !isValid ? styles.submitButton_disable : ''
+              }`}
+              type="submit"
+              disabled={!isValid}
+            >
               Отправить заявку
             </button>
           </form>
@@ -204,13 +185,6 @@ function ApplicationPage() {
           </article>
         </div>
       </section>
-      <ApplicationAccept
-        isOpen={isApplicationAcceptOpen}
-        onClose={() => {
-          setIsApplicationAcceptOpen(false);
-        }}
-        onOverlayClick={(evt) => handleOverlayClick(evt)}
-      />
     </div>
   );
 }
