@@ -152,14 +152,6 @@
   }
 }
 
-#react-select-2-listbox {
-  width: 282px;
-  left: 60px;
-  border-radius: 20px;
-  background: #dedede;
-  animation: openMenu 0.35s ease-in-out;
-}
-
 ::-webkit-scrollbar {
   width: 0px;
 }
