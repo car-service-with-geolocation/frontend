@@ -228,3 +228,120 @@
   margin: 0;
   padding: 0;
 }
+
+.reviewHeader {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding-top: 250px;
+  margin: 0;
+}
+
+.reviewWrapper {
+  display: flex;
+  padding-top: 50px;
+  column-gap: 95px;
+  max-width: 1120px;
+  justify-content: space-between;
+}
+
+.singleReviewWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+
+.allReviewswWrapper {
+  max-width: 285px;
+}
+
+.allReviewswButton {
+  border: none;
+  display: flex;
+  width: 285px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #702;
+
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #dedede;
+  margin-top: 50px;
+}
+
+.moreReviewswButton {
+  margin-top: 60px;
+  border: none;
+  display: flex;
+  width: 430px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #cbcbcb;
+  justify-self: center;
+  align-self: center;
+
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #0a0908;
+}
+
+.moreReviewswButton:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.allReviewswButton:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.allreviewsratingWrapper {
+  display: flex;
+  gap: 25px;
+  align-items: end;
+}
+
+.feedBackRating {
+  --percent: calc(var(--rating) / 5 * 100%);
+  width: 150px;
+  font-size: 35px;
+  line-height: 1;
+
+  &::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #fc0 var(--percent), #fff var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.allReviews {
+  font-family: Raleway;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding-top: 25px;
+}
+
+.mapWrapper {
+  width: 645px;
+  height: 150px;
+  border-radius: 20px;
+  opacity: 0.8;
+  overflow: hidden;
+}

@@ -96,7 +96,7 @@ function MapPage() {
           value={getValue()}
           options={immediateOptions}
           isLoading={false}
-          isSearchable
+          isSearchable={false}
           isDisabled={content === 'card' ? false : true}
           classNamePrefix="immediate-select"
           className="select"
@@ -160,7 +160,9 @@ function MapPage() {
           </div>
         </>
       ) : (
-        <Ymap services={servicesByAll} />
+        <div className={style.mapWrapper}>
+          <Ymap services={servicesByAll} />
+        </div>
       )}
       {screenWidth === 'mobile' && <Search />}
     </>

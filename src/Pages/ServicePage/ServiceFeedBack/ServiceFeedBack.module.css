@@ -1,0 +1,104 @@
+.feedBackWrapper {
+}
+
+.feedBackRating {
+  --percent: calc(var(--rating) / 5 * 100%);
+  width: 150px;
+  font-size: 25px;
+  line-height: 1;
+
+  &::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #fc0 var(--percent), #7a7a7a var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.aboutUser {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.name {
+  margin: 0;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.date {
+  margin: 0;
+  font-family: Raleway;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.feedBack {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29.7px;
+  margin: 0;
+  padding-top: 20px;
+}
+
+.imageWrapper {
+  padding-top: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 170px));
+}
+
+.image {
+  width: 100%;
+  height: 120px;
+  border-radius: 20px;
+  background-position: center;
+  background-size: cover;
+}
+
+.imageButtonWrapper {
+  position: relative;
+}
+
+.imageButton {
+  width: 100%;
+  height: 120px;
+  border-radius: 20px;
+  background-position: center;
+  background-size: cover;
+}
+
+.span {
+  border: none;
+  position: absolute;
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 98%;
+  top: 0;
+  left: 0;
+  font-family: Raleway;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  color: #dedede;
+  border-radius: 20px;
+}
+
+.span:hover {
+  opacity: 0.6;
+  cursor: pointer;
+  border: 2px solid rgb(126, 119, 119);
+}
