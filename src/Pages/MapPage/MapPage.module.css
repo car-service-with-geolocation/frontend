@@ -21,6 +21,16 @@
   position: relative;
 }
 
+.mapWrapper {
+  margin-top: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  opacity: 0.8;
+  width: 1120px;
+  height: 800px;
+}
+
 .eclipses {
   position: absolute;
   top: 351px;
@@ -161,6 +171,10 @@
   }
   .eclipses {
     width: 87.337vw;
+  }
+  .mapWrapper {
+    width: 84.5vw;
+    height: 95vw;
   }
 }
 

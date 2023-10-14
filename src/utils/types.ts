@@ -24,7 +24,7 @@ type Company = {
   legal_address: string;
 };
 
-type Geolocation = {
+export type Geolocation = {
   latitude: number;
   longitude: number;
 };
