@@ -4,14 +4,13 @@
 import '../../components/Search/reactSelect.css';
 
 import { SyntheticEvent, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Select, { SingleValue } from 'react-select';
 
-import Checkbox from '../../components/Checkbox/Checkbox';
+import Authorization from '../../components/Authorization/Authorization';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchCars } from '../../store/carsSlice';
 import { TCar } from '../../utils/types';
-import style from './styles/styles.module.css';
+import styles from './styles/styles.module.css';
 
 function Registration() {
   const dispatch = useAppDispatch();
@@ -19,7 +18,7 @@ function Registration() {
 
   const [currentAuto, setCurrentAuto] = useState<string | null>();
   const [firstSearch, setFirstSearch] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
 
   useEffect(() => {
     if (sessionStorage.getItem('selectedAuto')) {
@@ -51,25 +50,48 @@ function Registration() {
   }
 
   return (
-    <>
-      <div className={style.authorization}>
-        <h2>Регистрация</h2>
-        <div>Водитель</div>
-        <div>Автосервис</div>
-        <form
-          id="registration_form"
-          onSubmit={handleSubmit}
-          className={style.form}
-          action="submit"
+    <Authorization title="Регистрация">
+      <div className={styles.reg__choice}>
+        <button
+          className={`${styles.reg__choicebtn} ${styles.reg__choicebtn_active}`}
+          type="button"
         >
-          <fieldset>
-            <legend>Почта</legend>
-            <input type="text" name="user-email" />
+          Водитель
+        </button>
+        <button className={styles.reg__choicebtn} type="button">
+          Автосервис
+        </button>
+      </div>
+      <form
+        id="user-reg-form"
+        onSubmit={handleSubmit}
+        className={styles.form}
+        action="submit"
+      >
+        <fieldset className={styles.form__fieldset}>
+          <label htmlFor="user-email" className={styles.form__label}>
+            Почта
+            <input
+              type="text"
+              name="user-email"
+              id="user-email"
+              className={styles.form__input}
+            />
+            <span className={styles.input__error}>Error text</span>
+          </label>
 
-            <legend>Имя</legend>
-            <input type="text" name="user-name" />
-
-            <legend>Укажите вашу марку автомобиля</legend>
+          <label htmlFor="user-name" className={styles.form__label}>
+            Имя
+            <input
+              type="text"
+              name="user-name"
+              id="user-name"
+              className={styles.form__input}
+            />
+            <span className={styles.input__error}>Error text</span>
+          </label>
+          <div className={styles.form__label}>
+            Укажите вашу марку автомобиля
             <Select
               // eslint-disable-next-line react/jsx-no-bind
               onChange={onChangeSelect}
@@ -81,40 +103,55 @@ function Registration() {
               isLoading={false} // Небольшая Анимация загрузки данных.
               isSearchable // Возможность вписывать текст в инпут и далее выбирать
               classNamePrefix="react-select"
-              className="select"
+              className={`select ${styles.select_position}`}
               noOptionsMessage={() => 'Совпадений не найдено'}
             />
+          </div>
 
-            <legend>Пароль</legend>
-            <input type="text" name="user-password" />
+          <label htmlFor="user-password" className={styles.form__label}>
+            Пароль
+            <div className={styles.input__wrapper}>
+              <input type="text" name="user-password" className={styles.form__input} />
+              <button type="button" className={styles.input__icon} />
+            </div>
+            <span className={styles.input__error}>Error text</span>
+          </label>
 
-            <legend>Повторите пароль</legend>
-            <input type="text" name="user-password" />
-
-            <Checkbox
-              isChecked={isChecked}
-              label="Даю согласие на обработку персональных данных"
-              checkHandler={() => onHandleChange()}
-              index={0}
-            />
-            <button type="submit">Зарегестрироваться</button>
-          </fieldset>
-        </form>
-      </div>
-      <div>
-        <p>Уже есть аккаунт?</p>
-        <Link rel="stylesheet" to="/login">
-          Вход
-        </Link>
-      </div>
-    </>
-    // <Authorization
-    //   titleText={"Добро пожаловать"}
-    //   buttonText={"Зарегистрироваться"}
-    //   path={"/signin"}
-    // >
-    //   <Link to="/organization"></Link>
-    // </Authorization>
+          <label htmlFor="user-password-repeat" className={styles.form__label}>
+            Повторите пароль
+            <div className={styles.input__wrapper}>
+              <input
+                type="text"
+                name="user-password-repeat"
+                id="user-password"
+                className={styles.form__input}
+              />
+              <button type="button" className={styles.input__icon} />
+            </div>
+            <span className={styles.input__error}>Error text</span>
+          </label>
+        </fieldset>
+        <label
+          className={`${styles.form__label} ${styles.form__label_checkbox} ${
+            isChecked ? styles.checkboxLabel_active : ''
+          }`}
+          htmlFor="agree-checkbox"
+        >
+          <input
+            className={styles.form__checkbox}
+            type="checkbox"
+            name="agree-checkbox"
+            id="agree-checkbox"
+            checked={isChecked}
+            onChange={onHandleChange}
+          />
+          Даю согласие на обработку персональных данных
+        </label>
+        <button className={styles.form__submitbtn} type="submit">
+          Зарегестрироваться
+        </button>
+      </form>
+    </Authorization>
   );
 }
 

@@ -1,5 +1,61 @@
-.registration {
-  width: 700px;
-  height: 700px;
+.auth {
+  max-width: 550px;
   background-color: rgba(123, 104, 126, 0.2);
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-top: 50px;
+  padding: 65px 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth__title {
+  color: #dedede;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0 auto;
+}
+
+.auth__text {
+  color: #dedede;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  margin: 60px auto 100px;
+}
+
+.auth__link {
+  text-decoration: none;
+  font-weight: 700;
+  color: inherit;
+  margin-left: 10px;
+  transition: color 0.3s linear;
+}
+
+.auth__link:hover {
+  color: #770022;
+}
+
+@media (max-width: 600px) {
+  .auth {
+    max-width: 375px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0 20px;
+  }
+
+  .auth__title {
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  .auth__text {
+    font-size: 16px;
+    line-height: 150%;
+  }
 }
