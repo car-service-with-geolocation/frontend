@@ -20,7 +20,7 @@ export const fetchAutoServiceId = createAsyncThunk<
   string | undefined,
   { rejectValue: string }
 >('autoServiceId/fetchAutoServiceId', async function (id, { rejectWithValue }) {
-  const response = await fetch(`${baseUrl}autoservice/service/${id}`);
+  const response = await fetch(`${baseUrl}autoservice/service/${id}/`);
   if (!response.ok) {
     return rejectWithValue('Server Error!');
   }
