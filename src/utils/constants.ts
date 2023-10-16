@@ -32,7 +32,7 @@ const navigatorOptions = {
   timeout: 3600,
 };
 
-const baseUrl = 'https://find-car-service.ru//api/v1/';
+const baseUrl = 'https://find-car-service.ru/api/v1/';
 
 const servicesPerPage = 6;
 
