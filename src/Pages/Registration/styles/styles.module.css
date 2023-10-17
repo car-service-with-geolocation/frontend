@@ -162,7 +162,7 @@
   opacity: 0.7;
 }
 
-.disabled {
+.form__submitbtn_disabled {
   color: #7a7a7a;
   background-color: rgba(126, 114, 104, 0.5);
 }

@@ -6,6 +6,7 @@ import '../../components/Search/reactSelect.css';
 import { SyntheticEvent, useEffect, useState } from 'react';
 import Select, { SingleValue } from 'react-select';
 
+// import { useForm } from 'react-hook-form';
 import Authorization from '../../components/Authorization/Authorization';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchCars } from '../../store/carsSlice';
@@ -15,6 +16,7 @@ import styles from './styles/styles.module.css';
 function Registration() {
   const dispatch = useAppDispatch();
   const options = useAppSelector((store) => store.cars.data);
+  const userData = useAppSelector((store) => store.user.data);
 
   const [currentAuto, setCurrentAuto] = useState<string | null>();
   const [firstSearch, setFirstSearch] = useState(false);
@@ -42,11 +44,15 @@ function Registration() {
     event.preventDefault();
     firstSearch ? '' : setFirstSearch(!firstSearch);
     currentAuto && sessionStorage.setItem('selectedAuto', currentAuto);
+    // const userData = {
+    //   email: 'email',
+    // };
     // navigate('/search');
   }
 
   function onHandleChange() {
     setIsChecked((current) => !current);
+    console.log(userData);
   }
 
   return (
@@ -72,7 +78,7 @@ function Registration() {
           <label htmlFor="user-email" className={styles.form__label}>
             Почта
             <input
-              type="text"
+              type="email"
               name="user-email"
               id="user-email"
               className={styles.form__input}
@@ -111,7 +117,12 @@ function Registration() {
           <label htmlFor="user-password" className={styles.form__label}>
             Пароль
             <div className={styles.input__wrapper}>
-              <input type="text" name="user-password" className={styles.form__input} />
+              <input
+                type="password"
+                name="user-password"
+                id="user-password"
+                className={styles.form__input}
+              />
               <button type="button" className={styles.input__icon} />
             </div>
             <span className={styles.input__error}>Error text</span>
@@ -121,9 +132,9 @@ function Registration() {
             Повторите пароль
             <div className={styles.input__wrapper}>
               <input
-                type="text"
+                type="password"
                 name="user-password-repeat"
-                id="user-password"
+                id="user-password-repeat"
                 className={styles.form__input}
               />
               <button type="button" className={styles.input__icon} />
@@ -147,7 +158,13 @@ function Registration() {
           />
           Даю согласие на обработку персональных данных
         </label>
-        <button className={styles.form__submitbtn} type="submit">
+        <button
+          className={`${styles.form__submitbtn} ${
+            isChecked ? styles.form__submitbtn_disabled : ''
+          }`}
+          type="submit"
+          disabled={!isChecked}
+        >
           Зарегестрироваться
         </button>
       </form>

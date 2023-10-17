@@ -44,3 +44,10 @@ export type TCoord = {
   lat: number;
   lon: number;
 };
+
+export type TUserData = {
+  email: string;
+  name: string;
+  car: TCar;
+  password: string;
+};
