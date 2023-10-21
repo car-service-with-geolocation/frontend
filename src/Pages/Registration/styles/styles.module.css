@@ -101,7 +101,8 @@
 }
 
 .input__error {
-  color: #fff;
+  height: 17px;
+  color: #d13b3b;
   font-family: Raleway;
   font-size: 14px;
   font-style: normal;

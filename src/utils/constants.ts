@@ -28,15 +28,19 @@ const allCheckboxes = [
   { name: 'Нужен эвакуатор', checked: false },
 ];
 
+const REGEXP_EMAIL =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
 export {
+  allCheckboxes,
+  baseUrl,
   DADATA_API,
   DADATA_API_KEY,
   DADATA_SECRET_KEY,
   immediateOptions,
   navigatorOptions,
+  REGEXP_EMAIL,
+  servicesPerPage,
   YMAP_API_KEY,
   YMAP_VERSION,
-  servicesPerPage,
-  baseUrl,
-  allCheckboxes,
 };

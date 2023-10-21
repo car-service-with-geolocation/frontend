@@ -5,7 +5,6 @@ import autoServiceByCoordSlice from './autoServiceByCoordSlice';
 import autoServiceIdSlice from './autoServiceIdSlice';
 import autoServiceSlice from './autoServicesSlice';
 import carsSlice from './carsSlice';
-import userDataSlice from './userDataSlice';
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
@@ -19,6 +18,5 @@ export const store = configureStore({
     autoServiceById: autoServiceIdSlice,
     autoServiceByCoord: autoServiceByCoordSlice,
     cars: carsSlice,
-    user: userDataSlice,
   },
 });
