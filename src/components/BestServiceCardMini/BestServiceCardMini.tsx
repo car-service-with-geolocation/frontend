@@ -15,7 +15,7 @@ type TPropsBestServiceCard = {
   openuntil: string;
 };
 
-function BestServiceCard({
+function BestServiceCardMini({
   image,
   id,
   title,
@@ -28,11 +28,6 @@ function BestServiceCard({
   return (
     <Link className={styles.link} to={`/service/${id}`}>
       <article className={styles.card}>
-        <img
-          className={defaultImage ? styles.cardImg_default : styles.cardImg}
-          src={image || defaultImage}
-          alt="процесс работы в автосервисе"
-        />
         <figcaption className={styles.cardInfoblock}>
           <h3 className={styles.cardTitle}>{title}</h3>
           <div className={styles.cardRating}>
@@ -50,9 +45,14 @@ function BestServiceCard({
             </li>
           </ul>
         </figcaption>
+        <img
+          className={styles.cardImg}
+          src={image || defaultImage}
+          alt="процесс работы в автосервисе"
+        />
       </article>
     </Link>
   );
 }
 
-export default BestServiceCard;
+export default BestServiceCardMini;

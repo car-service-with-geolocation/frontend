@@ -11,7 +11,7 @@ type TPropsCheckbox = {
 
 function Checkbox({ isChecked, label, checkHandler, index }: TPropsCheckbox) {
   return (
-    <div className={styles.phoneInfo}>
+    <div className={styles.container}>
       <label
         className={`${styles.label} ${
           isChecked ? styles.checkboxLabel_active : styles.checkboxLabel

@@ -37,8 +37,7 @@ const baseUrl = 'https://find-car-service.ru/api/v1/';
 const servicesPerPage = 6;
 
 const allCheckboxes = [
-  { name: 'Срочный ремонт', checked: false },
-  { name: 'Нужен эвакуатор', checked: false },
+  { name: 'Даю согласие на обработку персональных данных', checked: true },
 ];
 
 const initialFeedBack = [
