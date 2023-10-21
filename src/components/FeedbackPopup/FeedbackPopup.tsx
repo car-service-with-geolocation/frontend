@@ -58,7 +58,7 @@ function FeedbackPopup({ isOpen, onClose }: TPropsFeedbackPopup) {
               </div>
             </form>
           </div>
-          <button className={styles.modalButton} type="submit" onClick={() => {}}>
+          <button className={styles.modalButton} type="submit" onClick={onClose}>
             Оставить отзыв
           </button>
         </div>

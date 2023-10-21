@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 import Select, { SingleValue } from 'react-select';
 
+import FeedbackPopup from '../../components/FeedbackPopup/FeedbackPopup';
 import Preloader from '../../components/Preloader/Preloader';
 import Ymap from '../../components/Ymap/Ymap';
 import star from '../../images/YmapStarIcon.svg';
@@ -17,7 +18,13 @@ import ServiceFeedBack from './ServiceFeedBack/ServiceFeedBack';
 import ServiceOverallRating from './ServiceOverallRating/ServiceOverallRating';
 import styles from './styles/styles.module.css';
 
-function ServicePage() {
+export type TServicePageProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onClick: () => void;
+};
+
+function ServicePage({ isOpen, onClose, onClick }: TServicePageProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -176,13 +183,16 @@ function ServicePage() {
                 className={styles.allReviews}
               >{`Всего отзывов: ${serviceToRender.votes}`}</p>
               <ServiceOverallRating />
-              <button className={styles.allReviewswButton}>Написать отзыв</button>
+              <button className={styles.allReviewswButton} onClick={onClick}>
+                Написать отзыв
+              </button>
             </div>
           </div>
         </>
       ) : (
         <Preloader />
       )}
+      <FeedbackPopup isOpen={isOpen} onClose={onClose} />
     </section>
   );
 }

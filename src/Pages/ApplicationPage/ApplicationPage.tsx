@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+import ApplicationAccept from '../../components/ApplicationAccept/ApplicationAccept';
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import BestServiceCardMini from '../../components/BestServiceCardMini/BestServiceCardMini';
 import Checkbox from '../../components/Checkbox/Checkbox';
@@ -11,7 +12,13 @@ import { allCheckboxes } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
 
-function ApplicationPage() {
+export type TApplicationPageProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onClick: () => void;
+};
+
+function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   const dispatch = useAppDispatch();
   const location = useParams();
   const services = useAppSelector((store) => store.mainAutoServices.data);
@@ -25,6 +32,7 @@ function ApplicationPage() {
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isValid, setIsValid] = useState(true);
+  // const [isApplicationAcceptOpen, setIsApplicationAcceptOpen] = useState(false);
   const { width } = useWindowWidth();
 
   useEffect(() => {
@@ -186,6 +194,7 @@ function ApplicationPage() {
               }`}
               type="submit"
               disabled={!isValid}
+              onClick={onClick}
             >
               Отправить заявку
             </button>
@@ -209,6 +218,11 @@ function ApplicationPage() {
           )}
         </div>
       </section>
+      <ApplicationAccept
+        isOpen={isOpen}
+        onClose={onClose}
+        // onOverlayClick={() => {}}
+      />
     </div>
   );
 }
