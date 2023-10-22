@@ -4,7 +4,8 @@
 import '../../components/Search/reactSelect.css';
 
 import { BaseSyntheticEvent, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import Select, { SingleValue } from 'react-select';
 
 import Authorization from '../../components/Authorization/Authorization';
@@ -17,6 +18,8 @@ import styles from './styles/styles.module.css';
 function Registration() {
   const dispatch = useAppDispatch();
   const options = useAppSelector((store) => store.cars.data);
+
+  const navigate = useNavigate();
 
   const [currentAuto, setCurrentAuto] = useState<string | null>();
   const [isChecked, setIsChecked] = useState(true);
@@ -33,7 +36,9 @@ function Registration() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    watch,
+    control,
+    formState: { errors, isValid },
   } = useForm<IRegUserData>({
     defaultValues: {
       'user-email': '',
@@ -52,6 +57,8 @@ function Registration() {
     }
     dispatch(fetchCars());
   }, [dispatch]);
+
+  const watchPasswordInput = watch('user-password');
 
   function getValue() {
     return options.find((auto) => auto.brand === currentAuto);
@@ -88,7 +95,7 @@ function Registration() {
 
   function onSubmit(userData: IRegUserData) {
     signUp(userData);
-    // navigate('/');
+    navigate('/');
   }
 
   function onHandleChange() {
@@ -176,19 +183,26 @@ function Registration() {
           </label>
           <div className={styles.form__label}>
             Укажите вашу марку автомобиля
-            <Select
-              // eslint-disable-next-line react/jsx-no-bind
-              onChange={onChangeSelect}
-              placeholder="Марка Автомобиля"
-              value={getValue()}
-              getOptionLabel={(option) => option.brand}
-              getOptionValue={(option) => option.slug}
-              options={options}
-              isLoading={false} // Небольшая Анимация загрузки данных.
-              isSearchable // Возможность вписывать текст в инпут и далее выбирать
-              classNamePrefix="react-select"
-              className={`select ${styles.select_position}`}
-              noOptionsMessage={() => 'Совпадений не найдено'}
+            <Controller
+              name="user-car"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onChange={onChangeSelect}
+                  placeholder="Марка Автомобиля"
+                  value={getValue()}
+                  getOptionLabel={(option) => option.brand}
+                  getOptionValue={(option) => option.slug}
+                  options={options}
+                  isLoading={false} // Небольшая Анимация загрузки данных.
+                  isSearchable // Возможность вписывать текст в инпут и далее выбирать
+                  classNamePrefix="react-select"
+                  className={`select ${styles.select_position}`}
+                  noOptionsMessage={() => 'Совпадений не найдено'}
+                />
+              )}
             />
           </div>
           <span className={styles.input__error}>
@@ -240,6 +254,8 @@ function Registration() {
                     value: 30,
                     message: 'Максимальное количество символов в поле 30',
                   },
+                  validate: (value) =>
+                    value === watchPasswordInput || 'Пароли не совпадают',
                 })}
                 type="password"
                 name="user-password-repeat"
@@ -276,10 +292,10 @@ function Registration() {
         </label>
         <button
           className={`${styles.form__submitbtn} ${
-            isChecked ? '' : styles.form__submitbtn_disabled
+            isChecked && isValid ? '' : styles.form__submitbtn_disabled
           }`}
           type="submit"
-          disabled={!isChecked}
+          disabled={!isChecked || !isValid}
         >
           Зарегестрироваться
         </button>
