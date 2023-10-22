@@ -1,35 +1,32 @@
-import { MouseEventHandler } from 'react';
+// import { MouseEventHandler } from 'react';
 
+import success from '../../images/success.svg';
+import Modal from '../Modal/Modal';
 import styles from './styles/styles.module.css';
 
 type TPropsApplicationAccept = {
   isOpen: boolean;
   onClose: () => void;
-  onOverlayClick: MouseEventHandler<HTMLDivElement>;
+  // onOverlayClick: MouseEventHandler<HTMLDivElement>;
 };
 
-function ApplicationAccept({ isOpen, onClose, onOverlayClick }: TPropsApplicationAccept) {
+function ApplicationAccept({ isOpen, onClose }: TPropsApplicationAccept) {
   return (
-    <div
-      className={`${styles.modalOverlay} ${isOpen ? styles.modalOverlay_isOpened : ''}`}
-      onClick={onOverlayClick}
-      role="presentation"
-    >
-      <div className={styles.modal}>
-        <button className={styles.modalCloseButton} type="button" onClick={onClose} />
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <>
         <div className={styles.modalContainer}>
           <h2 className={styles.modalTitle}>Заявка отправлена</h2>
-          {/* <img src={success} alt/> */}
+          <img className={styles.modalImage} src={success} alt="логотип сообщения" />
           <h3 className={styles.modalSubtitle}>
-            В течении 5 минут менеджер свяжется с&nbsp;вами, чтобы уточнить детали заявки
+            В течение 5 минут менеджер свяжется с&nbsp;вами, чтобы уточнить детали заявки
           </h3>
-          <button title="button" className={styles.modalButton} onClick={onClose}>
+          <button className={styles.modalButton} onClick={onClose}>
             Отлично
           </button>
         </div>
         <div className={styles.ellipse} />
-      </div>
-    </div>
+      </>
+    </Modal>
   );
 }
 export default ApplicationAccept;

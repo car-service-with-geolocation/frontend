@@ -64,7 +64,7 @@
   resize: none;
 }
 
-.input[type='textarea'] {
+.input[id='feedback'] {
   height: 270px;
 }
 
