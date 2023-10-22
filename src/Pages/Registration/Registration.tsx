@@ -3,31 +3,22 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 import '../../components/Search/reactSelect.css';
 
-import { BaseSyntheticEvent, useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { BaseSyntheticEvent, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import Select, { SingleValue } from 'react-select';
 
 import Authorization from '../../components/Authorization/Authorization';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { fetchCars } from '../../store/carsSlice';
 import { baseUrl, REGEXP_EMAIL } from '../../utils/constants';
-import { TCar } from '../../utils/types';
 import styles from './styles/styles.module.css';
 
 function Registration() {
-  const dispatch = useAppDispatch();
-  const options = useAppSelector((store) => store.cars.data);
-
   const navigate = useNavigate();
 
-  const [currentAuto, setCurrentAuto] = useState<string | null>();
   const [isChecked, setIsChecked] = useState(true);
 
   interface IRegUserData {
     'user-email': string;
     'user-name': string;
-    'user-car': string;
     'user-password': string;
     'user-password-repeat': string;
     'agree-checkbox': boolean;
@@ -37,13 +28,11 @@ function Registration() {
     register,
     handleSubmit,
     watch,
-    control,
     formState: { errors, isValid },
   } = useForm<IRegUserData>({
     defaultValues: {
       'user-email': '',
       'user-name': '',
-      'user-car': '',
       'user-password': '',
       'user-password-repeat': '',
       'agree-checkbox': true,
@@ -51,25 +40,7 @@ function Registration() {
     mode: 'onTouched',
   });
 
-  useEffect(() => {
-    if (sessionStorage.getItem('selectedAuto')) {
-      setCurrentAuto(sessionStorage.getItem('selectedAuto'));
-    }
-    dispatch(fetchCars());
-  }, [dispatch]);
-
   const watchPasswordInput = watch('user-password');
-
-  function getValue() {
-    return options.find((auto) => auto.brand === currentAuto);
-  }
-
-  function onChangeSelect(newValue: SingleValue<TCar>) {
-    if (newValue) {
-      setCurrentAuto(newValue.brand);
-      currentAuto && sessionStorage.setItem('selectedAuto', newValue.brand);
-    }
-  }
 
   async function signUp(userData: IRegUserData) {
     return fetch(`${baseUrl}auth/users/`, {
@@ -181,33 +152,6 @@ function Registration() {
               {errors['user-name'] && errors['user-name']?.message}
             </span>
           </label>
-          <div className={styles.form__label}>
-            Укажите вашу марку автомобиля
-            <Controller
-              name="user-car"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  // eslint-disable-next-line react/jsx-no-bind
-                  onChange={onChangeSelect}
-                  placeholder="Марка Автомобиля"
-                  value={getValue()}
-                  getOptionLabel={(option) => option.brand}
-                  getOptionValue={(option) => option.slug}
-                  options={options}
-                  isLoading={false} // Небольшая Анимация загрузки данных.
-                  isSearchable // Возможность вписывать текст в инпут и далее выбирать
-                  classNamePrefix="react-select"
-                  className={`select ${styles.select_position}`}
-                  noOptionsMessage={() => 'Совпадений не найдено'}
-                />
-              )}
-            />
-          </div>
-          <span className={styles.input__error}>
-            {errors['user-car'] && errors['user-car']?.message}
-          </span>
 
           <label htmlFor="user-password" className={styles.form__label}>
             Пароль
