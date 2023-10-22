@@ -6,13 +6,20 @@ import BestService from '../../components/BestService/BestService';
 import Feedback from '../../components/Feedback/Feedback';
 import HowServiceWorks from '../../components/HowServiceWorks/HowServiceWorks';
 import MainScreen from '../../components/MainScreen/MainScreen';
+import MainThanksPopup from '../../components/MainThanksPopup/MainThanksPopup';
 import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
 import { fetchCars } from '../../store/carsSlice';
 
-function MainPage() {
+export type TMainPageProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onClick: () => void;
+};
+
+function MainPage({ isOpen, onClose, onClick }: TMainPageProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -37,7 +44,8 @@ function MainPage() {
       <BestService />
       <AboutUs />
       <HowServiceWorks />
-      <Feedback />
+      <Feedback onClick={onClick} />
+      <MainThanksPopup isOpen={isOpen} onClose={onClose} />
     </>
   );
 }
