@@ -1,10 +1,10 @@
-// import { Routes, Route } from 'react-router-dom';
 import '../../index.css';
 
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
 
 import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
+import Login from '../../Pages/Login/Login';
 import MainPage from '../../Pages/MainPage/MainPage';
 import MapPage from '../../Pages/MapPage/MapPage';
 import NotFound from '../../Pages/NotFound/NotFound';
@@ -86,6 +86,7 @@ function App() {
             />
           }
         />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
       {/* <Routes>
