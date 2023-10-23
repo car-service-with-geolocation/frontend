@@ -1,0 +1,83 @@
+.modalOverlay {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(123, 104, 126, 0.2);
+  justify-content: center;
+  align-items: center;
+  transition:
+    visibility 0.35s linear,
+    opacity 0.35s linear;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modalOverlay_isOpened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  z-index: 2;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-width: 640px;
+  border-radius: 20px;
+  background: #0a0908;
+  align-items: center;
+}
+
+.modalCloseButton {
+  margin: 50px 50px 0 auto;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background-image: url(../../../images/closeButton.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: 50% 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.modalCloseButton_none {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.modalButton {
+  min-width: 276px;
+  padding: 20px 100px;
+  margin: 0 0 106px;
+  border-radius: 20px;
+  border: none;
+  background-color: #702;
+  color: #dedede;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.modalButton:hover {
+  background-color: #3f0012;
+}
+
+.modalButton:active {
+  background-color: #2e000d;
+}
+
+.modalButton_main {
+  margin: 0 0 65px;
+}

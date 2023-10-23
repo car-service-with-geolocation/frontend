@@ -1,6 +1,10 @@
 import styles from './styles/styles.module.css';
 
-function Feedback() {
+export type TFeedbackProps = {
+  onClick: () => void;
+};
+
+function Feedback({ onClick }: TFeedbackProps) {
   return (
     <form
       onSubmit={(e) => {
@@ -20,7 +24,7 @@ function Feedback() {
         id=""
         placeholder="Хочу особенно выделить ..."
       />
-      <input className={styles.button} type="submit" />
+      <input className={styles.button} type="submit" onClick={onClick} />
     </form>
   );
 }
