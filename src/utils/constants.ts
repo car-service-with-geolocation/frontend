@@ -231,6 +231,9 @@ const initialFeedBack = [
   },
 ];
 
+const REGEXP_EMAIL =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
 export {
   allCheckboxes,
   baseUrl,
@@ -240,6 +243,7 @@ export {
   immediateOptions,
   initialFeedBack,
   navigatorOptions,
+  REGEXP_EMAIL,
   reviewOptions,
   servicesPerPage,
   YMAP_API_KEY,

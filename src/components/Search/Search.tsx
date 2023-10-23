@@ -135,7 +135,7 @@ function Search() {
           isLoading={false} // Небольшая Анимация загрузки данных.
           isSearchable // Возможность вписывать текст в инпут и далее выбирать
           classNamePrefix="react-select"
-          className="select"
+          className={`select ${style.select_position}`}
           noOptionsMessage={() => 'Совпадений не найдено'}
         />
         <div className={style.inputWrapper}>

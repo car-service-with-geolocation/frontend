@@ -2,35 +2,24 @@ import { Link } from 'react-router-dom';
 
 import style from './styles/styles.module.css';
 
-function Authorization() {
+type TPropsAuthorization = {
+  title: string;
+  children: React.ReactNode;
+};
+
+function Authorization({ title, children }: TPropsAuthorization) {
   return (
     <>
-      <div className={style.authorization}>
-        <h2>Регистрация</h2>
-        <nav>
-          <Link rel="stylesheet" to="/user">
-            Автомобилист
-          </Link>
-          <Link rel="stylesheet" to="/organization">
-            Автосервис
-          </Link>
-        </nav>
-        <form>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <button type="submit">Зарегестрироваться</button>
-        </form>
+      <div className={style.auth}>
+        <h1 className={style.auth__title}>{title}</h1>
+        {children}
       </div>
-      <div>
-        <p>Уже есть аккаунт?</p>
-        <Link rel="stylesheet" to="/login">
-          Вход
+      <p className={style.auth__text}>
+        Уже есть аккаунт?
+        <Link rel="stylesheet" to="/login" className={style.auth__link}>
+          Войти
         </Link>
-      </div>
+      </p>
     </>
   );
 }
