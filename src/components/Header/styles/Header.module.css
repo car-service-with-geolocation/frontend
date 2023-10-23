@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   padding: 40px 160px 35px;
   max-width: 1120px;
   width: 100%;
@@ -94,7 +95,13 @@
   color: #770022;
 }
 
-@media (max-width: 376px) {
+@media (max-width: 900px) {
+  .header {
+    padding: 40px 40px 35px;
+  }
+}
+
+@media (max-width: 600px) {
   .header {
     box-sizing: border-box;
     padding: 15px 20px 10px;
