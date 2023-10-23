@@ -8,6 +8,7 @@ import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
 import MainPage from '../../Pages/MainPage/MainPage';
 import MapPage from '../../Pages/MapPage/MapPage';
 import NotFound from '../../Pages/NotFound/NotFound';
+import PasswordReset from '../../Pages/PasswordReset/PasswordReset';
 import Registration from '../../Pages/Registration/Registration';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
 import Footer from '../Footer/Footer';
@@ -71,6 +72,7 @@ function App() {
             />
           }
         />
+        <Route path="/reset-password" element={<PasswordReset />} />
         <Route path="/search" element={<MapPage />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/*" element={<NotFound />} />
