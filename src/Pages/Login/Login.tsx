@@ -10,6 +10,7 @@ function Login({ ...props }) {
   const [isActive, setIsActive] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserTabActive, setIsUserTabActive] = useState(true);
+  const [isServiceTabActive, setIsServiceTabActive] = useState(false);
   const [userData, setUserData] = useState({
     password: '',
     email: '',
@@ -40,8 +41,18 @@ function Login({ ...props }) {
     setIsActive((current) => !current);
   }
 
-  function onHandleTabChange() {
-    setIsUserTabActive((current) => !current);
+  function onHandleUserClick() {
+    if (!isUserTabActive && isServiceTabActive) {
+      setIsUserTabActive((current) => !current);
+      setIsServiceTabActive((current) => !current);
+    }
+  }
+
+  function onHandleServiceClick() {
+    if (!isServiceTabActive && isUserTabActive) {
+      setIsServiceTabActive((current) => !current);
+      setIsUserTabActive((current) => !current);
+    }
   }
 
   return (
@@ -59,7 +70,7 @@ function Login({ ...props }) {
               <button
                 className={`${styles.subtitle} ${styles.userButton}`}
                 type="button"
-                onClick={onHandleTabChange}
+                onClick={onHandleUserClick}
               >
                 Водитель
               </button>
@@ -73,18 +84,18 @@ function Login({ ...props }) {
               <button
                 className={`${styles.subtitle} ${styles.userButton}`}
                 type="button"
-                onClick={onHandleTabChange}
+                onClick={onHandleServiceClick}
               >
                 Автосервис
               </button>
               <div
                 className={`${
-                  !isUserTabActive ? styles.underline : styles.underlineDisabled
+                  isServiceTabActive ? styles.underline : styles.underlineDisabled
                 }`}
               />
             </div>
           </div>
-          <h3 className={styles.subtitle}>Почта</h3>
+          <h3 className={styles.label}>Почта</h3>
           <input
             className={styles.input}
             type="email"
@@ -96,16 +107,16 @@ function Login({ ...props }) {
             required
           />
           <div className={styles.password_text}>
-            <h3 className={styles.subtitle}>Пароль</h3>
+            <h3 className={styles.label}>Пароль</h3>
             <Link
-              className={`${styles.subtitle} ${styles.link}`}
+              className={`${styles.label} ${styles.link}`}
               rel="stylesheet"
               to="/reset-password"
             >
               Не помню пароль
             </Link>
           </div>
-          <div className={styles.password_input}>
+          <div className={styles.passwordBlock}>
             <input
               className={`${styles.input} ${styles.input_password}`}
               type={isActive ? 'text' : 'password'}
@@ -139,7 +150,9 @@ function Login({ ...props }) {
         </form>
       </div>
       <div className={styles.registrationBlock}>
-        <p className={styles.subtitle}>Новый пользователь?</p>
+        <p className={styles.subtitle} id="newUser">
+          Новый пользователь?
+        </p>
         <Link
           rel="stylesheet"
           to="/registration"
