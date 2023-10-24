@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 40px 40px 35px;
+  padding: 40px 0 35px;
   max-width: 1120px;
   width: 100%;
   position: sticky;
@@ -90,6 +90,7 @@
   line-height: 165%;
   color: #dedede;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .enterText:hover {
@@ -120,6 +121,12 @@
 
 .enterText_icon:hover::before {
   background-color: #770022;
+}
+
+@media screen and (max-width: 1439px) {
+  .header {
+    width: 87.337vw;
+  }
 }
 
 @media (max-width: 900px) {
