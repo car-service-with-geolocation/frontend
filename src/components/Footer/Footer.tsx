@@ -4,7 +4,7 @@ import style from './Footer.module.css';
 function Footer() {
   return (
     <footer className={style.footer}>
-      <p className={style.img_descrition}>Premium Car Services</p>
+      <p className={style.img_descrition}>Find Car Services</p>
       <ul className={style.navigation_wrapper}>
         <li className={style.navigation_wrapper_section}>
           <Link className={style.link} to="/search">
@@ -22,9 +22,9 @@ function Footer() {
           className={style.address_link}
           rel="noreferrer"
           target="_blank"
-          href="https://t.me/@premium_carservies"
+          href="https://t.me/@find_carservies"
         >
-          Telegram: @premium_carservies
+          Telegram: @find_carservies
         </a>
         <a
           className={style.address_link}
