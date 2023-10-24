@@ -28,6 +28,11 @@
   justify-items: legacy;
 }
 
+.select_position {
+  width: 289px;
+  margin-left: 60px;
+}
+
 .inputWrapper {
   position: relative;
 }
@@ -112,6 +117,10 @@
     grid-template-rows: 60px 60px 0;
     gap: 20px;
     padding: 30px 0 10px 0;
+  }
+
+  .select_position {
+    margin-left: 0;
   }
 
   .inputWrapper {

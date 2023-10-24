@@ -1,15 +1,24 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
+import ApplicationAccept from '../../components/ApplicationAccept/ApplicationAccept';
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
+import BestServiceCardMini from '../../components/BestServiceCardMini/BestServiceCardMini';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import { allCheckboxes } from '../../utils/constants';
+import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
 
-function ApplicationPage() {
+export type TApplicationPageProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onClick: () => void;
+};
+
+function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   const dispatch = useAppDispatch();
   const location = useParams();
   const services = useAppSelector((store) => store.mainAutoServices.data);
@@ -23,6 +32,8 @@ function ApplicationPage() {
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isValid, setIsValid] = useState(true);
+  // const [isApplicationAcceptOpen, setIsApplicationAcceptOpen] = useState(false);
+  const { width } = useWindowWidth();
 
   useEffect(() => {
     dispatch(fetchAutoServiceId(location.id));
@@ -47,12 +58,49 @@ function ApplicationPage() {
   return (
     <div className={styles.applicationContainer}>
       <section className={styles.wrapper}>
-        <p
-          className={styles.way}
-        >{`Главная\u00A0\u00A0 / \u00A0\u00A0Поиск автосервисов\u00A0\u00A0 / \u00A0\u00A0${applicationService.company.title}\u00A0\u00A0 / \u00A0\u00A0Создание заявки`}</p>
+        {width >= 800 ? (
+          <ul className={styles.menu__list}>
+            <li className={`${styles.menu__item} ${styles.link}`}>
+              <Link to="/" className={styles.link}>
+                Главная
+              </Link>
+              /
+            </li>
+            <li className={`${styles.menu__item} ${styles.link}`}>
+              <Link to="/search" className={styles.link}>
+                Поиск автосервисов
+              </Link>
+              /
+            </li>
+            <li className={`${styles.menu__item} ${styles.link}`}>
+              <Link to={`/service/${location.id}`} className={styles.link}>
+                {applicationService.company.title}
+              </Link>
+              /
+            </li>
+            <li className={`${styles.menu__item} ${styles.link}`}>
+              <Link to={`/service/${location.id}/application`} className={styles.link}>
+                Создание заявки
+              </Link>
+            </li>
+          </ul>
+        ) : (
+          <BestServiceCardMini
+            image={applicationService.company.logo}
+            id={applicationService.company.id}
+            title={applicationService.company.title}
+            rating={applicationService.rating}
+            votes={applicationService.votes}
+            address={applicationService.address}
+            openfrom={applicationService.openfrom}
+            openuntil={applicationService.openuntil}
+          />
+        )}
+
         <div className={`${styles.ellipse} ${styles.ellipse1}`} />
         <div className={`${styles.ellipse} ${styles.ellipse2}`} />
         <div className={`${styles.ellipse} ${styles.ellipse3}`} />
+
         <h2 className={styles.title}>Создание заявки</h2>
         <div className={styles.applicationWrapper}>
           <form
@@ -60,31 +108,23 @@ function ApplicationPage() {
             onSubmit={(e) => e.preventDefault()}
             action="submit"
           >
-            <h3 className={styles.subtitle}>Об автомобиле</h3>
-            <label className={styles.textAreaTitle} htmlFor="carModel">
-              Марка и модель
-            </label>
-            <input
-              className={styles.formText}
-              type="text"
-              name="carModel"
-              id="carModel"
-              placeholder="BMW i5 M60 xDrive"
-              required
-            />
-            <label className={styles.textAreaTitle} htmlFor="carInfo">
-              Еще важная инфа
-            </label>
-            <input
-              className={styles.formText}
-              type="text"
-              name="carInfo"
-              id="carInfo"
-              placeholder="Инфа"
-            />
-            <h3 className={styles.subtitle}>О вас</h3>
-            <fieldset className={styles.aboutUserSection}>
-              <div className={styles.phoneInfo}>
+            <div className={styles.infoblock}>
+              <div className={styles.info}>
+                <h3 className={styles.subtitle}>Об автомобиле</h3>
+                <label className={styles.textAreaTitle} htmlFor="carModel">
+                  Марка и модель
+                </label>
+                <input
+                  className={styles.formText}
+                  type="text"
+                  name="carModel"
+                  id="carModel"
+                  placeholder="BMW i5 M60 xDrive"
+                  required
+                />
+              </div>
+              <div className={styles.info}>
+                <h3 className={styles.subtitle}>О вас</h3>
                 <label className={styles.textAreaTitle} htmlFor="tel">
                   Номер телефона
                 </label>
@@ -97,41 +137,15 @@ function ApplicationPage() {
                   required
                 />
               </div>
-              <div className={styles.mailInfo}>
-                <label className={styles.textAreaTitle} htmlFor="email">
-                  Почта
-                </label>
-                <input
-                  className={styles.formText}
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="mekhri1999@gmail.com"
-                  required
-                />
-              </div>
-            </fieldset>
+            </div>
             <h3 className={styles.subtitle}>Опишите, что случилось</h3>
             <textarea
               className={styles.formText}
               wrap="soft"
               name=""
-              id=""
+              id="problemDescription"
               placeholder="Что-то стучит, когда еду..."
             />
-            <fieldset className={styles.aboutUserSection}>
-              {checkboxes.map((checkbox, index) => {
-                return (
-                  <Checkbox
-                    key={checkbox.name}
-                    isChecked={checkbox.checked}
-                    label={checkbox.name}
-                    checkHandler={() => onHandleChange(index)}
-                    index={index}
-                  />
-                );
-              })}
-            </fieldset>
             <h3 className={styles.subtitle}>Прикрепите фотографии поломки</h3>
             <h4 className={styles.textRemark}>(по возможности)</h4>
             <div className={styles.imageInputsContainer}>
@@ -160,31 +174,55 @@ function ApplicationPage() {
                 placeholder=""
               />
             </div>
+            <fieldset className={styles.personalData}>
+              {checkboxes.map((checkbox, index) => {
+                return (
+                  <Checkbox
+                    key={checkbox.name}
+                    isChecked={checkbox.checked}
+                    label={checkbox.name}
+                    checkHandler={() => onHandleChange(index)}
+                    index={index}
+                  />
+                );
+              })}
+            </fieldset>
+
             <button
               className={`${styles.submitButton} ${
                 !isValid ? styles.submitButton_disable : ''
               }`}
               type="submit"
               disabled={!isValid}
+              onClick={onClick}
             >
               Отправить заявку
             </button>
           </form>
-          <article className={styles.card}>
-            <h3 className={styles.subtitle}>Автосервис</h3>
-            <BestServiceCard
-              image={applicationService.company.logo}
-              id={applicationService.company.id}
-              title={applicationService.company.title}
-              rating={applicationService.rating}
-              votes={applicationService.votes}
-              address={applicationService.address}
-              openfrom={applicationService.openfrom}
-              openuntil={applicationService.openuntil}
-            />
-          </article>
+          {width >= 800 ? (
+            <article className={styles.card}>
+              <h3 className={styles.subtitle}>Автосервис</h3>
+              <BestServiceCard
+                image={applicationService.company.logo}
+                id={applicationService.company.id}
+                title={applicationService.company.title}
+                rating={applicationService.rating}
+                votes={applicationService.votes}
+                address={applicationService.address}
+                openfrom={applicationService.openfrom}
+                openuntil={applicationService.openuntil}
+              />
+            </article>
+          ) : (
+            <span />
+          )}
         </div>
       </section>
+      <ApplicationAccept
+        isOpen={isOpen}
+        onClose={onClose}
+        // onOverlayClick={() => {}}
+      />
     </div>
   );
 }

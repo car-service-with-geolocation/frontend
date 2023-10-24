@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import styles from './styles/styles.module.css';
 
 type TPropsCheckbox = {
@@ -11,7 +9,7 @@ type TPropsCheckbox = {
 
 function Checkbox({ isChecked, label, checkHandler, index }: TPropsCheckbox) {
   return (
-    <div className={styles.phoneInfo}>
+    <div className={styles.container}>
       <label
         className={`${styles.label} ${
           isChecked ? styles.checkboxLabel_active : styles.checkboxLabel
@@ -33,10 +31,3 @@ function Checkbox({ isChecked, label, checkHandler, index }: TPropsCheckbox) {
 }
 
 export default Checkbox;
-
-Checkbox.propTypes = {
-  isChecked: PropTypes.bool.isRequired,
-  label: PropTypes.string.isRequired,
-  checkHandler: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
-};

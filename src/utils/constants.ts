@@ -37,8 +37,7 @@ const baseUrl = 'https://find-car-service.ru/api/v1/';
 const servicesPerPage = 6;
 
 const allCheckboxes = [
-  { name: 'Срочный ремонт', checked: false },
-  { name: 'Нужен эвакуатор', checked: false },
+  { name: 'Даю согласие на обработку персональных данных', checked: true },
 ];
 
 const initialFeedBack = [
@@ -232,6 +231,9 @@ const initialFeedBack = [
   },
 ];
 
+const REGEXP_EMAIL =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
 export {
   allCheckboxes,
   baseUrl,
@@ -241,6 +243,7 @@ export {
   immediateOptions,
   initialFeedBack,
   navigatorOptions,
+  REGEXP_EMAIL,
   reviewOptions,
   servicesPerPage,
   YMAP_API_KEY,
