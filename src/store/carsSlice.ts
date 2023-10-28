@@ -18,7 +18,7 @@ const initialState: TInitialState = {
 export const fetchCars = createAsyncThunk<TCar[], undefined, { rejectValue: string }>(
   'cars/fetchCars',
   async function (_, { rejectWithValue }) {
-    const response = await fetch(`${baseUrl}car_models/`, {
+    const response = await fetch(`${baseUrl}autoservice/car_models`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
