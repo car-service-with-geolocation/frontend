@@ -2,7 +2,7 @@
   "name": "car-service-with-geolocation-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/",
   "scripts": {
     "dev": "set REACT_APP_ENV=development&& react-scripts start",
     "start": "set REACT_APP_ENV=production&& react-scripts start",
