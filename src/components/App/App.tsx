@@ -14,6 +14,7 @@ import ServicePage from '../../Pages/ServicePage/ServicePages';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
 import style from './styles/App.module.css';
 
 function App() {
@@ -90,8 +91,11 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
-      {/* <Routes>
+      <HideRouteComponent
+        component={Footer}
+        hidePaths={['/reset-password', '/registration', '/login']}
+      />
+      {/* <Routes></Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login"
         element={

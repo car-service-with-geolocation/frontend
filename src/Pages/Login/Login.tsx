@@ -3,9 +3,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Checkbox from '../../components/Checkbox/Checkbox';
+import { useAppDispatch } from '../../store';
+import { fetchUserLogin } from '../../store/authSlice';
 import styles from './styles/styles.module.css';
 
-function Login({ ...props }) {
+function Login() {
+  const dispatch = useAppDispatch();
   const [isChecked, setIsChecked] = useState(false);
   const [isActive, setIsActive] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -27,10 +30,12 @@ function Login({ ...props }) {
   function handleSubmit(evt: any) {
     evt.preventDefault();
     // eslint-disable-next-line react/prop-types
-    props.onLoginUserData({
-      password: userData.password,
-      email: userData.email,
-    });
+    dispatch(
+      fetchUserLogin({
+        password: userData.password,
+        username: userData.email,
+      })
+    );
   }
 
   function onHandleCheck() {
@@ -64,6 +69,7 @@ function Login({ ...props }) {
           onSubmit={handleSubmit}
           className={styles.form}
           action="submit"
+          noValidate
         >
           <div className={styles.userblock}>
             <div className={styles.tabBlock}>

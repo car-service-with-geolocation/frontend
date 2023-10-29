@@ -8,6 +8,8 @@ function Header() {
   const location = useLocation();
 
   const [isActive, setIsActive] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     if (isActive) {
@@ -26,7 +28,7 @@ function Header() {
       <div className={style.block}>
         <Link className={style.logoLink} to="/">
           <img className={style.logoImg} src={carLogo} alt="Логотип" />
-          <p className={style.logoText}>Premium Car Services</p>
+          <p className={style.logoText}>Find Car Services</p>
         </Link>
         <div>
           <button
@@ -61,7 +63,12 @@ function Header() {
           </div>
         </div>
       </div>
-      <p className={style.enterText}>Вход</p>
+      <Link
+        to={isLoggedIn ? '/' : '/login'}
+        className={`${isLoggedIn ? style.enterText_icon : style.enterText}`}
+      >
+        Вход
+      </Link>
     </header>
   );
 }

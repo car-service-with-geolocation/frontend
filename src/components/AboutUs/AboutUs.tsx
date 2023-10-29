@@ -9,8 +9,8 @@ function AboutUs() {
       <div className={style.container}>
         <h2 className={style.title}>О нас</h2>
         <p className={style.subtitle}>
-          Premium Car Services - ваш надежный партнер в премиум-обслуживании дорогих
-          автомобилей
+          Find Car Services - ваш надежный партнер в премиум-обслуживании дорогих
+          автомобилей.
         </p>
         <p className={style.subtitle}>Мы предоставляем:</p>
         <ul className={style.table}>
