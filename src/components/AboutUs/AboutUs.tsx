@@ -10,7 +10,7 @@ function AboutUs() {
         <h2 className={style.title}>О нас</h2>
         <p className={style.subtitle}>
           Find Car Services - ваш надежный партнер в премиум-обслуживании дорогих
-          автомобилей
+          автомобилей.
         </p>
         <p className={style.subtitle}>Мы предоставляем:</p>
         <ul className={style.table}>
