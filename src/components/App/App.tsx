@@ -13,6 +13,7 @@ import Registration from '../../Pages/Registration/Registration';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
 import style from './styles/App.module.css';
 
@@ -52,6 +53,7 @@ function App() {
   return (
     <div className={style.app}>
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
