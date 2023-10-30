@@ -13,9 +13,9 @@ function Feedback({ onClick }: TFeedbackProps) {
       className={styles.form}
       action="submit"
     >
-      <h2 className={styles.formHeading}>Ваше мнение для нас важно!</h2>
+      <h2 className={styles.formHeading}>Поделитесь своим мнением!</h2>
       <p className={styles.formDescription}>
-        Поделитесь опытом использования нашего сервиса. Это поможет нам стать лучше
+        Расскажите об опыте использования нашего сервиса. Это поможет нам стать лучше
       </p>
       <textarea
         className={styles.formText}
@@ -24,7 +24,9 @@ function Feedback({ onClick }: TFeedbackProps) {
         id=""
         placeholder="Хочу особенно выделить ..."
       />
-      <input className={styles.button} type="submit" onClick={onClick} />
+      <button className={styles.button} type="submit" onClick={onClick}>
+        Отправить
+      </button>
     </form>
   );
 }
