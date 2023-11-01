@@ -156,6 +156,7 @@
 @media screen and (max-width: 640px) {
   .header {
     padding: 15px 20px 10px;
+    width: 100%;
   }
 
   .block {
