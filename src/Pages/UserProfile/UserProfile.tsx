@@ -7,16 +7,25 @@ function UserProfile() {
   return (
     <div className={styles.userProfile}>
       <div className={styles.userProfile__menu}>
-        <h2 className={styles.userProfile__userName}>Вася Васин</h2>
+        <h2 className={styles.userProfile__userFullName}>
+          <p className={styles.userProfile__userName}>Вася</p>
+          <p>Васин</p>
+        </h2>
         <ul className={styles.userProfile__menuList}>
           <li className={styles.userProfile__menuItem}>
-            <Link to="">Мои данные</Link>
+            <Link to="" className={styles.userProfile__menuLink}>
+              Мои данные
+            </Link>
           </li>
           <li className={styles.userProfile__menuItem}>
-            <Link to="">Мои заявки</Link>
+            <Link to="" className={styles.userProfile__menuLink}>
+              Мои заявки
+            </Link>
           </li>
           <li className={styles.userProfile__menuItem}>
-            <Link to="">Выход</Link>
+            <Link to="" className={styles.userProfile__menuLink}>
+              Выход
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../store';
 import BestServiceCard from '../BestServiceCard/BestServiceCard';
+import ServiceCard from '../ServiceCard/ServiceCard';
 import style from './styles/styles.module.css';
 
 function BestService() {
@@ -13,6 +14,26 @@ function BestService() {
         {servicesToRender.map((service) => {
           return (
             <BestServiceCard
+              key={service.id}
+              image={service.company.logo}
+              title={service.company.title}
+              rating={service.rating}
+              votes={service.votes}
+              address={service.address}
+              openfrom={service.openfrom}
+              openuntil={service.openuntil}
+              id={service.id}
+            />
+          );
+        })}
+      </div>
+      <div style={{ border: '1px solid #ccc', margin: 120, fontSize: 40 }}>
+        Здесь начинаються карточки ServiceCard
+      </div>
+      <div className={style.cardscontainer}>
+        {servicesToRender.map((service) => {
+          return (
+            <ServiceCard
               key={service.id}
               image={service.company.logo}
               title={service.company.title}

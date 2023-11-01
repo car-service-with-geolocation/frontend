@@ -1,3 +1,43 @@
-.userAccaunt {
+.userProfile {
+  max-width: 1120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px;
   margin: 165px auto 150px;
+}
+
+.userProfile__menu {
+  max-width: 170px;
+}
+
+.userProfile__userFullName {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0 0 30px;
+}
+
+.userProfile__menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.userProfile__menuItem {
+}
+
+.userProfile__menuLink {
+  text-decoration: none;
+  color: inherit;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.UserProfile__content {
 }
