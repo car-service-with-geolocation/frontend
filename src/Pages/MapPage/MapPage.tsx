@@ -4,16 +4,16 @@
 import './immediate.css';
 
 import { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import Select, { SingleValue } from 'react-select';
 
-import Pagination from '../../components/Pagination/Pagination';
 import Search from '../../components/Search/Search';
 import SearchServiceCard from '../../components/SearchServiceCard/SearchServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
 import { immediateOptions, servicesPerPage } from '../../utils/constants';
-import { TImidiatevalue } from '../../utils/types';
+import { TImidiatevalue, TService } from '../../utils/types';
 import style from './MapPage.module.css';
 
 function MapPage() {
@@ -21,23 +21,15 @@ function MapPage() {
   const servicesByCoord = useAppSelector((store) => store.autoServiceByCoord.data);
   const servicesByAll = useAppSelector((store) => store.mainAutoServices.data);
   // state
-  const [servicesOnPage, setServicesOnPage] = useState(servicesByAll);
-  const [currentPage, setCurrentPage] = useState(1);
   const [currentSearchType, setCurrentSearchType] = useState(immediateOptions[1].value);
   const [screenWidth, setScreenWidth] = useState('');
   const [content, setContent] = useState('card');
+  // pagination state
+  const [itemOffset, setItemOffset] = useState(0);
+  const [currentItems, setCurrentItems] = useState<TService[]>([]);
+  const [pageCount, setPageCount] = useState(0);
 
-  const lastServiceIndex = currentPage * servicesPerPage;
-  const firstServiceIndex = lastServiceIndex - servicesPerPage;
-  const currentServices = servicesOnPage.slice(firstServiceIndex, lastServiceIndex);
-
-  const totalServices = servicesOnPage.length;
-  const pages = [];
   const dispatch = useAppDispatch();
-
-  for (let i = 1; i <= Math.ceil(totalServices / servicesPerPage); i += 1) {
-    pages.push(i);
-  }
 
   function handleChangeContent() {
     content === 'map' ? setContent('card') : setContent('map');
@@ -57,9 +49,9 @@ function MapPage() {
 
   useEffect(() => {
     if (currentSearchType === immediateOptions[1].value) {
-      setServicesOnPage(servicesByAll);
+      setCurrentItems(servicesByAll);
     } else {
-      setServicesOnPage(servicesByCoord);
+      setCurrentItems(servicesByCoord);
     }
   }, [currentSearchType, servicesByAll, servicesByCoord]);
 
@@ -84,6 +76,18 @@ function MapPage() {
     servicesByAll.length === 0 ? dispatch(fetchAutoServices()) : '';
     windowWidth();
   }, [dispatch, servicesByAll]);
+
+  // pagination
+  const handlePageClick = (evt: { selected: number }) => {
+    const newOffset = (evt.selected * servicesPerPage) % servicesByAll.length;
+    setItemOffset(newOffset);
+  };
+  useEffect(() => {
+    const endOffset = itemOffset + servicesPerPage;
+    setCurrentItems(servicesByAll.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(servicesByAll.length / servicesPerPage));
+  }, [itemOffset, servicesByAll]);
+
   return (
     <>
       <h1 className={style.title}>Поиск автосервисов</h1>
@@ -117,48 +121,42 @@ function MapPage() {
         </label>
       </div>
       {content === 'card' ? (
-        <>
-          <section className={style.section} aria-label="Секция лучшие сервисы">
-            <div className={style.cardscontainer}>
-              <div className={style.ellipse} />
-              {currentServices.map((service) => {
-                return (
-                  <SearchServiceCard
-                    key={service.id}
-                    image={service.company.logo}
-                    title={service.company.title}
-                    rating={service.rating}
-                    votes={service.votes}
-                    address={service.address}
-                    openfrom={service.openfrom}
-                    openuntil={service.openuntil}
-                    id={service.id}
-                  />
-                );
-              })}
-            </div>
-          </section>
-          <div className={style.paginationContainer}>
-            <button
-              className={`${style.prevlink} ${style.arrowlink}`}
-              onClick={() => {
-                setCurrentPage(currentPage === 1 ? 1 : currentPage - 1);
-              }}
-            />
-            <Pagination
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-              pages={pages}
-            />
-            <button
-              type="button"
-              className={`${style.nextlink} ${style.arrowlink}`}
-              onClick={() => {
-                setCurrentPage(currentPage === pages.length ? 1 : currentPage + 1);
-              }}
-            />
+        <section className={style.section} aria-label="Секция лучшие сервисы">
+          <div className={style.cardscontainer}>
+            <div className={style.ellipse} />
+            {currentItems.map((service) => {
+              return (
+                <SearchServiceCard
+                  key={service.id}
+                  image={service.company.logo}
+                  title={service.company.title}
+                  rating={service.rating}
+                  votes={service.votes}
+                  address={service.address}
+                  openfrom={service.openfrom}
+                  openuntil={service.openuntil}
+                  id={service.id}
+                />
+              );
+            })}
           </div>
-        </>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=""
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={2}
+            pageCount={pageCount}
+            previousLabel=""
+            renderOnZeroPageCount={null}
+            containerClassName={style.pagination}
+            pageLinkClassName={style.link}
+            previousLinkClassName={`${style.prevlink} ${style.arrowlink}`}
+            nextLinkClassName={`${style.nextlink} ${style.arrowlink}`}
+            activeLinkClassName={style.link_activ}
+            breakClassName={`${style.link} ${style.break}`}
+          />
+        </section>
       ) : (
         <div className={style.mapWrapper}>
           <Ymap services={servicesByAll} />

@@ -57,12 +57,17 @@
 
   .react-select__indicator {
     color: #0a0908;
-    transform: rotate(180deg);
-    transition: all 0.6s linear;
+    transition: all 0.5s linear;
   }
 
-  .css-1xc3v61-indicatorContainer {
-    transform: rotate(0deg);
+  .react-select__control--menu-is-open {
+    .react-select__indicator {
+      transform: rotate(180deg);
+    }
+  }
+
+  .react-select__indicator-separator {
+    display: none;
   }
 
   /* Меню */
@@ -82,6 +87,11 @@
     font-style: normal;
     font-weight: 400;
     line-height: 29.7px;
+    scrollbar-width: none;
+  }
+
+  .react-select__menu-list::-webkit-scrollbar {
+    width: 0px;
   }
 
   .react-select__option {
@@ -117,9 +127,9 @@
     border-bottom-right-radius: 20px;
   }
 
-  @media (max-width: 376px) {
+  @media (max-width: 420px) {
     .react-select__control {
-      width: 100%px;
+      width: 305px;
       margin: 0 auto;
     }
 
@@ -139,8 +149,7 @@
     }
 
     .react-select__menu {
-      width: 100%;
-      left: 15px;
+      width: 305px;
     }
 
     .react-select__menu-list {
@@ -148,15 +157,4 @@
       line-height: 24px;
     }
   }
-}
-
-#react-select-2-listbox {
-  width: 100%;
-  border-radius: 20px;
-  background: #dedede;
-  animation: openMenu 0.35s ease-in-out;
-}
-
-::-webkit-scrollbar {
-  width: 0px;
 }

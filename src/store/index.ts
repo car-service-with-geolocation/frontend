@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
+import authSlice from './authSlice';
 import autoServiceByCoordSlice from './autoServiceByCoordSlice';
 import autoServiceIdSlice from './autoServiceIdSlice';
 import autoServiceSlice from './autoServicesSlice';
@@ -18,5 +19,6 @@ export const store = configureStore({
     autoServiceById: autoServiceIdSlice,
     autoServiceByCoord: autoServiceByCoordSlice,
     cars: carsSlice,
+    auth: authSlice,
   },
 });
