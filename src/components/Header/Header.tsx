@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import carLogo from '../../images/car-Logo.svg';
-import style from './styles/Header.module.css';
+import style from './styles/styles.module.css';
 
 function Header() {
   const location = useLocation();
 
   const [isActive, setIsActive] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     if (isActive) {
@@ -64,7 +64,7 @@ function Header() {
         </div>
       </div>
       <Link
-        to={isLoggedIn ? '/' : '/login'}
+        to={isLoggedIn ? '/profile' : '/login'}
         className={`${isLoggedIn ? style.enterText_icon : style.enterText}`}
       >
         Вход

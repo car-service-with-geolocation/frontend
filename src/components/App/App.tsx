@@ -11,10 +11,11 @@ import NotFound from '../../Pages/NotFound/NotFound';
 import PasswordReset from '../../Pages/PasswordReset/PasswordReset';
 import Registration from '../../Pages/Registration/Registration';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
+import UserProfile from '../../Pages/UserProfile/UserProfile';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import style from './styles/App.module.css';
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
         <Route path="/reset-password" element={<PasswordReset />} />
         <Route path="/search" element={<MapPage />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/*" element={<NotFound />} />
         <Route
           path="/service/:id/application"
@@ -108,7 +110,7 @@ function App() {
         <Route path="/profile"
           element={
           <ProtectedRoute>
-          <Profile />
+          <UserProfile />
           </ProtectedRoute>
         }
         />
