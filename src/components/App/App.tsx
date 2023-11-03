@@ -16,6 +16,8 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import UserProfileData from '../UserProfileData/UserProfileData';
+import UserProfileRequest from '../UserProfileRequest/UserProfileRequest';
 import style from './styles/App.module.css';
 
 function App() {
@@ -79,7 +81,10 @@ function App() {
         <Route path="/reset-password" element={<PasswordReset />} />
         <Route path="/search" element={<MapPage />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile />}>
+          <Route path="user-data" element={<UserProfileData />} />
+          <Route path="user-request" element={<UserProfileRequest />} />
+        </Route>
         <Route path="/*" element={<NotFound />} />
         <Route
           path="/service/:id/application"

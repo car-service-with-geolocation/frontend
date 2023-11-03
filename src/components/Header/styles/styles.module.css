@@ -42,6 +42,7 @@
   max-width: 100px;
   margin: 0;
   padding-top: 9px;
+  transition: all 0.3s ease-in-out;
 }
 
 .logoText:hover {
@@ -71,6 +72,7 @@
   color: #dedede;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .linkText:hover {
@@ -91,6 +93,7 @@
   color: #dedede;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .enterText:hover {
@@ -117,6 +120,7 @@
   -webkit-mask-image: url('../../../images/LogInIcon.svg');
   mask-image: url('../../../images/LogInIcon.svg');
   visibility: visible;
+  transition: all 0.3s ease-in-out;
 }
 
 .enterText_icon:hover::before {

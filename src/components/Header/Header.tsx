@@ -64,7 +64,7 @@ function Header() {
         </div>
       </div>
       <Link
-        to={isLoggedIn ? '/profile' : '/login'}
+        to={isLoggedIn ? '/profile/user-data' : '/login'}
         className={`${isLoggedIn ? style.enterText_icon : style.enterText}`}
       >
         Вход

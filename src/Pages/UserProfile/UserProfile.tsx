@@ -1,37 +1,34 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
-import UserProfileData from '../../components/UserProfileData/UserProfileData';
 import styles from './styles/styles.module.css';
 
 function UserProfile() {
   return (
     <div className={styles.userProfile}>
       <div className={styles.userProfile__menu}>
-        <h2 className={styles.userProfile__userFullName}>
-          <p className={styles.userProfile__userName}>Вася</p>
-          <p>Васин</p>
+        <h2 className={styles.userProfile__menuTitle}>
+          <p className={styles.userProfile__menuTitleStroke}>Вася</p>
+          <p className={styles.userProfile__menuTitleStroke}>Васин</p>
         </h2>
         <ul className={styles.userProfile__menuList}>
           <li className={styles.userProfile__menuItem}>
-            <Link to="" className={styles.userProfile__menuLink}>
+            <NavLink to="user-data" className={styles.userProfile__menuLink}>
               Мои данные
-            </Link>
+            </NavLink>
           </li>
           <li className={styles.userProfile__menuItem}>
-            <Link to="" className={styles.userProfile__menuLink}>
+            <NavLink to="user-request" className={styles.userProfile__menuLink}>
               Мои заявки
-            </Link>
+            </NavLink>
           </li>
           <li className={styles.userProfile__menuItem}>
-            <Link to="" className={styles.userProfile__menuLink}>
+            <NavLink to="/" className={styles.userProfile__menuLink}>
               Выход
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
-      <div className={styles.UserProfile__content}>
-        <UserProfileData />
-      </div>
+      <Outlet />
     </div>
   );
 }

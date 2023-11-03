@@ -24,8 +24,8 @@ function UserProfileData() {
   });
 
   async function signUp(userData: IUserProfileData) {
-    return fetch(`${baseUrl}auth/users/`, {
-      method: 'POST',
+    return fetch(`${baseUrl}/users/`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -50,15 +50,15 @@ function UserProfileData() {
   }
 
   return (
-    <div className={styles.userProfileData}>
-      <h1 className={styles.formTitle}>Мои данные</h1>
-      <form
-        id="user-profile-data-form"
-        onSubmit={handleSubmit(onSubmit)}
-        className={styles.form}
-        action="submit"
-        noValidate
-      >
+    <form
+      id="user-profile-data-form"
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}
+      action="submit"
+      noValidate
+    >
+      <h1 className={styles.form__title}>Мои данные</h1>
+      <fieldset className={styles.form__fieldset}>
         <label htmlFor="user-name" className={styles.form__label}>
           Имя
           <input
@@ -92,7 +92,7 @@ function UserProfileData() {
                 message: 'Телефон не соответствует требуемому формату',
               },
             })}
-            type="text"
+            type="tel"
             name="user-phone-number"
             id="user-phone-number"
             className={styles.form__input}
@@ -130,8 +130,8 @@ function UserProfileData() {
         >
           Зарегестрироваться
         </button>
-      </form>
-    </div>
+      </fieldset>
+    </form>
   );
 }
 
