@@ -76,3 +76,29 @@
 .modalButton_main {
   margin: 0 0 65px;
 }
+
+@media screen and (max-width: 575px) {
+  .modalContainer {
+    width: calc(100% - 56px);
+    margin: 54px 20px 0;
+  }
+
+  .modalTitle {
+    font-size: 26px;
+  }
+
+  .modalSubtitle {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 0 60px;
+  }
+
+  .modalImage {
+    margin: 40px 0;
+  }
+
+  .modalButton {
+    margin: 0 20px 136px;
+    min-width: 295px;
+  }
+}
