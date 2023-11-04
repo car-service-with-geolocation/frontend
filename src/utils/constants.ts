@@ -35,6 +35,7 @@ const navigatorOptions = {
 const baseUrl = 'https://find-car-service.ru/api/v1/';
 
 const servicesPerPage = 6;
+const userRequestPerPage = 5;
 
 const allCheckboxes = [
   { name: 'Даю согласие на обработку персональных данных', checked: true },
@@ -248,6 +249,7 @@ export {
   REGEXP_PHONE_NUMBER,
   reviewOptions,
   servicesPerPage,
+  userRequestPerPage,
   YMAP_API_KEY,
   YMAP_VERSION,
 };
