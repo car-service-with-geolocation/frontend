@@ -1,21 +1,18 @@
-export type TUserRequestData = {
-  id: number;
-  autoservice: string;
-  carmodel: string;
-  problem: string;
-  status: string;
-};
+import { TUserRequestData } from '../../utils/types';
 
-export const requestdata = [
+const requestdata: TUserRequestData[] = [
   {
     id: 1,
+    date: '12.04.2022',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
-    problem: 'Поломка двигателся',
-    status: 'В процессе',
+    problem:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi magnam atque, vitae commodi quia incidunt cum maxime nihil! Veniam odit possimus quisquam placeat. Nobis suscipit praesentium autem, esse quae maxime.',
+    status: 'Готов',
   },
   {
     id: 2,
+    date: '12.04.2022',
     autoservice: 'adfasdf фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -23,6 +20,7 @@ export const requestdata = [
   },
   {
     id: 3,
+    date: '12.04.2022',
     autoservice: 'Кurtyuryt фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -30,6 +28,7 @@ export const requestdata = [
   },
   {
     id: 4,
+    date: '12.08.2022',
     autoservice: 'vbsrtgо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -37,6 +36,7 @@ export const requestdata = [
   },
   {
     id: 5,
+    date: '12.08.2022',
     autoservice: 'Коargdfbgуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -44,6 +44,7 @@ export const requestdata = [
   },
   {
     id: 6,
+    date: '12.08.2022',
     autoservice: 'gdrgsdf',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -51,6 +52,7 @@ export const requestdata = [
   },
   {
     id: 7,
+    date: '12.08.2022',
     autoservice: 'a3ardhsgf',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -58,6 +60,7 @@ export const requestdata = [
   },
   {
     id: 8,
+    date: '12.08.2022',
     autoservice: 'aefrr7',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -65,6 +68,7 @@ export const requestdata = [
   },
   {
     id: 9,
+    date: '12.08.2022',
     autoservice: 'afjryu',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -72,6 +76,7 @@ export const requestdata = [
   },
   {
     id: 10,
+    date: '29.12.2022',
     autoservice: 'age6yhd',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -79,6 +84,7 @@ export const requestdata = [
   },
   {
     id: 11,
+    date: '29.12.2022',
     autoservice: 'arfsdrgyj',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -86,6 +92,7 @@ export const requestdata = [
   },
   {
     id: 12,
+    date: '29.12.2022',
     autoservice: 'afsrdg',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -93,6 +100,7 @@ export const requestdata = [
   },
   {
     id: 13,
+    date: '29.12.2022',
     autoservice: 'afgsg',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -100,6 +108,7 @@ export const requestdata = [
   },
   {
     id: 14,
+    date: '29.12.2022',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -107,6 +116,7 @@ export const requestdata = [
   },
   {
     id: 15,
+    date: '29.12.2022',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -114,6 +124,7 @@ export const requestdata = [
   },
   {
     id: 16,
+    date: '01.02.2023',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -121,6 +132,7 @@ export const requestdata = [
   },
   {
     id: 17,
+    date: '01.02.2023',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -128,6 +140,7 @@ export const requestdata = [
   },
   {
     id: 18,
+    date: '01.02.2023',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -135,6 +148,7 @@ export const requestdata = [
   },
   {
     id: 19,
+    date: '01.02.2023',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
@@ -142,9 +156,12 @@ export const requestdata = [
   },
   {
     id: 20,
+    date: '01.02.2023',
     autoservice: 'Колесо фортуны',
     carmodel: 'lamba',
     problem: 'Поломка двигателся',
     status: 'В процессе',
   },
 ];
+
+export default requestdata;

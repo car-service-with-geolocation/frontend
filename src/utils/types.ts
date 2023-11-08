@@ -51,3 +51,12 @@ export type TUserData = {
   car: TCar;
   password: string;
 };
+
+export type TUserRequestData = {
+  id: number;
+  date: string;
+  autoservice: string;
+  carmodel: string;
+  problem: string;
+  status: string;
+};

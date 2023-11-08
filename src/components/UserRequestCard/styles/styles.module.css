@@ -1,0 +1,94 @@
+@keyframes rotateArrow {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.requestCard {
+  width: 335px;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  gap: 20px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: rgba(123, 104, 126, 0.2);
+}
+
+.requestCard__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.requestCard__about {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.requestCard__text {
+  margin: 0;
+}
+
+.requestCard__text_decor {
+  color: white;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.requestCard__problemText {
+  margin: 0;
+  font-size: 18px;
+  line-height: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 4em;
+  transition: all 1s;
+}
+
+.requestCard__problemText_active {
+  -webkit-box-orient: unset;
+  max-height: 40em;
+}
+
+.requestCard__arrowContainer {
+  width: 100%;
+  height: 1px;
+  position: relative;
+}
+
+.requestCard__arrow {
+  border: none;
+  display: block;
+  width: 24px;
+  aspect-ratio: 1/1;
+  background: Url('../../../images/down-arrow.svg') no-repeat center / cover;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  max-height: 3em;
+  transition: all 1s;
+}
+
+.requestCard__arrow:hover {
+  opacity: 0.7;
+}
+
+.requestCard__arrow_active {
+  transform: rotate(180deg) translate(50%, 50%);
+}

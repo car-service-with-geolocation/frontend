@@ -1,17 +1,11 @@
+import { TUserRequestData } from '../../utils/types';
 import styles from './styles/styles.module.css';
 
-export type TUserRequestData = {
-  id: number;
-  autoservice: string;
-  carmodel: string;
-  problem: string;
-  status: string;
-};
-type TUserProfileRequestTable = {
+interface IUserProfileRequestTable {
   requests: TUserRequestData[];
-};
+}
 
-export function UserProfileRequestTable({ requests }: TUserProfileRequestTable) {
+function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
   return (
     <table className={styles.table}>
       <thead className={styles.table__head}>
@@ -42,3 +36,5 @@ export function UserProfileRequestTable({ requests }: TUserProfileRequestTable) 
     </table>
   );
 }
+
+export default UserProfileRequestTable;

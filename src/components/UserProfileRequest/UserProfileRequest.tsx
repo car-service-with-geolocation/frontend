@@ -2,19 +2,20 @@ import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import { userRequestPerPage } from '../../utils/constants';
-import {
-  TUserRequestData,
-  UserProfileRequestTable,
-} from '../UserProfileRequestTable/UserProfileRequestTable';
-import { requestdata } from './requestdata';
+import { TUserRequestData } from '../../utils/types';
+import useWindowWidth from '../../utils/windowWidth';
+import UserProfileRequestList from '../UserProfileRequestList/UserProfileRequestList';
+import UserProfileRequestTable from '../UserProfileRequestTable/UserProfileRequestTable';
+import requestdata from './requestdata';
 import styles from './styles/styles.module.css';
 
 function UserProfileRequest() {
-  // const [screenWidth, setScreenWidth] = useState('');
   // pagination state
   const [itemOffset, setItemOffset] = useState(0);
   const [userRequestData, setUserRequestData] = useState<TUserRequestData[]>([]);
   const [pageCount, setPageCount] = useState(0);
+
+  const { width } = useWindowWidth();
 
   useEffect(() => {
     setUserRequestData(requestdata);
@@ -31,20 +32,14 @@ function UserProfileRequest() {
     setItemOffset(newOffset);
   };
 
-  // function windowWidth() {
-  //   const width = window.innerWidth;
-
-  //   if (width >= 1100) {
-  //     setScreenWidth('desktop');
-  //   } else {
-  //     setScreenWidth('mobile');
-  //   }
-  // }
-
   return (
-    <div className={styles.userRequest}>
+    <section className={styles.userRequest}>
       <h1 className={styles.title}>Мои заявки</h1>
-      <UserProfileRequestTable requests={userRequestData} />
+      {width > 900 ? (
+        <UserProfileRequestTable requests={userRequestData} />
+      ) : (
+        <UserProfileRequestList requests={userRequestData} />
+      )}
       <ReactPaginate
         breakLabel="..."
         nextLabel=""
@@ -61,7 +56,7 @@ function UserProfileRequest() {
         activeLinkClassName={styles.link_activ}
         breakClassName={`${styles.link} ${styles.break}`}
       />
-    </div>
+    </section>
   );
 }
 

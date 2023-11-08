@@ -9,6 +9,7 @@
 }
 
 .userProfile__menu {
+  min-width: 110px;
   width: 170px;
 }
 

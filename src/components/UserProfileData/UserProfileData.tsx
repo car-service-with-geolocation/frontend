@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import { baseUrl, REGEXP_EMAIL, REGEXP_PHONE_NUMBER } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
-function UserProfileData() {
-  interface IUserProfileData {
-    'user-name': string;
-    'user-phone-number': string;
-    'user-email': string;
-  }
+interface IUserProfileData {
+  'user-name': string;
+  'user-phone-number': string;
+  'user-email': string;
+}
 
+function UserProfileData() {
   const {
     register,
     handleSubmit,
