@@ -31,7 +31,9 @@ function FeedbackPopup({
                 action="submit"
               >
                 <div className={styles.infoblock}>
-                  <p className={styles.subtitle}>Как вас зовут?</p>
+                  <p className={`${styles.subtitle} ${styles.subtitle_name}`}>
+                    Как вас зовут?
+                  </p>
                   <input
                     className={styles.input}
                     type="text"
@@ -41,7 +43,7 @@ function FeedbackPopup({
                     required
                   />
                 </div>
-                <div className={styles.infoblock}>
+                <div className={`${styles.infoblock} ${styles.infoblock_rating}`}>
                   <h3 className={styles.subtitle}>Оцените ваши впечатления</h3>
                   <StarRating />
                 </div>
