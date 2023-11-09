@@ -1,4 +1,3 @@
-// import { MouseEventHandler } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import success from '../../../images/success.svg';
@@ -8,7 +7,6 @@ import styles from './styles/styles.module.css';
 type TPropsApplicationAcceptPopup = {
   isOpen: boolean;
   onClose: () => void;
-  // onOverlayClick: MouseEventHandler<HTMLDivElement>;
 };
 
 function ApplicationAcceptPopup({ isOpen, onClose }: TPropsApplicationAcceptPopup) {
@@ -17,7 +15,11 @@ function ApplicationAcceptPopup({ isOpen, onClose }: TPropsApplicationAcceptPopu
 
   function handleClick() {
     onClose();
-    navigate('/');
+    if (location.pathname === '/registration') {
+      navigate('/login');
+    } else {
+      navigate('/');
+    }
   }
 
   function showMessage() {
