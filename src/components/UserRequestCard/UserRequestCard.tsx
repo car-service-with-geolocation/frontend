@@ -1,3 +1,4 @@
+// import { number } from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
 import { TUserRequestData } from '../../utils/types';
@@ -9,6 +10,7 @@ interface IUserRequestCard {
 
 function UserRequestCard({ requestData }: IUserRequestCard) {
   const overflowingRef = useRef<null | HTMLParagraphElement>(null);
+  const clampHeight = useRef<number>(0);
 
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -17,10 +19,30 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
     const element = overflowingRef?.current;
     if (element && element.scrollHeight > element.clientHeight) {
       setIsOverflowing(true);
+      clampHeight.current = element.clientHeight;
     } else {
       setIsOverflowing(false);
     }
   }, []);
+
+  useEffect(() => {
+    const element = overflowingRef?.current;
+    if (element) {
+      if (isVisible) {
+        element?.classList.remove(styles.clampText);
+        window.requestAnimationFrame(() => {
+          if (element) {
+            element.style.maxHeight = `${element.scrollHeight}px`;
+          }
+        });
+      } else {
+        element.style.maxHeight = `${clampHeight.current}px`;
+        setTimeout(() => {
+          element?.classList.add(styles.clampText);
+        }, 1000);
+      }
+    }
+  }, [isVisible]);
 
   const handleClick = () => {
     setIsVisible((state) => !state);
@@ -48,9 +70,7 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
         <p className={styles.requestCard__text}>Описание проблемы</p>
         <p
           ref={overflowingRef}
-          className={`${styles.requestCard__problemText} ${
-            isVisible && styles.requestCard__problemText_active
-          }`}
+          className={`${styles.requestCard__problemText} ${styles.clampText}`}
         >
           {requestData.problem}
         </p>

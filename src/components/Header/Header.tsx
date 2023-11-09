@@ -9,7 +9,7 @@ function Header() {
 
   const [isActive, setIsActive] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     if (isActive) {
