@@ -19,14 +19,14 @@
   display: flex;
   visibility: visible;
   opacity: 1;
-  z-index: 2;
+  z-index: 6;
 }
 
 .modal {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   min-width: 640px;
   border-radius: 20px;
   background: #0a0908;
@@ -44,7 +44,7 @@
   background-color: transparent;
   background-position: 50% 50%;
   cursor: pointer;
-  z-index: 5;
+  z-index: 7;
 }
 
 .modalCloseButton_none {
@@ -67,7 +67,7 @@
   font-weight: 600;
   line-height: normal;
   cursor: pointer;
-  z-index: 5;
+  z-index: 7;
 }
 
 .modalButton:hover {
@@ -80,4 +80,21 @@
 
 .modalButton_main {
   margin: 0 0 65px;
+}
+
+@media screen and (max-width: 780px) {
+  .modal {
+    max-width: calc(100% - 40px);
+    min-width: 535px;
+  }
+
+  .modalCloseButton {
+    margin: 40px 20px 0 auto;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .modal {
+    min-width: 335px;
+  }
 }

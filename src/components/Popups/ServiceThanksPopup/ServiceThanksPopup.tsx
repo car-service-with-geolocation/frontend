@@ -1,24 +1,21 @@
-// import { MouseEventHandler } from 'react';
-
-import success from '../../images/success.svg';
-import Modal from '../Modal/Modal';
+import success from '../../../images/ThanksLogo.svg';
+import Modal from '../../Modal/Modal';
 import styles from './styles/styles.module.css';
 
-type TPropsApplicationAccept = {
+type TPropsServiceThanksPopup = {
   isOpen: boolean;
   onClose: () => void;
-  // onOverlayClick: MouseEventHandler<HTMLDivElement>;
 };
 
-function ApplicationAccept({ isOpen, onClose }: TPropsApplicationAccept) {
+function ServiceThanksPopup({ isOpen, onClose }: TPropsServiceThanksPopup) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <>
         <div className={styles.modalContainer}>
-          <h2 className={styles.modalTitle}>Заявка отправлена</h2>
+          <h2 className={styles.modalTitle}>Спасибо!</h2>
           <img className={styles.modalImage} src={success} alt="логотип сообщения" />
           <h3 className={styles.modalSubtitle}>
-            В течение 5 минут менеджер свяжется с&nbsp;вами, чтобы уточнить детали заявки
+            Ваш отзыв сохранен! Мы опубликуем его сразу после проверки
           </h3>
           <button className={styles.modalButton} onClick={onClose}>
             Отлично
@@ -29,4 +26,4 @@ function ApplicationAccept({ isOpen, onClose }: TPropsApplicationAccept) {
     </Modal>
   );
 }
-export default ApplicationAccept;
+export default ServiceThanksPopup;

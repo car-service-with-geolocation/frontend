@@ -1,5 +1,9 @@
 .applicationContainer {
   margin: 0 auto -55px;
+  overflow: hidden;
+  max-width: 1120px;
+  min-width: 335px;
+  width: 100%;
 }
 
 .wrapper {
@@ -55,6 +59,7 @@
   border-radius: 395px;
   background: rgba(119, 0, 34, 0.3);
   filter: blur(450px);
+  z-index: 1;
 }
 
 .ellipse1 {
@@ -92,6 +97,7 @@
 
 .infoblock {
   display: flex;
+  justify-content: space-between;
 }
 
 .info {
@@ -229,6 +235,7 @@
   font-weight: 600;
   line-height: normal;
   cursor: pointer;
+  z-index: 6;
 }
 
 .card {
@@ -250,33 +257,25 @@
   color: #7a7a7a;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 1439px) {
   .applicationContainer {
-    margin: 60px 20px 30px;
+    width: 87.337vw;
   }
+}
 
+@media screen and (max-width: 1200px) {
   .applicationForm {
-    max-width: 340px;
-    margin: 0;
+    margin: 0 35px 0 0;
   }
+}
 
-  .infoblock {
-    flex-direction: column;
-  }
-
-  .info {
-    max-width: 335px;
-  }
-
+@media screen and (max-width: 1120px) {
   .info:first-of-type {
-    margin: 0;
+    margin: 0 20px 0 0;
   }
+}
 
-  .textAreaTitle {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
+@media screen and (max-width: 1000px) {
   .title {
     margin: 60px 0 -10px;
     font-size: 32px;
@@ -308,7 +307,6 @@
   }
 
   .formText[id='problemDescription'] {
-    max-width: 275px;
     padding: 15px 30px;
     height: 99px;
     font-size: 18px;
@@ -317,6 +315,47 @@
 
   .textRemark {
     margin: -10px 0 25px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .applicationContainer {
+    margin: 60px 20px 30px;
+  }
+
+  .applicationForm {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .infoblock {
+    flex-direction: column;
+  }
+
+  .info {
+    max-width: 100%;
+  }
+
+  .info:first-of-type {
+    margin: 0;
+  }
+
+  .textAreaTitle {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .formText[id='problemDescription'] {
+    max-width: calc(100% - 60px);
   }
 
   .imageInputsContainer {

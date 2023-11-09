@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-no-bind */
 import '../MapPage/immediate.css';
 
-import { useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 import Select, { SingleValue } from 'react-select';
 
-import FeedbackPopup from '../../components/FeedbackPopup/FeedbackPopup';
+import FeedbackPopup from '../../components/Popups/FeedbackPopup/FeedbackPopup';
 import Preloader from '../../components/Preloader/Preloader';
 import Ymap from '../../components/Ymap/Ymap';
 import star from '../../images/YmapStarIcon.svg';
@@ -22,9 +22,17 @@ export type TServicePageProps = {
   isOpen: boolean;
   onClose: () => void;
   onClick: () => void;
+  handleFeedbackSubmit: (evt: SyntheticEvent) => void;
+  isServiceThanksOpen: boolean;
 };
 
-function ServicePage({ isOpen, onClose, onClick }: TServicePageProps) {
+function ServicePage({
+  isOpen,
+  onClose,
+  onClick,
+  handleFeedbackSubmit,
+  isServiceThanksOpen,
+}: TServicePageProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -192,7 +200,12 @@ function ServicePage({ isOpen, onClose, onClick }: TServicePageProps) {
       ) : (
         <Preloader />
       )}
-      <FeedbackPopup isOpen={isOpen} onClose={onClose} />
+      <FeedbackPopup
+        isOpen={isOpen}
+        onClose={onClose}
+        handleFeedbackSubmit={handleFeedbackSubmit}
+        isServiceThanksOpen={isServiceThanksOpen}
+      />
     </section>
   );
 }
