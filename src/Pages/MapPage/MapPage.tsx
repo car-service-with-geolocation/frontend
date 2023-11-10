@@ -47,14 +47,6 @@ function MapPage() {
     setCurrentSearchType(newValue.value);
   }
 
-  useEffect(() => {
-    if (currentSearchType === immediateOptions[1].value) {
-      setCurrentItems(servicesByAll);
-    } else {
-      setCurrentItems(servicesByCoord);
-    }
-  }, [currentSearchType, servicesByAll, servicesByCoord]);
-
   function windowWidth() {
     const width = window.innerWidth;
 
@@ -84,9 +76,14 @@ function MapPage() {
   };
   useEffect(() => {
     const endOffset = itemOffset + servicesPerPage;
-    setCurrentItems(servicesByAll.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(servicesByAll.length / servicesPerPage));
-  }, [itemOffset, servicesByAll]);
+    if (currentSearchType === immediateOptions[1].value) {
+      setCurrentItems(servicesByAll.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(servicesByAll.length / servicesPerPage));
+    } else {
+      setCurrentItems(servicesByCoord.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(servicesByCoord.length / servicesPerPage));
+    }
+  }, [currentSearchType, servicesByAll, servicesByCoord, itemOffset]);
 
   return (
     <>
