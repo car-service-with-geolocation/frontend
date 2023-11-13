@@ -2,10 +2,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import ApplicationAccept from '../../components/ApplicationAccept/ApplicationAccept';
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import BestServiceCardMini from '../../components/BestServiceCardMini/BestServiceCardMini';
 import Checkbox from '../../components/Checkbox/Checkbox';
+import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import { allCheckboxes } from '../../utils/constants';
@@ -32,7 +32,6 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isValid, setIsValid] = useState(true);
-  // const [isApplicationAcceptOpen, setIsApplicationAcceptOpen] = useState(false);
   const { width } = useWindowWidth();
 
   useEffect(() => {
@@ -58,7 +57,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   return (
     <div className={styles.applicationContainer}>
       <section className={styles.wrapper}>
-        {width >= 800 ? (
+        {width >= 900 ? (
           <ul className={styles.menu__list}>
             <li className={`${styles.menu__item} ${styles.link}`}>
               <Link to="/" className={styles.link}>
@@ -199,7 +198,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
               Отправить заявку
             </button>
           </form>
-          {width >= 800 ? (
+          {width >= 900 ? (
             <article className={styles.card}>
               <h3 className={styles.subtitle}>Автосервис</h3>
               <BestServiceCard
@@ -218,7 +217,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
           )}
         </div>
       </section>
-      <ApplicationAccept
+      <ApplicationAcceptPopup
         isOpen={isOpen}
         onClose={onClose}
         // onOverlayClick={() => {}}

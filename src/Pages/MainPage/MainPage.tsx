@@ -6,7 +6,7 @@ import BestService from '../../components/BestService/BestService';
 import Feedback from '../../components/Feedback/Feedback';
 import HowServiceWorks from '../../components/HowServiceWorks/HowServiceWorks';
 import MainScreen from '../../components/MainScreen/MainScreen';
-import MainThanksPopup from '../../components/MainThanksPopup/MainThanksPopup';
+import MainThanksPopup from '../../components/Popups/MainThanksPopup/MainThanksPopup';
 import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
 import { useAppDispatch, useAppSelector } from '../../store';

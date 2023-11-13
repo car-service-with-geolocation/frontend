@@ -1,4 +1,4 @@
-import Modal from '../Modal/Modal';
+import Modal from '../../Modal/Modal';
 import styles from './styles/styles.module.css';
 
 type TPropsMainThanksPopup = {
