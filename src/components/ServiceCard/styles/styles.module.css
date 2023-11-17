@@ -1,0 +1,157 @@
+.link {
+  display: block;
+  text-decoration: none;
+  color: #dedede;
+  transition: opacity 0.6s ease;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 350px;
+  height: 509px;
+  border-radius: 20px;
+  /* background: rgba(123, 104, 126, 0.20); */
+  background: linear-gradient(0deg, rgba(11, 10, 9, 0.2) 0%, rgba(11, 10, 9, 0.2) 100%),
+    #cbcbcb;
+}
+
+.cardImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.cardImg_default {
+  width: 150px;
+  height: 150px;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cardInfoblock {
+  width: 100%;
+  padding: 30px 40px;
+  border-radius: 0px 0px 20px 20px;
+  background: rgba(11, 10, 9, 0.7);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.cardTitle {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0 0 10px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.cardRating {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.cardRatingIcon {
+  width: 30px;
+  height: 30px;
+  margin: 0 15px 0 0;
+}
+
+.cardRatingNumbers {
+  margin: 0;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.cardInfoText {
+  margin: 0;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+}
+
+@media (max-width: 640px) {
+  .card {
+    width: 335px;
+    height: 167px;
+    align-items: flex-start;
+    border-radius: 16px;
+    background-repeat: no-repeat;
+    background-size: 108px 111px;
+    background-position: right;
+    background: rgba(123, 104, 126, 0.2);
+  }
+
+  .cardImg {
+    width: 108px;
+    height: 111px;
+    border-radius: 14px;
+    top: 50%;
+    right: 34px;
+    transform: translateY(-50%);
+  }
+
+  .cardInfoblock {
+    max-width: 139px;
+    padding: 28px 34px;
+    width: fit-content;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .cardTitle {
+    font-family: Raleway;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 0;
+  }
+
+  .cardRating {
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .cardRatingIcon {
+    width: 22px;
+    height: 22px;
+    margin: 0 10px 0 0;
+  }
+
+  .cardRatingNumbers {
+    font-size: 18px;
+    line-height: 28px;
+    opacity: 0.8;
+  }
+
+  .cardInfoText {
+    font-size: 16px;
+    line-height: normal;
+  }
+}
