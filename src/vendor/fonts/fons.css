@@ -37,3 +37,27 @@
   font-display: swap;
   src: url(./lato/Lato-Bold.ttf);
 }
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(./ubuntu/Ubuntu-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./ubuntu/Ubuntu-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(./ubuntu/Ubuntu-Medium.ttf);
+}
