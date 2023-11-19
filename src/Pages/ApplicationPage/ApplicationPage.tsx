@@ -2,10 +2,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
 import BestServiceCardMini from '../../components/BestServiceCardMini/BestServiceCardMini';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
+import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import { allCheckboxes } from '../../utils/constants';
@@ -201,7 +201,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
           {width >= 900 ? (
             <article className={styles.card}>
               <h3 className={styles.subtitle}>Автосервис</h3>
-              <BestServiceCard
+              <ServiceCard
                 image={applicationService.company.logo}
                 id={applicationService.company.id}
                 title={applicationService.company.title}

@@ -16,7 +16,7 @@ type TPropsBestServiceCard = {
 };
 let isOpenInfo = false;
 
-function BestServiceCard({
+function ServiceCard({
   image,
   id,
   title,
@@ -44,16 +44,16 @@ function BestServiceCard({
             <img className={styles.cardRatingIcon} src={star} alt="иконка Звезда" />
             <p className={styles.cardRatingNumbers}>{`${Number(rating)} (${votes})`}</p>
           </div>
-          <p className={styles.cardInfoText}>{address}</p>
           <p className={styles.cardInfoText}>
             {isOpenInfo
               ? `Открыто с ${Number(openfrom)} до ${Number(openuntil)}`
               : 'Время работы: нет данных'}
           </p>
+          <p className={styles.cardInfoText}>{address}</p>
         </div>
       </article>
     </Link>
   );
 }
 
-export default BestServiceCard;
+export default ServiceCard;
