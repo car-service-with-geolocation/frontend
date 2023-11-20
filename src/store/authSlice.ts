@@ -25,7 +25,7 @@ type TresLogin = {
 };
 
 type TpropsLogin = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -33,18 +33,18 @@ export const fetchUserLogin = createAsyncThunk<
   TresLogin,
   TpropsLogin,
   { rejectValue: string }
->('auth/fetchUserLogin', async function ({ username, password }, { rejectWithValue }) {
+>('auth/fetchUserLogin', async function ({ email, password }, { rejectWithValue }) {
   const response = await fetch(`${baseUrl}auth/token/login/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ email, password }),
   });
   if (!response.ok) {
     return rejectWithValue('Server Error!');
   }
-  const data = { token: await response.json(), name: username };
+  const data = { token: await response.json(), name: email };
   return data;
 });
 
