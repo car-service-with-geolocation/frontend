@@ -40,6 +40,7 @@
 
 .cardInfoblock {
   width: 100%;
+  height: 180px;
   padding: 30px 40px;
   border-radius: 0px 0px 20px 20px;
   background: rgba(11, 10, 9, 0.7);
@@ -94,7 +95,7 @@
   .card {
     display: block;
     width: 335px;
-    height: 202px;
+    height: 181px;
     background: rgba(123, 104, 126, 0.2);
     box-sizing: border-box;
     padding: 30px;
@@ -117,7 +118,6 @@
   }
 
   .cardInfoblock {
-    width: fit-content;
     padding: 0;
     background: none;
     -webkit-backdrop-filter: none;

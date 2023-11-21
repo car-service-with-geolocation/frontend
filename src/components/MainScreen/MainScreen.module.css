@@ -17,7 +17,7 @@
   background-size: cover;
   border-radius: 395px;
   background: rgba(119, 0, 34, 0.5);
-  filter: blur(450px);
+  filter: blur(100px);
 }
 
 .title {

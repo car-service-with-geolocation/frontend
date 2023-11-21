@@ -4,7 +4,7 @@ import defaultImage from '../../images/tools.svg';
 import star from '../../images/YmapStarIcon.svg';
 import styles from './styles/styles.module.css';
 
-type TPropsBestServiceCard = {
+type TPropsServiceCard = {
   image: string;
   id: number;
   title: string;
@@ -25,7 +25,7 @@ function ServiceCard({
   address,
   openfrom,
   openuntil,
-}: TPropsBestServiceCard) {
+}: TPropsServiceCard) {
   if (openfrom && openuntil) {
     isOpenInfo = true;
   }
@@ -34,9 +34,7 @@ function ServiceCard({
       <article className={styles.card}>
         <div
           className={`${styles.cardImg} ${image ? '' : styles.cardImg_default}`}
-          // className={`${styles.cardImg} ${styles.cardImg_default}`}
           style={{ backgroundImage: `url(${image || defaultImage})` }}
-          // style={{ backgroundImage: `url(${defaultImage || image})` }}
         />
         <div className={styles.cardInfoblock}>
           <h2 className={styles.cardTitle}>{title}</h2>
@@ -47,7 +45,7 @@ function ServiceCard({
           <p className={styles.cardInfoText}>
             {isOpenInfo
               ? `Открыто с ${Number(openfrom)} до ${Number(openuntil)}`
-              : 'Время работы: нет данных'}
+              : 'Нет времени работы'}
           </p>
           <p className={styles.cardInfoText}>{address}</p>
         </div>
