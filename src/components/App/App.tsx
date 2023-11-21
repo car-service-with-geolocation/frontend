@@ -11,10 +11,12 @@ import NotFound from '../../Pages/NotFound/NotFound';
 import PasswordReset from '../../Pages/PasswordReset/PasswordReset';
 import Registration from '../../Pages/Registration/Registration';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
+import { useAppDispatch } from '../../store';
+import { fetchUserMe } from '../../store/authSlice';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import style from './styles/App.module.css';
 
 function App() {
@@ -22,6 +24,9 @@ function App() {
   const [isMainThanksPopupOpen, setIsMainThanksPopupOpen] = useState(false);
   const [isFeedbackPopupOpen, setIsFeedbackPopupOpen] = useState(false);
   const [isServiceThanksPopupOpen, setIsServiceThanksPopupOpen] = useState(false);
+
+  // STORE
+  const dispatch = useAppDispatch();
 
   const closeAllPopups = () => {
     setIsApplicationAcceptPopupOpen(false);
@@ -57,6 +62,15 @@ function App() {
       document.removeEventListener('keydown', handleEscapeClick);
     };
   });
+
+  // Token check =>
+  useEffect(() => {
+    const jwt = localStorage.getItem('JWT');
+    if (!jwt) {
+      return;
+    }
+    dispatch(fetchUserMe());
+  }, [dispatch]);
 
   return (
     <div className={style.app}>

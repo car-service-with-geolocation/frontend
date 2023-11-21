@@ -1,22 +1,29 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import cancel from '../../../images/cancel.png';
 import success from '../../../images/success.svg';
+import { useAppSelector } from '../../../store';
 import Modal from '../../Modal/Modal';
 import styles from './styles/styles.module.css';
 
 type TPropsApplicationAcceptPopup = {
   isOpen: boolean;
   onClose: () => void;
+  // eslint-disable-next-line react/require-default-props
 };
 
 function ApplicationAcceptPopup({ isOpen, onClose }: TPropsApplicationAcceptPopup) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Проверяем статус ответа от сервера через стор
+  const { status, error } = useAppSelector((store) => store.auth);
+
   function handleClick() {
     onClose();
     if (location.pathname === '/registration') {
-      navigate('/login');
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      status === 'resolved' ? navigate('/login') : '';
     } else {
       navigate('/');
     }
@@ -24,7 +31,7 @@ function ApplicationAcceptPopup({ isOpen, onClose }: TPropsApplicationAcceptPopu
 
   function showMessage() {
     if (location.pathname === '/registration') {
-      return 'Вы успешно зарегистрировались';
+      return status === 'rejected' ? error : 'Вы успешно зарегистрировались';
     }
     if (location.pathname === '/reset-password') {
       return 'Вы успешно изменили свой пароль';
@@ -37,7 +44,11 @@ function ApplicationAcceptPopup({ isOpen, onClose }: TPropsApplicationAcceptPopu
       <>
         <div className={styles.modalContainer}>
           <h2 className={styles.modalTitle}>{showMessage()}</h2>
-          <img className={styles.modalImage} src={success} alt="логотип сообщения" />
+          <img
+            className={styles.modalImage}
+            src={status !== 'rejected' ? success : cancel}
+            alt="логотип сообщения"
+          />
           {location.pathname !== '/registration' &&
           location.pathname !== '/reset-password' ? (
             <h3 className={styles.modalSubtitle}>

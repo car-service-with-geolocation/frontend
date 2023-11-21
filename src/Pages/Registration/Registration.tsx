@@ -4,11 +4,13 @@
 import '../../components/Search/reactSelect.css';
 
 import { BaseSyntheticEvent, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Authorization from '../../components/Authorization/Authorization';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
-import { baseUrl, REGEXP_EMAIL } from '../../utils/constants';
+import { useAppDispatch } from '../../store';
+import { fetchUserRegistration } from '../../store/authSlice';
+import { REGEXP_EMAIL } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
 export type TRegistrationProps = {
@@ -19,13 +21,17 @@ export type TRegistrationProps = {
 
 function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
   const [isChecked, setIsChecked] = useState(true);
+  const [checkPuss, setCheckPuss] = useState(true);
+  const [resCheckPuss, setResCheckPuss] = useState(true);
+
+  const dispatch = useAppDispatch();
 
   interface IRegUserData {
-    'user-email': string;
-    'user-name': string;
-    'user-password': string;
-    'user-password-repeat': string;
-    'agree-checkbox': boolean;
+    email: string;
+    first_name: string;
+    password: string;
+    password_repeat: string;
+    agree_checkbox: boolean;
   }
 
   const {
@@ -35,49 +41,37 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
     formState: { errors, isValid },
   } = useForm<IRegUserData>({
     defaultValues: {
-      'user-email': '',
-      'user-name': '',
-      'user-password': '',
-      'user-password-repeat': '',
-      'agree-checkbox': true,
+      email: '',
+      first_name: '',
+      password: '',
+      password_repeat: '',
+      agree_checkbox: true,
     },
-    mode: 'onTouched',
+    mode: 'onChange',
   });
 
-  const watchPasswordInput = watch('user-password');
+  const watchPasswordInput = watch('password');
 
-  async function signUp(userData: IRegUserData) {
-    return fetch(`${baseUrl}auth/users/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(userData),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        // eslint-disable-next-line prefer-promise-reject-errors
-        return Promise.reject(`Ошибка при получении объекта ${res.status}`);
+  const onSubmit: SubmitHandler<IRegUserData> = (userData) => {
+    dispatch(
+      fetchUserRegistration({
+        password: userData.password,
+        email: userData.email,
+        first_name: userData.first_name,
       })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.warn(err);
-      });
-  }
-
-  function onSubmit(userData: IRegUserData) {
-    signUp(userData);
+    );
     onPopupOpen();
-  }
+  };
 
   function onHandleChange() {
     setIsChecked((current) => !current);
   }
 
   function changePasswordVisible(event: BaseSyntheticEvent): void {
+    event.currentTarget.id === 'password_button'
+      ? setCheckPuss(!checkPuss)
+      : setResCheckPuss(!resCheckPuss);
+
     const inputField = event.target.parentElement.querySelector('input');
     switch (inputField.type) {
       case 'password':
@@ -113,10 +107,10 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
           noValidate
         >
           <fieldset className={styles.form__fieldset}>
-            <label htmlFor="user-email" className={styles.form__label}>
+            <label htmlFor="email" className={styles.form__label}>
               Почта
               <input
-                {...register('user-email', {
+                {...register('email', {
                   required: 'Обязательное поле для заполнения',
                   pattern: {
                     value: REGEXP_EMAIL,
@@ -125,19 +119,23 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
                   },
                 })}
                 type="email"
-                name="user-email"
-                id="user-email"
-                className={styles.form__input}
+                name="email"
+                id="email"
+                className={
+                  errors.email
+                    ? `${styles.form__input} ${styles.form__input_active}`
+                    : styles.form__input
+                }
               />
               <span className={styles.input__error}>
-                {errors['user-email'] && errors['user-email'].message}
+                {errors.email && errors.email.message}
               </span>
             </label>
 
-            <label htmlFor="user-name" className={styles.form__label}>
+            <label htmlFor="first_name" className={styles.form__label}>
               Имя
               <input
-                {...register('user-name', {
+                {...register('first_name', {
                   required: 'Обязательное поле для заполнения',
                   minLength: {
                     value: 3,
@@ -149,77 +147,98 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
                   },
                 })}
                 type="text"
-                name="user-name"
-                id="user-name"
-                className={styles.form__input}
+                name="first_name"
+                id="first_name"
+                className={
+                  errors.first_name
+                    ? `${styles.form__input} ${styles.form__input_active}`
+                    : styles.form__input
+                }
               />
               <span className={styles.input__error}>
-                {errors['user-name'] && errors['user-name']?.message}
+                {errors.first_name && errors.first_name?.message}
               </span>
             </label>
 
-            <label htmlFor="user-password" className={styles.form__label}>
+            <label htmlFor="password" className={styles.form__label}>
               Пароль
               <div className={styles.input__wrapper}>
                 <input
-                  {...register('user-password', {
+                  {...register('password', {
                     required: 'Обязательное поле для заполнения',
                     minLength: {
-                      value: 6,
-                      message: 'Минимальное количество символов в поле 6',
+                      value: 8,
+                      message: 'Минимальное количество символов в поле 8',
                     },
                     maxLength: {
-                      value: 30,
-                      message: 'Максимальное количество символов в поле 30',
+                      value: 16,
+                      message: 'Максимальное количество символов в поле 16',
                     },
                   })}
                   type="password"
-                  name="user-password"
-                  id="user-password"
-                  className={styles.form__input}
+                  name="password"
+                  id="password"
+                  className={
+                    errors.password
+                      ? `${styles.form__input} ${styles.form__input_active}`
+                      : styles.form__input
+                  }
                 />
                 <button
                   type="button"
-                  className={styles.input__icon}
+                  id="password_button"
+                  className={
+                    checkPuss
+                      ? styles.input__icon
+                      : `${styles.input__icon} ${styles.input__icon_active}`
+                  }
                   onClick={changePasswordVisible}
                 />
               </div>
               <span className={styles.input__error}>
-                {errors['user-password'] && errors['user-password']?.message}
+                {errors.password && errors.password?.message}
               </span>
             </label>
 
-            <label htmlFor="user-password-repeat" className={styles.form__label}>
+            <label htmlFor="password-repeat" className={styles.form__label}>
               Повторите пароль
               <div className={styles.input__wrapper}>
                 <input
-                  {...register('user-password-repeat', {
+                  {...register('password_repeat', {
                     required: 'Обязательное поле для заполнения',
                     minLength: {
-                      value: 6,
-                      message: 'Минимальное количество символов в поле 6',
+                      value: 8,
+                      message: 'Минимальное количество символов в поле 8',
                     },
                     maxLength: {
-                      value: 30,
-                      message: 'Максимальное количество символов в поле 30',
+                      value: 16,
+                      message: 'Максимальное количество символов в поле 16',
                     },
                     validate: (value) =>
                       value === watchPasswordInput || 'Пароли не совпадают',
                   })}
                   type="password"
-                  name="user-password-repeat"
-                  id="user-password-repeat"
-                  className={styles.form__input}
+                  name="password_repeat"
+                  id="password_repeat"
+                  className={
+                    errors.password_repeat
+                      ? `${styles.form__input} ${styles.form__input_active}`
+                      : styles.form__input
+                  }
                 />
                 <button
                   type="button"
-                  className={styles.input__icon}
+                  id="password_repeat_button"
+                  className={
+                    resCheckPuss
+                      ? styles.input__icon
+                      : `${styles.input__icon} ${styles.input__icon_active}`
+                  }
                   onClick={changePasswordVisible}
                 />
               </div>
               <span className={styles.input__error}>
-                {errors['user-password-repeat'] &&
-                  errors['user-password-repeat']?.message}
+                {errors.password_repeat && errors.password_repeat?.message}
               </span>
             </label>
           </fieldset>
@@ -227,14 +246,14 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
             className={`${styles.form__label} ${styles.form__label_checkbox} ${
               isChecked ? styles.checkboxLabel_active : ''
             }`}
-            htmlFor="agree-checkbox"
+            htmlFor="agree_checkbox"
           >
             <input
-              {...register('agree-checkbox')}
+              {...register('agree_checkbox')}
               className={styles.form__checkbox}
               type="checkbox"
-              name="agree-checkbox"
-              id="agree-checkbox"
+              name="agree_checkbox"
+              id="agree_checkbox"
               checked={isChecked}
               onChange={onHandleChange}
             />

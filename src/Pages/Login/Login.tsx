@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { useAppDispatch } from '../../store';
@@ -10,6 +10,8 @@ import styles from './styles/styles.module.css';
 
 function Login() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const [isChecked, setIsChecked] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isUserTabActive, setIsUserTabActive] = useState(true);
@@ -38,7 +40,11 @@ function Login() {
         password: data.password,
         email: data.email,
       })
-    );
+    ).then((req) => {
+      if (req.meta.requestStatus === 'fulfilled') {
+        navigate('/');
+      }
+    });
   };
 
   function onHandleCheck() {
