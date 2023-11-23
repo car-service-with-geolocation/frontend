@@ -1,42 +1,51 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { useAppDispatch } from '../../store';
 import { fetchUserLogin } from '../../store/authSlice';
+import { REGEXP_EMAIL } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
 function Login() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const [isChecked, setIsChecked] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserTabActive, setIsUserTabActive] = useState(true);
   const [isServiceTabActive, setIsServiceTabActive] = useState(false);
-  const [userData, setUserData] = useState({
-    password: '',
-    email: '',
+
+  interface ILoginUserData {
+    email: string;
+    password: string;
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<ILoginUserData>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange',
   });
 
-  function handleChange(evt: any) {
-    const { name, value } = evt.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-  }
-
-  function handleSubmit(evt: any) {
-    evt.preventDefault();
-    // eslint-disable-next-line react/prop-types
+  const onSubmit: SubmitHandler<ILoginUserData> = (data) => {
     dispatch(
       fetchUserLogin({
-        password: userData.password,
-        username: userData.email,
+        password: data.password,
+        email: data.email,
       })
-    );
-  }
+    ).then((req) => {
+      if (req.meta.requestStatus === 'fulfilled') {
+        navigate('/');
+      }
+    });
+  };
 
   function onHandleCheck() {
     setIsChecked((current) => !current);
@@ -66,7 +75,7 @@ function Login() {
         <h1 className={styles.title}>Войти</h1>
         <form
           id="login_form"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className={styles.form}
           action="submit"
           noValidate
@@ -102,16 +111,24 @@ function Login() {
             </div>
           </div>
           <h3 className={styles.label}>Почта</h3>
-          <input
-            className={styles.input}
-            type="email"
-            name="email"
-            id="email"
-            placeholder=""
-            value={userData.email || ''}
-            onChange={handleChange}
-            required
-          />
+          <div className={styles.inputWrapper}>
+            <input
+              {...register('email', {
+                required: 'Это поле обязазательно для заполнения',
+                pattern: {
+                  value: REGEXP_EMAIL,
+                  message: 'Почта не соответствует требуемому формату',
+                },
+              })}
+              className={
+                errors.email ? `${styles.input} ${styles.inputActive}` : styles.input
+              }
+              type="email"
+              name="email"
+              id="email"
+            />
+            <span className={styles.error}>{errors?.email && errors.email.message}</span>
+          </div>
           <div className={styles.password_text}>
             <h3 className={styles.label}>Пароль</h3>
             <Link
@@ -122,16 +139,27 @@ function Login() {
               Не помню пароль
             </Link>
           </div>
-          <div className={styles.passwordBlock}>
+          <div className={styles.inputWrapper}>
             <input
-              className={`${styles.input} ${styles.input_password}`}
+              {...register('password', {
+                required: 'Это поле обязазательно для заполнения',
+                minLength: {
+                  value: 8,
+                  message: `Текст должен быть не короче 8 символов `,
+                },
+                maxLength: {
+                  value: 16,
+                  message: `Текст должен быть не длинее 16 символов `,
+                },
+              })}
+              className={
+                errors.password
+                  ? `${styles.input} ${styles.input_password} ${styles.inputActive}`
+                  : `${styles.input} ${styles.input_password}`
+              }
               type={isActive ? 'text' : 'password'}
               name="password"
               id="password"
-              placeholder=""
-              value={userData.password || ''}
-              onChange={handleChange}
-              required
             />
             <button
               type="button"
@@ -142,6 +170,9 @@ function Login() {
               }
               onClick={onHandleClick}
             />
+            <span className={styles.error}>
+              {errors?.password && errors.password.message}
+            </span>
           </div>
 
           <Checkbox
@@ -150,7 +181,15 @@ function Login() {
             checkHandler={() => onHandleCheck()}
             index={0}
           />
-          <button type="submit" className={styles.submitButton}>
+          <button
+            type="submit"
+            className={
+              isValid
+                ? styles.submitButton
+                : `${styles.submitButton} ${styles.submitButton_disable}`
+            }
+            disabled={!isValid}
+          >
             Войти
           </button>
         </form>

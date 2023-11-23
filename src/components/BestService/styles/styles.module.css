@@ -45,7 +45,6 @@
   }
 
   .cardscontainer {
-    flex-wrap: nowrap;
     gap: 15px;
   }
 }

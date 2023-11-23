@@ -49,7 +49,7 @@ function ServiceCard({
               </p>
             </li>
           </ul>
-        </figcaption>
+        </figcaption
       </article>
     </Link>
   );

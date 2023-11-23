@@ -82,6 +82,15 @@
   padding: 15px 64px 15px 30px;
 }
 
+.form__input:focus {
+  outline: 1px solid black;
+}
+
+.form__input_active {
+  background-color: #ffb3b3;
+  box-shadow: inset 0px -45px 0px 20px #ffb3b3;
+}
+
 .input__icon {
   width: 24px;
   height: 24px;
@@ -97,17 +106,25 @@
 }
 
 .input__icon:hover {
-  opacity: 0.7;
+  background-image: url(../../../images/eyesIcon_hover.svg);
+}
+
+.input__icon_active {
+  background-image: url(../../../images/eyesIcon-active.svg);
+}
+
+.input__icon_active:hover {
+  background-image: url(../../../images/eyesIcon-active_hover.svg);
 }
 
 .input__error {
   height: 17px;
-  color: #d13b3b;
   font-family: Raleway;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  color: #ffb3b3;
 }
 
 .form__label_checkbox {

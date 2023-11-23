@@ -12,8 +12,11 @@ type TPropsModal = {
 function Modal({ isOpen, onClose, children }: TPropsModal) {
   const location = useLocation();
   const overlayRef = useRef<HTMLDivElement>(null);
-  function closePopup() {
-    onClose();
+
+  function closePopup(evt: Event) {
+    if (evt.target === evt.currentTarget && isOpen) {
+      onClose();
+    }
   }
 
   useEffect(() => {

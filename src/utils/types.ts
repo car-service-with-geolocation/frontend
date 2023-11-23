@@ -52,11 +52,39 @@ export type TUserData = {
   password: string;
 };
 
-export type TUserRequestData = {
-  id: number;
-  date: string;
-  autoservice: string;
-  carmodel: string;
-  problem: string;
-  status: string;
+// AUTH
+export type TInitialState = {
+  email?: null | string;
+  id?: null | number;
+  status: null | string;
+  error: undefined | string | null;
+  isLoggedIn: boolean;
+  first_name: string | null;
+  date_joined: string | null;
+  phone_number: null | string;
 };
+
+export type TresLogin = {
+  token: string;
+};
+
+export type TpropsLogin = {
+  email: string;
+  password: string;
+};
+
+export type TpropsRegistration = {
+  email: string;
+  password: string;
+  first_name: string;
+};
+
+export type TresRegistration = {
+  id: number;
+  email: string;
+  first_name: string;
+  phone_number: string | null;
+  date_joined: string;
+};
+
+// AUTH

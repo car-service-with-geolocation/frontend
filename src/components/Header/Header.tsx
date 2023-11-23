@@ -3,13 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 
 import carLogo from '../../images/car-Logo.svg';
 import style from './styles/styles.module.css';
+import { useAppSelector } from '../../store';
 
 function Header() {
   const location = useLocation();
 
+  const { isLoggedIn } = useAppSelector((store) => store.auth);
+
   const [isActive, setIsActive] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     if (isActive) {
