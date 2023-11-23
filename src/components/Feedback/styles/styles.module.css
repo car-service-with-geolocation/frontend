@@ -67,13 +67,32 @@
   cursor: pointer;
 }
 
-@media (max-width: 376px) {
+@media (max-width: 860px) {
+  .form {
+    width: 87.337vw;
+    max-height: fit-content;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 700px) {
   .form {
     margin: 150px 0 0;
-    box-sizing: border-box;
     padding: 60px 30px;
-    width: 335px;
-    max-height: fit-content;
+  }
+
+  .formText {
+    box-sizing: border-box;
+    width: 100%;
+    height: 180px;
+    margin: 40px 0 30px;
+  }
+}
+
+@media (max-width: 450px) {
+  .form {
+    margin-top: 100px;
+    padding: 60px 30px;
   }
 
   .formHeading {
@@ -85,13 +104,6 @@
     font-size: 16px;
     line-height: 150%;
     max-width: 275px;
-  }
-
-  .formText {
-    box-sizing: border-box;
-    width: 100%;
-    height: 180px;
-    margin: 40px 0 30px;
   }
 
   .button {

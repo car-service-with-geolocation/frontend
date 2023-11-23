@@ -115,7 +115,7 @@
 @media screen and (max-width: 500px) {
   .footer {
     justify-content: start;
-    padding-top: 150px;
+    padding-top: 100px;
   }
 
   .link {

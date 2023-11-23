@@ -74,14 +74,36 @@
   line-height: 29.7px;
 }
 
-@media (max-width: 376px) {
+@media (max-width: 1439px) {
+  .section {
+    width: 87.337vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  .section {
+    gap: 30px;
+    padding-top: 100px;
+  }
+  .img {
+    width: 370px;
+    height: 370px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 800px) {
   .section {
     flex-direction: column-reverse;
     gap: 50px;
-    max-width: 335px;
     padding-top: 150px;
   }
+}
 
+@media (max-width: 400px) {
+  .section {
+    padding-top: 90px;
+  }
   .img {
     padding-left: 0;
     width: 335px;
