@@ -33,8 +33,8 @@ function Ymap({ services, singleGeo }: TYmapProps) {
     <YMaps query={{ apikey: YMAP_API_KEY }} version={YMAP_VERSION}>
       <Map
         defaultState={{
-          center: [55.831903, 37.411961],
-          zoom: 9,
+          center: [55.754346, 37.619855],
+          zoom: 12,
         }}
         width="100%"
         height="100%"

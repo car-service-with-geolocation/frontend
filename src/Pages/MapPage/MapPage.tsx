@@ -8,7 +8,7 @@ import ReactPaginate from 'react-paginate';
 import Select, { SingleValue } from 'react-select';
 
 import Search from '../../components/Search/Search';
-import SearchServiceCard from '../../components/SearchServiceCard/SearchServiceCard';
+import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
@@ -47,14 +47,6 @@ function MapPage() {
     setCurrentSearchType(newValue.value);
   }
 
-  useEffect(() => {
-    if (currentSearchType === immediateOptions[1].value) {
-      setCurrentItems(servicesByAll);
-    } else {
-      setCurrentItems(servicesByCoord);
-    }
-  }, [currentSearchType, servicesByAll, servicesByCoord]);
-
   function windowWidth() {
     const width = window.innerWidth;
 
@@ -84,9 +76,14 @@ function MapPage() {
   };
   useEffect(() => {
     const endOffset = itemOffset + servicesPerPage;
-    setCurrentItems(servicesByAll.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(servicesByAll.length / servicesPerPage));
-  }, [itemOffset, servicesByAll]);
+    if (currentSearchType === immediateOptions[1].value) {
+      setCurrentItems(servicesByAll.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(servicesByAll.length / servicesPerPage));
+    } else {
+      setCurrentItems(servicesByCoord.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(servicesByCoord.length / servicesPerPage));
+    }
+  }, [currentSearchType, servicesByAll, servicesByCoord, itemOffset]);
 
   return (
     <>
@@ -126,7 +123,7 @@ function MapPage() {
             <div className={style.ellipse} />
             {currentItems.map((service) => {
               return (
-                <SearchServiceCard
+                <ServiceCard
                   key={service.id}
                   image={service.company.logo}
                   title={service.company.title}

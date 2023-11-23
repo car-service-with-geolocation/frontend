@@ -42,7 +42,7 @@
   height: 395px;
   border-radius: 395px;
   background: rgba(119, 0, 34, 0.3);
-  filter: blur(450px);
+  filter: blur(100px);
   top: calc(50% - 395px / 2);
   left: calc(50% - 395px / 2);
   z-index: 3;
@@ -75,4 +75,30 @@
 
 .modalButton_main {
   margin: 0 0 65px;
+}
+
+@media screen and (max-width: 575px) {
+  .modalContainer {
+    width: calc(100% - 56px);
+    margin: 54px 20px 0;
+  }
+
+  .modalTitle {
+    font-size: 26px;
+  }
+
+  .modalSubtitle {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 0 60px;
+  }
+
+  .modalImage {
+    margin: 40px 0;
+  }
+
+  .modalButton {
+    margin: 0 20px 136px;
+    min-width: 295px;
+  }
 }

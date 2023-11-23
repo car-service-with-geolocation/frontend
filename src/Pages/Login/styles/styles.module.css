@@ -59,6 +59,11 @@
   color: #dedede;
   border: none;
   cursor: pointer;
+  transition: color 0.3s linear;
+}
+
+.userButton:hover {
+  color: rgba(119, 0, 34, 1);
 }
 
 .underline {
@@ -85,6 +90,10 @@
   width: 100%;
 }
 
+.inputWrapper {
+  position: relative;
+}
+
 .input {
   margin: 0 0 30px 0;
   max-width: calc(100% - 60px);
@@ -100,6 +109,25 @@
   border: none;
   color: #7e7268;
   resize: none;
+  box-shadow: inset 0px -45px 0px 20px #ffffff;
+}
+
+.inputActive {
+  background-color: #ffb3b3;
+  box-shadow: inset 0px -45px 0px 20px #ffb3b3;
+}
+
+.error {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  height: 16px;
+  font-family: Raleway;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #ffb3b3;
 }
 
 .link {
@@ -110,10 +138,6 @@
 
 .link:hover {
   color: #770022;
-}
-
-.passwordBlock {
-  position: relative;
 }
 
 .input_password {
@@ -174,6 +198,10 @@
 .submitButton_disable {
   background-color: rgba(126, 114, 104, 0.5);
   color: #7a7a7a;
+}
+
+.submitButton_disable:hover {
+  background-color: rgba(126, 114, 104, 0.5);
 }
 
 .registrationBlock {
