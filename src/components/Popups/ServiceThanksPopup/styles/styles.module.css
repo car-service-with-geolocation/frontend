@@ -42,7 +42,7 @@
   height: 395px;
   border-radius: 395px;
   background: rgba(119, 0, 34, 0.3);
-  filter: blur(450px);
+  filter: blur(100px);
   top: calc(50% - 395px / 2);
   left: calc(50% - 395px / 2);
   z-index: 3;

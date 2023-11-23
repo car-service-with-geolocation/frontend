@@ -1,12 +1,11 @@
 .ballonContainer {
   width: 400px;
-  height: 250px;
-  margin: 30px 0 0 35px;
+  min-height: 235px;
 }
 .ymaps-2-1-79-balloon {
   box-shadow: none !important;
   width: 430px;
-  height: 219px !important;
+  height: 235px !important;
   top: -305px !important;
   left: -55px !important;
 }
@@ -17,8 +16,8 @@
   -webkit-backdrop-filter: blur(2px) !important;
   backdrop-filter: blur(2px) !important;
   border-radius: 20px;
-  width: 400px;
-  height: 250px !important;
+  width: 385px;
+  height: fit-content !important;
 }
 
 .ymaps-2-1-79-balloon__close-button {
@@ -32,17 +31,16 @@
 
 @media screen and (max-width: 800px) {
   .ballonContainer {
-    width: 225px;
-    height: 125px;
-    margin: 15px 0 0 20px;
+    width: 266px;
+    height: 159px;
   }
   .ymaps-2-1-79-balloon__content {
     width: 266px;
-    height: 160px !important;
+    height: 159px !important;
   }
   .ymaps-2-1-79-balloon {
     width: 293px;
-    height: 160px !important;
+    height: 159px !important;
     top: -215px !important;
     left: -54px !important;
   }

@@ -11,11 +11,20 @@ import { TService } from '../../../utils/types';
 type TBallonComponentProps = {
   point: TService;
 };
+let isOpenInfo = false;
 
 export function BallonComponent({ point }: TBallonComponentProps) {
+  if (point.openfrom && point.openuntil) {
+    isOpenInfo = true;
+  }
   return (
     <Link className="Ymap_link" to={`/service/${point.id}`}>
       <section className="Ymap">
+        <img
+          className="Ymap__image"
+          src={point.company.logo}
+          alt="Изображение автосервиса"
+        />
         <div className="Ymap__wrapper">
           <h3 className="Ymap__title">{point.company.title}</h3>
           <div className="Ymap__rating_wrapper">
@@ -24,16 +33,13 @@ export function BallonComponent({ point }: TBallonComponentProps) {
               {point.rating} ({point.votes})
             </p>
           </div>
-          <address className="Ymap__addres">{point.address}</address>
           <p className="Ymap__timeWork">
-            Осткрыто с {point.openfrom} до {point.openuntil}
+            {isOpenInfo
+              ? `Открыто с ${Number(point.openfrom)} до ${Number(point.openuntil)}`
+              : 'Нет времени работы'}
           </p>
+          <address className="Ymap__addres">{point.address}</address>
         </div>
-        <img
-          className="Ymap__image"
-          src={point.company.logo}
-          alt="Изображение автосервиса"
-        />
       </section>
     </Link>
   );

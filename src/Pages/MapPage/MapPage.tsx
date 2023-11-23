@@ -8,7 +8,7 @@ import ReactPaginate from 'react-paginate';
 import Select, { SingleValue } from 'react-select';
 
 import Search from '../../components/Search/Search';
-import SearchServiceCard from '../../components/SearchServiceCard/SearchServiceCard';
+import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServices } from '../../store/autoServicesSlice';
@@ -123,7 +123,7 @@ function MapPage() {
             <div className={style.ellipse} />
             {currentItems.map((service) => {
               return (
-                <SearchServiceCard
+                <ServiceCard
                   key={service.id}
                   image={service.company.logo}
                   title={service.company.title}
