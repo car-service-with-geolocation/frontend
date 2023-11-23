@@ -101,7 +101,7 @@ function UserProfileData() {
             {errors['user-phone-number'] && errors['user-phone-number'].message}
           </span>
         </label>
-        <label htmlFor="user-phone-number" className={styles.form__label}>
+        <label htmlFor="user-email" className={styles.form__label}>
           Почта
           <input
             {...register('user-phone-number', {

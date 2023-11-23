@@ -1,8 +1,17 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './styles/styles.module.css';
 
 function UserProfile() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === '/profile') {
+      navigate('/profile/user-data');
+    }
+  }, [navigate, location]);
+
   return (
     <div className={styles.userProfile}>
       <div className={styles.userProfile__menu}>

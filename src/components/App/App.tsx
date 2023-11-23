@@ -99,13 +99,15 @@ function App() {
           }
         />
         <Route path="/search" element={<MapPage />} />
-        <Route path="/registration"
+        <Route
+          path="/registration"
           element={
             <Registration
               isOpen={isApplicationAcceptPopupOpen}
               onClose={closeAllPopups}
               onPopupOpen={handleApplicationAcceptPopupClick}
-            />}
+            />
+          }
         />
         <Route path="/profile" element={<UserProfile />}>
           <Route path="user-data" element={<UserProfileData />} />
