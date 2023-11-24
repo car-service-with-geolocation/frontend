@@ -20,7 +20,6 @@ import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import UserProfileData from '../UserProfileData/UserProfileData';
 import UserProfileRequest from '../UserProfileRequest/UserProfileRequest';
-
 import style from './styles/App.module.css';
 
 function App() {

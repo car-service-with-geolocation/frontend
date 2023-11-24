@@ -4,8 +4,8 @@
 import '../../components/Search/reactSelect.css';
 
 import { BaseSyntheticEvent, useState } from 'react';
-
 import { SubmitHandler, useForm } from 'react-hook-form';
+
 import Authorization from '../../components/Authorization/Authorization';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
 import { useAppDispatch } from '../../store';

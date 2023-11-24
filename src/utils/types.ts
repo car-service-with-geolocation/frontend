@@ -52,6 +52,15 @@ export type TUserData = {
   password: string;
 };
 
+export type TUserRequestData = {
+  id: number;
+  date: string;
+  autoservice: string;
+  carmodel: string;
+  problem: string;
+  status: string;
+};
+
 // AUTH
 export type TInitialState = {
   email?: null | string;

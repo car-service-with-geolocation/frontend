@@ -26,26 +26,6 @@ function BestService() {
           );
         })}
       </div>
-      <div style={{ border: '1px solid #ccc', margin: 120, fontSize: 40 }}>
-        Здесь начинаються карточки ServiceCard
-      </div>
-      <div className={style.cardscontainer}>
-        {servicesToRender.map((service) => {
-          return (
-            <ServiceCard
-              key={service.id}
-              image={service.company.logo}
-              title={service.company.title}
-              rating={service.rating}
-              votes={service.votes}
-              address={service.address}
-              openfrom={service.openfrom}
-              openuntil={service.openuntil}
-              id={service.id}
-            />
-          );
-        })}
-      </div>
     </section>
   );
 }
