@@ -5,15 +5,24 @@
 }
 
 .Ymap {
-  display: flex;
-  gap: 20px;
+  height: 235px;
+  box-sizing: border-box;
+  padding: 35px 45px;
+}
+
+.Ymap__image {
+  width: 100px;
+  height: 70px;
+  border-radius: 10px;
+  float: left;
+  margin-right: 15px;
+  object-fit: cover;
 }
 
 .Ymap__wrapper {
-  display: flex;
-  flex-direction: column;
-  max-width: 180px;
+  width: 100%;
   color: #dedede;
+  padding: 0;
 }
 
 .Ymap__title {
@@ -29,19 +38,20 @@
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 
 .Ymap__rating_wrapper {
   display: flex;
+  align-items: center;
   gap: 15px;
+  margin-top: 10px;
 }
 
 .Ymap__star_icon {
   width: 30px;
   height: 30px;
-  padding-top: 10px;
   background-size: cover;
 }
 
@@ -52,31 +62,15 @@
   font-weight: 600;
   line-height: normal;
   margin: 0;
-  padding-top: 16px;
-}
-
-.Ymap__addres {
-  font-family: Raleway;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 29.7px;
-  padding-top: 20px;
-  margin: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 
 .Ymap__timeWork {
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 29.7px;
-  margin: 0;
+  font-weight: 300;
+  line-height: 165%;
+  margin: 20.5px 0 0;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
@@ -84,31 +78,39 @@
   -webkit-box-orient: vertical;
 }
 
-.Ymap__image {
-  width: 150px;
-  height: 160px;
-  background-size: cover;
-  border-radius: 20px;
+.Ymap__addres {
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 165%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 @media screen and (max-width: 800px) {
   .Ymap {
-    gap: 10px;
+    padding: 15px 20px;
   }
-  .Ymap__wrapper {
-    max-width: 130px;
+  .Ymap__image {
+    width: 80px;
+    height: 70px;
+    margin-right: 21px;
   }
   .Ymap__title {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 16px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
   .Ymap__rating_wrapper {
-    gap: 5px;
+    margin-top: 2px;
+    gap: 10px;
   }
   .Ymap__star_icon {
     width: 20px;
@@ -116,24 +118,19 @@
     padding-top: 0;
   }
   .Ymap__rating_subtitle {
-    font-size: 16px;
-    line-height: 24px;
-    padding-top: 0;
-  }
-  .Ymap__addres {
-    font-size: 11px;
-    line-height: normal;
+    font-family: Ubuntu;
+    font-size: 14px;
+    font-weight: 500;
     padding-top: 0;
   }
   .Ymap__timeWork {
-    font-size: 11px;
+    font-size: 14px;
     line-height: normal;
-    padding-top: 5px;
+    margin: 10px 0 0;
   }
-
-  .Ymap__image {
-    width: 105px;
-    height: 110px;
-    border-radius: 20px;
+  .Ymap__addres {
+    font-size: 14px;
+    line-height: normal;
+    margin-top: 10px;
   }
 }

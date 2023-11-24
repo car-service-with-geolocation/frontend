@@ -14,6 +14,7 @@ type TPropsServiceCard = {
   openfrom: string;
   openuntil: string;
 };
+let isOpenInfo = false;
 
 function ServiceCard({
   image,
@@ -25,31 +26,29 @@ function ServiceCard({
   openfrom,
   openuntil,
 }: TPropsServiceCard) {
+  if (openfrom && openuntil) {
+    isOpenInfo = true;
+  }
   return (
     <Link className={styles.link} to={`/service/${id}`}>
       <article className={styles.card}>
-        <img
-          className={defaultImage ? styles.cardImg_default : styles.cardImg}
-          src={image || defaultImage}
-          alt="процесс работы в автосервисе"
+        <div
+          className={`${styles.cardImg} ${image ? '' : styles.cardImg_default}`}
+          style={{ backgroundImage: `url(${image || defaultImage})` }}
         />
-        <figcaption className={styles.cardInfoblock}>
-          <h3 className={styles.cardTitle}>{title}</h3>
+        <div className={styles.cardInfoblock}>
+          <h2 className={styles.cardTitle}>{title}</h2>
           <div className={styles.cardRating}>
             <img className={styles.cardRatingIcon} src={star} alt="иконка Звезда" />
-            <p className={styles.cardRatingNumbers}>{`${rating} (${votes})`}</p>
+            <p className={styles.cardRatingNumbers}>{`${Number(rating)} (${votes})`}</p>
           </div>
-          <ul className={styles.cardInfoList}>
-            <li>
-              <p className={styles.cardInfoText}>{address}</p>
-            </li>
-            <li>
-              <p className={styles.cardInfoText}>
-                Открыто с {`${openfrom}`} до {`${openuntil}`}
-              </p>
-            </li>
-          </ul>
-        </figcaption
+          <p className={styles.cardInfoText}>
+            {isOpenInfo
+              ? `Открыто с ${Number(openfrom)} до ${Number(openuntil)}`
+              : 'Нет времени работы'}
+          </p>
+          <p className={styles.cardInfoText}>{address}</p>
+        </div>
       </article>
     </Link>
   );

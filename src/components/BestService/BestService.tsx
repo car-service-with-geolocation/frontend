@@ -1,5 +1,4 @@
 import { useAppSelector } from '../../store';
-import BestServiceCard from '../BestServiceCard/BestServiceCard';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import style from './styles/styles.module.css';
 
@@ -13,7 +12,7 @@ function BestService() {
         <div className={style.ellipse} />
         {servicesToRender.map((service) => {
           return (
-            <BestServiceCard
+            <ServiceCard
               key={service.id}
               image={service.company.logo}
               title={service.company.title}
