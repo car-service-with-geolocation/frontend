@@ -44,11 +44,13 @@ function Search() {
       setIsRotation(false);
     }, 2000);
     // если всё плохо, просто напишем об этом
+    // eslint-disable-next-line no-console
     console.log('Не получается определить вашу геолокацию'); // Обработать ошибку тут!! + тот-же попап?
   }
 
   function handleFindlonLat() {
     if (!navigator.geolocation) {
+      // eslint-disable-next-line no-console
       console.log('Ваш браузер не дружит с геолокацией...'); // попап с ошибкой сюда!!
     } else {
       setIsRotation(true);
@@ -94,6 +96,7 @@ function Search() {
           setCurrentLocation(res.suggestions[0].value);
         })
         .catch((err) => {
+          // eslint-disable-next-line no-console
           console.log(err);
         });
     }

@@ -94,11 +94,15 @@
 @media (max-width: 900px) {
   .card {
     display: block;
-    width: 335px;
+    width: 73%;
     height: 181px;
     background: rgba(123, 104, 126, 0.2);
     box-sizing: border-box;
     padding: 30px;
+  }
+
+  .link {
+    width: 100%;
   }
 
   .cardImg {
@@ -145,6 +149,7 @@
   .cardRatingNumbers {
     font-family: Ubuntu;
     font-size: 18px;
+    font-height: 28px;
     font-weight: 500;
     opacity: 0.8;
   }
@@ -156,5 +161,11 @@
 
   .cardInfoText:nth-of-type(1) {
     margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    width: 100%;
   }
 }

@@ -9,7 +9,6 @@ import styles from './styles/styles.module.css';
 type TPropsApplicationAcceptPopup = {
   isOpen: boolean;
   onClose: () => void;
-  // eslint-disable-next-line react/require-default-props
 };
 
 function ApplicationAcceptPopup({ isOpen, onClose }: TPropsApplicationAcceptPopup) {

@@ -30,9 +30,6 @@ function MainPage({ isOpen, onClose, onClick }: TMainPageProps) {
 
   const { status } = useAppSelector((store) => store.mainAutoServices);
 
-  if (status === 'loading') {
-    return <Preloader />;
-  }
   if (status === 'rejected') {
     navigate('/404');
   }
@@ -41,7 +38,7 @@ function MainPage({ isOpen, onClose, onClick }: TMainPageProps) {
     <>
       <MainScreen />
       <Search />
-      <BestService />
+      {status === 'loading' ? <Preloader /> : <BestService />}
       <AboutUs />
       <HowServiceWorks />
       <Feedback onClick={onClick} />
