@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useParams } from 'react-router-dom';
 
 import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
@@ -8,7 +9,7 @@ import Checkbox from '../../components/Checkbox/Checkbox';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
-import { allCheckboxes } from '../../utils/constants';
+import { allCheckboxes, REGEXP_TEL } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
 
@@ -23,16 +24,17 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   const location = useParams();
   const services = useAppSelector((store) => store.mainAutoServices.data);
   const serviceToRender = services.find((service) => service.id === Number(location.id));
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [applicationService, setApplicationService] = useState(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    serviceToRender || JSON.parse(sessionStorage.getItem('applicationService'))
-  );
+
+  const applicationService =
+    serviceToRender || JSON.parse(sessionStorage.getItem('applicationService') ?? '{}');
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isValid, setIsValid] = useState(true);
   const { width } = useWindowWidth();
+
+  interface IApplicationData {
+    carModel: string;
+    tel: string;
+    problemDescription: string;
+  }
 
   useEffect(() => {
     dispatch(fetchAutoServiceId(location.id));
@@ -43,6 +45,23 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
       sessionStorage.setItem('applicationService', JSON.stringify(serviceToRender));
     }
   });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<IApplicationData>({
+    defaultValues: {
+      carModel: '',
+      tel: '',
+      problemDescription: '',
+    },
+    mode: 'onChange',
+  });
+
+  const onSubmit: SubmitHandler<IApplicationData> = (data) => {
+    console.log(JSON.stringify(data));
+  };
 
   function onHandleChange(index: number) {
     setCheckboxes(
@@ -103,9 +122,10 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
         <h2 className={styles.title}>Создание заявки</h2>
         <div className={styles.applicationWrapper}>
           <form
+            onSubmit={handleSubmit(onSubmit)}
             className={styles.applicationForm}
-            onSubmit={(e) => e.preventDefault()}
             action="submit"
+            noValidate
           >
             <div className={styles.infoblock}>
               <div className={styles.info}>
@@ -114,13 +134,26 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
                   Марка и модель
                 </label>
                 <input
-                  className={styles.formText}
+                  {...register('carModel', {
+                    required: 'Это поле обязательно для заполнения',
+                    maxLength: {
+                      value: 50,
+                      message: 'Текст должен быть не длиннее 50 символов',
+                    },
+                  })}
+                  className={
+                    errors.carModel
+                      ? `${styles.formText} ${styles.formTextActive}`
+                      : styles.formText
+                  }
                   type="text"
                   name="carModel"
                   id="carModel"
                   placeholder="BMW i5 M60 xDrive"
-                  required
                 />
+                <span className={styles.error}>
+                  {errors?.carModel && errors.carModel.message}
+                </span>
               </div>
               <div className={styles.info}>
                 <h3 className={styles.subtitle}>О вас</h3>
@@ -128,23 +161,51 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
                   Номер телефона
                 </label>
                 <input
-                  className={styles.formText}
+                  {...register('tel', {
+                    required: 'Это поле обязательно для заполнения',
+                    pattern: {
+                      value: REGEXP_TEL,
+                      message: 'Телефон не соответствует требуемому формату',
+                    },
+                  })}
+                  className={
+                    errors.tel
+                      ? `${styles.formText} ${styles.formTextActive}`
+                      : styles.formText
+                  }
                   type="tel"
                   name="tel"
                   id="tel"
                   placeholder="+7 900 000 00 00"
                   required
                 />
+                <span className={styles.error}>{errors?.tel && errors.tel.message}</span>
               </div>
             </div>
             <h3 className={styles.subtitle}>Опишите, что случилось</h3>
-            <textarea
-              className={styles.formText}
-              wrap="soft"
-              name=""
-              id="problemDescription"
-              placeholder="Что-то стучит, когда еду..."
-            />
+            <div className={styles.textareaWrapper}>
+              <textarea
+                {...register('problemDescription', {
+                  required: 'Это поле обязательно для заполнения',
+                  maxLength: {
+                    value: 16,
+                    message: 'Текст должен быть не длиннее 16 символов',
+                  },
+                })}
+                className={
+                  errors.problemDescription
+                    ? `${styles.formText} ${styles.formTextActive}`
+                    : styles.formText
+                }
+                wrap="soft"
+                name="problemDescription"
+                id="problemDescription"
+                placeholder="Что-то стучит, когда еду..."
+              />
+              <span className={`${styles.error} ${styles.errorTextarea}`}>
+                {errors?.problemDescription && errors.problemDescription.message}
+              </span>
+            </div>
             <h3 className={styles.subtitle}>Прикрепите фотографии поломки</h3>
             <h4 className={styles.textRemark}>(по возможности)</h4>
             <div className={styles.imageInputsContainer}>
@@ -188,9 +249,11 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
             </fieldset>
 
             <button
-              className={`${styles.submitButton} ${
-                !isValid ? styles.submitButton_disable : ''
-              }`}
+              className={
+                isValid
+                  ? styles.submitButton
+                  : `${styles.submitButton} ${styles.submitButtonDisable}`
+              }
               type="submit"
               disabled={!isValid}
               onClick={onClick}
@@ -217,11 +280,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
           )}
         </div>
       </section>
-      <ApplicationAcceptPopup
-        isOpen={isOpen}
-        onClose={onClose}
-        // onOverlayClick={() => {}}
-      />
+      <ApplicationAcceptPopup isOpen={isOpen} onClose={onClose} />
     </div>
   );
 }

@@ -114,7 +114,7 @@ function Login() {
           <div className={styles.inputWrapper}>
             <input
               {...register('email', {
-                required: 'Это поле обязазательно для заполнения',
+                required: 'Это поле обязательно для заполнения',
                 pattern: {
                   value: REGEXP_EMAIL,
                   message: 'Почта не соответствует требуемому формату',
@@ -142,14 +142,14 @@ function Login() {
           <div className={styles.inputWrapper}>
             <input
               {...register('password', {
-                required: 'Это поле обязазательно для заполнения',
+                required: 'Это поле обязательно для заполнения',
                 minLength: {
                   value: 8,
-                  message: `Текст должен быть не короче 8 символов `,
+                  message: `Текст должен быть не короче 8 символов`,
                 },
                 maxLength: {
                   value: 16,
-                  message: `Текст должен быть не длинее 16 символов `,
+                  message: `Текст должен быть не длиннее 16 символов `,
                 },
               })}
               className={

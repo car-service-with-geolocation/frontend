@@ -23,7 +23,7 @@
 .link {
   margin: 40px 15px 0 0;
   padding: 0;
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -82,6 +82,7 @@
   flex-direction: column;
   max-width: 645px;
   margin: 0 115px 0 0;
+  z-index: 4;
 }
 
 .subtitle {
@@ -104,6 +105,11 @@
   display: flex;
   flex-direction: column;
   max-width: 265px;
+  position: relative;
+}
+
+.textareaWrapper {
+  position: relative;
 }
 
 .info:first-of-type {
@@ -132,7 +138,7 @@
   height: 30px;
   border-radius: 20px;
   padding: 15px 30px;
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -140,10 +146,34 @@
   border: none;
   color: #7e7268;
   resize: none;
+  outline: none;
+  box-shadow: inset 0px -45px 0px 20px #ffffff;
+}
+
+.formTextActive {
+  background-color: #ffb3b3;
+  box-shadow: inset 0px -45px 0px 20px #ffb3b3;
 }
 
 .formText[id='problemDescription'] {
   height: 150px;
+}
+
+.error {
+  position: absolute;
+  top: 214px;
+  left: 0;
+  height: 16px;
+  font-family: Ubuntu;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #ffb3b3;
+}
+
+.errorTextarea {
+  top: 186px;
 }
 
 .personalData {
@@ -155,7 +185,7 @@
 }
 
 .textRemark {
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -252,9 +282,13 @@
   background-color: #2e000d;
 }
 
-.submitButton_disable {
+.submitButtonDisable {
   background-color: rgba(126, 114, 104, 0.5);
   color: #7a7a7a;
+}
+
+.submitButtonDisable:hover {
+  background-color: rgba(126, 114, 104, 0.5);
 }
 
 @media screen and (max-width: 1439px) {
@@ -313,6 +347,14 @@
     line-height: 165%;
   }
 
+  .error {
+    top: 178px;
+  }
+
+  .errorTextarea {
+    top: 132px;
+  }
+
   .textRemark {
     margin: -10px 0 25px;
   }
@@ -356,6 +398,14 @@
 
   .formText[id='problemDescription'] {
     max-width: calc(100% - 60px);
+  }
+
+  .error {
+    top: 173px;
+  }
+
+  .errorTextarea {
+    top: 132px;
   }
 
   .imageInputsContainer {
