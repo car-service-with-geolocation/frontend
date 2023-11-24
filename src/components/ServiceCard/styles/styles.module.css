@@ -145,6 +145,7 @@
   .cardRatingNumbers {
     font-family: Ubuntu;
     font-size: 18px;
+    font-height: 28px;
     font-weight: 500;
     opacity: 0.8;
   }

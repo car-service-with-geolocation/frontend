@@ -16,7 +16,7 @@ function Authorization({ title, children }: TPropsAuthorization) {
       </div>
       <p className={style.auth__text}>
         Уже есть аккаунт?
-        <Link rel="stylesheet" to="/login" className={style.auth__link}>
+        <Link to="/login" className={style.auth__link}>
           Войти
         </Link>
       </p>

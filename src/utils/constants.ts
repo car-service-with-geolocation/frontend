@@ -35,6 +35,7 @@ const navigatorOptions = {
 const baseUrl = 'https://find-car-service.ru/api/v1/';
 
 const servicesPerPage = 6;
+const userRequestPerPage = 5;
 
 const allCheckboxes = [
   { name: 'Даю согласие на обработку персональных данных', checked: true },
@@ -234,6 +235,7 @@ const initialFeedBack = [
 const REGEXP_EMAIL =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
+const REGEXP_PHONE_NUMBER = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
 export {
   allCheckboxes,
   baseUrl,
@@ -244,8 +246,10 @@ export {
   initialFeedBack,
   navigatorOptions,
   REGEXP_EMAIL,
+  REGEXP_PHONE_NUMBER,
   reviewOptions,
   servicesPerPage,
+  userRequestPerPage,
   YMAP_API_KEY,
   YMAP_VERSION,
 };

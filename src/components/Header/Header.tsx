@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import carLogo from '../../images/car-Logo.svg';
+import style from './styles/styles.module.css';
 import { useAppSelector } from '../../store';
-import style from './styles/Header.module.css';
 
 function Header() {
   const location = useLocation();

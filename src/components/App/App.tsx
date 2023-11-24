@@ -11,12 +11,16 @@ import NotFound from '../../Pages/NotFound/NotFound';
 import PasswordReset from '../../Pages/PasswordReset/PasswordReset';
 import Registration from '../../Pages/Registration/Registration';
 import ServicePage from '../../Pages/ServicePage/ServicePages';
+import UserProfile from '../../Pages/UserProfile/UserProfile';
 import { useAppDispatch } from '../../store';
 import { fetchUserMe } from '../../store/authSlice';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import UserProfileData from '../UserProfileData/UserProfileData';
+import UserProfileRequest from '../UserProfileRequest/UserProfileRequest';
+
 import style from './styles/App.module.css';
 
 function App() {
@@ -120,6 +124,10 @@ function App() {
             />
           }
         />
+        <Route path="/profile" element={<UserProfile />}>
+          <Route path="user-data" element={<UserProfileData />} />
+          <Route path="user-request" element={<UserProfileRequest />} />
+        </Route>
         <Route path="/*" element={<NotFound />} />
         <Route
           path="/service/:id/application"
@@ -150,7 +158,7 @@ function App() {
         <Route path="/profile"
           element={
           <ProtectedRoute>
-          <Profile />
+          <UserProfile />
           </ProtectedRoute>
         }
         />
