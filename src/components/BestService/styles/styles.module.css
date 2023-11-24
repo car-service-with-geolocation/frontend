@@ -34,11 +34,18 @@
   filter: blur(100px);
 }
 
-@media (max-width: 376px) {
+@media (max-width: 1439px) {
   .section {
-    max-width: 335px;
+    width: 87.337vw;
+    padding-top: 130px;
   }
 
+  .ellipse {
+    width: 87vw;
+  }
+}
+
+@media (max-width: 376px) {
   .title {
     margin-bottom: 30px;
     font-size: 26px;

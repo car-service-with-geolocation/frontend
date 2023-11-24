@@ -129,7 +129,6 @@
 
   @media (max-width: 420px) {
     .react-select__control {
-      width: 305px;
       margin: 0 auto;
     }
 
