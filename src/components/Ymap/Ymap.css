@@ -33,6 +33,7 @@
   .ballonContainer {
     width: 266px;
     height: 159px;
+    min-height: 120px;
   }
   .ymaps-2-1-79-balloon__content {
     width: 266px;

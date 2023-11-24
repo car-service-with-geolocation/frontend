@@ -154,6 +154,7 @@
 @media (max-width: 550px) {
   .section {
     height: fit-content;
+    margin-bottom: 150px;
   }
 
   .form {
