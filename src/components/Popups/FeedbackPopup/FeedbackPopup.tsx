@@ -1,4 +1,4 @@
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 
 import Modal from '../../Modal/Modal';
 import StarRating from '../../StarRating/StarRating';
@@ -18,6 +18,16 @@ function FeedbackPopup({
   handleFeedbackSubmit,
   isServiceThanksOpen,
 }: TPropsFeedbackPopup) {
+  const [imageFiles, setImageFiles] = useState<FileList>();
+
+  function handleChangeImageFile(evt: React.FormEvent<HTMLInputElement>) {
+    // получаем файлы
+    const target = evt.target as HTMLInputElement & {
+      files: FileList;
+    };
+    // Записываем в стейт
+    setImageFiles(target.files);
+  }
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -60,13 +70,30 @@ function FeedbackPopup({
                 </div>
                 <div className={styles.infoblock}>
                   <p className={styles.subtitle}>Загрузить фотографию</p>
-                  <input
-                    className={styles.imageInput}
-                    type="file"
-                    name="image"
-                    id="image"
-                    placeholder=""
-                  />
+                  <div className={styles.imageWrapper}>
+                    <input
+                      className={styles.imageInput}
+                      type="file"
+                      name="image"
+                      id="image"
+                      multiple
+                      accept="image/*,.png,.jpg,.svg"
+                      onChange={handleChangeImageFile}
+                    />
+                    {imageFiles !== undefined && imageFiles.length > 0
+                      ? Array.from(imageFiles).map((image) => {
+                          console.log(URL.createObjectURL(image));
+                          return (
+                            <img
+                              className={styles.imagefile}
+                              key={image.size} // костыль
+                              src={URL.createObjectURL(image)} // преобразуем
+                              alt="ваше изображение"
+                            />
+                          );
+                        })
+                      : ''}
+                  </div>
                 </div>
               </form>
             </div>
