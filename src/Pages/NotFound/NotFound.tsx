@@ -1,6 +1,7 @@
 import { SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router';
 
+import Err404 from '../../images/Err404.png';
 import style from './NotFound.module.css';
 
 function NotFound() {
@@ -13,7 +14,7 @@ function NotFound() {
     <div className={style.notFoundPage}>
       <div className={style.notFoundPage}>
         <div className={style.notFoundPageContainer}>
-          <p className={style.notFoundPageTitle}>404</p>
+          <img src={Err404} alt="404 ошибка" className={style.notFoundPageimg} />
           <p className={style.notFoundPageText}>
             К сожалению, cтраница, которую вы ищете, не существует.
           </p>
