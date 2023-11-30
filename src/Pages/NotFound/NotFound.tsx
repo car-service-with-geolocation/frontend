@@ -11,19 +11,15 @@ function NotFound() {
     navigate('/');
   }
   return (
-    <div className={style.notFoundPage}>
-      <div className={style.notFoundPage}>
-        <div className={style.notFoundPageContainer}>
-          <img src={Err404} alt="404 ошибка" className={style.notFoundPageimg} />
-          <p className={style.notFoundPageText}>
-            К сожалению, cтраница, которую вы ищете, не существует.
-          </p>
-          <button onClick={handleClick} className={style.notFoundPageBtn}>
-            Перейти на главную
-          </button>
-        </div>
-      </div>
-    </div>
+    <section className={style.notFoundPageContainer}>
+      <img src={Err404} alt="404 ошибка" className={style.notFoundPageimg} />
+      <p className={style.notFoundPageText}>
+        К сожалению, cтраница, которую вы ищете, не существует.
+      </p>
+      <button onClick={handleClick} className={style.notFoundPageBtn}>
+        Перейти на главную
+      </button>
+    </section>
   );
 }
 
