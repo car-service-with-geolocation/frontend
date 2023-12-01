@@ -200,7 +200,7 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
               </span>
             </label>
 
-            <label htmlFor="password-repeat" className={styles.form__label}>
+            <label htmlFor="password_repeat" className={styles.form__label}>
               Повторите пароль
               <div className={styles.input__wrapper}>
                 <input

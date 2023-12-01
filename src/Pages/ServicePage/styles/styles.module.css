@@ -18,6 +18,7 @@
   display: flex;
   justify-content: space-between;
   margin: 100px 0 250px;
+  gap: 20px;
 }
 
 .servicePhoto {
@@ -79,7 +80,7 @@
   list-style: none;
   margin: 0 0 50px;
   padding: 0;
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -135,6 +136,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  border: none;
 }
 
 .serviceJobWrapper {
@@ -162,7 +164,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -188,7 +190,7 @@
 .carsItem {
   max-width: 170px;
   width: 100%;
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -220,7 +222,7 @@
 }
 
 .addressText {
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -328,7 +330,7 @@
 }
 
 .allReviews {
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -343,4 +345,172 @@
   border-radius: 20px;
   opacity: 0.8;
   overflow: hidden;
+}
+
+@media (max-width: 1439px) {
+  .wrapper {
+    width: 87.337vw;
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .wrapper {
+    padding-top: 50px;
+  }
+  .serviceWrapper {
+    flex-direction: column-reverse;
+    margin-bottom: 100px;
+    margin-top: 50px;
+  }
+  .serviceJobWrapper {
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 150px;
+  }
+
+  .addressWrapper {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .reviewHeader {
+    padding-top: 100px;
+  }
+  .reviewWrapper {
+    flex-direction: column-reverse;
+    gap: 50px;
+  }
+  .servicePhoto {
+    width: 60%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .mapWrapper {
+    width: 87.337vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .serviceInfo {
+    flex-direction: column;
+  }
+
+  .feedBackRating {
+    font-size: 30px;
+  }
+
+  .workInfo {
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  .wrapper {
+    padding-top: 0;
+  }
+
+  .buttonsWrapper {
+    flex-direction: column;
+  }
+
+  .address {
+    max-width: 360px;
+  }
+
+  .serviceJobWrapper {
+    margin-bottom: 50px;
+  }
+
+  .moreReviewswButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .reviewHeader {
+    font-size: 26px;
+  }
+
+  .allReviews {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .allReviewswButton {
+    font-size: 16px;
+  }
+
+  .mapWrapper {
+    height: 200px;
+  }
+
+  .addressText {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .addressHEader {
+    font-size: 22px;
+  }
+
+  .addressWrapper {
+    gap: 20px;
+  }
+
+  .serviceJobHeader {
+    font-size: 22px;
+    line-height: 30.8px;
+  }
+
+  .carsItem {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .jobsWrapper {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .serviceJobHeader {
+    font-size: 22px;
+    line-height: 30.8px;
+  }
+
+  .application {
+    font-size: 16px;
+  }
+
+  .address {
+    font-size: 16px;
+  }
+
+  .workInfo {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .aboutHeader {
+    font-size: 22px;
+    line-height: 30.8px;
+    margin-bottom: 0;
+  }
+
+  .serviceName {
+    font-size: 22px;
+    line-height: 30.8px;
+  }
+
+  .way {
+    display: none;
+  }
+
+  .moreReviewswButton {
+    font-size: 15px;
+  }
 }

@@ -1,29 +1,22 @@
-.notFoundPage {
-  display: grid;
-  place-content: center;
-  text-align: center;
-  min-height: 100vh;
-  grid-template-rows: 35% 65%;
-}
-
 .notFoundPageContainer {
   grid-row: 2/-1;
+  display: grid;
+  justify-items: center;
+  padding-top: 143px;
+  text-align: center;
 }
 
-.notFoundPageTitle {
-  margin: 0;
-  color: #fff;
-  font-family: Montserrat;
-  font-size: 100px;
-  font-style: normal;
-  font-weight: 600;
+.notFoundPageimg {
+  object-fit: cover;
+  width: 550px;
+  height: 192px;
 }
 
 .notFoundPageText {
   margin: 20px 0 50px;
   color: #fff;
   text-align: center;
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -32,7 +25,8 @@
 }
 
 .notFoundPageBtn {
-  padding: 20px 100px;
+  width: 380px;
+  height: 60px;
   border-radius: 20px;
   background-color: #770022;
   color: #fff;
@@ -46,4 +40,27 @@
 
 .notFoundPageBtn:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 650px) {
+  .notFoundPageimg {
+    width: 400px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 450px) {
+  .notFoundPage {
+    padding-top: 85px;
+  }
+  .notFoundPageimg {
+    width: 320px;
+    height: 111px;
+  }
+  .notFoundPageBtn {
+    width: 320px;
+  }
+  .notFoundPageText {
+    font-size: 17px;
+  }
 }

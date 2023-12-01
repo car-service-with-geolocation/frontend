@@ -1,6 +1,7 @@
 import { SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router';
 
+import Err404 from '../../images/Err404.png';
 import style from './NotFound.module.css';
 
 function NotFound() {
@@ -10,19 +11,15 @@ function NotFound() {
     navigate('/');
   }
   return (
-    <div className={style.notFoundPage}>
-      <div className={style.notFoundPage}>
-        <div className={style.notFoundPageContainer}>
-          <p className={style.notFoundPageTitle}>404</p>
-          <p className={style.notFoundPageText}>
-            К сожалению, cтраница, которую вы ищете, не существует.
-          </p>
-          <button onClick={handleClick} className={style.notFoundPageBtn}>
-            Перейти на главную
-          </button>
-        </div>
-      </div>
-    </div>
+    <section className={style.notFoundPageContainer}>
+      <img src={Err404} alt="404 ошибка" className={style.notFoundPageimg} />
+      <p className={style.notFoundPageText}>
+        К сожалению, cтраница, которую вы ищете, не существует.
+      </p>
+      <button onClick={handleClick} className={style.notFoundPageBtn}>
+        Перейти на главную
+      </button>
+    </section>
   );
 }
 

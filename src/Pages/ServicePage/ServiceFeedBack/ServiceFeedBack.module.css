@@ -33,7 +33,7 @@
 
 .date {
   margin: 0;
-  font-family: Raleway;
+  font-family: Ubuntu;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -41,13 +41,13 @@
 }
 
 .feedBack {
-  font-family: Raleway;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 29.7px;
   margin: 0;
   padding-top: 20px;
+  font-family: Ubuntu;
 }
 
 .imageWrapper {
@@ -101,4 +101,38 @@
   opacity: 0.6;
   cursor: pointer;
   border: 2px solid rgb(126, 119, 119);
+}
+
+@media (max-width: 640px) {
+  .imageWrapper {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 180px));
+    gap: 15px;
+  }
+
+  .feedBack {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 300;
+  }
+
+  .name {
+    font-size: 22px;
+  }
+
+  .feedBackRating {
+    font-size: 20px;
+  }
+
+  .date {
+    font-size: 14px;
+    font-weight: 300;
+    align-self: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .imageWrapper {
+    grid-template-columns: repeat(auto-fill, minmax(auto, 150px));
+    gap: 15px;
+  }
 }

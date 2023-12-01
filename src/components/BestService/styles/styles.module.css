@@ -37,7 +37,7 @@
 @media (max-width: 1439px) {
   .section {
     width: 87.337vw;
-    padding-top: 130px;
+    padding-top: 100px;
   }
 
   .ellipse {
@@ -45,7 +45,10 @@
   }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 400px) {
+  .section {
+    padding-top: 50px;
+  }
   .title {
     margin-bottom: 30px;
     font-size: 26px;
