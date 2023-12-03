@@ -2,6 +2,7 @@
 import '../MapPage/immediate.css';
 
 import { SyntheticEvent, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 import Select, { SingleValue } from 'react-select';
@@ -65,19 +66,23 @@ function ServicePage({
     <section className={styles.wrapper}>
       {serviceToRender ? (
         <>
+          <Helmet>
+            <title>{serviceToRender.company.title}</title>
+            <meta property="og:title" content={serviceToRender.company.title} />
+          </Helmet>
           <p
             className={styles.way}
           >{`Главная / Поиск автосервисов / ${serviceToRender.company.title}`}</p>
           <div className={styles.serviceWrapper}>
             <div className={styles.service}>
-              <h2 className={styles.serviceName}>{serviceToRender.company.title}</h2>
+              <h1 className={styles.serviceName}>{serviceToRender.company.title}</h1>
               <div className={styles.raitingWrappper}>
                 <img className={styles.starImg} src={star} alt="star" />
                 <p
                   className={styles.rating}
                 >{`${serviceToRender.rating} (${serviceToRender.votes})`}</p>
               </div>
-              <h3 className={styles.aboutHeader}>Об автосервисе</h3>
+              <h2 className={styles.aboutHeader}>Об автосервисе</h2>
               <div className={styles.serviceInfo}>
                 <ul className={styles.workInfo}>
                   <li>{`Открыто с ${serviceToRender.openfrom} до ${serviceToRender.openuntil}`}</li>

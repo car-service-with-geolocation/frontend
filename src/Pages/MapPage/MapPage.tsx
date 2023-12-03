@@ -4,6 +4,7 @@
 import './immediate.css';
 
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import ReactPaginate from 'react-paginate';
 import Select, { SingleValue } from 'react-select';
 
@@ -87,6 +88,10 @@ function MapPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Поиск автосервисов</title>
+        <meta property="og:title" content="Поиск автосервисов" />
+      </Helmet>
       <h1 className={style.title}>Поиск автосервисов</h1>
       {screenWidth === 'desktop' && <Search />}
       <div className={style.options_wrapper}>

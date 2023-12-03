@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router';
 
 import Err404 from '../../images/Err404.png';
@@ -12,6 +13,10 @@ function NotFound() {
   }
   return (
     <section className={style.notFoundPageContainer}>
+      <Helmet>
+        <title>404</title>
+        <meta property="og:title" content="404" />
+      </Helmet>
       <img src={Err404} alt="404 ошибка" className={style.notFoundPageimg} />
       <p className={style.notFoundPageText}>
         К сожалению, cтраница, которую вы ищете, не существует.

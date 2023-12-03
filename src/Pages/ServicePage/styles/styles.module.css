@@ -312,7 +312,7 @@
 .allreviewsratingWrapper {
   display: flex;
   gap: 25px;
-  align-items: end;
+  align-items: flex-end;
 }
 .feedBackRating {
   --percent: calc(var(--rating) / 5 * 100%);
@@ -325,6 +325,7 @@
     letter-spacing: 3px;
     background: linear-gradient(90deg, #fc0 var(--percent), #fff var(--percent));
     -webkit-background-clip: text;
+    background-clip: border-box;
     -webkit-text-fill-color: transparent;
   }
 }
