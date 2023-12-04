@@ -4,6 +4,7 @@
 import '../../components/Search/reactSelect.css';
 
 import { BaseSyntheticEvent, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Authorization from '../../components/Authorization/Authorization';
@@ -87,6 +88,10 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
 
   return (
     <>
+      <Helmet>
+        <title>Регистрация</title>
+        <meta property="og:title" content="Регитсрация" />
+      </Helmet>
       <Authorization title="Регистрация">
         <div className={styles.reg__choice}>
           <button

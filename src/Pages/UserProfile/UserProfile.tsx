@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './styles/styles.module.css';
@@ -14,6 +15,10 @@ function UserProfile() {
 
   return (
     <div className={styles.userProfile}>
+      <Helmet>
+        <title>Личный кабинет</title>
+        <meta property="og:title" content="Личный кабинет" />
+      </Helmet>
       <div className={styles.userProfile__menu}>
         <h2 className={styles.userProfile__menuTitle}>
           <p className={styles.userProfile__menuTitleStroke}>Вася</p>

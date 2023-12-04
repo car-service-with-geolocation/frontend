@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import { SyntheticEvent, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -43,6 +44,10 @@ function PasswordReset({ isOpen, onClose, onPopupOpen }: TPasswordResetProps) {
 
   return (
     <>
+      <Helmet>
+        <title>Восстановить пароль</title>
+        <meta property="og:title" content="Восстановить пароль" />
+      </Helmet>
       <main className={style.passwordReset}>
         <h2 className={style.header}>Восстановить пароль</h2>
         <form
