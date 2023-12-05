@@ -53,12 +53,14 @@ export type TUserData = {
 };
 
 export type TUserRequestData = {
-  id: number;
-  date: string;
-  autoservice: string;
-  carmodel: string;
-  problem: string;
-  status: string;
+  id: number | null;
+  car: string | null;
+  info: string | null;
+  task: string | null;
+  image: string | null;
+  pub_date: string | null;
+  owner: number | null;
+  jobs: number[];
 };
 
 // AUTH
