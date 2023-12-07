@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
+import { useAppDispatch } from '../../store';
+import { fetchUserRequestsData } from '../../store/userRequestsSlice';
 import { userRequestPerPage } from '../../utils/constants';
 import { TUserRequestData } from '../../utils/types';
 import useWindowWidth from '../../utils/windowWidth';
@@ -14,6 +17,8 @@ function UserProfileRequest() {
   const [itemOffset, setItemOffset] = useState(0);
   const [userRequestData, setUserRequestData] = useState<TUserRequestData[]>([]);
   const [pageCount, setPageCount] = useState(0);
+
+  const dispatch = useAppDispatch();
 
   const { width } = useWindowWidth();
 

@@ -5,6 +5,15 @@ interface IUserProfileRequestTable {
   requests: TUserRequestData[];
 }
 
+// id: null,
+// car: '',
+// info: '',
+// task: '',
+// image: '',
+// pub_date: '',
+// owner: null,
+// jobs: [],
+
 function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
   return (
     <table className={styles.table}>

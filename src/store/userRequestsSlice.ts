@@ -13,33 +13,25 @@ const initialState: {
   error: null,
 };
 
-// id: null,
-// car: '',
-// info: '',
-// task: '',
-// image: '',
-// pub_date: '',
-// owner: null,
-// jobs: [],
-
-export const fetchUserRequestsData = createAsyncThunk<undefined, { rejectValue: string }>(
-  'user/fetchRequestsData',
-  async (_, { rejectWithValue }) => {
-    const token = localStorage.getItem('JWT');
-    const response = await fetch(`${baseUrl}orders/`, {
-      method: 'GET',
-      headers: {
-        authorization: `Token ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
-    if (!response.ok) {
-      return rejectWithValue('Server Error!');
-    }
-    const data = await response.json();
-    return data;
+export const fetchUserRequestsData = createAsyncThunk<
+  TUserRequestData[],
+  undefined,
+  { rejectValue: string }
+>('user/fetchRequestsData', async (_, { rejectWithValue }) => {
+  const token = localStorage.getItem('JWT');
+  const response = await fetch(`${baseUrl}orders/`, {
+    method: 'GET',
+    headers: {
+      authorization: `Token ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  if (!response.ok) {
+    return rejectWithValue('Server Error!');
   }
-);
+  const data = await response.json();
+  return data;
+});
 
 const userRequestsSlice = createSlice({
   name: 'userRequests',

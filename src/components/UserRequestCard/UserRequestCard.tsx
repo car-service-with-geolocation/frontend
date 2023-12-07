@@ -8,6 +8,15 @@ interface IUserRequestCard {
   requestData: TUserRequestData;
 }
 
+// id: null,
+// car: '',
+// info: '',
+// task: '',
+// image: '',
+// pub_date: '',
+// owner: null,
+// jobs: [],
+
 function UserRequestCard({ requestData }: IUserRequestCard) {
   const overflowingRef = useRef<null | HTMLParagraphElement>(null);
   const clampHeight = useRef<number>(0);
