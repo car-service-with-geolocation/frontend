@@ -5,15 +5,6 @@ interface IUserProfileRequestTable {
   requests: TUserRequestData[];
 }
 
-// id: null,
-// car: '',
-// info: '',
-// task: '',
-// image: '',
-// pub_date: '',
-// owner: null,
-// jobs: [],
-
 function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
   return (
     <table className={styles.table}>
@@ -34,10 +25,10 @@ function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
         {requests.map((item) => {
           return (
             <tr key={item.id} className={styles.body__row}>
-              <td className={styles.body__cell}>{item.autoservice}</td>
-              <td className={styles.body__cell}>{item.carmodel}</td>
-              <td className={styles.body__cell}>{item.problem}</td>
-              <td className={styles.body__cell}>{item.status}</td>
+              <td className={styles.body__cell}>{item.info}</td>
+              <td className={styles.body__cell}>{item.car}</td>
+              <td className={styles.body__cell}>{item.task}</td>
+              <td className={styles.body__cell}>{item.id}</td>
             </tr>
           );
         })}

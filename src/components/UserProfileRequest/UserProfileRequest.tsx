@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchUserRequestsData } from '../../store/userRequestsSlice';
 import { userRequestPerPage } from '../../utils/constants';
 import { TUserRequestData } from '../../utils/types';
 import useWindowWidth from '../../utils/windowWidth';
 import UserProfileRequestList from '../UserProfileRequestList/UserProfileRequestList';
 import UserProfileRequestTable from '../UserProfileRequestTable/UserProfileRequestTable';
-import requestdata from './requestdata';
+// import requestdata from './requestdata';
 import styles from './styles/styles.module.css';
 
 function UserProfileRequest() {
@@ -20,20 +19,25 @@ function UserProfileRequest() {
 
   const dispatch = useAppDispatch();
 
+  const userId = useAppSelector((store) => store.auth.id);
+  const userRequests = useAppSelector((store) =>
+    store.userRequests.data.filter((req) => req.owner === userId)
+  );
   const { width } = useWindowWidth();
 
   useEffect(() => {
-    setUserRequestData(requestdata);
-  }, []);
+    dispatch(fetchUserRequestsData());
+    setUserRequestData(userRequests);
+  }, [dispatch, userRequests]);
 
   useEffect(() => {
     const endOffset = itemOffset + userRequestPerPage;
-    setUserRequestData(requestdata.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(requestdata.length / userRequestPerPage));
-  }, [itemOffset]);
+    setUserRequestData(userRequests.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(userRequests.length / userRequestPerPage));
+  }, [itemOffset, userRequests]);
   // pagination
   const handlePageClick = (evt: { selected: number }) => {
-    const newOffset = (evt.selected * userRequestPerPage) % requestdata.length;
+    const newOffset = (evt.selected * userRequestPerPage) % userRequests.length;
     setItemOffset(newOffset);
   };
 

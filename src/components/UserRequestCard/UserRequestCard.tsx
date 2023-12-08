@@ -8,15 +8,6 @@ interface IUserRequestCard {
   requestData: TUserRequestData;
 }
 
-// id: null,
-// car: '',
-// info: '',
-// task: '',
-// image: '',
-// pub_date: '',
-// owner: null,
-// jobs: [],
-
 function UserRequestCard({ requestData }: IUserRequestCard) {
   const overflowingRef = useRef<null | HTMLParagraphElement>(null);
   const clampHeight = useRef<number>(0);
@@ -60,19 +51,17 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
   return (
     <article className={styles.requestCard}>
       <div className={styles.requestCard__title}>
-        <p className={styles.requestCard__text}>{requestData.status}</p>
-        <p className={styles.requestCard__text}>{requestData.date}</p>
+        <p className={styles.requestCard__text}>{requestData.id}</p>
+        <p className={styles.requestCard__text}>{requestData.pub_date}</p>
       </div>
       <div className={styles.requestCard__about}>
         <p className={styles.requestCard__text}>
           Автосервис:
-          <span className={styles.requestCard__text_decor}>
-            {requestData.autoservice}
-          </span>
+          <span className={styles.requestCard__text_decor}>{requestData.info}</span>
         </p>
         <p className={styles.requestCard__text}>
           Данные авто:
-          <span className={styles.requestCard__text_decor}>{requestData.carmodel}</span>
+          <span className={styles.requestCard__text_decor}>{requestData.car}</span>
         </p>
       </div>
       <div className={styles.requestCard__about}>
@@ -81,7 +70,7 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
           ref={overflowingRef}
           className={`${styles.requestCard__problemText} ${styles.clampText}`}
         >
-          {requestData.problem}
+          {requestData.task}
         </p>
       </div>
       <div className={styles.requestCard__arrowContainer}>
