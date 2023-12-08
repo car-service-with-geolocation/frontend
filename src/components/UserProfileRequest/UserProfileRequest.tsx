@@ -1,14 +1,14 @@
+import { createSelector } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-import { useAppDispatch, useAppSelector } from '../../store';
+import { RootState, useAppDispatch, useAppSelector } from '../../store';
 import { fetchUserRequestsData } from '../../store/userRequestsSlice';
 import { userRequestPerPage } from '../../utils/constants';
 import { TUserRequestData } from '../../utils/types';
 import useWindowWidth from '../../utils/windowWidth';
 import UserProfileRequestList from '../UserProfileRequestList/UserProfileRequestList';
 import UserProfileRequestTable from '../UserProfileRequestTable/UserProfileRequestTable';
-// import requestdata from './requestdata';
 import styles from './styles/styles.module.css';
 
 function UserProfileRequest() {
@@ -18,17 +18,23 @@ function UserProfileRequest() {
   const [pageCount, setPageCount] = useState(0);
 
   const dispatch = useAppDispatch();
+  const userRequestsStatus = useAppSelector((store) => store.userRequests.status);
+  // const userRequestsError = useAppSelector((store) => store.userRequests.error);
 
-  const userId = useAppSelector((store) => store.auth.id);
-  const userRequests = useAppSelector((store) =>
-    store.userRequests.data.filter((req) => req.owner === userId)
+  const selectUserRequests = createSelector(
+    [(store: RootState) => store.userRequests.data, (store: RootState) => store.auth.id],
+    (requests, userId) => requests.filter((req) => req.owner === userId)
   );
+
+  const userRequests = selectUserRequests(useAppSelector((store) => store));
+
   const { width } = useWindowWidth();
 
   useEffect(() => {
-    dispatch(fetchUserRequestsData());
-    setUserRequestData(userRequests);
-  }, [dispatch, userRequests]);
+    if (userRequestsStatus === 'idle') {
+      dispatch(fetchUserRequestsData());
+    }
+  }, [dispatch, userRequestsStatus]);
 
   useEffect(() => {
     const endOffset = itemOffset + userRequestPerPage;
