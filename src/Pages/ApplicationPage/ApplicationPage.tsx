@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useParams } from 'react-router-dom';
 
@@ -9,7 +11,7 @@ import Checkbox from '../../components/Checkbox/Checkbox';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
-import { allCheckboxes, REGEXP_TEL } from '../../utils/constants';
+import { allCheckboxes, baseUrl, REGEXP_TEL } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
 
@@ -28,12 +30,65 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   const applicationService =
     serviceToRender || JSON.parse(sessionStorage.getItem('applicationService') ?? '{}');
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
+  const [files, setFiles] = useState<(File & { preview: string })[]>([]);
+  const [errorMsg, setErrorMsg] = useState('');
   const { width } = useWindowWidth();
+
+  const onDrop = (acceptedFiles: File[]) => {
+    if (files && acceptedFiles) {
+      const alreadyAddedFiles = acceptedFiles.filter((file) =>
+        files.find((f) => f.name === file.name)
+      );
+
+      if (alreadyAddedFiles.length > 0) {
+        setErrorMsg('Вы уже добавили такой файл');
+      } else {
+        const newFiles = [
+          ...files,
+          ...acceptedFiles.map((file) =>
+            Object.assign(file, {
+              preview: URL.createObjectURL(file),
+            })
+          ),
+        ];
+        setFiles(newFiles.slice(0, 5));
+        setErrorMsg('');
+      }
+    }
+  };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+  });
+
+  const thumbs = files.map((file, index) => (
+    <div className={styles.imagePreviewContainer} key={file.name}>
+      <img src={file.preview} className={styles.imagePreview} alt="фотография поломки" />
+      <div className={styles.deleteButtonContainer}>
+        <button
+          className={styles.deleteButton}
+          onClick={() => {
+            setFiles((files) => files.filter((_, i) => i !== index));
+            setErrorMsg('');
+          }}
+        />
+      </div>
+    </div>
+  ));
+
+  useEffect(
+    () => () => {
+      // Make sure to revoke the Object URL to avoid memory leaks
+      files.forEach((file) => URL.revokeObjectURL(file.preview));
+    },
+    [files]
+  );
 
   interface IApplicationData {
     carModel: string;
     tel: string;
     problemDescription: string;
+    image: string;
   }
 
   useEffect(() => {
@@ -59,10 +114,6 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
     mode: 'onChange',
   });
 
-  const onSubmit: SubmitHandler<IApplicationData> = (data) => {
-    console.log(JSON.stringify(data));
-  };
-
   function onHandleChange(index: number) {
     setCheckboxes(
       checkboxes.map((checkbox, currentIndex) => {
@@ -72,6 +123,42 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
       })
     );
   }
+
+  // async function handleOnSubmit(evt: React.SyntheticEvent) {
+  //   evt.preventDefault();
+  //   console.log('file', file);
+  //   if (typeof file === 'undefined') return;
+  //   const formData = new FormData();
+  //   formData.append('image', file);
+
+  //   const results = await fetch(`${baseUrl}/orders/`, {
+  //     method: 'POST',
+  //     body: formData,
+  //   }).then((res) => res.json());
+  //   console.log('results', results);
+  // }
+
+  async function handleOnSubmit(data: IApplicationData) {
+    return fetch(`${baseUrl}/orders/`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(new Error(`Ошибка: ${res.status}`));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const onSubmit: SubmitHandler<IApplicationData> = (data) => {
+    handleOnSubmit(data);
+  };
 
   return (
     <div className={styles.applicationContainer}>
@@ -188,8 +275,8 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
                 {...register('problemDescription', {
                   required: 'Это поле обязательно для заполнения',
                   maxLength: {
-                    value: 16,
-                    message: 'Текст должен быть не длиннее 16 символов',
+                    value: 220,
+                    message: 'Текст должен быть не длиннее 220 символов',
                   },
                 })}
                 className={
@@ -209,30 +296,22 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
             <h3 className={styles.subtitle}>Прикрепите фотографии поломки</h3>
             <h4 className={styles.textRemark}>(по возможности)</h4>
             <div className={styles.imageInputsContainer}>
-              <input
-                className={styles.imageInput}
-                type="file"
-                name="imageFile"
-                id="imageFile"
-                placeholder=""
-              />
-              <div className={styles.inputPreloader}>
-                <label className={styles.preloaderLabel}>Загрузка...</label>
-                <input
-                  className={`${styles.imageInput} ${styles.imageInput2}`}
-                  type="file"
-                  name="imageFile"
-                  id="imageFile"
-                  placeholder=""
-                />
+              <div
+                {...getRootProps()}
+                className={
+                  isDragActive
+                    ? `${styles.dragAndDropInput} ${styles.dragAndDropInputActive}`
+                    : styles.dragAndDropInput
+                }
+              >
+                <input {...getInputProps()} />
+                <p className={`${styles.textRemark} ${styles.textRemarkInput}`}>
+                  Добавить фото
+                </p>
+                <p className={styles.textRemark}>Можно перетащить его в эту рамку</p>
               </div>
-              <input
-                className={`${styles.imageInput} ${styles.imageInput3}`}
-                type="file"
-                name="imageFile"
-                id="imageFile"
-                placeholder=""
-              />
+              <aside className={styles.imageInputsContainer}>{thumbs}</aside>
+              <span className={styles.errorImage}>{errorMsg}</span>
             </div>
             <fieldset className={styles.personalData}>
               {checkboxes.map((checkbox, index) => {
