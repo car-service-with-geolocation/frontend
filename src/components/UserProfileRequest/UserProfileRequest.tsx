@@ -21,8 +21,7 @@ function UserProfileRequest() {
   const userRequestsStatus = useAppSelector((store) => store.userRequests.status);
   // const userRequestsError = useAppSelector((store) => store.userRequests.error);
 
-  const state = useAppSelector((store) => store);
-  const userRequests = selectUserRequests(state);
+  const userRequests = selectUserRequests(useAppSelector((store) => store));
 
   const { width } = useWindowWidth();
 

@@ -1,4 +1,4 @@
-import { ReactElement, useRef } from 'react';
+import React, { ReactElement, useRef } from 'react';
 
 import { TUserRequestData } from '../../utils/types';
 import styles from './styles/styles.module.css';
@@ -8,17 +8,26 @@ interface IUserProfileRequestTable {
 }
 
 function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
-  const lastDate = useRef<string>('');
+  const lastDate = useRef('');
+
   function addDateRow(req: TUserRequestData): ReactElement | null {
-    if (req.pub_date && req.pub_date === String(lastDate)) {
-      // lastDate = req.pub_date;
-      return (
-        <tr>
-          <td colSpan={4} className={styles.body__date}>
-            Дата 20.20.1000
-          </td>
-        </tr>
-      );
+    if (req.pub_date) {
+      const date = new Date(req.pub_date).toLocaleDateString('ru-RU', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      });
+      if (date !== lastDate.current) {
+        lastDate.current = date;
+        return (
+          <tr>
+            <td colSpan={4} className={styles.body__date}>
+              {`Дата ${date}`}
+            </td>
+          </tr>
+        );
+      }
+      return null;
     }
     return null;
   }
@@ -29,22 +38,24 @@ function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
           <th className={styles.head__cell}>Автосервис</th>
           <th className={styles.head__cell}>Данные авто</th>
           <th className={styles.head__cell}>Описание проблемы</th>
-          <th className={styles.head__cell}>Статус</th>
+          <th className={`${styles.body__cell} ${styles.body__text_center}`}>Статус</th>
         </tr>
       </thead>
       <tbody className={styles.table__body}>
         {requests.map((item) => {
           const dateElement = addDateRow(item);
           return (
-            <>
+            <React.Fragment key={item.id}>
               {dateElement}
-              <tr key={item.id} className={styles.body__row}>
+              <tr className={styles.body__row}>
                 <td className={styles.body__cell}>{item.info}</td>
                 <td className={styles.body__cell}>{item.car}</td>
                 <td className={styles.body__cell}>{item.task}</td>
-                <td className={styles.body__cell}>{item.id}</td>
+                <td className={`${styles.body__cell} ${styles.body__text_center}`}>
+                  {item.id}
+                </td>
               </tr>
-            </>
+            </React.Fragment>
           );
         })}
       </tbody>
