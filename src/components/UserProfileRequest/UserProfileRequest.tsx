@@ -1,8 +1,8 @@
-import { createSelector } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-import { RootState, useAppDispatch, useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
+import selectUserRequests from '../../store/selectors';
 import { fetchUserRequestsData } from '../../store/userRequestsSlice';
 import { userRequestPerPage } from '../../utils/constants';
 import { TUserRequestData } from '../../utils/types';
@@ -21,12 +21,8 @@ function UserProfileRequest() {
   const userRequestsStatus = useAppSelector((store) => store.userRequests.status);
   // const userRequestsError = useAppSelector((store) => store.userRequests.error);
 
-  const selectUserRequests = createSelector(
-    [(store: RootState) => store.userRequests.data, (store: RootState) => store.auth.id],
-    (requests, userId) => requests.filter((req) => req.owner === userId)
-  );
-
-  const userRequests = selectUserRequests(useAppSelector((store) => store));
+  const state = useAppSelector((store) => store);
+  const userRequests = selectUserRequests(state);
 
   const { width } = useWindowWidth();
 

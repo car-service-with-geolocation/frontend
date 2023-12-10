@@ -54,9 +54,4 @@ const userRequestsSlice = createSlice({
   },
 });
 
-// export const selectUserRequests = createSelector(
-//   [(state: RootState) => state.userRequests.data, (state: RootState) => state.auth.id],
-//   (requests, userId) => requests.filter((req) => req.owner === userId)
-// );
-
 export default userRequestsSlice.reducer;
