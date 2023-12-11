@@ -11,7 +11,7 @@ import Checkbox from '../../components/Checkbox/Checkbox';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
-import { allCheckboxes, baseUrl, REGEXP_TEL } from '../../utils/constants';
+import { allCheckboxes, baseUrl, REGEXP_PHONE_NUMBER } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
 
@@ -251,7 +251,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
                   {...register('tel', {
                     required: 'Это поле обязательно для заполнения',
                     pattern: {
-                      value: REGEXP_TEL,
+                      value: REGEXP_PHONE_NUMBER,
                       message: 'Телефон не соответствует требуемому формату',
                     },
                   })}
@@ -308,7 +308,11 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
                 <p className={`${styles.textRemark} ${styles.textRemarkInput}`}>
                   Добавить фото
                 </p>
-                <p className={styles.textRemark}>Можно перетащить его в эту рамку</p>
+                {width >= 600 ? (
+                  <p className={styles.textRemark}>Можно перетащить его в эту рамку</p>
+                ) : (
+                  <span />
+                )}
               </div>
               <aside className={styles.imageInputsContainer}>{thumbs}</aside>
               <span className={styles.errorImage}>{errorMsg}</span>
@@ -326,7 +330,6 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
                 );
               })}
             </fieldset>
-
             <button
               className={
                 isValid

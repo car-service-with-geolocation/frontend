@@ -228,8 +228,8 @@
 .dragAndDropInput {
   display: flex;
   flex-direction: column;
-  width: 645px;
-  padding: 20px 174px 0;
+  width: 100%;
+  padding-top: 20px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -468,8 +468,12 @@
     top: 132px;
   }
 
+  .errorImage {
+    margin-top: -20px;
+  }
+
   .imageInputsContainer {
-    gap: 20px 15px;
+    gap: 18px 15px;
   }
 
   .imageInput {
@@ -477,11 +481,35 @@
     height: 46px;
   }
 
+  .imagePreview {
+    width: 155px;
+  }
+
   .personalData {
-    margin: 25px 0 0;
+    margin: 2px 0 0;
   }
 
   .submitButton {
     margin: 38px 0 0;
+  }
+
+  .subtitle:nth-of-type(2) {
+    font-family: Ubuntu;
+    font-weight: 300;
+    margin-top: 36px;
+  }
+
+  .dragAndDropInput {
+    padding-top: 40px;
+  }
+
+  .textRemark {
+    margin-bottom: 20px;
+  }
+
+  .textRemarkInput {
+    font-size: 18px;
+    width: 177px;
+    margin-bottom: 40px;
   }
 }
