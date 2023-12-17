@@ -1,17 +1,24 @@
-import { useEffect } from 'react';
+import { MouseEventHandler, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
+import { useAppDispatch } from '../../store';
+import { fetchUserLogout } from '../../store/authSlice';
 import styles from './styles/styles.module.css';
 
 function UserProfile() {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (location.pathname === '/profile') {
       navigate('/profile/user-data');
     }
   }, [navigate, location]);
+
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = () => {
+    dispatch(fetchUserLogout());
+  };
 
   return (
     <div className={styles.userProfile}>
@@ -36,7 +43,11 @@ function UserProfile() {
             </NavLink>
           </li>
           <li className={styles.userProfile__menuItem}>
-            <NavLink to="/" className={styles.userProfile__menuLink}>
+            <NavLink
+              to="/"
+              className={styles.userProfile__menuLink}
+              onClick={handleClick}
+            >
               Выход
             </NavLink>
           </li>

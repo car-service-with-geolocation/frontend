@@ -98,4 +98,10 @@ export type TresRegistration = {
   date_joined: string;
 };
 
+export type TuserDataChange = {
+  email: string;
+  first_name: string;
+  phone_number: string;
+};
+
 // AUTH

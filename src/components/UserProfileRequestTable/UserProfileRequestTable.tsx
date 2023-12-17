@@ -38,7 +38,7 @@ function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
           <th className={styles.head__cell}>Автосервис</th>
           <th className={styles.head__cell}>Данные авто</th>
           <th className={styles.head__cell}>Описание проблемы</th>
-          <th className={`${styles.body__cell} ${styles.body__text_center}`}>Статус</th>
+          <th className={`${styles.head__cell} ${styles.cell_textCenter}`}>Статус</th>
         </tr>
       </thead>
       <tbody className={styles.table__body}>
@@ -51,7 +51,7 @@ function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
                 <td className={styles.body__cell}>{item.info}</td>
                 <td className={styles.body__cell}>{item.car}</td>
                 <td className={styles.body__cell}>{item.task}</td>
-                <td className={`${styles.body__cell} ${styles.body__text_center}`}>
+                <td className={`${styles.body__cell} ${styles.cell_textCenter}`}>
                   {item.id}
                 </td>
               </tr>

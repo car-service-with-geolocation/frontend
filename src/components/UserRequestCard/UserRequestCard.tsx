@@ -27,7 +27,7 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
 
   useEffect(() => {
     const element = overflowingRef?.current;
-    if (element) {
+    if (element && isOverflowing) {
       if (isVisible) {
         element?.classList.remove(styles.clampText);
         window.requestAnimationFrame(() => {
@@ -42,17 +42,25 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
         }, 1000);
       }
     }
-  }, [isVisible]);
+  }, [isVisible, isOverflowing]);
 
   const handleClick = () => {
     setIsVisible((state) => !state);
   };
 
+  const date = requestData.pub_date
+    ? new Date(requestData.pub_date).toLocaleDateString('ru-RU', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      })
+    : 'нет даты';
+
   return (
     <article className={styles.requestCard}>
       <div className={styles.requestCard__title}>
         <p className={styles.requestCard__text}>{requestData.id}</p>
-        <p className={styles.requestCard__text}>{requestData.pub_date}</p>
+        <p className={styles.requestCard__text}>{date}</p>
       </div>
       <div className={styles.requestCard__about}>
         <p className={styles.requestCard__text}>
