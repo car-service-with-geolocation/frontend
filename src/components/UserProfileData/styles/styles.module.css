@@ -48,9 +48,13 @@
   padding: 15px 30px 15px 30px;
 }
 
+.form__input_error {
+  background-color: #ffb3b3;
+}
+
 .input__error {
   height: 17px;
-  color: #d13b3b;
+  color: #ffb3b3;
   font-family: Ubuntu;
   font-size: 14px;
   font-style: normal;
@@ -104,6 +108,7 @@
 @media (max-width: 640px) {
   .form {
     max-width: 335px;
+    align-self: center;
   }
 
   .form__label {
