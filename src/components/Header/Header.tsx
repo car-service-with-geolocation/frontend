@@ -66,7 +66,9 @@ function Header() {
       </div>
       <Link
         to={isLoggedIn ? '/profile/user-data' : '/login'}
-        className={`${isLoggedIn ? style.enterText_icon : style.enterText}`}
+        className={`${isLoggedIn ? style.enterText_icon : style.enterText} ${
+          location.pathname === '/login' ? style.active : ''
+        }`}
       >
         Вход
       </Link>

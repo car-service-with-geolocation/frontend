@@ -1,6 +1,7 @@
 @import url('./vendor/styles/normalize.css');
 @import url('./vendor/fonts/fonts.css');
+@import url('./vendor/styles/vars.css');
 
-html {
-  background-color: #0a0908;
+:root {
+  background-color: var(--black-dark);
 }
