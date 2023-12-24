@@ -21,7 +21,6 @@ function UserProfileRequest() {
 
   const dispatch = useAppDispatch();
   const userRequestsStatus = useAppSelector((store) => store.userRequests.status);
-  // const userRequestsError = useAppSelector((store) => store.userRequests.error);
 
   const userRequests = useAppSelector((store) => selectUserRequests(store));
 
@@ -44,25 +43,9 @@ function UserProfileRequest() {
     setItemOffset(newOffset);
   };
 
-  // {userRequestData.length === 0 ? (
-  //   <div>
-  //     <p>У вас еще нет заявок.</p>
-  //     <p>Самое время начать</p>
-  //     <button type='button'>Поиск автосервисов</button>
-  //   </div>
-
   return (
     <section className={styles.userRequest}>
       <h1 className={styles.title}>Мои заявки</h1>
-      {userRequestData.length === 0 && (
-        <div className={styles.noRequestsView}>
-          <h3 className={styles.noRequestsView__title}>У вас еще нет заявок.</h3>
-          <p className={styles.noRequestsView__text}>Самое время начать</p>
-          <NavLink to="/search" className={styles.userRequest_btn}>
-            Поиск автосервисов
-          </NavLink>
-        </div>
-      )}
       {userRequestsStatus === 'loading' && <Preloader />}
       {userRequestData.length !== 0 && width > 900 ? (
         <UserProfileRequestTable requests={userRequestData} />
@@ -85,6 +68,15 @@ function UserProfileRequest() {
         activeLinkClassName={styles.link_activ}
         breakClassName={`${styles.link} ${styles.break}`}
       />
+      {userRequests.length === 0 && (
+        <div className={styles.noRequestsView}>
+          <h3 className={styles.noRequestsView__title}>У вас еще нет заявок.</h3>
+          <p className={styles.noRequestsView__text}>Самое время начать</p>
+          <NavLink to="/search" className={styles.userRequest_btn}>
+            Поиск автосервисов
+          </NavLink>
+        </div>
+      )}
     </section>
   );
 }

@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchUserDataChange } from '../../store/authSlice';
-import { baseUrl, REGEXP_EMAIL, REGEXP_PHONE_NUMBER } from '../../utils/constants';
+import { REGEXP_EMAIL, REGEXP_PHONE_NUMBER } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
 interface IUserProfileData {
@@ -30,7 +30,6 @@ function UserProfileData() {
   const {
     register,
     handleSubmit,
-    // setValue,
     reset,
     formState: { errors, isValid, isDirty },
   } = useForm<IUserProfileData>({
@@ -49,11 +48,6 @@ function UserProfileData() {
       user_email: currentUserEmail,
     });
   }, [currentUserName, currentUserPhone, currentUserEmail, reset]);
-  // useEffect(() => {
-  //   setValue('user_name', currentUserName);
-  //   setValue('user_phone_number', currentUserPhone);
-  //   setValue('user_email', currentUserEmail);
-  // }, [currentUserName, currentUserPhone, currentUserEmail, setValue]);
 
   const onSubmit: SubmitHandler<IUserProfileData> = (
     userData: IUserProfileData

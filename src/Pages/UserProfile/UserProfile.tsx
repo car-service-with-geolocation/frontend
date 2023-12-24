@@ -2,7 +2,7 @@ import { MouseEventHandler, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchUserLogout } from '../../store/authSlice';
 import styles from './styles/styles.module.css';
 
@@ -10,6 +10,8 @@ function UserProfile() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const userLogin = useAppSelector((state) => state.auth.first_name);
+  const userEmail = useAppSelector((state) => state.auth.email);
   useEffect(() => {
     if (location.pathname === '/profile') {
       navigate('/profile/user-data');
@@ -28,8 +30,8 @@ function UserProfile() {
       </Helmet>
       <div className={styles.userProfile__menu}>
         <h2 className={styles.userProfile__menuTitle}>
-          <p className={styles.userProfile__menuTitleStroke}>Вася</p>
-          <p className={styles.userProfile__menuTitleStroke}>Васин</p>
+          <p className={styles.userProfile__menuTitleStroke}>{userLogin}</p>
+          <p className={styles.userProfile__menuTitleStroke}>{userEmail}</p>
         </h2>
         <ul className={styles.userProfile__menuList}>
           <li className={styles.userProfile__menuItem}>

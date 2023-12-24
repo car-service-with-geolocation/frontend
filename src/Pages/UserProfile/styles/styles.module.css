@@ -70,11 +70,22 @@
 
 @media (max-width: 640px) {
   .userProfile {
+    flex-direction: column;
     justify-content: center;
+    gap: 40px;
     margin: 60px 20px 30px;
   }
 
-  .userProfile__menu {
-    display: none;
+  .userProfile__menuItem {
+    margin-bottom: 0;
+  }
+
+  .userProfile__menuList {
+    display: flex;
+    gap: 20px;
+  }
+
+  .userProfile__menuLink {
+    white-space: nowrap;
   }
 }
