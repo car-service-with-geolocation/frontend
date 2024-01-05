@@ -95,10 +95,6 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
           />
         )}
 
-        <div className={`${styles.ellipse} ${styles.ellipse1}`} />
-        <div className={`${styles.ellipse} ${styles.ellipse2}`} />
-        <div className={`${styles.ellipse} ${styles.ellipse3}`} />
-
         <h2 className={styles.title}>Создание заявки</h2>
         <div className={styles.applicationWrapper}>
           <form

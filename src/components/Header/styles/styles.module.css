@@ -64,10 +64,10 @@
 
 .linkText {
   margin: 0;
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   color: var(--white-2);
   cursor: pointer;
@@ -81,10 +81,10 @@
 
 .enterText {
   margin: 0;
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   color: var(--white-2);
   cursor: pointer;
@@ -148,13 +148,13 @@
   }
 
   .linkText {
-    font-size: 17px;
-    line-height: 155%;
+    font-size: var(--global-text-font-mobile-size-common);
+    line-height: 150%;
   }
 
   .enterText {
-    font-size: 17px;
-    line-height: 155%;
+    font-size: var(--global-text-font-mobile-size-common);
+    line-height: 150%;
   }
 }
 
@@ -279,11 +279,6 @@
 
   .menu__item {
     margin: 0 0 30px 0;
-  }
-
-  .linkText {
-    font-size: 16px;
-    line-height: 150%;
   }
 
   .enterText {

@@ -5,10 +5,10 @@
 }
 
 .header {
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   padding: 0;
   margin: 0 0 50px;
@@ -23,12 +23,12 @@
 
 .card {
   max-width: 440px;
-  max-height: 167px;
+  min-height: 167px;
   border-radius: 20px;
   padding: 50px;
   display: flex;
   flex-direction: column;
-  background: rgba(123, 104, 126, 0.2);
+  background: rgba(var(--grayscale-1-rgb), var(--alfa-light));
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -37,28 +37,28 @@
 .cardStep {
   padding: 0;
   margin: 0;
-  font-family: Raleway;
-  font-size: 20px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-big);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
 }
 
 .cardHeader {
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   padding: 0;
   margin: 10px 0 15px;
 }
 
 .cardDescription {
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
 }
 
@@ -78,11 +78,11 @@
     margin-top: 150px;
   }
   .cardHeader {
-    font-size: 22px;
+    font-size: var(--global-title-font-mobile-size-3);
     line-height: 140%;
   }
   .cardDescription {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 150%;
     margin: 0;
   }
@@ -99,7 +99,7 @@
   }
 
   .header {
-    font-size: 26px;
+    font-size: var(--global-title-font-mobile-size-2);
     margin: 0 0 30px;
   }
 
@@ -113,6 +113,6 @@
   }
 
   .cardStep {
-    font-size: 18px;
+    font-size: var(--global-text-font-mobile-size-big);
   }
 }

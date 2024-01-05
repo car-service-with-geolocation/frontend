@@ -18,7 +18,7 @@
   margin-top: 50px;
   align-items: center;
   border-radius: 20px;
-  background: rgba(123, 104, 126, 0.2);
+  background: rgba(var(--grayscale-1-rgb), var(--alfa-light));
 }
 
 .form {
@@ -39,27 +39,27 @@
 .formInput {
   width: 282px;
   border-radius: 20px;
-  border: 1px solid #dedede;
+  border: 1px solid var(--white-2);
   height: 100%;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 29.7px;
   background-color: transparent;
-  color: #dedede;
+  color: var(--white-2);
   padding-left: 40px;
   padding-right: 45px;
   text-overflow: ellipsis;
 }
 
 .formInput::placeholder {
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 29.7px;
-  color: #dedede;
+  color: var(--white-2);
 }
 
 .inputButton {
@@ -84,14 +84,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: #702;
+  background: var(--primary-accent-red);
 
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: #dedede;
+  color: var(--white-2);
 }
 
 .inputButton:hover {
@@ -100,7 +100,7 @@
 }
 
 .formButton:hover {
-  background-color: #3f0012;
+  background-color: var(--primary-hover-red);
   cursor: pointer;
 }
 
@@ -175,12 +175,12 @@
   }
 
   .formInput {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
   }
 
   .formButton {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     position: relative;
     top: 50px;
   }
