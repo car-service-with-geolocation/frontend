@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import carLogo from '../../images/car-Logo.svg';
 import { useAppSelector } from '../../store';
+import SwitchDarkLight from '../SwitcherLightDark/SwitcherLightDark';
 import style from './styles/styles.module.css';
 
 function Header() {
@@ -66,10 +67,13 @@ function Header() {
       </div>
       <Link
         to={isLoggedIn ? '/profile/user-data' : '/login'}
-        className={`${isLoggedIn ? style.enterText_icon : style.enterText}`}
+        className={`${isLoggedIn ? style.enterText_icon : style.enterText} ${
+          location.pathname === '/login' ? style.active : ''
+        }`}
       >
         Вход
       </Link>
+      <SwitchDarkLight />
     </header>
   );
 }

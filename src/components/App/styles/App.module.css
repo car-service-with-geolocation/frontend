@@ -4,9 +4,9 @@
   align-items: center;
   max-width: 1440px;
   min-width: 320px;
-  background-color: #0a0908;
+  background-color: var(--black-dark);
   box-sizing: border-box;
   margin: 0 auto;
   text-rendering: optimizeLegibility;
-  color: #dedede;
+  color: var(--white-2);
 }

@@ -12,11 +12,11 @@
 
 .ratingNumber {
   margin: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
-  line-height: 29.7px;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 165%;
 }
 
 .singleRating {
@@ -24,11 +24,11 @@
   border-radius: 40px;
   width: 261px;
   height: 10px;
-  background-color: #7b687e33;
+  background-color: var(--grayscale-1);
 }
 
 .scale {
   height: 100%;
-  background: #dedede;
+  background: var(--white-2);
   border-radius: 40px;
 }

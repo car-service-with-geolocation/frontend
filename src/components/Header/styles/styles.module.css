@@ -9,7 +9,7 @@
   position: sticky;
   top: 0px;
   z-index: 5;
-  background-color: rgba(10, 9, 8, 0.5);
+  background-color: rgba(var(--black-dark), var(--alfa-medium));
   backdrop-filter: blur(2px);
   margin: 0 auto;
 }
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   gap: 12.47px;
-  color: #dedede;
+  color: var(--white-2);
   text-decoration: none;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .logoText:hover {
-  color: #770022;
+  color: var(--accent-red);
 }
 
 .hum__icon {
@@ -64,40 +64,36 @@
 
 .linkText {
   margin: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #dedede;
+  color: var(--white-2);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
 
 .linkText:hover {
-  color: #770022;
-}
-
-.active {
-  font-weight: 700;
+  color: var(--accent-red);
 }
 
 .enterText {
   margin: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #dedede;
+  color: var(--white-2);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
 
 .enterText:hover {
-  color: #770022;
+  color: var(--accent-red);
 }
 
 .enterText_icon {
@@ -116,7 +112,7 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  background-color: #dedede;
+  background-color: var(--white-2);
   -webkit-mask-image: url('../../../images/LogInIcon.svg');
   mask-image: url('../../../images/LogInIcon.svg');
   visibility: visible;
@@ -124,7 +120,12 @@
 }
 
 .enterText_icon:hover::before {
-  background-color: #770022;
+  background-color: var(--accent-red);
+}
+
+.active {
+  font-family: Raleway;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 1439px) {
@@ -147,13 +148,13 @@
   }
 
   .linkText {
-    font-size: 17px;
-    line-height: 155%;
+    font-size: var(--global-text-font-mobile-size-common);
+    line-height: 150%;
   }
 
   .enterText {
-    font-size: 17px;
-    line-height: 155%;
+    font-size: var(--global-text-font-mobile-size-common);
+    line-height: 150%;
   }
 }
 
@@ -207,7 +208,7 @@
     width: 60%;
     height: 8%;
     transition: all 0.4s ease;
-    background-color: #dedede;
+    background-color: var(--white-2);
   }
 
   .hum__icon::before,
@@ -230,7 +231,7 @@
   .hum__icon:hover span,
   .hum__icon:hover::before,
   .hum__icon:hover::after {
-    background-color: #770022;
+    background-color: var(--accent-red);
   }
 
   .hum__icon.menu_active {
@@ -280,11 +281,6 @@
     margin: 0 0 30px 0;
   }
 
-  .linkText {
-    font-size: 16px;
-    line-height: 150%;
-  }
-
   .enterText {
     display: inline-block;
     width: 30px;
@@ -301,13 +297,13 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: #dedede;
+    background-color: var(--white-2);
     -webkit-mask-image: url('../../../images/LogInIcon.svg');
     mask-image: url('../../../images/LogInIcon.svg');
     visibility: visible;
   }
 
   .enterText:hover::before {
-    background-color: #770022;
+    background-color: var(--accent-red);
   }
 }

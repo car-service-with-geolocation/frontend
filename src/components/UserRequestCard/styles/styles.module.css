@@ -8,7 +8,7 @@
   gap: 20px;
   flex-shrink: 0;
   border-radius: 16px;
-  background: rgba(123, 104, 126, 0.2);
+  background: rgba(var(--grayscale-1), var(--alfa-light));
 }
 
 .requestCard__title {
@@ -29,14 +29,14 @@
 }
 
 .requestCard__text_decor {
-  color: white;
+  color: var(--white-2);
   font-weight: 700;
   margin-left: 6px;
 }
 
 .requestCard__problemText {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--global-text-font-desktop-size-common);
   line-height: normal;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -69,7 +69,7 @@
 }
 
 .requestCard__arrow:hover {
-  opacity: 0.7;
+  opacity: var(--alfa-strong);
 }
 
 .requestCard__arrow_active {

@@ -16,24 +16,24 @@
   background-position: center;
   background-size: cover;
   border-radius: 395px;
-  background: rgba(119, 0, 34, 0.5);
+  background: rgba(var(--primary-accent-red-rgb), var(--alfa-medium));
   filter: blur(100px);
 }
 
 .title {
-  font-family: Montserrat;
-  font-size: 40px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-1);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   margin: 0;
 }
 
 .subtitle {
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 29.7px;
   padding-top: 40px;
   margin: 0;
@@ -69,11 +69,11 @@
     opacity: 0.4;
   }
   .title {
-    font-size: 32px;
+    font-size: var(--global-title-font-mobile-size-1);
   }
 
   .subtitle {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
     padding-top: 20px;
   }

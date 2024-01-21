@@ -7,12 +7,12 @@
 .label {
   display: flex;
   padding: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #ffffff;
+  color: var(--white-2);
   align-items: center;
 }
 
@@ -42,7 +42,7 @@
 
 @media (max-width: 600px) {
   .label {
-    font-size: 14px;
+    font-size: var(--global-text-font-mobile-size-little);
     line-height: 16px;
   }
 }

@@ -9,12 +9,12 @@
 
 .reg__choicebtn {
   width: 100%;
-  color: #dedede;
+  color: var(--white-2);
   text-align: center;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   margin: 20px 0 0 0;
   padding: 0 0 10px 0;
@@ -25,17 +25,12 @@
 }
 
 .reg__choicebtn:hover {
-  color: rgba(119, 0, 34, 1);
+  color: rgba(var(--primary-accent-red-rgb), 1);
 }
 
 .reg__choicebtn_active {
   border-bottom: solid 5px;
-  border-color: #dedede;
-}
-
-.form {
-  width: 100%;
-  margin-top: 30px;
+  border-color: var(--white-2);
 }
 
 .form__fieldset {
@@ -53,10 +48,10 @@
 
 .form__label {
   color: #fff;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   display: flex;
   flex-direction: column;
@@ -70,11 +65,11 @@
 .form__input {
   width: 100%;
   height: 60px;
-  color: #7e7268;
-  font-family: Raleway;
-  font-size: 18px;
+  color: var(--common-button-disabled);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   box-sizing: border-box;
   border: none;
@@ -87,8 +82,8 @@
 }
 
 .form__input_active {
-  background-color: #ffb3b3;
-  box-shadow: inset 0px -45px 0px 20px #ffb3b3;
+  background-color: var(--common-alert-color);
+  box-shadow: inset 0px -45px 0px 20px var(--common-alert-color);
 }
 
 .input__icon {
@@ -119,16 +114,16 @@
 
 .input__error {
   height: 17px;
-  font-family: Raleway;
-  font-size: 14px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: #ffb3b3;
+  color: var(--common-alert-color);
 }
 
 .form__label_checkbox {
-  font-size: 14px;
+  font-size: var(--global-text-font-desktop-size-little);
   line-height: normal;
   flex-direction: row;
   margin-top: 40px;
@@ -158,16 +153,16 @@
 .form__submitbtn {
   width: 100%;
   height: 60px;
-  color: #dedede;
+  color: var(--white-2);
   font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  font-weight: var(--global-text-font-weight-normal);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(119, 0, 34, 1);
+  background-color: rgba(var(--primary-accent-red-rgb), 1);
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -181,8 +176,8 @@
 }
 
 .form__submitbtn_disabled {
-  color: #7a7a7a;
-  background-color: rgba(126, 114, 104, 0.5);
+  color: var(--grayscale-2);
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
 }
 
 @media (max-width: 600px) {
@@ -195,13 +190,13 @@
   }
 
   .form__label {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 150%;
   }
 
   .form__input {
     height: 50px;
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 150%;
   }
 
