@@ -234,8 +234,8 @@ const initialFeedBack = [
 
 const REGEXP_EMAIL =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-
 const REGEXP_PHONE_NUMBER = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
+const REGEXP_INN = /^(([0-9]{12})|([0-9]{10}))?$/;
 
 export {
   allCheckboxes,
@@ -247,6 +247,7 @@ export {
   initialFeedBack,
   navigatorOptions,
   REGEXP_EMAIL,
+  REGEXP_INN,
   REGEXP_PHONE_NUMBER,
   reviewOptions,
   servicesPerPage,

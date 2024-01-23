@@ -1,0 +1,95 @@
+.AutoserviceProfile {
+  max-width: 1120px;
+  width: 87.337vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 100px;
+  margin: 100px auto 150px;
+}
+
+.AutoserviceProfile__menu {
+  min-width: 110px;
+  width: 170px;
+}
+
+.AutoserviceProfile__menuTitle {
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
+  font-style: normal;
+  font-weight: var(--global-title-font-weight-bold);
+  line-height: normal;
+  margin: 0 0 30px;
+}
+
+.AutoserviceProfile__menuTitleStroke {
+  margin: 0 0;
+}
+
+.AutoserviceProfile__menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.AutoserviceProfile__menuList:last-child {
+  margin-block-start: 40px;
+}
+
+.AutoserviceProfile__menuItem {
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0;
+}
+
+.AutoserviceProfile__menuItem_active {
+  font-weight: var(--global-text-font-weight-medium);
+}
+
+.AutoserviceProfile__menuLink {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+}
+
+.AutoserviceProfile__menuLink:hover {
+  color: var(--primary-accent-red);
+}
+
+.AutoserviceProfile__menuLink:global(.active) {
+  font-weight: var(--global-text-font-weight-bold);
+}
+
+@media (max-width: 900px) {
+  .AutoserviceProfile {
+    justify-content: flex-start;
+    gap: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .AutoserviceProfile {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    margin: 60px 20px 30px;
+  }
+
+  .AutoserviceProfile__menuItem {
+    margin-bottom: 0;
+  }
+
+  .AutoserviceProfile__menuList {
+    display: flex;
+    gap: 20px;
+  }
+
+  .AutoserviceProfile__menuLink {
+    white-space: nowrap;
+  }
+}

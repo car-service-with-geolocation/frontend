@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Route, Routes } from 'react-router';
 
 import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
+import AutoserviceProfile from '../../Pages/AutoserviceProfile/AutoserviceProfile';
 import Login from '../../Pages/Login/Login';
 import MainPage from '../../Pages/MainPage/MainPage';
 import MapPage from '../../Pages/MapPage/MapPage';
@@ -15,6 +16,7 @@ import ServicePage from '../../Pages/ServicePage/ServicePages';
 import UserProfile from '../../Pages/UserProfile/UserProfile';
 import { useAppDispatch } from '../../store';
 import { fetchUserMe } from '../../store/authSlice';
+import AutoserviceProfileData from '../AutoserviceProfileData/AutoserviceProfileData';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
@@ -149,6 +151,10 @@ function App() {
         <Route path="/profile" element={<UserProfile />}>
           <Route path="user-data" element={<UserProfileData />} />
           <Route path="user-request" element={<UserProfileRequest />} />
+        </Route>
+        <Route path="/forservices" element={<AutoserviceProfile />}>
+          <Route path="autoservice-profile-data" element={<AutoserviceProfileData />} />
+          {/* <Route path="user-request" element={<AutoserviceProfileRequest />} /> */}
         </Route>
         <Route path="/*" element={<NotFound />} />
         <Route
