@@ -17,6 +17,7 @@ import UserProfile from '../../Pages/UserProfile/UserProfile';
 import { useAppDispatch } from '../../store';
 import { fetchUserMe } from '../../store/authSlice';
 import AutoserviceProfileData from '../AutoserviceProfileData/AutoserviceProfileData';
+import AutoserviceRequest from '../AutoserviceRequest/AutoserviceRequest';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import HideRouteComponent from '../HideRouteComponent/HideRouteComponent';
@@ -154,7 +155,7 @@ function App() {
         </Route>
         <Route path="/forservices" element={<AutoserviceProfile />}>
           <Route path="autoservice-profile-data" element={<AutoserviceProfileData />} />
-          {/* <Route path="user-request" element={<AutoserviceProfileRequest />} /> */}
+          <Route path="autoservice-orders" element={<AutoserviceRequest />} />
         </Route>
         <Route path="/*" element={<NotFound />} />
         <Route

@@ -68,7 +68,7 @@ function UserProfileRequest() {
         activeLinkClassName={styles.link_active}
         breakClassName={`${styles.link} ${styles.break}`}
       />
-      {userRequests.length === 0 && (
+      {userRequests.length === 0 && userRequestsStatus !== 'loading' && (
         <div className={styles.noRequestsView}>
           <h3 className={styles.noRequestsView__title}>У вас еще нет заявок.</h3>
           <p className={styles.noRequestsView__text}>Самое время начать</p>
