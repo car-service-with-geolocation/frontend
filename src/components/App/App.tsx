@@ -16,6 +16,7 @@ import ServicePage from '../../Pages/ServicePage/ServicePages';
 import UserProfile from '../../Pages/UserProfile/UserProfile';
 import { useAppDispatch } from '../../store';
 import { fetchUserMe } from '../../store/authSlice';
+import AutoserviceInfoData from '../AutoserviceInfoData/AutoserviceInfoData';
 import AutoserviceProfileData from '../AutoserviceProfileData/AutoserviceProfileData';
 import AutoserviceRequest from '../AutoserviceRequest/AutoserviceRequest';
 import Footer from '../Footer/Footer';
@@ -155,6 +156,7 @@ function App() {
         </Route>
         <Route path="/forservices" element={<AutoserviceProfile />}>
           <Route path="autoservice-profile-data" element={<AutoserviceProfileData />} />
+          <Route path="autoservice-id1" element={<AutoserviceInfoData />} />
           <Route path="autoservice-orders" element={<AutoserviceRequest />} />
         </Route>
         <Route path="/*" element={<NotFound />} />

@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import { useAppDispatch, useAppSelector } from '../../store';
 import selectUserRequests from '../../store/selectors';
 import { fetchUserRequestsData } from '../../store/userRequestsSlice';
-import { userRequestPerPage } from '../../utils/constants';
+import { autoserviceRequestPerPage } from '../../utils/constants';
 import { TUserRequestData } from '../../utils/types';
 import AutoserviceRequestTable from '../AutoserviceRequestTable/AutoserviceRequestTable';
 import Preloader from '../Preloader/Preloader';
@@ -28,13 +28,13 @@ function AutoserviceRequest() {
   }, [dispatch, userRequestsStatus]);
 
   useEffect(() => {
-    const endOffset = itemOffset + userRequestPerPage;
+    const endOffset = itemOffset + autoserviceRequestPerPage;
     setUserRequestData(userRequests.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(userRequests.length / userRequestPerPage));
+    setPageCount(Math.ceil(userRequests.length / autoserviceRequestPerPage));
   }, [itemOffset, userRequests]);
   // pagination
   const handlePageClick = (evt: { selected: number }) => {
-    const newOffset = (evt.selected * userRequestPerPage) % userRequests.length;
+    const newOffset = (evt.selected * autoserviceRequestPerPage) % userRequests.length;
     setItemOffset(newOffset);
   };
 

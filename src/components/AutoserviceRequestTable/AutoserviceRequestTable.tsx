@@ -18,7 +18,7 @@ function AutoserviceRequestTable({ requests }: IAutoserviceRequestTable) {
     return 'Нет данных';
   }
 
-  return (
+  return requests.length ? (
     <table className={styles.table}>
       <thead className={styles.table__head}>
         <tr className={styles.head__row}>
@@ -46,6 +46,8 @@ function AutoserviceRequestTable({ requests }: IAutoserviceRequestTable) {
         })}
       </tbody>
     </table>
+  ) : (
+    <span />
   );
 }
 

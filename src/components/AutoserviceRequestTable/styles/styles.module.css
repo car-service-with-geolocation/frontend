@@ -1,5 +1,5 @@
 .table {
-  width: 100%;
+  width: calc(100vw - 40px);
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid var(--white-3);
@@ -59,10 +59,6 @@
 
 .body__cell:nth-child(3) .body__cell:nth-child(4) {
   width: 265px;
-}
-
-.body__cell:nth-child(5) {
-  width: 400px;
 }
 
 .body__cell:nth-child(6) {

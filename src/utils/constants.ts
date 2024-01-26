@@ -36,6 +36,7 @@ const baseUrl = 'https://find-car-service.ru/api/v1/';
 
 const servicesPerPage = 6;
 const userRequestPerPage = 5;
+const autoserviceRequestPerPage = 8;
 
 const allCheckboxes = [
   { name: 'Даю согласие на обработку персональных данных', checked: true },
@@ -239,6 +240,7 @@ const REGEXP_INN = /^(([0-9]{12})|([0-9]{10}))?$/;
 
 export {
   allCheckboxes,
+  autoserviceRequestPerPage,
   baseUrl,
   DADATA_API,
   DADATA_API_KEY,
