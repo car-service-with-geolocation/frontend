@@ -2,7 +2,7 @@ import { useAppSelector } from '../../store';
 import Ymap from '../Ymap/Ymap';
 import styles from './styles/styles.module.css';
 
-function FieldsetServiceAdress() {
+function FieldsetAutoserviceAdress() {
   const serviceToRender = useAppSelector((store) => store.autoServiceById.data);
 
   return (
@@ -37,4 +37,4 @@ function FieldsetServiceAdress() {
   );
 }
 
-export default FieldsetServiceAdress;
+export default FieldsetAutoserviceAdress;

@@ -1,6 +1,6 @@
 import styles from './styles/styles.module.css';
 
-function FieldsetCTAbtn() {
+function FieldsetAutoserviceCTAbtn() {
   return (
     <fieldset>
       <h2>СТА-кнопка</h2>
@@ -88,4 +88,4 @@ function FieldsetCTAbtn() {
   );
 }
 
-export default FieldsetCTAbtn;
+export default FieldsetAutoserviceCTAbtn;
