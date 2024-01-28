@@ -19,6 +19,7 @@ function Search() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const options = useAppSelector((store) => store.cars.data);
+  const carsStatus = useAppSelector((store) => store.cars.status);
 
   const [currentAuto, setCurrentAuto] = useState<string | null>();
   const [currentLocation, setCurrentLocation] = useState<string | null>('');
@@ -133,9 +134,9 @@ function Search() {
           placeholder="Марка Автомобиля"
           value={getValue()}
           getOptionLabel={(option) => option.brand}
-          getOptionValue={(option) => option.slug}
+          getOptionValue={(option) => option.brand}
           options={options}
-          isLoading={false} // Небольшая Анимация загрузки данных.
+          isLoading={carsStatus !== 'resolved'} // Небольшая Анимация загрузки данных.
           isSearchable // Возможность вписывать текст в инпут и далее выбирать
           classNamePrefix="react-select"
           className={`select ${style.select_position}`}
