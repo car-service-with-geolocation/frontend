@@ -135,8 +135,7 @@ function MapPage() {
                   rating={service.rating}
                   votes={service.votes}
                   address={service.address}
-                  openfrom={service.openfrom}
-                  openuntil={service.openuntil}
+                  workingTime={service.working_time_today}
                   id={service.id}
                 />
               );
