@@ -32,6 +32,7 @@ const navigatorOptions = {
   timeout: 3600,
 };
 
+// const baseUrl = 'https://127.0.0.1:8000/api/v1/';
 const baseUrl = 'https://find-car-service.ru/api/v1/';
 
 const servicesPerPage = 6;
@@ -235,7 +236,7 @@ const initialFeedBack = [
 const REGEXP_EMAIL =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
-const REGEXP_PHONE_NUMBER = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
+const REGEXP_PHONE_NUMBER = /(?:\+|\d)[\d\-() ]{9,}\d/g;
 
 export {
   allCheckboxes,

@@ -19,7 +19,7 @@ export const fetchUserRequestsData = createAsyncThunk<
   { rejectValue: string }
 >('user/fetchRequestsData', async (_, { rejectWithValue }) => {
   const token = localStorage.getItem('JWT');
-  const response = await fetch(`${baseUrl}orders/`, {
+  const response = await fetch(`${baseUrl}orders/me`, {
     method: 'GET',
     headers: {
       authorization: `Token ${token}`,

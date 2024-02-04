@@ -17,6 +17,7 @@ const initialState: TInitialState = {
 
 export const fetchCars = createAsyncThunk<TCar[], undefined, { rejectValue: string }>(
   'cars/fetchCars',
+  // eslint-disable-next-line func-names
   async function (_, { rejectWithValue }) {
     const response = await fetch(`${baseUrl}autoservice/car_models`, {
       method: 'GET',

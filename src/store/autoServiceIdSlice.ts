@@ -19,6 +19,7 @@ export const fetchAutoServiceId = createAsyncThunk<
   TService,
   string | undefined,
   { rejectValue: string }
+  // eslint-disable-next-line func-names
 >('autoServiceId/fetchAutoServiceId', async function (id, { rejectWithValue }) {
   const response = await fetch(`${baseUrl}autoservice/service/${id}/`);
   if (!response.ok) {
