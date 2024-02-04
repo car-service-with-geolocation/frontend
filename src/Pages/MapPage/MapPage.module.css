@@ -1,8 +1,8 @@
 .title {
-  font-family: Montserrat;
-  font-size: 40px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-1);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   margin: 0;
   display: flex;
@@ -61,24 +61,12 @@
   position: relative;
 }
 
-.ellipse {
-  position: absolute;
-  bottom: -246px;
-  left: -85px;
-  width: 395px;
-  height: 395px;
-  border-radius: 395px;
-  background: rgba(119, 0, 34, 0.3);
-  filter: blur(100px);
-  z-index: 1;
-}
-
 .mapping_label {
   width: 120px; /* Ширина рисунка */
   height: 60px; /* Высота рисунка */
   display: flex; /* Блочный элемент */
   position: relative; /* Относительное позиционирование */
-  background-color: #7b687e33;
+  background-color: var(--grayscale-1);
   border-radius: 20px;
   cursor: pointer;
 }
@@ -118,14 +106,14 @@
   top: 0;
   width: 50%;
   height: 100%;
-  background: #702;
+  background: var(--primary-accent-red);
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   transition: all 0.3s ease-in;
 }
 
 .mapping_input:hover + .mapping_span {
-  background-color: #3f0012;
+  background-color: var(--primary-hover-red);
 }
 
 .mapping_input:checked + .mapping_span {
@@ -148,18 +136,18 @@
 .link {
   padding: 3px 12px;
   margin: 0 4px 0 0;
-  color: #dedede;
-  font-family: Montserrat;
-  font-size: 18px;
+  color: var(--white-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   cursor: pointer;
 }
 
-.link_activ {
-  color: #0a0908;
-  background-color: #dedede;
+.link_active {
+  color: var(--black-dark);
+  background-color: var(--white-2);
   border-radius: 5px;
 }
 
@@ -193,7 +181,7 @@
     width: 87.337vw;
   }
   .title {
-    font-size: 32px;
+    font-size: var(--global-title-font-mobile-size-1);
     width: 87.337vw;
   }
   .ellipse {
@@ -224,7 +212,7 @@
   }
 
   .mapping_span_map_image {
-    background-size: 18px 18px;
+    background-size: var(--global-text-font-mobile-size-big);
     width: 80px;
     height: 40px;
   }
@@ -232,7 +220,7 @@
   .mapping_label {
     width: 80px; /* Ширина рисунка */
     height: 40px; /* Высота рисунка */
-    background-color: #7b687e33;
+    background-color: var(--grayscale-1);
     border-radius: 20px;
     cursor: pointer;
   }
@@ -250,10 +238,10 @@
 
   .link {
     padding: 2px 6px;
-    font-size: 13px;
+    font-size: var(--global-text-font-mobile-size-little);
   }
 
-  .link_activ {
+  .link_active {
     border-radius: 3px;
   }
 

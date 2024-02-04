@@ -6,10 +6,10 @@
 }
 
 .title {
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   margin: 0 0 30px;
   text-align: left;
@@ -24,22 +24,22 @@
 }
 
 .noRequestsView__title {
-  font-family: Montserrat;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   text-align: center;
-  font-size: 32px;
   margin: 142px 0 20px;
 }
 
 .noRequestsView__text {
-  font-family: Montserrat;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-1);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   text-align: center;
-  font-size: 40px;
   margin: 0 0 60px;
 }
 
@@ -47,23 +47,23 @@
   width: clamp(335px, 100%, 370px);
   height: 60px;
   text-decoration: none;
-  color: #dedede;
-  font-family: Ubuntu;
-  font-size: 18px;
+  color: var(--white-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(119, 0, 34, 1);
+  background-color: var(--primary-accent-red);
   border-radius: 20px;
   cursor: pointer;
   transition: opacity 0.3s linear;
 }
 
 .userRequest_btn:hover {
-  opacity: 0.7;
+  opacity: var(--alfa-strong);
 }
 
 .pagination {
@@ -77,18 +77,18 @@
 .link {
   padding: 3px 12px;
   margin: 0 4px 0 0;
-  color: #dedede;
-  font-family: Montserrat;
-  font-size: 18px;
+  color: var(--white-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   cursor: pointer;
 }
 
-.link_activ {
-  color: #0a0908;
-  background-color: #dedede;
+.link_active {
+  color: var(--black-dark);
+  background-color: var(--white-2);
   border-radius: 5px;
 }
 
@@ -119,13 +119,13 @@
 
 @media screen and (max-width: 900px) {
   .noRequestsView__title {
-    font-size: 22px;
+    font-size: var(--global-title-font-mobile-size-2);
     line-height: 140%;
     margin-block: 100px 15px;
   }
 
   .noRequestsView__text {
-    font-size: 26px;
+    font-size: var(--global-title-font-mobile-size-2);
   }
 }
 
@@ -136,10 +136,10 @@
 
   .link {
     padding: 2px 6px;
-    font-size: 13px;
+    font-size: var(--global-text-font-mobile-size-little);
   }
 
-  .link_activ {
+  .link_active {
     border-radius: 3px;
   }
 

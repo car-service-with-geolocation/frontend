@@ -2,7 +2,7 @@
   max-width: 360px;
   width: 100%;
   display: flex;
-  background-color: rgba(123, 104, 126, 0.2);
+  background-color: rgba(var(--grayscale-1), var(--alfa-light));
   border-radius: 20px;
   margin: 50px 0 0;
   padding: 65px 95px;
@@ -13,10 +13,10 @@
 .title {
   margin: 0 0 20px;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
@@ -37,38 +37,38 @@
 .subtitle {
   padding: 0;
   margin: 0 0 10px 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
 }
 
 .label {
   padding: 0;
   margin: 0 0 10px 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
 }
 
 .userButton {
   background-color: transparent;
-  color: #dedede;
+  color: var(--white-2);
   border: none;
   cursor: pointer;
   transition: color 0.3s linear;
 }
 
 .userButton:hover {
-  color: rgba(119, 0, 34, 1);
+  color: rgba(var(--primary-accent-red), var(--alfa-strong));
 }
 
 .underline {
   width: 100%;
-  background-color: #dedede;
+  background-color: var(--white-2);
   height: 5px;
   border-radius: 5px;
   margin: 0 0 30px;
@@ -101,10 +101,10 @@
   height: 30px;
   border-radius: 20px;
   padding: 15px 30px;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   border: none;
   color: #7e7268;
@@ -113,8 +113,8 @@
 }
 
 .inputActive {
-  background-color: #ffb3b3;
-  box-shadow: inset 0px -45px 0px 20px #ffb3b3;
+  background-color: var(--common-alert-color);
+  box-shadow: inset 0px -45px 0px 20px var(--common-alert-color);
 }
 
 .error {
@@ -122,22 +122,22 @@
   top: 64px;
   left: 0;
   height: 16px;
-  font-family: Raleway;
-  font-size: 14px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: #ffb3b3;
+  color: var(--common-alert-color);
 }
 
 .link {
-  color: #dedede;
+  color: var(--white-2);
   cursor: pointer;
   text-decoration: none;
 }
 
 .link:hover {
-  color: #770022;
+  color: var(--primary-accent-red);
 }
 
 .input_password {
@@ -177,31 +177,31 @@
   padding: 20px 80px;
   border: none;
   border-radius: 20px;
-  background-color: #702;
-  color: #dedede;
-  font-family: Raleway;
-  font-size: 18px;
+  background-color: var(--grayscale-1);
+  color: var(--white-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   cursor: pointer;
 }
 
 .submitButton:hover {
-  background-color: #3f0012;
+  background-color: var(--primary-hover-red);
 }
 
 .submitButton:active {
-  background-color: #2e000d;
+  background-color: var(--primary-pressed-red);
 }
 
 .submitButton_disable {
-  background-color: rgba(126, 114, 104, 0.5);
-  color: #7a7a7a;
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
+  color: var(--grayscale-2);
 }
 
 .submitButton_disable:hover {
-  background-color: rgba(126, 114, 104, 0.5);
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
 }
 
 .registrationBlock {
@@ -227,7 +227,7 @@
 
   .title {
     margin: 0 0 30px;
-    font-size: 22px;
+    font-size: var(--global-title-font-mobile-size-3);
     line-height: 140%;
   }
 
@@ -236,14 +236,14 @@
   }
 
   .label {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
   }
 
   .input {
     margin: 0 0 40px 0;
     height: 20px;
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 20px;
   }
 
@@ -266,7 +266,7 @@
   }
 
   .subtitle[href='/registration'] {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
   }
 }

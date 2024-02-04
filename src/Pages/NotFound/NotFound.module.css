@@ -14,12 +14,12 @@
 
 .notFoundPageText {
   margin: 20px 0 50px;
-  color: #fff;
+  color: var(--white-2);
   text-align: center;
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   width: 377px;
 }
@@ -28,18 +28,18 @@
   width: 380px;
   height: 60px;
   border-radius: 20px;
-  background-color: #770022;
-  color: #fff;
-  font-family: Raleway;
-  font-size: 18px;
+  background-color: var(--primary-accent-red);
+  color: var(--white-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   border: none;
   cursor: pointer;
 }
 
 .notFoundPageBtn:hover {
-  opacity: 0.7;
+  opacity: var(--alfa-strong);
 }
 
 @media (max-width: 650px) {
@@ -61,6 +61,6 @@
     width: 320px;
   }
   .notFoundPageText {
-    font-size: 17px;
+    font-size: var(--global-text-font-mobile-size-common);
   }
 }

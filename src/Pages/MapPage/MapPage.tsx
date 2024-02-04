@@ -125,7 +125,6 @@ function MapPage() {
       {content === 'card' ? (
         <section className={style.section} aria-label="Секция лучшие сервисы">
           <div className={style.cardscontainer}>
-            <div className={style.ellipse} />
             {currentItems.map((service) => {
               return (
                 <ServiceCard
@@ -155,7 +154,7 @@ function MapPage() {
             pageLinkClassName={style.link}
             previousLinkClassName={`${style.prevlink} ${style.arrowlink}`}
             nextLinkClassName={`${style.nextlink} ${style.arrowlink}`}
-            activeLinkClassName={style.link_activ}
+            activeLinkClassName={style.link_active}
             breakClassName={`${style.link} ${style.break}`}
           />
         </section>

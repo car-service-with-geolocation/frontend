@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import carLogo from '../../images/car-Logo.svg';
 import { useAppSelector } from '../../store';
+import SwitchDarkLight from '../SwitcherLightDark/SwitcherLightDark';
 import style from './styles/styles.module.css';
 
 function Header() {
@@ -72,6 +73,7 @@ function Header() {
       >
         Вход
       </Link>
+      <SwitchDarkLight />
     </header>
   );
 }
