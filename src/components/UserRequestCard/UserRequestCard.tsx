@@ -1,6 +1,7 @@
 // import { number } from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
+import { dataConversion, setStatus } from '../../utils/conversions';
 import { TUserRequestData } from '../../utils/types';
 import styles from './styles/styles.module.css';
 
@@ -27,7 +28,7 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
 
   useEffect(() => {
     const element = overflowingRef?.current;
-    if (element) {
+    if (element && isOverflowing) {
       if (isVisible) {
         element?.classList.remove(styles.clampText);
         window.requestAnimationFrame(() => {
@@ -42,28 +43,32 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
         }, 1000);
       }
     }
-  }, [isVisible]);
+  }, [isVisible, isOverflowing]);
 
   const handleClick = () => {
     setIsVisible((state) => !state);
   };
 
+  const date = dataConversion(requestData.pub_date);
+
   return (
     <article className={styles.requestCard}>
       <div className={styles.requestCard__title}>
-        <p className={styles.requestCard__text}>{requestData.status}</p>
-        <p className={styles.requestCard__text}>{requestData.date}</p>
+        <p className={styles.requestCard__text}>{setStatus(requestData.status)}</p>
+        <p className={styles.requestCard__text}>{date}</p>
       </div>
       <div className={styles.requestCard__about}>
         <p className={styles.requestCard__text}>
           Автосервис:
           <span className={styles.requestCard__text_decor}>
-            {requestData.autoservice}
+            {requestData.autoservice_name || 'Нет данных'}
           </span>
         </p>
         <p className={styles.requestCard__text}>
           Данные авто:
-          <span className={styles.requestCard__text_decor}>{requestData.carmodel}</span>
+          <span className={styles.requestCard__text_decor}>
+            {requestData.car || 'Нет данных'}
+          </span>
         </p>
       </div>
       <div className={styles.requestCard__about}>
@@ -72,7 +77,7 @@ function UserRequestCard({ requestData }: IUserRequestCard) {
           ref={overflowingRef}
           className={`${styles.requestCard__problemText} ${styles.clampText}`}
         >
-          {requestData.problem}
+          {requestData.task || 'Нет данных'}
         </p>
       </div>
       <div className={styles.requestCard__arrowContainer}>
