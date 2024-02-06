@@ -1,3 +1,9 @@
+export type TworkingTimeInner = {
+  day: string;
+  id: number;
+  time: string;
+};
+
 export type TService = {
   id: number;
   company: Company;
@@ -6,14 +12,14 @@ export type TService = {
   address: string;
   rating: number;
   votes: number;
-  openfrom: string;
-  openuntil: string;
+  working_time_today: string;
   holidays: null | string;
   phone_number: null | string;
   email: null | string;
   site: string;
   car_service: string[];
   job: string[];
+  working_time: TworkingTimeInner[];
 };
 
 type Company = {
