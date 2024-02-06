@@ -36,18 +36,6 @@
   margin: 45px 0;
 }
 
-.ellipse {
-  position: absolute;
-  width: 395px;
-  height: 395px;
-  border-radius: 395px;
-  background: rgba(119, 0, 34, 0.3);
-  filter: blur(100px);
-  top: calc(50% - 395px / 2);
-  left: calc(50% - 395px / 2);
-  z-index: 3;
-}
-
 .modalButton {
   min-width: 276px;
   padding: 20px 100px;

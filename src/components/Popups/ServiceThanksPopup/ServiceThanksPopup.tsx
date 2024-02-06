@@ -10,19 +10,16 @@ type TPropsServiceThanksPopup = {
 function ServiceThanksPopup({ isOpen, onClose }: TPropsServiceThanksPopup) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <>
-        <div className={styles.modalContainer}>
-          <h2 className={styles.modalTitle}>Спасибо!</h2>
-          <img className={styles.modalImage} src={success} alt="логотип сообщения" />
-          <h3 className={styles.modalSubtitle}>
-            Ваш отзыв сохранен! Мы опубликуем его сразу после проверки
-          </h3>
-          <button className={styles.modalButton} onClick={onClose}>
-            Отлично
-          </button>
-        </div>
-        <div className={styles.ellipse} />
-      </>
+      <div className={styles.modalContainer}>
+        <h2 className={styles.modalTitle}>Спасибо!</h2>
+        <img className={styles.modalImage} src={success} alt="логотип сообщения" />
+        <h3 className={styles.modalSubtitle}>
+          Ваш отзыв сохранен! Мы опубликуем его сразу после проверки
+        </h3>
+        <button className={styles.modalButton} onClick={onClose}>
+          Отлично
+        </button>
+      </div>
     </Modal>
   );
 }

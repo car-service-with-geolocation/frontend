@@ -65,6 +65,7 @@ function Header() {
           </div>
         </div>
       </div>
+      <SwitchDarkLight />
       <Link
         to={isLoggedIn ? '/profile/user-data' : '/login'}
         className={`${isLoggedIn ? style.enterText_icon : style.enterText} ${
@@ -73,7 +74,6 @@ function Header() {
       >
         Вход
       </Link>
-      <SwitchDarkLight />
     </header>
   );
 }

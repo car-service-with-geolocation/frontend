@@ -35,7 +35,7 @@
 .switch__label {
   width: 40px;
   height: 20px;
-  background: var(--grayscale-2);
+  background: var(--white-2);
   border-radius: 20px;
   position: relative;
   transition: all 350ms ease-in;
