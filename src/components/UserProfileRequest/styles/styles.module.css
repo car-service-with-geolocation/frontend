@@ -47,7 +47,7 @@
   width: clamp(335px, 100%, 370px);
   height: 60px;
   text-decoration: none;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -77,7 +77,7 @@
 .link {
   padding: 3px 12px;
   margin: 0 4px 0 0;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -88,7 +88,7 @@
 
 .link_active {
   color: var(--black-dark);
-  background-color: var(--white-2);
+  background-color: var(--grayscale-2);
   border-radius: 5px;
 }
 

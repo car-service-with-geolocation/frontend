@@ -41,11 +41,14 @@
 }
 
 .img {
-  mix-blend-mode: lighten;
   width: 550px;
   height: 317px;
   object-fit: cover;
-  aspect-ratio: 1/0.5;
+  aspect-ratio: 1/0.6;
+}
+
+.img_blendMode {
+  mix-blend-mode: lighten;
 }
 
 @media (max-width: 1439px) {
@@ -59,7 +62,6 @@
   .img {
     width: 100%;
     height: auto;
-    aspect-ratio: 1/0.5;
   }
 }
 

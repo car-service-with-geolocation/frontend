@@ -32,8 +32,8 @@ const navigatorOptions = {
   timeout: 3600,
 };
 
-const baseUrl = 'https://127.0.0.1:8000/api/v1/';
-// const baseUrl = 'https://find-car-service.ru/api/v1/';
+// const baseUrl = 'https://127.0.0.1:8000/api/v1/';
+const baseUrl = 'https://find-car-service.ru/api/v1/';
 
 const servicesPerPage = 6;
 const userRequestPerPage = 5;

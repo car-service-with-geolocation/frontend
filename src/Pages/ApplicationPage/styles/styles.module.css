@@ -28,7 +28,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   text-decoration: none;
   cursor: pointer;
 }
@@ -94,7 +94,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
 }
 
 .textAreaTitle:nth-of-type(2) {
@@ -135,7 +135,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   margin: -15px 0 20px;
 }
 
@@ -152,7 +152,7 @@
   margin: 0;
   padding: 35px;
   border-radius: 20px;
-  border: 2px dashed var(--white-2);
+  border: 2px dashed var(--grayscale-2);
   background-image: url(../../../images/cameraIcon.svg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -192,7 +192,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
 }
 
 .submitButton {
@@ -203,7 +203,7 @@
   border: none;
   border-radius: 20px;
   background-color: var(--primary-accent-red);
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;

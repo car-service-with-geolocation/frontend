@@ -97,7 +97,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 24px;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   border-radius: 20px;
 }
 

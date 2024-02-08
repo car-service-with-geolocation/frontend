@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   gap: 12.47px;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   text-decoration: none;
 }
 
@@ -62,6 +62,12 @@
   padding: 0;
 }
 
+.rightSide {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
 .linkText {
   margin: 0;
   font-family: var(--global-text-font);
@@ -69,7 +75,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
@@ -86,7 +92,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
@@ -112,7 +118,7 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  background-color: var(--white-2);
+  background-color: var(--grayscale-2);
   -webkit-mask-image: url('../../../images/LogInIcon.svg');
   mask-image: url('../../../images/LogInIcon.svg');
   visibility: visible;
@@ -208,7 +214,7 @@
     width: 60%;
     height: 8%;
     transition: all 0.4s ease;
-    background-color: var(--white-2);
+    background-color: var(--grayscale-2);
   }
 
   .hum__icon::before,
@@ -297,7 +303,7 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: var(--white-2);
+    background-color: var(--grayscale-2);
     -webkit-mask-image: url('../../../images/LogInIcon.svg');
     mask-image: url('../../../images/LogInIcon.svg');
     visibility: visible;

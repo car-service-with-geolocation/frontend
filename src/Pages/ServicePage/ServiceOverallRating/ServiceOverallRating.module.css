@@ -29,6 +29,6 @@
 
 .scale {
   height: 100%;
-  background: var(--white-2);
+  background: var(--grayscale-2);
   border-radius: 40px;
 }

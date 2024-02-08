@@ -47,7 +47,7 @@
   }
 
   .immediate-select__indicator {
-    color: var(--white-2);
+    color: var(--grayscale-2);
     padding-left: 10px;
     transform: rotate(180deg);
     transition: all 0.6s linear;
@@ -66,7 +66,7 @@
     width: 250px;
     left: 0;
     border-radius: 20px;
-    background: var(--white-2);
+    background: var(--grayscale-2);
     animation: openMenu 0.35s ease-in-out;
   }
 
@@ -101,7 +101,7 @@
 
   /* ФОКУС ОПЦИИ */
   .immediate-select__option--is-focused {
-    background-color: var(--white-3);
+    background-color: var(--grayscale-3);
   }
 
   .immediate-select__option--is-focused:first-of-type {
@@ -116,7 +116,7 @@
   /* АКТИНАЯ ОПЦИЯ*/
   .immediate-select__option--is-selected {
     background-color: var(--primary-hover-red);
-    color: var(--white-2);
+    color: var(--grayscale-2);
   }
 
   .immediate-select__option--is-selected:first-of-type {

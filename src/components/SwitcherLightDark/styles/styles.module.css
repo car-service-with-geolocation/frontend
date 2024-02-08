@@ -35,10 +35,11 @@
 .switch__label {
   width: 40px;
   height: 20px;
-  background: var(--white-2);
+  background: var(--grayscale-2);
   border-radius: 20px;
   position: relative;
   transition: all 350ms ease-in;
+  cursor: pointer;
 }
 
 .switch__checkbox {

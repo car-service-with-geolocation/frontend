@@ -39,7 +39,7 @@
 .formInput {
   width: 282px;
   border-radius: 20px;
-  border: 1px solid var(--white-2);
+  border: 1px solid var(--grayscale-2);
   height: 100%;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
@@ -47,7 +47,7 @@
   font-weight: var(--global-text-font-weight-normal);
   line-height: 29.7px;
   background-color: transparent;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   padding-left: 40px;
   padding-right: 45px;
   text-overflow: ellipsis;
@@ -59,14 +59,14 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 29.7px;
-  color: var(--white-2);
+  color: var(--grayscale-2);
 }
 
 .inputButton {
   border: none;
-  background-color: transparent;
+  background-color: var(--grayscale-2);
   position: absolute;
-  background-image: url('../../images/rectangle-Search.svg');
+  mask-image: url('../../images/rectangle-Search.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -91,7 +91,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: var(--white-2);
+  color: #dedede;
 }
 
 .inputButton:hover {

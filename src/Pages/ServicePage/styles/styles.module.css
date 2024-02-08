@@ -110,7 +110,7 @@
   align-items: center;
   border-radius: 20px;
   background: var(--primary-accent-red);
-  color: var(--white-2);
+  color: var(--grayscale-2);
   border: none;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
@@ -274,7 +274,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   margin-top: 50px;
 }
 
@@ -287,7 +287,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: var(--white-3);
+  background: var(--grayscale-3);
   justify-self: center;
   align-self: center;
 

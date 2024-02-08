@@ -1,7 +1,7 @@
 .link {
   display: block;
   text-decoration: none;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   transition: opacity 0.6s ease;
 }
 

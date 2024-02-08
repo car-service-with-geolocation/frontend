@@ -29,7 +29,7 @@
 }
 
 .requestCard__text_decor {
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-weight: 700;
   margin-left: 6px;
 }

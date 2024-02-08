@@ -65,15 +65,17 @@ function Header() {
           </div>
         </div>
       </div>
-      <SwitchDarkLight />
-      <Link
-        to={isLoggedIn ? '/profile/user-data' : '/login'}
-        className={`${isLoggedIn ? style.enterText_icon : style.enterText} ${
-          location.pathname === '/login' ? style.active : ''
-        }`}
-      >
-        Вход
-      </Link>
+      <div className={style.rightSide}>
+        <SwitchDarkLight />
+        <Link
+          to={isLoggedIn ? '/profile/user-data' : '/login'}
+          className={`${isLoggedIn ? style.enterText_icon : style.enterText} ${
+            location.pathname === '/login' ? style.active : ''
+          }`}
+        >
+          Вход
+        </Link>
+      </div>
     </header>
   );
 }

@@ -8,5 +8,5 @@
   box-sizing: border-box;
   margin: 0 auto;
   text-rendering: optimizeLegibility;
-  color: var(--white-2);
+  color: var(--grayscale-2);
 }

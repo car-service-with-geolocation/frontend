@@ -60,7 +60,7 @@
   border-radius: 20px;
   border: none;
   background-color: var(--primary-accent-red);
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;

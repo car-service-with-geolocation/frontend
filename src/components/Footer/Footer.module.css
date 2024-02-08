@@ -9,7 +9,7 @@
 
 .logo_wrapper {
   display: flex;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   text-decoration: none;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .link {
-  color: var(--white-2);
+  color: var(--grayscale-2);
   text-decoration: none;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-big);
@@ -73,7 +73,7 @@
 
 .address_link {
   text-decoration: none;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-big);
   font-style: normal;

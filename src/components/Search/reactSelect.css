@@ -11,19 +11,27 @@
     transform: scale(1);
   }
 }
+
+[data-theme='light'] .react-select__control {
+  background-color: #fff !important;
+}
+[data-theme='light'] .react-select__option--is-selected {
+  background-color: #fff !important;
+}
+
 .select {
   .react-select__control {
     width: 100%;
     height: 60px;
     border-radius: 20px;
-    background: var(--white-2);
+    background: var(--grayscale-2);
   }
   .react-select__control--is-focused {
     box-shadow: none;
     border: none;
   }
   .react-select__placeholder {
-    color: var(--black-dark);
+    color: #0a0908;
     font-family: var(--global-text-font);
     font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
@@ -32,7 +40,7 @@
     padding-left: 25px;
   }
   .react-select__single-value {
-    color: var(--black-dark);
+    color: #0a0908;
     font-family: var(--global-text-font);
     font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
@@ -42,7 +50,7 @@
   }
 
   .react-select__input-container {
-    color: var(--black-dark);
+    color: #0a0908;
     font-family: var(--global-text-font);
     font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
@@ -56,7 +64,7 @@
   }
 
   .react-select__indicator {
-    color: var(--black-dark);
+    color: #0a0908;
     transition: all 0.5s linear;
   }
 
@@ -74,7 +82,7 @@
   .react-select__menu {
     width: 100%;
     border-radius: 20px;
-    background: var(--white-2);
+    background: var(--grayscale-2);
     animation: openMenu 0.35s ease-in-out;
   }
 
@@ -95,11 +103,11 @@
   }
 
   .react-select__option {
-    color: var(--black-dark);
+    color: #0a0908;
   }
 
   .react-select__option--is-focused {
-    background-color: var(--white-3);
+    background-color: var(--grayscale-3);
   }
 
   .react-select__option--is-focused:first-of-type {
@@ -113,8 +121,8 @@
   }
   /* АКТИНАЯ ОПЦИЯ*/
   .react-select__option--is-selected {
-    background-color: var(--primary-hover-red);
-    color: var(--white-2);
+    background-color: var(--grayscale-2);
+    color: #0a0908;
   }
 
   .react-select__option--is-selected:first-of-type {
