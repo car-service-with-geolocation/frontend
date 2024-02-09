@@ -29,6 +29,10 @@
   background: rgba(var(--black-dark), var(--alfa-light));
 }
 
+[data-theme='light'] .servicePhoto {
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
+}
+
 .service {
   max-width: 550px;
   width: 100%;
@@ -109,15 +113,24 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: var(--primary-accent-red);
-  color: var(--grayscale-2);
+  background-color: var(--primary-accent-red);
+  color: #dedede;
   border: none;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: var(--global-text-font-weight-bold);
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+.application:hover {
+  background-color: var(--primary-hover-red);
+}
+
+.application:active {
+  background-color: var(--primary-pressed-red);
 }
 
 .address {
@@ -134,9 +147,15 @@
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: var(--global-text-font-weight-bold);
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   border: none;
+  background-color: var(--grayscale-3);
+  transition: opacity 0.3s linear;
+}
+
+.address:hover {
+  opacity: var(--alfa-medium);
 }
 
 .serviceJobWrapper {
@@ -267,15 +286,24 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: var(--primary-accent-red);
-
+  background-color: var(--primary-accent-red);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: var(--grayscale-2);
+  color: #dedede;
   margin-top: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+.allReviewswButton:hover {
+  background-color: var(--primary-hover-red);
+}
+
+.allReviewswButton:active {
+  background-color: var(--primary-pressed-red);
 }
 
 .moreReviewswButton {
@@ -290,22 +318,17 @@
   background: var(--grayscale-3);
   justify-self: center;
   align-self: center;
-
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   color: var(--black-dark);
+  cursor: pointer;
+  transition: opacity 0.3s linear;
 }
 
 .moreReviewswButton:hover {
-  cursor: pointer;
-  opacity: var(--alfa-medium);
-}
-
-.allReviewswButton:hover {
-  cursor: pointer;
   opacity: var(--alfa-medium);
 }
 
@@ -350,6 +373,10 @@
   border-radius: 20px;
   opacity: 0.8;
   overflow: hidden;
+}
+
+[data-theme='light'] .mapWrapper {
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 1439px) {

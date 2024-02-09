@@ -30,6 +30,8 @@
 }
 
 .logoImg {
+  width: 45px;
+  height: 62px;
   display: block;
 }
 
@@ -46,7 +48,11 @@
 }
 
 .logoText:hover {
-  color: var(--accent-red);
+  color: var(--primary-accent-red);
+}
+
+.logoText:active {
+  color: var(--primary-pressed-red);
 }
 
 .hum__icon {
@@ -82,7 +88,11 @@
 }
 
 .linkText:hover {
-  color: var(--accent-red);
+  color: var(--primary-accent-red);
+}
+
+.linkText:active {
+  color: var(--primary-pressed-red);
 }
 
 .enterText {
@@ -99,7 +109,11 @@
 }
 
 .enterText:hover {
-  color: var(--accent-red);
+  color: var(--primary-accent-red);
+}
+
+.enterText:active {
+  color: var(--primary-pressed-red);
 }
 
 .enterText_icon {
@@ -119,14 +133,13 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-color: var(--grayscale-2);
-  -webkit-mask-image: url('../../../images/LogInIcon.svg');
   mask-image: url('../../../images/LogInIcon.svg');
   visibility: visible;
   transition: all 0.3s ease-in-out;
 }
 
 .enterText_icon:hover::before {
-  background-color: var(--accent-red);
+  background-color: var(--primary-accent-red);
 }
 
 .active {
@@ -151,6 +164,10 @@
 
   .menu__list {
     gap: 40px;
+  }
+
+  .rightSide {
+    gap: 20px;
   }
 
   .linkText {
@@ -237,7 +254,7 @@
   .hum__icon:hover span,
   .hum__icon:hover::before,
   .hum__icon:hover::after {
-    background-color: var(--accent-red);
+    background-color: var(--primary-accent-red);
   }
 
   .hum__icon.menu_active {
@@ -310,6 +327,10 @@
   }
 
   .enterText:hover::before {
-    background-color: var(--accent-red);
+    background-color: var(--primary-accent-red);
+  }
+
+  .enterText:active::before {
+    background-color: var(--primary-pressed-red);
   }
 }

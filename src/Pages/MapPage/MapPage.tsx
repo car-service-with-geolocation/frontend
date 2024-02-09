@@ -95,7 +95,6 @@ function MapPage() {
       <h1 className={style.title}>Поиск автосервисов</h1>
       {screenWidth === 'desktop' && <Search />}
       <div className={style.options_wrapper}>
-        <div className={style.eclipses} />
         <Select
           onChange={onChangeSelect}
           placeholder="Сначала ближайшие"

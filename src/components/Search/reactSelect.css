@@ -50,7 +50,8 @@
   }
 
   .react-select__input-container {
-    color: #0a0908;
+    color: orange;
+    /* color: #0a0908; */
     font-family: var(--global-text-font);
     font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
@@ -82,7 +83,7 @@
   .react-select__menu {
     width: 100%;
     border-radius: 20px;
-    background: var(--grayscale-2);
+    background: #fff;
     animation: openMenu 0.35s ease-in-out;
   }
 
@@ -107,7 +108,7 @@
   }
 
   .react-select__option--is-focused {
-    background-color: var(--grayscale-3);
+    background-color: #cbcbcb;
   }
 
   .react-select__option--is-focused:first-of-type {

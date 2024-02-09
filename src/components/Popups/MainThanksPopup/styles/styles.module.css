@@ -36,7 +36,7 @@
   border-radius: 20px;
   border: none;
   background-color: var(--primary-accent-red);
-  color: var(--grayscale-2);
+  color: #dedede;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -44,6 +44,7 @@
   line-height: normal;
   cursor: pointer;
   z-index: 5;
+  transition: background-color 0.3s linear;
 }
 
 .modalButton:hover {

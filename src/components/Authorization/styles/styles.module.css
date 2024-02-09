@@ -43,6 +43,10 @@
   color: var(--primary-accent-red);
 }
 
+.auth__link:active {
+  color: var(--primary-pressed-red);
+}
+
 @media (max-width: 600px) {
   .auth {
     max-width: 375px;

@@ -57,6 +57,7 @@
   flex-direction: column;
   max-width: 645px;
   margin: 0 115px 0 0;
+  padding: 10px;
 }
 
 .subtitle {
@@ -203,7 +204,7 @@
   border: none;
   border-radius: 20px;
   background-color: var(--primary-accent-red);
-  color: var(--grayscale-2);
+  color: #dedede;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -211,6 +212,7 @@
   line-height: normal;
   cursor: pointer;
   z-index: 6;
+  transition: background-color 0.3s linear;
 }
 
 .card {
@@ -228,6 +230,13 @@
 }
 
 .submitButton_disable {
+  cursor: default;
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
+  color: var(--grayscale-1);
+}
+
+.submitButton_disable:hover {
+  cursor: default;
   background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
   color: var(--grayscale-1);
 }
@@ -279,6 +288,7 @@
     padding: 13px 25px 13px 30px;
     font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
   }
 
   .formText[id='problemDescription'] {

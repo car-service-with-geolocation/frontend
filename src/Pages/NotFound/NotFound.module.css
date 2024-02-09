@@ -10,6 +10,8 @@
   object-fit: cover;
   width: 550px;
   height: 192px;
+  mask-image: url('../../images/Err404.svg');
+  mask-repeat: no-repeat;
 }
 
 .notFoundPageText {
@@ -29,7 +31,7 @@
   height: 60px;
   border-radius: 20px;
   background-color: var(--primary-accent-red);
-  color: var(--grayscale-2);
+  color: #dedede;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;

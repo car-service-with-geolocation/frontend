@@ -16,7 +16,7 @@
   background-position: center;
   background-size: cover;
   border-radius: 395px;
-  background: rgba(var(--primary-accent-red-rgb), var(--alfa-medium));
+  background: rgba(var(--primary-accent-red-rgb), var(--alfa-light));
   filter: blur(100px);
 }
 
