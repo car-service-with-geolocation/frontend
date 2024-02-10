@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
@@ -8,6 +9,7 @@ import { Helmet } from 'react-helmet';
 import ReactPaginate from 'react-paginate';
 import Select, { SingleValue } from 'react-select';
 
+import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
@@ -21,6 +23,7 @@ function MapPage() {
   // store
   const servicesByCoord = useAppSelector((store) => store.autoServiceByCoord.data);
   const servicesByAll = useAppSelector((store) => store.mainAutoServices.data);
+  const { status } = useAppSelector((store) => store.mainAutoServices);
   // state
   const [currentSearchType, setCurrentSearchType] = useState(immediateOptions[1].value);
   const [screenWidth, setScreenWidth] = useState('');
@@ -122,7 +125,9 @@ function MapPage() {
           <span className={style.mapping_span_map_image} />
         </label>
       </div>
-      {content === 'card' ? (
+      {status === 'loading' ? (
+        <Preloader />
+      ) : content === 'card' ? (
         <section className={style.section} aria-label="Секция лучшие сервисы">
           <div className={style.cardscontainer}>
             <div className={style.ellipse} />
