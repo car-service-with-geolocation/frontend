@@ -1,0 +1,15 @@
+.requestList {
+  list-style: none;
+  color: #ffeaea;
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.requestList__item {
+  margin-bottom: 40px;
+}

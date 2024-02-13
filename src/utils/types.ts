@@ -1,27 +1,33 @@
+export type TworkingTimeInner = {
+  day: string;
+  id: number;
+  time: string;
+};
+
 export type TService = {
   id: number;
-  company: Company;
+  company: TCompany;
   geolocation: Geolocation;
   city: string;
   address: string;
   rating: number;
   votes: number;
-  openfrom: string;
-  openuntil: string;
+  working_time_today: string;
   holidays: null | string;
   phone_number: null | string;
   email: null | string;
   site: string;
   car_service: string[];
   job: string[];
+  working_time: TworkingTimeInner[];
 };
 
-type Company = {
+export type TCompany = {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   logo: string;
-  legal_address: string;
+  legal_address?: string;
 };
 
 export type Geolocation = {
@@ -50,6 +56,19 @@ export type TUserData = {
   name: string;
   car: TCar;
   password: string;
+};
+
+export type TUserRequestData = {
+  id: number | null;
+  car: string | null;
+  info: string | null;
+  task: string | null;
+  pub_date: string | null;
+  status: 'OPENED' | 'COMPLETED' | 'CANCELED';
+  phone_number: string | null;
+  owner: number | null;
+  autoservice: number[];
+  autoservice_name: string | null;
 };
 
 // AUTH
@@ -85,6 +104,12 @@ export type TresRegistration = {
   first_name: string;
   phone_number: string | null;
   date_joined: string;
+};
+
+export type TuserDataChange = {
+  email: string;
+  first_name: string;
+  phone_number: string;
 };
 
 // AUTH
