@@ -6,7 +6,7 @@ export type TworkingTimeInner = {
 
 export type TService = {
   id: number;
-  company: Company;
+  company: TCompany;
   geolocation: Geolocation;
   city: string;
   address: string;
@@ -22,12 +22,12 @@ export type TService = {
   working_time: TworkingTimeInner[];
 };
 
-type Company = {
+export type TCompany = {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   logo: string;
-  legal_address: string;
+  legal_address?: string;
 };
 
 export type Geolocation = {
@@ -63,10 +63,12 @@ export type TUserRequestData = {
   car: string | null;
   info: string | null;
   task: string | null;
-  image: string | null;
   pub_date: string | null;
+  status: 'OPENED' | 'COMPLETED' | 'CANCELED';
+  phone_number: string | null;
   owner: number | null;
-  jobs: number[];
+  autoservice: number[];
+  autoservice_name: string | null;
 };
 
 // AUTH

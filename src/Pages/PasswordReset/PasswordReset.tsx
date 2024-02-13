@@ -38,6 +38,7 @@ function PasswordReset({ isOpen, onClose, onPopupOpen }: TPasswordResetProps) {
   }
 
   const onSubmit: SubmitHandler<Tinputs> = (data) => {
+    // eslint-disable-next-line no-console
     console.log(data);
     onPopupOpen();
   };

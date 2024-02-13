@@ -1,5 +1,6 @@
 import React, { ReactElement, useRef } from 'react';
 
+import { dataConversion, setStatus } from '../../utils/conversions';
 import { TUserRequestData } from '../../utils/types';
 import styles from './styles/styles.module.css';
 
@@ -12,11 +13,7 @@ function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
 
   function addDateRow(req: TUserRequestData): ReactElement | null {
     if (req.pub_date) {
-      const date = new Date(req.pub_date).toLocaleDateString('ru-RU', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      });
+      const date = dataConversion(req.pub_date);
       if (date !== lastDate.current) {
         lastDate.current = date;
         return (
@@ -48,11 +45,13 @@ function UserProfileRequestTable({ requests }: IUserProfileRequestTable) {
             <React.Fragment key={item.id}>
               {dateElement}
               <tr className={styles.body__row}>
-                <td className={styles.body__cell}>{item.info}</td>
-                <td className={styles.body__cell}>{item.car}</td>
-                <td className={styles.body__cell}>{item.task}</td>
+                <td className={styles.body__cell}>
+                  {item.autoservice_name || 'Нет данных'}
+                </td>
+                <td className={styles.body__cell}>{item.car || 'Нет данных'}</td>
+                <td className={styles.body__cell}>{item.task || 'Нет данных'}</td>
                 <td className={`${styles.body__cell} ${styles.cell_textCenter}`}>
-                  {item.id}
+                  {setStatus(item.status)}
                 </td>
               </tr>
             </React.Fragment>
