@@ -11,10 +11,8 @@ type TPropsServiceCard = {
   rating: number;
   votes: number;
   address: string;
-  openfrom: string;
-  openuntil: string;
+  workingTime: string;
 };
-let isOpenInfo = false;
 
 function ServiceCard({
   image,
@@ -23,12 +21,8 @@ function ServiceCard({
   rating,
   votes,
   address,
-  openfrom,
-  openuntil,
+  workingTime,
 }: TPropsServiceCard) {
-  if (openfrom && openuntil) {
-    isOpenInfo = true;
-  }
   return (
     <Link className={styles.link} to={`/service/${id}`}>
       <article className={styles.card}>
@@ -42,11 +36,7 @@ function ServiceCard({
             <img className={styles.cardRatingIcon} src={star} alt="иконка Звезда" />
             <p className={styles.cardRatingNumbers}>{`${Number(rating)} (${votes})`}</p>
           </div>
-          <p className={styles.cardInfoText}>
-            {isOpenInfo
-              ? `Открыто с ${Number(openfrom)} до ${Number(openuntil)}`
-              : 'Нет времени работы'}
-          </p>
+          <p className={styles.cardInfoText}>{workingTime}</p>
           <p className={styles.cardInfoText}>{address}</p>
         </div>
       </article>
