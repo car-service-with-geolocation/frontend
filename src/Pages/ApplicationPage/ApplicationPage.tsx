@@ -143,26 +143,30 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   async function handleOnSubmit(data: IApplicationData) {
     try {
       const token = localStorage.getItem('JWT');
-      // const formData = new FormData();
-      // formData.append('carModel', data.carModel);
-      // formData.append('tel', data.tel);
-      // formData.append('problemDescription', data.problemDescription);
+      const id = location?.id;
+      const formData = new FormData();
+      formData.append('car', data.carModel);
+      formData.append('phone_number', data.tel);
+      formData.append('task', data.problemDescription);
+      if (typeof id === 'string') {
+        formData.append('autoservice', id);
+      }
 
-      files.forEach((file) => {
-        // formData.append(`images[${index}]`, file);
-        // formData.append('images', file);
-        data.images.push(file);
+      files.forEach((file, index) => {
+        formData.append(`file_${index}`, file);
+        // formData.append('image', file);
+        // data.images.push(file);
       });
-
-      const response = await fetch(`${baseUrl}orders/`, {
+      const response = await fetch(`${baseUrl}orders/me`, {
+        // mode: 'no-cors',
         method: 'POST',
-        // body: formData,
-        body: JSON.stringify(data),
+        body: formData,
+        // body: JSON.stringify(data),
         credentials: 'include',
         headers: {
-          authorization: `Token ${token}`,
-          // 'Content-Type': 'multipart/form-data',
-          'Content-Type': 'application/json',
+          Authorization: `Token ${token}`,
+          'Content-Type': 'multipart/form-data',
+          // 'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
         },
       });
