@@ -1,17 +1,19 @@
 .notFoundPageContainer {
-  grid-row: 2/-1;
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-top: 143px;
   text-align: center;
 }
 
 .notFoundPageimg {
   object-fit: cover;
-  width: 550px;
-  height: 192px;
+  width: clamp(220px, 80%, 550px);
+  aspect-ratio: 2.85;
   mask-image: url('../../images/Err404.svg');
+  mask-size: cover;
   mask-repeat: no-repeat;
+  mask-position: 0%;
 }
 
 .notFoundPageText {
@@ -23,7 +25,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  width: 377px;
+  max-width: 377px;
 }
 
 .notFoundPageBtn {
@@ -44,20 +46,12 @@
   opacity: var(--alfa-strong);
 }
 
-@media (max-width: 650px) {
-  .notFoundPageimg {
-    width: 400px;
-    height: 140px;
-  }
-}
-
 @media (max-width: 450px) {
   .notFoundPage {
     padding-top: 85px;
   }
-  .notFoundPageimg {
-    width: 320px;
-    height: 111px;
+  .notFoundPageText {
+    max-width: 340px;
   }
   .notFoundPageBtn {
     width: 320px;

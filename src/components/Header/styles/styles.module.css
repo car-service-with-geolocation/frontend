@@ -210,6 +210,10 @@
     padding: 0;
   }
 
+  .linkText {
+    color: #dedede;
+  }
+
   .hum__icon {
     z-index: 50;
     display: block;
@@ -268,11 +272,13 @@
   }
 
   .hum__icon.menu_active::before {
+    background-color: #dedede;
     transform: rotate(-45deg);
     top: 50%;
   }
 
   .hum__icon.menu_active::after {
+    background-color: #dedede;
     transform: rotate(45deg);
     top: 50%;
   }

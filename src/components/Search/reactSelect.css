@@ -15,9 +15,6 @@
 [data-theme='light'] .react-select__control {
   background-color: #fff !important;
 }
-[data-theme='light'] .react-select__option--is-selected {
-  background-color: #fff !important;
-}
 
 .select {
   .react-select__control {
@@ -50,8 +47,7 @@
   }
 
   .react-select__input-container {
-    color: orange;
-    /* color: #0a0908; */
+    color: #0a0908;
     font-family: var(--global-text-font);
     font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
@@ -105,10 +101,11 @@
 
   .react-select__option {
     color: #0a0908;
+    background-color: #dedede;
   }
 
   .react-select__option--is-focused {
-    background-color: #cbcbcb;
+    background-color: var(--primary-accent-red);
   }
 
   .react-select__option--is-focused:first-of-type {
@@ -122,7 +119,6 @@
   }
   /* АКТИНАЯ ОПЦИЯ*/
   .react-select__option--is-selected {
-    background-color: var(--grayscale-2);
     color: #0a0908;
   }
 
