@@ -8,6 +8,7 @@ import {
   TpropsRegistration,
   TresLogin,
   TresRegistration,
+  TuserDataChange,
 } from '../utils/types';
 
 const initialState: TInitialState = {
@@ -88,21 +89,57 @@ export const fetchUserRegistration = createAsyncThunk<
   }
 );
 
+// FETCH USER DATA CHANGE
+
+export const fetchUserDataChange = createAsyncThunk<
+  TresRegistration,
+  TuserDataChange,
+  { rejectValue: string }
+>(
+  'auth/fetchUserDataChange',
+  async function ({ email, first_name, phone_number }, { rejectWithValue }) {
+    const token = localStorage.getItem('JWT');
+    const response = await fetch(`${baseUrl}auth/users/me/`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `Token ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, first_name, phone_number }),
+    });
+    if (!response.ok) {
+      return rejectWithValue('Server Error!');
+    }
+    const data = await response.json();
+    return data;
+  }
+);
+
+// FETCH USER LOGUOT
+
+export const fetchUserLogout = createAsyncThunk<
+  string,
+  undefined,
+  { rejectValue: string }
+>('auth/fetchUserLogout', async function (_, { rejectWithValue }) {
+  const token = localStorage.getItem('JWT');
+  const response = await fetch(`${baseUrl}auth/token/logout/`, {
+    method: 'POST',
+    headers: {
+      authorization: `Token ${token}`,
+    },
+  });
+  if (!response.ok) {
+    return rejectWithValue('Server Error!');
+  }
+  localStorage.removeItem('JWT');
+  return 'Пользователь вышел из аккаунта';
+});
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    // setUser(state, action) {
-    //   state.email = action.payload.email;
-    //   state.id = action.payload.id;
-    //   state.isLoggedIn = true;
-    // },
-    // removeUser(state) {
-    //   state.email = null;
-    //   state.id = null;
-    //   state.isLoggedIn = false;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // FETCH-USER-LOGIN
     builder
@@ -151,6 +188,41 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(fetchUserMe.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload;
+      });
+    // FETCH USER DATA CHANGE
+    builder
+      .addCase(fetchUserDataChange.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchUserDataChange.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.email = action.payload.email;
+        state.first_name = action.payload.first_name;
+        state.phone_number = action.payload.phone_number;
+      })
+      .addCase(fetchUserDataChange.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload;
+      });
+    // FETCH USER LOGOUT
+    builder
+      .addCase(fetchUserLogout.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchUserLogout.fulfilled, (state) => {
+        state.status = 'resolved';
+        state.date_joined = null;
+        state.email = null;
+        state.first_name = null;
+        state.id = null;
+        state.isLoggedIn = false;
+        state.phone_number = null;
+      })
+      .addCase(fetchUserLogout.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.payload;
       });
