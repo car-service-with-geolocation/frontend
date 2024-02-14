@@ -4,11 +4,11 @@
 }
 
 .table__head {
-  color: #7a7a7a;
-  font-family: Ubuntu;
-  font-size: 20px;
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-big);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   text-align: left;
 }
@@ -20,19 +20,19 @@
 }
 
 .table__body {
-  color: #dedede;
-  font-family: Ubuntu;
-  font-size: 16px;
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 24px;
 }
 
 .body__date {
-  font-family: Ubuntu;
-  font-size: 14px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   height: 30px;
   border-radius: 2px;
@@ -45,7 +45,7 @@
   height: 80px;
   padding: 0;
   padding-left: 10px;
-  border-top: solid 2px rgba(233, 234, 234, 0.4);
+  border-top: solid 2px rgba(var(--grayscale-2-rgb), var(--alfa-medium));
 }
 
 .body__cell:nth-child(1),

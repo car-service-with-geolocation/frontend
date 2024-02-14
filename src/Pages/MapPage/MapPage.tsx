@@ -98,7 +98,6 @@ function MapPage() {
       <h1 className={style.title}>Поиск автосервисов</h1>
       {screenWidth === 'desktop' && <Search />}
       <div className={style.options_wrapper}>
-        <div className={style.eclipses} />
         <Select
           onChange={onChangeSelect}
           placeholder="Сначала ближайшие"
@@ -130,7 +129,6 @@ function MapPage() {
       ) : content === 'card' ? (
         <section className={style.section} aria-label="Секция лучшие сервисы">
           <div className={style.cardscontainer}>
-            <div className={style.ellipse} />
             {currentItems.map((service) => {
               return (
                 <ServiceCard
@@ -159,7 +157,7 @@ function MapPage() {
             pageLinkClassName={style.link}
             previousLinkClassName={`${style.prevlink} ${style.arrowlink}`}
             nextLinkClassName={`${style.nextlink} ${style.arrowlink}`}
-            activeLinkClassName={style.link_activ}
+            activeLinkClassName={style.link_active}
             breakClassName={`${style.link} ${style.break}`}
           />
         </section>

@@ -1,6 +1,6 @@
 .auth {
   max-width: 550px;
-  background-color: rgba(123, 104, 126, 0.2);
+  background-color: rgba(var(--grayscale-1-rgb), var(--alfa-light));
   border-radius: 20px;
   box-sizing: border-box;
   margin-top: 50px;
@@ -11,27 +11,28 @@
 }
 
 .auth__title {
-  color: #dedede;
-  font-family: Montserrat;
-  font-size: 24px;
+  color: var(--grayscale-2);
+  font-family: var(--global-title-font), system-ui, sans-serif;
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   margin: 0 auto;
 }
 
 .auth__text {
-  color: #dedede;
-  font-family: Raleway;
-  font-size: 18px;
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font), system-ui, sans-serif;
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   margin: 60px auto 100px;
 }
 
 .auth__link {
   text-decoration: none;
+  font-family: Raleway, system-ui, sans-serif;
   font-weight: 700;
   color: inherit;
   margin-left: 10px;
@@ -39,7 +40,11 @@
 }
 
 .auth__link:hover {
-  color: #770022;
+  color: var(--primary-accent-red);
+}
+
+.auth__link:active {
+  color: var(--primary-pressed-red);
 }
 
 @media (max-width: 600px) {
@@ -50,12 +55,12 @@
   }
 
   .auth__title {
-    font-size: 22px;
+    font-size: var(--global-title-font-mobile-size-3);
     line-height: 140%;
   }
 
   .auth__text {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 150%;
   }
 }

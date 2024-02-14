@@ -64,7 +64,7 @@ function UserProfileRequest() {
         pageLinkClassName={styles.link}
         previousLinkClassName={`${styles.prevlink} ${styles.arrowlink}`}
         nextLinkClassName={`${styles.nextlink} ${styles.arrowlink}`}
-        activeLinkClassName={styles.link_activ}
+        activeLinkClassName={styles.link_active}
         breakClassName={`${styles.link} ${styles.break}`}
       />
       {userRequests.length === 0 && (

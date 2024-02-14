@@ -6,6 +6,7 @@ import autoServiceByCoordSlice from './autoServiceByCoordSlice';
 import autoServiceIdSlice from './autoServiceIdSlice';
 import autoServiceSlice from './autoServicesSlice';
 import carsSlice from './carsSlice';
+import darkLightModeSlice from './darkLightModeSlice';
 import userRequestsSlice from './userRequestsSlice';
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -22,5 +23,6 @@ export const store = configureStore({
     cars: carsSlice,
     auth: authSlice,
     userRequests: userRequestsSlice,
+    darkLightMode: darkLightModeSlice,
   },
 });

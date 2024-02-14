@@ -10,7 +10,11 @@
   &::before {
     content: '★★★★★';
     letter-spacing: 3px;
-    background: linear-gradient(90deg, #fc0 var(--percent), #7a7a7a var(--percent));
+    background: linear-gradient(
+      90deg,
+      var(--common-yellow) var(--percent),
+      var(--grayscale-2) var(--percent)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -24,30 +28,30 @@
 
 .name {
   margin: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
 .date {
   margin: 0;
-  font-family: Ubuntu;
-  font-size: 14px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
 }
 
 .feedBack {
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 29.7px;
   margin: 0;
   padding-top: 20px;
-  font-family: Ubuntu;
 }
 
 .imageWrapper {
@@ -88,17 +92,17 @@
   height: 98%;
   top: 0;
   left: 0;
-  font-family: Raleway;
+  font-family: var(--global-text-font);
   font-size: 50px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 24px;
-  color: #dedede;
+  color: var(--grayscale-2);
   border-radius: 20px;
 }
 
 .span:hover {
-  opacity: 0.6;
+  opacity: var(--alfa-medium);
   cursor: pointer;
   border: 2px solid rgb(126, 119, 119);
 }
@@ -110,13 +114,13 @@
   }
 
   .feedBack {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
     font-weight: 300;
   }
 
   .name {
-    font-size: 22px;
+    font-size: var(--global-title-font-mobile-size-3);
   }
 
   .feedBackRating {
@@ -124,8 +128,7 @@
   }
 
   .date {
-    font-size: 14px;
-    font-weight: 300;
+    font-size: var(--global-text-font-mobile-size-little);
     align-self: center;
   }
 }

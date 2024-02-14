@@ -249,7 +249,7 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
           </fieldset>
           <label
             className={`${styles.form__label} ${styles.form__label_checkbox} ${
-              isChecked ? styles.checkboxLabel_active : ''
+              isChecked ? styles.checkboxLabel_active : styles.checkboxLabel_disable
             }`}
             htmlFor="agree_checkbox"
           >

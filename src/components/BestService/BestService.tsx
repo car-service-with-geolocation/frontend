@@ -9,7 +9,6 @@ function BestService() {
     <section className={style.section} aria-label="Секция лучшие сервисы">
       <h2 className={style.title}>Лучшие сервисы</h2>
       <div className={style.cardscontainer}>
-        <div className={style.ellipse} />
         {servicesToRender.map((service) => {
           return (
             <ServiceCard

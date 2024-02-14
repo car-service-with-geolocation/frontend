@@ -5,7 +5,7 @@
   min-height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(123, 104, 126, 0.2);
+  background-color: rgba(var(--grayscale-1-rgb), var(--alfa-light));
   justify-content: center;
   align-items: center;
   transition:
@@ -29,7 +29,7 @@
   /* margin: 0 auto; */
   min-width: 640px;
   border-radius: 20px;
-  background: #0a0908;
+  background: var(--black-dark);
   align-items: center;
 }
 
@@ -39,10 +39,10 @@
   width: 40px;
   height: 40px;
   padding: 8px;
-  background-image: url(../../../images/closeButton.svg);
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: 50% 50%;
+  mask-image: url(../../../images/closeButton.svg);
+  mask-repeat: no-repeat;
+  background-color: var(--grayscale-2);
+  mask-position: 50% 50%;
   cursor: pointer;
   z-index: 7;
 }
@@ -59,23 +59,23 @@
   margin: 0 0 106px;
   border-radius: 20px;
   border: none;
-  background-color: #702;
-  color: #dedede;
-  font-family: Raleway;
-  font-size: 18px;
+  background-color: var(--primary-accent-red);
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   cursor: pointer;
   z-index: 7;
 }
 
 .modalButton:hover {
-  background-color: #3f0012;
+  background-color: var(--primary-hover-red);
 }
 
 .modalButton:active {
-  background-color: #2e000d;
+  background-color: var(--primary-pressed-red);
 }
 
 .modalButton_main {

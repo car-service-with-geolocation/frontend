@@ -112,4 +112,4 @@ export type TuserDataChange = {
   phone_number: string;
 };
 
-// AUTH
+export type Theme = 'dark' | 'light';
