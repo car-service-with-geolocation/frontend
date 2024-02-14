@@ -16,8 +16,8 @@
   width: 350px;
   height: 509px;
   border-radius: 20px;
-  background: linear-gradient(0deg, rgba(11, 10, 9, 0.2) 0%, rgba(11, 10, 9, 0.2) 100%),
-    #cbcbcb;
+  background: #dedede;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
 }
 
 .cardImg {
@@ -49,10 +49,10 @@
 }
 
 .cardTitle {
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   margin: 0 0 10px 0;
   text-overflow: ellipsis;
@@ -75,19 +75,19 @@
 
 .cardRatingNumbers {
   margin: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
 .cardInfoText {
   margin: 0;
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
 }
 
@@ -99,9 +99,11 @@
     background: rgba(123, 104, 126, 0.2);
     box-sizing: border-box;
     padding: 30px;
+    box-shadow: none;
   }
 
   .link {
+    color: var(--grayscale-2);
     width: 100%;
   }
 
@@ -147,15 +149,16 @@
   }
 
   .cardRatingNumbers {
-    font-family: Ubuntu;
-    font-size: 18px;
-    font-height: 28px;
-    font-weight: 500;
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
+    font-style: normal;
+    font-weight: var(--global-text-font-weight-bold);
+    line-height: normal;
     opacity: 0.8;
   }
 
   .cardInfoText {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: normal;
   }
 

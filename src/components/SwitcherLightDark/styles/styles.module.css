@@ -1,0 +1,68 @@
+@keyframes switch {
+  0% {
+    transform: rotate(0);
+    left: 0;
+  }
+  30% {
+    left: 6px;
+    transform: rotate(180deg);
+  }
+  100% {
+    left: 20px;
+    transform: rotate(0);
+  }
+}
+@keyframes reverse {
+  0% {
+    left: 20px;
+    transform: rotate(0);
+  }
+  30% {
+    left: 14px;
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0);
+    left: 0;
+  }
+}
+
+.switch__container {
+  display: flex;
+  justify-content: center;
+}
+
+.switch__label {
+  width: 40px;
+  height: 20px;
+  background: var(--grayscale-2);
+  border-radius: 20px;
+  position: relative;
+  transition: all 350ms ease-in;
+  cursor: pointer;
+}
+
+.switch__checkbox {
+  display: none;
+}
+
+.switch__checkbox + span::before {
+  animation-name: switch;
+  animation-duration: 750ms;
+  animation-fill-mode: forwards;
+  transition: all 350ms ease-in;
+  content: '';
+  width: 20px;
+  aspect-ratio: 1;
+  background-image: url('../../../images/switchNightIcon.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+.switch__checkbox:checked + span::before {
+  background-image: url('../../../images/switchSunIcon.svg');
+  animation-name: reverse;
+  animation-duration: 750ms;
+  animation-fill-mode: backwards;
+}

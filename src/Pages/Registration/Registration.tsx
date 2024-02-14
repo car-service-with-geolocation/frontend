@@ -4,6 +4,7 @@
 import '../../components/Search/reactSelect.css';
 
 import { BaseSyntheticEvent, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Authorization from '../../components/Authorization/Authorization';
@@ -87,6 +88,10 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
 
   return (
     <>
+      <Helmet>
+        <title>Регистрация</title>
+        <meta property="og:title" content="Регитсрация" />
+      </Helmet>
       <Authorization title="Регистрация">
         <div className={styles.reg__choice}>
           <button
@@ -200,7 +205,7 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
               </span>
             </label>
 
-            <label htmlFor="password-repeat" className={styles.form__label}>
+            <label htmlFor="password_repeat" className={styles.form__label}>
               Повторите пароль
               <div className={styles.input__wrapper}>
                 <input
@@ -244,7 +249,7 @@ function Registration({ isOpen, onClose, onPopupOpen }: TRegistrationProps) {
           </fieldset>
           <label
             className={`${styles.form__label} ${styles.form__label_checkbox} ${
-              isChecked ? styles.checkboxLabel_active : ''
+              isChecked ? styles.checkboxLabel_active : styles.checkboxLabel_disable
             }`}
             htmlFor="agree_checkbox"
           >

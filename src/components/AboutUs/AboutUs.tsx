@@ -4,7 +4,6 @@ import style from './AboutUs.module.css';
 function AboutUs() {
   return (
     <section className={style.section}>
-      <div className={style.eclipse} />
       <img className={style.img} src={car} alt="Черный автомобиль марки мерседес" />
       <div className={style.container}>
         <h2 className={style.title}>О нас</h2>

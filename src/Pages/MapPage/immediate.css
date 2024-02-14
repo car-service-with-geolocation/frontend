@@ -11,8 +11,12 @@
     transform: scale(1);
   }
 }
+
+[data-theme='light'] .immediate-select__control {
+  background-color: #fff !important;
+}
+
 .select {
-  color: #fff;
   .immediate-select__control {
     max-width: 273px;
     max-height: 30px;
@@ -34,20 +38,20 @@
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 29.7px;
+    line-height: 165%;
   } */
 
   .immediate-select__single-value {
-    color: #fff;
-    font-family: Raleway;
-    font-size: 18px;
+    color: var(--grayscale-2);
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
-    font-weight: 400;
-    line-height: 29.7px;
+    font-weight: var(--global-text-font-weight-normal);
+    line-height: 165%;
   }
 
   .immediate-select__indicator {
-    color: #dedede;
+    color: var(--grayscale-2);
     padding-left: 10px;
     transform: rotate(180deg);
     transition: all 0.6s linear;
@@ -71,7 +75,7 @@
   }
 
   .immediate-select--is-disabled {
-    opacity: 0.5;
+    opacity: var(--alfa-medium);
   }
 
   /* Итем Меню */
@@ -81,27 +85,27 @@
     overflow-y: scroll 1px;
 
     /* Основной текст */
-    font-family: Raleway;
-    font-size: 18px;
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
-    font-weight: 400;
-    line-height: 29.7px;
+    font-weight: var(--global-text-font-weight-normal);
+    line-height: 165%;
   }
 
   /* ОПЦИЯ */
   .immediate-select__option {
     color: #0a0908;
-    font-family: Raleway;
-    font-size: 18px;
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
-    font-weight: 400;
-    line-height: 29.7px;
+    font-weight: var(--global-text-font-weight-normal);
+    line-height: 165%;
     padding-left: 35px;
   }
 
   /* ФОКУС ОПЦИИ */
   .immediate-select__option--is-focused {
-    background-color: #cbcbcb;
+    background-color: var(--grayscale-3);
   }
 
   .immediate-select__option--is-focused:first-of-type {
@@ -115,7 +119,7 @@
   }
   /* АКТИНАЯ ОПЦИЯ*/
   .immediate-select__option--is-selected {
-    background-color: #3f0012;
+    background-color: var(--primary-accent-red);
     color: #dedede;
   }
 
@@ -132,7 +136,6 @@
 
 @media screen and (max-width: 500px) {
   .select {
-    color: #fff;
     .immediate-select__control {
       max-width: 180px;
       max-height: 30px;
@@ -140,7 +143,7 @@
     }
 
     .immediate-select__single-value {
-      font-size: 14px;
+      font-size: var(--global-text-font-mobile-size-little);
       line-height: 24px;
     }
 
@@ -154,7 +157,7 @@
     }
 
     .immediate-select__option {
-      font-size: 15px;
+      font-size: var(--global-text-font-mobile-size-common);
       line-height: 24px;
       padding-left: 10px;
     }

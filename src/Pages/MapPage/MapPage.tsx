@@ -1,12 +1,15 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
 import './immediate.css';
 
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import ReactPaginate from 'react-paginate';
 import Select, { SingleValue } from 'react-select';
 
+import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import Ymap from '../../components/Ymap/Ymap';
@@ -20,6 +23,7 @@ function MapPage() {
   // store
   const servicesByCoord = useAppSelector((store) => store.autoServiceByCoord.data);
   const servicesByAll = useAppSelector((store) => store.mainAutoServices.data);
+  const { status } = useAppSelector((store) => store.mainAutoServices);
   // state
   const [currentSearchType, setCurrentSearchType] = useState(immediateOptions[1].value);
   const [screenWidth, setScreenWidth] = useState('');
@@ -87,10 +91,13 @@ function MapPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Поиск автосервисов</title>
+        <meta property="og:title" content="Поиск автосервисов" />
+      </Helmet>
       <h1 className={style.title}>Поиск автосервисов</h1>
       {screenWidth === 'desktop' && <Search />}
       <div className={style.options_wrapper}>
-        <div className={style.eclipses} />
         <Select
           onChange={onChangeSelect}
           placeholder="Сначала ближайшие"
@@ -117,10 +124,11 @@ function MapPage() {
           <span className={style.mapping_span_map_image} />
         </label>
       </div>
-      {content === 'card' ? (
+      {status === 'loading' ? (
+        <Preloader />
+      ) : content === 'card' ? (
         <section className={style.section} aria-label="Секция лучшие сервисы">
           <div className={style.cardscontainer}>
-            <div className={style.ellipse} />
             {currentItems.map((service) => {
               return (
                 <ServiceCard
@@ -130,8 +138,7 @@ function MapPage() {
                   rating={service.rating}
                   votes={service.votes}
                   address={service.address}
-                  openfrom={service.openfrom}
-                  openuntil={service.openuntil}
+                  workingTime={service.working_time_today}
                   id={service.id}
                 />
               );
@@ -150,7 +157,7 @@ function MapPage() {
             pageLinkClassName={style.link}
             previousLinkClassName={`${style.prevlink} ${style.arrowlink}`}
             nextLinkClassName={`${style.nextlink} ${style.arrowlink}`}
-            activeLinkClassName={style.link_activ}
+            activeLinkClassName={style.link_active}
             breakClassName={`${style.link} ${style.break}`}
           />
         </section>

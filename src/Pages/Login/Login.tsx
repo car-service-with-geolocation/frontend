@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Checkbox from '../../components/Checkbox/Checkbox';
 import { useAppDispatch } from '../../store';
-import { fetchUserLogin } from '../../store/authSlice';
+import { fetchUserLogin, fetchUserMe } from '../../store/authSlice';
 import { REGEXP_EMAIL } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
@@ -43,6 +44,7 @@ function Login() {
     ).then((req) => {
       if (req.meta.requestStatus === 'fulfilled') {
         navigate('/');
+        dispatch(fetchUserMe());
       }
     });
   };
@@ -71,6 +73,10 @@ function Login() {
 
   return (
     <>
+      <Helmet>
+        <title>Авторизация</title>
+        <meta property="og:title" content="Авторизация" />
+      </Helmet>
       <div className={styles.container}>
         <h1 className={styles.title}>Войти</h1>
         <form

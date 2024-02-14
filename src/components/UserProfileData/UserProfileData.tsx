@@ -1,53 +1,65 @@
-import { useForm } from 'react-hook-form';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// import { BaseSyntheticEvent, useState } from 'react';
+import { useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { baseUrl, REGEXP_EMAIL, REGEXP_PHONE_NUMBER } from '../../utils/constants';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { fetchUserDataChange } from '../../store/authSlice';
+import { REGEXP_EMAIL, REGEXP_PHONE_NUMBER } from '../../utils/constants';
 import styles from './styles/styles.module.css';
 
 interface IUserProfileData {
-  'user-name': string;
-  'user-phone-number': string;
-  'user-email': string;
+  user_name: string;
+  user_phone_number: string;
+  user_email: string;
 }
 
 function UserProfileData() {
+  const dispatch = useAppDispatch();
+
+  const currentUserName = useAppSelector((state) =>
+    state.auth.first_name ? state.auth.first_name : ''
+  );
+  const currentUserPhone = useAppSelector((state) =>
+    state.auth.phone_number ? state.auth.phone_number : ''
+  );
+  const currentUserEmail = useAppSelector((state) =>
+    state.auth.email ? state.auth.email : ''
+  );
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    reset,
+    formState: { errors, isValid, isDirty },
   } = useForm<IUserProfileData>({
     defaultValues: {
-      'user-name': '',
-      'user-phone-number': '',
-      'user-email': '',
+      user_name: currentUserName,
+      user_phone_number: currentUserPhone,
+      user_email: currentUserEmail,
     },
-    mode: 'onTouched',
+    mode: 'onChange',
   });
 
-  async function signUp(userData: IUserProfileData) {
-    return fetch(`${baseUrl}/users/`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(userData),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        // eslint-disable-next-line prefer-promise-reject-errors
-        return Promise.reject(`Ошибка при получении объекта ${res.status}`);
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.warn(err);
-      });
-  }
+  useEffect(() => {
+    reset({
+      user_name: currentUserName,
+      user_phone_number: currentUserPhone,
+      user_email: currentUserEmail,
+    });
+  }, [currentUserName, currentUserPhone, currentUserEmail, reset]);
 
-  function onSubmit(userData: IUserProfileData) {
-    signUp(userData);
-  }
+  const onSubmit: SubmitHandler<IUserProfileData> = (
+    userData: IUserProfileData
+  ): void => {
+    dispatch(
+      fetchUserDataChange({
+        email: userData.user_email,
+        first_name: userData.user_name,
+        phone_number: userData.user_phone_number,
+      })
+    );
+  };
 
   return (
     <form
@@ -59,10 +71,10 @@ function UserProfileData() {
     >
       <h1 className={styles.form__title}>Мои данные</h1>
       <fieldset className={styles.form__fieldset}>
-        <label htmlFor="user-name" className={styles.form__label}>
+        <label htmlFor="user_name" className={styles.form__label}>
           Имя
           <input
-            {...register('user-name', {
+            {...register('user_name', {
               required: 'Обязательное поле для заполнения',
               minLength: {
                 value: 3,
@@ -74,37 +86,20 @@ function UserProfileData() {
               },
             })}
             type="text"
-            name="user-name"
-            id="user-name"
-            className={styles.form__input}
+            name="user_name"
+            id="user_name"
+            className={`${styles.form__input} ${
+              !errors.user_name ? '' : styles.form__input_error
+            }`}
           />
           <span className={styles.input__error}>
-            {errors['user-name'] && errors['user-name']?.message}
+            {errors.user_name && errors.user_name?.message}
           </span>
         </label>
-        <label htmlFor="user-phone-number" className={styles.form__label}>
-          Телефон
-          <input
-            {...register('user-phone-number', {
-              required: 'Обязательное поле для заполнения',
-              pattern: {
-                value: REGEXP_PHONE_NUMBER,
-                message: 'Телефон не соответствует требуемому формату',
-              },
-            })}
-            type="tel"
-            name="user-phone-number"
-            id="user-phone-number"
-            className={styles.form__input}
-          />
-          <span className={styles.input__error}>
-            {errors['user-phone-number'] && errors['user-phone-number'].message}
-          </span>
-        </label>
-        <label htmlFor="user-email" className={styles.form__label}>
+        <label htmlFor="user_email" className={styles.form__label}>
           Почта
           <input
-            {...register('user-phone-number', {
+            {...register('user_email', {
               required: 'Обязательное поле для заполнения',
               pattern: {
                 value: REGEXP_EMAIL,
@@ -113,22 +108,45 @@ function UserProfileData() {
               },
             })}
             type="email"
-            name="user-email"
-            id="user-email"
-            className={styles.form__input}
+            name="user_email"
+            id="user_email"
+            className={`${styles.form__input} ${
+              !errors.user_email ? '' : styles.form__input_error
+            }`}
           />
           <span className={styles.input__error}>
-            {errors['user-email'] && errors['user-email'].message}
+            {errors.user_email && errors.user_email.message}
+          </span>
+        </label>
+        <label htmlFor="user_phone_number" className={styles.form__label}>
+          Телефон
+          <input
+            {...register('user_phone_number', {
+              required: 'Обязательное поле для заполнения',
+              pattern: {
+                value: REGEXP_PHONE_NUMBER,
+                message: 'Телефон не соответствует требуемому формату',
+              },
+            })}
+            type="tel"
+            name="user_phone_number"
+            id="user_phone_number"
+            className={`${styles.form__input} ${
+              !errors.user_phone_number ? '' : styles.form__input_error
+            }`}
+          />
+          <span className={styles.input__error}>
+            {errors.user_phone_number && errors.user_phone_number.message}
           </span>
         </label>
         <button
           className={`${styles.form__submitbtn} ${
-            isValid ? '' : styles.form__submitbtn_disabled
+            isValid && isDirty ? '' : styles.form__submitbtn_disabled
           }`}
           type="submit"
-          disabled={!isValid}
+          disabled={!isValid || !isDirty}
         >
-          Зарегестрироваться
+          Сохранить
         </button>
       </fieldset>
     </form>

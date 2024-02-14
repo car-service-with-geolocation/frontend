@@ -90,14 +90,9 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
             rating={applicationService.rating}
             votes={applicationService.votes}
             address={applicationService.address}
-            openfrom={applicationService.openfrom}
-            openuntil={applicationService.openuntil}
+            workingTime={applicationService.working_time_today}
           />
         )}
-
-        <div className={`${styles.ellipse} ${styles.ellipse1}`} />
-        <div className={`${styles.ellipse} ${styles.ellipse2}`} />
-        <div className={`${styles.ellipse} ${styles.ellipse3}`} />
 
         <h2 className={styles.title}>Создание заявки</h2>
         <div className={styles.applicationWrapper}>
@@ -197,7 +192,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
               Отправить заявку
             </button>
           </form>
-          {/* {width >= 900 ? (
+          {width >= 900 ? (
             <article className={styles.card}>
               <h3 className={styles.subtitle}>Автосервис</h3>
               <ServiceCard
@@ -207,13 +202,12 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
                 rating={applicationService.rating}
                 votes={applicationService.votes}
                 address={applicationService.address}
-                openfrom={applicationService.openfrom}
-                openuntil={applicationService.openuntil}
+                workingTime={applicationService.working_time_today}
               />
             </article>
           ) : (
             <span />
-          )} */}
+          )}
         </div>
       </section>
       <ApplicationAcceptPopup

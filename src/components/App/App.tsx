@@ -1,6 +1,7 @@
 import '../../index.css';
 
 import { SyntheticEvent, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Route, Routes } from 'react-router';
 
 import ApplicationPage from '../../Pages/ApplicationPage/ApplicationPage';
@@ -77,6 +78,28 @@ function App() {
 
   return (
     <div className={style.app}>
+      <Helmet>
+        <title>Ближайшие автосервисы</title>
+        <meta
+          name="description"
+          content="Веб-приложение для заказа услуг автосервиса с геолокацией ближайших точек"
+          data-react-helmet="true"
+        />
+        <link rel="canonical" href="https://find-car-service.ru/" />
+        <meta
+          property="og:image"
+          content="https://find-car-service.ru/static/media/car-AboutUs.8b50eaeb032f8d4dac930aef2eab1ea6.svg"
+        />
+        <meta property="og:image:alt" content="Автомобиль" />
+        <meta property="og:title" content="Ближайшие автосервисы" />
+        <meta
+          property="og:description"
+          content="Веб-приложение для заказа услуг автосервиса с геолокацией ближайших точек"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://find-car-service.ru/" />
+        <meta property="twitter:card" content="summary_large_image" />
+      </Helmet>
       <Header />
       <ScrollToTop />
       <Routes>

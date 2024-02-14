@@ -47,7 +47,6 @@ function Modal({ isOpen, onClose, children }: TPropsModal) {
           onClick={onClose}
         />
         {children}
-        <div className={styles.ellipse} />
       </div>
     </div>
   );

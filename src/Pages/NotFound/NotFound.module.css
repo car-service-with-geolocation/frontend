@@ -1,49 +1,62 @@
-.notFoundPage {
-  display: grid;
-  place-content: center;
-  text-align: center;
-  min-height: 100vh;
-  grid-template-rows: 35% 65%;
-}
-
 .notFoundPageContainer {
-  grid-row: 2/-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 143px;
+  text-align: center;
 }
 
-.notFoundPageTitle {
-  margin: 0;
-  color: #fff;
-  font-family: Montserrat;
-  font-size: 100px;
-  font-style: normal;
-  font-weight: 600;
+.notFoundPageimg {
+  object-fit: cover;
+  width: clamp(220px, 80%, 550px);
+  aspect-ratio: 2.85;
+  mask-image: url('../../images/Err404.svg');
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: 0%;
 }
 
 .notFoundPageText {
   margin: 20px 0 50px;
-  color: #fff;
+  color: var(--grayscale-2);
   text-align: center;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  width: 377px;
+  max-width: 377px;
 }
 
 .notFoundPageBtn {
-  padding: 20px 100px;
+  width: 380px;
+  height: 60px;
   border-radius: 20px;
-  background-color: #770022;
-  color: #fff;
-  font-family: Raleway;
-  font-size: 18px;
+  background-color: var(--primary-accent-red);
+  color: #dedede;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   border: none;
   cursor: pointer;
 }
 
 .notFoundPageBtn:hover {
-  opacity: 0.7;
+  opacity: var(--alfa-strong);
+}
+
+@media (max-width: 450px) {
+  .notFoundPage {
+    padding-top: 85px;
+  }
+  .notFoundPageText {
+    max-width: 340px;
+  }
+  .notFoundPageBtn {
+    width: 320px;
+  }
+  .notFoundPageText {
+    font-size: var(--global-text-font-mobile-size-common);
+  }
 }

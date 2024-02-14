@@ -7,10 +7,10 @@
 .way {
   margin: 40px 0 0;
   padding: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
 }
 
@@ -18,6 +18,7 @@
   display: flex;
   justify-content: space-between;
   margin: 100px 0 250px;
+  gap: 20px;
 }
 
 .servicePhoto {
@@ -25,7 +26,11 @@
   height: 388px;
   border-radius: 20px;
   object-fit: cover;
-  background: linear-gradient(0deg, rgba(11, 10, 9, 0.2) 0%, rgba(11, 10, 9, 0.2) 100%);
+  background: rgba(var(--black-dark), var(--alfa-light));
+}
+
+[data-theme='light'] .servicePhoto {
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
 }
 
 .service {
@@ -36,10 +41,10 @@
 .serviceName {
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 40px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-1);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
@@ -58,20 +63,20 @@
 .rating {
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
 .aboutHeader {
   margin: 50px 0 10px;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
@@ -79,10 +84,10 @@
   list-style: none;
   margin: 0 0 50px;
   padding: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
 }
 
@@ -108,15 +113,24 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: #702;
+  background-color: var(--primary-accent-red);
   color: #dedede;
   border: none;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+.application:hover {
+  background-color: var(--primary-hover-red);
+}
+
+.application:active {
+  background-color: var(--primary-pressed-red);
 }
 
 .address {
@@ -129,12 +143,19 @@
   align-items: center;
   border-radius: 20px;
   cursor: pointer;
-  color: #0a0908;
-  font-family: Raleway;
-  font-size: 18px;
+  color: var(--black-dark);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
+  border: none;
+  background-color: var(--grayscale-3);
+  transition: opacity 0.3s linear;
+}
+
+.address:hover {
+  opacity: var(--alfa-medium);
 }
 
 .serviceJobWrapper {
@@ -150,10 +171,10 @@
 }
 
 .serviceJobHeader {
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   margin: 0 0 20px;
 }
@@ -162,10 +183,10 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-medium);
   line-height: 165%;
   display: flex;
   flex-direction: column;
@@ -188,10 +209,10 @@
 .carsItem {
   max-width: 170px;
   width: 100%;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-medium);
   line-height: 165%;
 }
 
@@ -212,28 +233,28 @@
 .addressHEader {
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
 .addressText {
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   margin: 0;
   padding: 0;
 }
 
 .reviewHeader {
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   padding-top: 250px;
   margin: 0;
@@ -265,15 +286,24 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: #702;
-
-  font-family: Raleway;
-  font-size: 18px;
+  background-color: var(--primary-accent-red);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   color: #dedede;
   margin-top: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+.allReviewswButton:hover {
+  background-color: var(--primary-hover-red);
+}
+
+.allReviewswButton:active {
+  background-color: var(--primary-pressed-red);
 }
 
 .moreReviewswButton {
@@ -285,32 +315,27 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: #cbcbcb;
+  background: var(--grayscale-3);
   justify-self: center;
   align-self: center;
-
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: #0a0908;
+  color: var(--black-dark);
+  cursor: pointer;
+  transition: opacity 0.3s linear;
 }
 
 .moreReviewswButton:hover {
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.allReviewswButton:hover {
-  cursor: pointer;
-  opacity: 0.6;
+  opacity: var(--alfa-medium);
 }
 
 .allreviewsratingWrapper {
   display: flex;
   gap: 25px;
-  align-items: end;
+  align-items: flex-end;
 }
 .feedBackRating {
   --percent: calc(var(--rating) / 5 * 100%);
@@ -321,17 +346,22 @@
   &::before {
     content: '★★★★★';
     letter-spacing: 3px;
-    background: linear-gradient(90deg, #fc0 var(--percent), #fff var(--percent));
+    background: linear-gradient(
+      90deg,
+      var(--common-yellow) var(--percent),
+      #fff var(--percent)
+    );
     -webkit-background-clip: text;
+    background-clip: border-box;
     -webkit-text-fill-color: transparent;
   }
 }
 
 .allReviews {
-  font-family: Raleway;
-  font-size: 20px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-big);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   margin: 0;
   padding-top: 25px;
@@ -343,4 +373,177 @@
   border-radius: 20px;
   opacity: 0.8;
   overflow: hidden;
+}
+
+[data-theme='light'] .mapWrapper {
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1439px) {
+  .wrapper {
+    width: 87.337vw;
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .wrapper {
+    padding-top: 50px;
+  }
+  .serviceWrapper {
+    flex-direction: column-reverse;
+    margin-bottom: 100px;
+    margin-top: 50px;
+  }
+  .serviceJobWrapper {
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 150px;
+  }
+
+  .addressWrapper {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .reviewHeader {
+    padding-top: 100px;
+  }
+  .reviewWrapper {
+    flex-direction: column-reverse;
+    gap: 50px;
+  }
+  .servicePhoto {
+    width: 60%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .mapWrapper {
+    width: 87.337vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .serviceInfo {
+    flex-direction: column;
+  }
+
+  .feedBackRating {
+    font-size: 30px;
+  }
+
+  .workInfo {
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .wrapper {
+    padding-top: 0;
+  }
+
+  .buttonsWrapper {
+    flex-direction: column;
+  }
+
+  .address {
+    max-width: 360px;
+  }
+
+  .serviceJobWrapper {
+    margin-bottom: 50px;
+  }
+
+  .moreReviewswButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .reviewHeader {
+    font-size: var(--global-title-font-mobile-size-2);
+  }
+
+  .allReviews {
+    font-size: var(--global-text-font-mobile-size-common);
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .allReviewswButton {
+    font-size: var(--global-text-font-mobile-size-common);
+  }
+
+  .mapWrapper {
+    height: 200px;
+  }
+
+  .addressText {
+    font-size: var(--global-text-font-mobile-size-common);
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .addressHEader {
+    font-size: var(--global-title-font-mobile-size-3);
+  }
+
+  .addressWrapper {
+    gap: 20px;
+  }
+
+  .serviceJobHeader {
+    font-size: var(--global-title-font-mobile-size-3);
+    line-height: 30.8px;
+  }
+
+  .carsItem {
+    font-size: var(--global-text-font-mobile-size-common);
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  .jobsWrapper {
+    font-size: var(--global-text-font-mobile-size-common);
+    font-weight: var(--global-text-font-weight-normal);
+    line-height: 24px;
+  }
+
+  .serviceJobHeader {
+    font-size: var(--global-title-font-mobile-size-3);
+    line-height: 30.8px;
+  }
+
+  .application {
+    font-size: var(--global-text-font-mobile-size-common);
+  }
+
+  .address {
+    font-size: var(--global-text-font-mobile-size-common);
+  }
+
+  .workInfo {
+    font-size: var(--global-text-font-mobile-size-common);
+    font-weight: var(--global-text-font-weight-normal);
+    line-height: 24px;
+  }
+
+  .aboutHeader {
+    font-size: var(--global-title-font-mobile-size-3);
+    line-height: 30.8px;
+    margin-bottom: 0;
+  }
+
+  .serviceName {
+    font-size: var(--global-title-font-mobile-size-3);
+    line-height: 30.8px;
+  }
+
+  .way {
+    display: none;
+  }
+
+  .moreReviewswButton {
+    font-size: var(--global-text-font-mobile-size-little);
+  }
 }

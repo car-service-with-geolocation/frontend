@@ -11,12 +11,17 @@
     transform: scale(1);
   }
 }
+
+[data-theme='light'] .react-select__control {
+  background-color: #fff !important;
+}
+
 .select {
   .react-select__control {
     width: 100%;
     height: 60px;
     border-radius: 20px;
-    background: #dedede;
+    background: var(--grayscale-2);
   }
   .react-select__control--is-focused {
     box-shadow: none;
@@ -24,29 +29,29 @@
   }
   .react-select__placeholder {
     color: #0a0908;
-    font-family: Raleway;
-    font-size: 18px;
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--global-text-font-weight-normal);
     line-height: 29.7px;
     padding-left: 25px;
   }
   .react-select__single-value {
     color: #0a0908;
-    font-family: Raleway;
-    font-size: 18px;
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--global-text-font-weight-normal);
     line-height: 29.7px;
     padding-left: 25px;
   }
 
   .react-select__input-container {
     color: #0a0908;
-    font-family: Raleway;
-    font-size: 18px;
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--global-text-font-weight-normal);
     line-height: 29.7px;
     padding-left: 25px;
   }
@@ -74,7 +79,7 @@
   .react-select__menu {
     width: 100%;
     border-radius: 20px;
-    background: #dedede;
+    background: #fff;
     animation: openMenu 0.35s ease-in-out;
   }
 
@@ -82,10 +87,10 @@
     padding-top: 0;
     padding-bottom: 0;
     overflow-y: scroll 1px;
-    font-family: Raleway;
-    font-size: 18px;
+    font-family: var(--global-text-font);
+    font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--global-text-font-weight-normal);
     line-height: 29.7px;
     scrollbar-width: none;
   }
@@ -96,10 +101,11 @@
 
   .react-select__option {
     color: #0a0908;
+    background-color: #dedede;
   }
 
   .react-select__option--is-focused {
-    background-color: #cbcbcb;
+    background-color: var(--primary-accent-red);
   }
 
   .react-select__option--is-focused:first-of-type {
@@ -113,8 +119,7 @@
   }
   /* АКТИНАЯ ОПЦИЯ*/
   .react-select__option--is-selected {
-    background-color: #3f0012;
-    color: #dedede;
+    color: #0a0908;
   }
 
   .react-select__option--is-selected:first-of-type {
@@ -133,17 +138,17 @@
     }
 
     .react-select__placeholder {
-      font-size: 16px;
+      font-size: var(--global-text-font-mobile-size-common);
       line-height: 24px;
     }
 
     .react-select__single-value {
-      font-size: 16px;
+      font-size: var(--global-text-font-mobile-size-common);
       line-height: 24px;
     }
 
     .react-select__input-container {
-      font-size: 16px;
+      font-size: var(--global-text-font-mobile-size-common);
       line-height: 24px;
     }
 
@@ -152,7 +157,7 @@
     }
 
     .react-select__menu-list {
-      font-size: 16px;
+      font-size: var(--global-text-font-mobile-size-common);
       line-height: 24px;
     }
   }

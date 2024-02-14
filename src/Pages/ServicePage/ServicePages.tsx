@@ -1,7 +1,10 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-no-bind */
 import '../MapPage/immediate.css';
 
 import { SyntheticEvent, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 import Select, { SingleValue } from 'react-select';
@@ -13,6 +16,7 @@ import star from '../../images/YmapStarIcon.svg';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
 import { initialFeedBack, reviewOptions } from '../../utils/constants';
+import sortedSchedule from '../../utils/sortedSchedule';
 import { TImidiatevalue } from '../../utils/types';
 import ServiceFeedBack from './ServiceFeedBack/ServiceFeedBack';
 import ServiceOverallRating from './ServiceOverallRating/ServiceOverallRating';
@@ -37,6 +41,7 @@ function ServicePage({
   const navigate = useNavigate();
   const { id } = useParams();
   const serviceToRender = useAppSelector((store) => store.autoServiceById.data);
+  const sortedWorkingTime = sortedSchedule(serviceToRender?.working_time);
 
   const [currentRevueSorting, setCurrentRevueSorting] = useState(reviewOptions[0].value);
   const [feedBackOnPage, setFeedBackonPage] = useState(4);
@@ -47,7 +52,6 @@ function ServicePage({
       ? reviewOptions.find((SearchType) => SearchType.value === currentRevueSorting)
       : '';
   }
-
   function onChangeSelect(newValue: SingleValue<TImidiatevalue | string>) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -57,7 +61,6 @@ function ServicePage({
   function handleMoreFeedBack() {
     setFeedBackonPage(feedBackOnPage + addFeedBackOnPage);
   }
-
   useEffect(() => {
     dispatch(fetchAutoServiceId(id));
   }, [dispatch, id]);
@@ -65,24 +68,28 @@ function ServicePage({
     <section className={styles.wrapper}>
       {serviceToRender ? (
         <>
+          <Helmet>
+            <title>{serviceToRender.company.title}</title>
+            <meta property="og:title" content={serviceToRender.company.title} />
+          </Helmet>
           <p
             className={styles.way}
           >{`Главная / Поиск автосервисов / ${serviceToRender.company.title}`}</p>
           <div className={styles.serviceWrapper}>
             <div className={styles.service}>
-              <h2 className={styles.serviceName}>{serviceToRender.company.title}</h2>
+              <h1 className={styles.serviceName}>{serviceToRender.company.title}</h1>
               <div className={styles.raitingWrappper}>
                 <img className={styles.starImg} src={star} alt="star" />
                 <p
                   className={styles.rating}
                 >{`${serviceToRender.rating} (${serviceToRender.votes})`}</p>
               </div>
-              <h3 className={styles.aboutHeader}>Об автосервисе</h3>
+              <h2 className={styles.aboutHeader}>Об автосервисе</h2>
               <div className={styles.serviceInfo}>
                 <ul className={styles.workInfo}>
-                  <li>{`Открыто с ${serviceToRender.openfrom} до ${serviceToRender.openuntil}`}</li>
-                  <li>Суббота 9:00 - 15:00</li>
-                  <li>Воскресенье: Закрыто</li>
+                  {sortedWorkingTime?.map((working) => (
+                    <li key={working.id}>{`${working.day} - ${working.time}`}</li>
+                  ))}
                 </ul>
                 <ul className={styles.workInfo}>
                   <li>+7 900-200-20-20</li>

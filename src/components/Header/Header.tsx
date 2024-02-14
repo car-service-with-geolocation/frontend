@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import carLogo from '../../images/car-Logo.svg';
+import carLogoRevers from '../../images/car-Logo-revers.svg';
 import { useAppSelector } from '../../store';
+import { Theme } from '../../utils/types';
+import SwitchDarkLight from '../SwitcherLightDark/SwitcherLightDark';
 import style from './styles/styles.module.css';
 
 function Header() {
@@ -10,7 +13,18 @@ function Header() {
 
   const { isLoggedIn } = useAppSelector((store) => store.auth);
 
+  const [serviceLogo, setServiceLogo] = useState('');
   const [isActive, setIsActive] = useState(false);
+
+  const theme: Theme = useAppSelector((state) => state.darkLightMode.mode);
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      setServiceLogo(carLogo);
+    } else {
+      setServiceLogo(carLogoRevers);
+    }
+  }, [theme]);
 
   useEffect(() => {
     if (isActive) {
@@ -28,7 +42,7 @@ function Header() {
     <header className={style.header}>
       <div className={style.block}>
         <Link className={style.logoLink} to="/">
-          <img className={style.logoImg} src={carLogo} alt="Логотип" />
+          <img className={style.logoImg} src={serviceLogo} alt="Логотип" />
           <p className={style.logoText}>Find Car Services</p>
         </Link>
         <div>
@@ -64,12 +78,17 @@ function Header() {
           </div>
         </div>
       </div>
-      <Link
-        to={isLoggedIn ? '/profile/user-data' : '/login'}
-        className={`${isLoggedIn ? style.enterText_icon : style.enterText}`}
-      >
-        Вход
-      </Link>
+      <div className={style.rightSide}>
+        <SwitchDarkLight />
+        <Link
+          to={isLoggedIn ? '/profile/user-data' : '/login'}
+          className={`${isLoggedIn ? style.enterText_icon : style.enterText} ${
+            location.pathname === '/login' ? style.active : ''
+          }`}
+        >
+          Вход
+        </Link>
+      </div>
     </header>
   );
 }
