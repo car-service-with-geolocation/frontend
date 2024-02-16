@@ -7,13 +7,14 @@
 .label {
   display: flex;
   padding: 0;
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #ffffff;
+  color: var(--grayscale-2);
   align-items: center;
+  box-shadow: inset 0 0 3px -1px var(--black-dark);
 }
 
 .checkbox {
@@ -28,7 +29,8 @@
   content: '';
   min-width: 30px;
   height: 30px;
-  background-image: url(../../../images/checkbox.svg);
+  mask-image: url('../../../images/checkbox.svg');
+  background-color: var(--grayscale-2);
   margin: 0 10px 0 0;
 }
 
@@ -36,13 +38,13 @@
   content: '';
   min-width: 30px;
   height: 30px;
-  background-image: url(../../../images/checkbox-active.svg);
+  background-image: url('../../../images/checkbox-active.svg');
   margin: 0 10px 0 0;
 }
 
 @media (max-width: 600px) {
   .label {
-    font-size: 14px;
+    font-size: var(--global-text-font-mobile-size-little);
     line-height: 16px;
   }
 }

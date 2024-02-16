@@ -6,15 +6,13 @@ import { useDropzone } from 'react-dropzone';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useParams } from 'react-router-dom';
 
-import BestServiceCard from '../../components/BestServiceCard/BestServiceCard';
-import BestServiceCardMini from '../../components/BestServiceCardMini/BestServiceCardMini';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
+import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import Preloader from '../../components/Preloader/Preloader';
 import ProgressbarPreloader from '../../components/Preloader/ProgressbarPreloader/ProgressbarPreloader';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { allCheckboxes, baseUrl, REGEXP_PHONE_NUMBER } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
@@ -235,15 +233,14 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
               </li>
             </ul>
           ) : (
-            <BestServiceCardMini
+            <ServiceCard
               image={applicationService.company.logo}
               id={applicationService.company.id}
               title={applicationService.company.title}
               rating={applicationService.rating}
               votes={applicationService.votes}
               address={applicationService.address}
-              openfrom={applicationService.openfrom}
-              openuntil={applicationService.openuntil}
+              workingTime={applicationService.working_time_today}
             />
           )}
 
@@ -394,15 +391,14 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
             {width >= 900 ? (
               <article className={styles.card}>
                 <h3 className={styles.subtitle}>Автосервис</h3>
-                <BestServiceCard
+                <ServiceCard
                   image={applicationService.company.logo}
                   id={applicationService.company.id}
                   title={applicationService.company.title}
                   rating={applicationService.rating}
                   votes={applicationService.votes}
                   address={applicationService.address}
-                  openfrom={applicationService.openfrom}
-                  openuntil={applicationService.openuntil}
+                  workingTime={applicationService.working_time_today}
                 />
               </article>
             ) : (

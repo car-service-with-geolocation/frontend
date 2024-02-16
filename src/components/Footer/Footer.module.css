@@ -1,20 +1,29 @@
 .footer {
-  width: 1120px;
+  width: 100%;
+  padding-block: 100px;
+  margin-block-start: 250px;
+}
+
+[data-theme='light'] .footer {
+  background: rgba(123, 104, 126, 0.2);
+}
+
+.footer__wrapper {
+  max-width: 1120px;
   height: 172px;
   display: flex;
-  padding-top: 350px;
-  padding-bottom: 100px;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .logo_wrapper {
   display: flex;
-  color: #dedede;
+  color: var(--grayscale-2);
   text-decoration: none;
 }
 
 .logo_wrapper:hover {
-  color: #770022;
+  color: var(--primary-accent-red);
 }
 
 .img {
@@ -52,48 +61,43 @@
 }
 
 .link {
-  color: #dedede;
+  color: var(--grayscale-2);
   text-decoration: none;
-  font-family: Raleway;
-  font-size: 20px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-big);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
 }
 
 .link:hover {
-  color: #770022;
+  color: var(--primary-accent-red);
 }
 
 .address_wrapper {
   display: flex;
   flex-direction: column;
-  font-family: Raleway;
   gap: 40px;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .address_link {
   text-decoration: none;
-  color: #dedede;
-  font-family: Raleway;
-  font-size: 20px;
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-big);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   max-width: 205px;
 }
 
 .address_link:hover {
-  color: #770022;
+  color: var(--primary-accent-red);
 }
 
 @media screen and (max-width: 1125px) {
-  .footer {
-    width: 87.337vw;
+  .footer__wrapper {
+    max-width: 87.337vw;
   }
 }
 
@@ -105,17 +109,20 @@
     display: none;
   }
   .address_link {
-    font-size: calc(1rem + 0.5vw);
+    font-size: var(--global-text-font-mobile-size-big);
   }
   .link {
-    font-size: calc(1rem + 0.5vw);
+    font-size: var(--global-text-font-mobile-size-big);
   }
 }
 
 @media screen and (max-width: 500px) {
   .footer {
+    padding-top: 100px;
+  }
+
+  .footer__wrapper {
     justify-content: start;
-    padding-top: 150px;
   }
 
   .link {

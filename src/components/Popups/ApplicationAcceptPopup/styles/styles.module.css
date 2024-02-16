@@ -11,23 +11,23 @@
 .modalTitle {
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
-  color: #dedede;
+  color: var(--grayscale-2);
 }
 
 .modalSubtitle {
   margin: 0 0 50px;
   padding: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #dedede;
+  color: var(--grayscale-2);
 }
 
 .modalImage {
@@ -36,41 +36,30 @@
   margin: 45px 0;
 }
 
-.ellipse {
-  position: absolute;
-  width: 395px;
-  height: 395px;
-  border-radius: 395px;
-  background: rgba(119, 0, 34, 0.3);
-  filter: blur(450px);
-  top: calc(50% - 395px / 2);
-  left: calc(50% - 395px / 2);
-  z-index: 3;
-}
-
 .modalButton {
   min-width: 276px;
   padding: 20px 100px;
   margin: 0 0 106px;
   border-radius: 20px;
   border: none;
-  background-color: #702;
+  background-color: var(--primary-accent-red);
   color: #dedede;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   cursor: pointer;
   z-index: 5;
+  transition: background-color 0.3s linear;
 }
 
 .modalButton:hover {
-  background-color: #3f0012;
+  background-color: var(--primary-hover-red);
 }
 
 .modalButton:active {
-  background-color: #2e000d;
+  background-color: var(--primary-pressed-red);
 }
 
 .modalButton_main {
@@ -84,11 +73,11 @@
   }
 
   .modalTitle {
-    font-size: 26px;
+    font-size: var(--global-title-font-mobile-size-2);
   }
 
   .modalSubtitle {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
     margin: 0 0 60px;
   }

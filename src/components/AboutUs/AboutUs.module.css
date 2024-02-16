@@ -14,40 +14,26 @@
   border-radius: 50%;
 }
 
-.eclipse {
-  position: absolute;
-  top: 351px;
-  right: 55px;
-  width: 395px;
-  height: 395px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  flex-shrink: 0;
-  border-radius: 395px;
-  background: rgba(119, 0, 34, 0.5);
-  filter: blur(450px);
-}
 .container {
   max-width: 550px;
 }
 
 .title {
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: var(--global-title-font), system-ui, sans-serif;
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   padding-top: 25px;
   margin: 0;
 }
 
 .subtitle {
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font), system-ui, sans-serif;
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
-  line-height: 29.7px;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 165%;
   margin: 0;
   padding-top: 20px;
 }
@@ -57,31 +43,53 @@
 }
 
 .table {
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font), system-ui, sans-serif;
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
-  line-height: 29.7px;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 165%;
   margin: 0;
   padding-left: 27px;
 }
 
 .tableSell {
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font), system-ui, sans-serif;
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
-  line-height: 29.7px;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 165%;
 }
 
-@media (max-width: 376px) {
+@media (max-width: 1439px) {
+  .section {
+    width: 87.337vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  .section {
+    gap: 30px;
+    padding-top: 100px;
+  }
+  .img {
+    width: 370px;
+    height: 370px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 800px) {
   .section {
     flex-direction: column-reverse;
     gap: 50px;
-    max-width: 335px;
     padding-top: 150px;
   }
+}
 
+@media (max-width: 400px) {
+  .section {
+    padding-top: 90px;
+  }
   .img {
     padding-left: 0;
     width: 335px;
@@ -89,12 +97,12 @@
   }
 
   .title {
-    font-size: 26px;
+    font-size: var(--global-title-font-mobile-size-2);
     padding-top: 0;
   }
 
   .subtitle {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
     padding-top: 15px;
   }
@@ -104,13 +112,13 @@
   }
 
   .table {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
     padding-left: 23px;
   }
 
   .tableSell {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
   }
 }

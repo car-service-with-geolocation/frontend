@@ -8,10 +8,10 @@
 .title {
   margin: 0 0 50px;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: var(--global-title-font), system-ui, sans-serif;
+  font-size: var(--global-title-font-desktop-size-2);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
@@ -23,25 +23,20 @@
   position: relative;
 }
 
-.ellipse {
-  position: absolute;
-  top: 55px;
-  left: -160px;
-  width: 395px;
-  height: 395px;
-  border-radius: 395px;
-  background: rgba(119, 0, 34, 0.3);
-  filter: blur(450px);
+@media (max-width: 1439px) {
+  .section {
+    width: 87.337vw;
+    padding-top: 100px;
+  }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 400px) {
   .section {
-    max-width: 335px;
+    padding-top: 50px;
   }
-
   .title {
     margin-bottom: 30px;
-    font-size: 26px;
+    font-size: var(--global-title-font-mobile-size-2);
   }
 
   .cardscontainer {

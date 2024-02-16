@@ -23,27 +23,27 @@
 .link {
   margin: 40px 15px 0 0;
   padding: 0;
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #dedede;
+  color: var(--grayscale-2);
   text-decoration: none;
   cursor: pointer;
 }
 
 .link:hover {
-  color: #770022;
+  color: var(--primary-accent-red);
 }
 
 .title {
   margin: 95px 0 10px;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 40px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-1);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
 
@@ -52,47 +52,22 @@
   justify-content: space-between;
 }
 
-.ellipse {
-  position: absolute;
-  width: 395px;
-  height: 395px;
-  border-radius: 395px;
-  background: rgba(119, 0, 34, 0.3);
-  filter: blur(450px);
-  z-index: 1;
-}
-
-.ellipse1 {
-  top: 83px;
-  left: -160px;
-}
-
-.ellipse2 {
-  top: 1183px;
-  right: -160px;
-}
-
-.ellipse3 {
-  top: 1423px;
-  left: -160px;
-}
-
 .applicationForm {
   display: flex;
   flex-direction: column;
   max-width: 645px;
   width: 100%;
   margin: 0 115px 0 0;
-  z-index: 4;
+  padding: 10px;
 }
 
 .subtitle {
   margin: 60px 0 20px;
   padding: 0;
-  font-family: Montserrat;
-  font-size: 24px;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   align-self: self-start;
 }
@@ -121,12 +96,12 @@
   display: flex;
   margin: 0 0 10px;
   padding: 0;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #ffffff;
+  color: var(--grayscale-2);
 }
 
 .textAreaTitle:nth-of-type(2) {
@@ -139,13 +114,13 @@
   height: 30px;
   border-radius: 20px;
   padding: 15px 30px;
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 30px;
   border: none;
-  color: #7e7268;
+  color: var(--grayscale-2);
   resize: none;
   outline: none;
   box-shadow: inset 0px -45px 0px 20px #ffffff;
@@ -196,12 +171,12 @@
 }
 
 .textRemark {
-  font-family: Ubuntu;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: #dedede;
+  color: var(--grayscale-2);
   margin: -15px 0 20px;
 }
 
@@ -249,7 +224,7 @@
   margin: 0;
   padding: 35px;
   border-radius: 20px;
-  border: 2px dashed #dedede;
+  border: 2px dashed var(--grayscale-2);
   background-image: url(../../../images/cameraIcon.svg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -259,21 +234,6 @@
 .imageInput::-webkit-file-upload-button {
   visibility: hidden;
 }
-
-/* добавляет свойства элементу "...Загрузка" для прелоудера загрузки фото*/
-/* .preloaderLabel {
-  position: absolute;
-  width: 86px;
-  height: 30px;
-  top: 40px;
-  left: 42px;
-  font-family: Raleway;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 165%;
-  color: #dedede;
-} */
 
 .imagePreviewContainer {
   position: relative;
@@ -314,15 +274,16 @@
   padding: 20px 80px;
   border: none;
   border-radius: 20px;
-  background-color: #702;
+  background-color: var(--primary-accent-red);
   color: #dedede;
-  font-family: Raleway;
-  font-size: 18px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--global-text-font-weight-bold);
   line-height: normal;
   cursor: pointer;
   z-index: 6;
+  transition: background-color 0.3s linear;
 }
 
 .card {
@@ -332,20 +293,23 @@
 }
 
 .submitButton:hover {
-  background-color: #3f0012;
+  background-color: var(--primary-hover-red);
 }
 
 .submitButton:active {
-  background-color: #2e000d;
+  background-color: var(--primary-pressed-red);
 }
 
 .submitButtonDisable {
-  background-color: rgba(126, 114, 104, 0.5);
-  color: #7a7a7a;
+  cursor: default;
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
+  color: var(--grayscale-1);
 }
 
 .submitButtonDisable:hover {
-  background-color: rgba(126, 114, 104, 0.5);
+  cursor: default;
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
+  color: var(--grayscale-1);
 }
 
 @media screen and (max-width: 1439px) {
@@ -369,12 +333,12 @@
 @media screen and (max-width: 1000px) {
   .title {
     margin: 60px 0 -10px;
-    font-size: 32px;
+    font-size: var(--global-title-font-mobile-size-1);
   }
 
   .subtitle {
     margin: 40px 0 15px;
-    font-size: 22px;
+    font-size: var(--global-title-font-mobile-size-3);
     line-height: 30.8px;
   }
 
@@ -384,7 +348,7 @@
 
   .subtitle:nth-of-type(2) {
     font-family: Raleway;
-    font-size: 18px;
+    font-size: var(--global-text-font-mobile-size-big);
     line-height: normal;
   }
 
@@ -393,14 +357,15 @@
     height: 24px;
     border-radius: 16px;
     padding: 13px 25px 13px 30px;
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
   }
 
   .formText[id='problemDescription'] {
     padding: 15px 30px;
     height: 99px;
-    font-size: 18px;
+    font-size: var(--global-text-font-mobile-size-big);
     line-height: 165%;
   }
 
@@ -453,7 +418,7 @@
   }
 
   .textAreaTitle {
-    font-size: 16px;
+    font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
   }
 
