@@ -25,15 +25,20 @@
   padding: 0;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
+  font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
+  color: var(--grayscale-2);
   color: var(--grayscale-2);
   text-decoration: none;
   cursor: pointer;
 }
 
 .link:hover {
+  color: var(--primary-accent-red);
   color: var(--primary-accent-red);
 }
 
@@ -42,7 +47,10 @@
   padding: 0;
   font-family: var(--global-title-font);
   font-size: var(--global-title-font-desktop-size-1);
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-1);
   font-style: normal;
+  font-weight: var(--global-title-font-weight-bold);
   font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
 }
@@ -64,6 +72,8 @@
 .subtitle {
   margin: 60px 0 20px;
   padding: 0;
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
   font-family: var(--global-title-font);
   font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
@@ -274,6 +284,7 @@
   padding: 20px 80px;
   border: none;
   border-radius: 20px;
+  background-color: var(--primary-accent-red);
   background-color: var(--primary-accent-red);
   color: #dedede;
   font-family: var(--global-text-font);
