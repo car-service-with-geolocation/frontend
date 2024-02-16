@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
@@ -13,6 +14,7 @@ import Preloader from '../../components/Preloader/Preloader';
 import ProgressbarPreloader from '../../components/Preloader/ProgressbarPreloader/ProgressbarPreloader';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { allCheckboxes, baseUrl, REGEXP_PHONE_NUMBER } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
@@ -144,7 +146,10 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
     try {
       const token = localStorage.getItem('JWT');
       const id = location?.id;
+      const boundary = '-'; // Создание уникальной строки в качестве разделителя
       const formData = new FormData();
+      // const carValue = data.carModel.trim();
+      // console.log(carValue);
       formData.append('car', data.carModel);
       formData.append('phone_number', data.tel);
       formData.append('task', data.problemDescription);
@@ -154,21 +159,16 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
 
       files.forEach((file, index) => {
         formData.append(`file_${index}`, file);
-        // formData.append('image', file);
-        // data.images.push(file);
       });
-      const response = await fetch(`${baseUrl}orders/me`, {
-        // mode: 'no-cors',
+
+      const headers = new Headers();
+      headers.append('Authorization', `Token ${token}`);
+      headers.append('Content-Type', `multipart/form-data; boundary=${boundary}`);
+
+      const response = await fetch(`${baseUrl}orders/me/`, {
         method: 'POST',
         body: formData,
-        // body: JSON.stringify(data),
-        credentials: 'include',
-        headers: {
-          Authorization: `Token ${token}`,
-          'Content-Type': 'multipart/form-data',
-          // 'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
+        headers,
       });
 
       if (response.ok) {
