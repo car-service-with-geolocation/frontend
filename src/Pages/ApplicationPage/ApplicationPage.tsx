@@ -148,8 +148,6 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
       const id = location?.id;
       const boundary = '-'; // Создание уникальной строки в качестве разделителя
       const formData = new FormData();
-      // const carValue = data.carModel.trim();
-      // console.log(carValue);
       formData.append('car', data.carModel);
       formData.append('phone_number', data.tel);
       formData.append('task', data.problemDescription);
