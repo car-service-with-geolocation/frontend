@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import { useAppDispatch, useAppSelector } from '../../store';
-import selectUserRequests from '../../store/selectors';
 import { fetchUserRequestsData } from '../../store/userRequestsSlice';
 import { autoserviceRequestPerPage } from '../../utils/constants';
 import { TUserRequestData } from '../../utils/types';
@@ -19,7 +18,7 @@ function AutoserviceRequest() {
   const dispatch = useAppDispatch();
   const userRequestsStatus = useAppSelector((store) => store.userRequests.status);
 
-  const userRequests = useAppSelector((store) => selectUserRequests(store));
+  const userRequests = useAppSelector((store) => store.userRequests.data);
 
   useEffect(() => {
     if (userRequestsStatus === 'idle') {

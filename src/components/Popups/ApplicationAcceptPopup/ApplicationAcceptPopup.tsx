@@ -40,37 +40,33 @@ function ApplicationAcceptPopup({ isOpen, onClose }: TPropsApplicationAcceptPopu
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <>
-        <div className={styles.modalContainer}>
-          <h2 className={styles.modalTitle}>{showMessage()}</h2>
-          <img
-            className={styles.modalImage}
-            src={status !== 'rejected' ? success : cancel}
-            alt="логотип сообщения"
-          />
-          {location.pathname !== '/registration' &&
-          location.pathname !== '/reset-password' ? (
-            <h3 className={styles.modalSubtitle}>
-              В течение 5 минут менеджер свяжется с&nbsp;вами, чтобы уточнить детали
-              заявки
-            </h3>
-          ) : (
-            <div />
-          )}
-          <button
-            className={styles.modalButton}
-            onClick={
-              location.pathname === '/registration' ||
-              location.pathname === '/reset-password'
-                ? handleClick
-                : onClose
-            }
-          >
-            Отлично
-          </button>
-        </div>
-        <div className={styles.ellipse} />
-      </>
+      <div className={styles.modalContainer}>
+        <h2 className={styles.modalTitle}>{showMessage()}</h2>
+        <img
+          className={styles.modalImage}
+          src={status !== 'rejected' ? success : cancel}
+          alt="логотип сообщения"
+        />
+        {location.pathname !== '/registration' &&
+        location.pathname !== '/reset-password' ? (
+          <h3 className={styles.modalSubtitle}>
+            В течение 5 минут менеджер свяжется с&nbsp;вами, чтобы уточнить детали заявки
+          </h3>
+        ) : (
+          <div />
+        )}
+        <button
+          className={styles.modalButton}
+          onClick={
+            location.pathname === '/registration' ||
+            location.pathname === '/reset-password'
+              ? handleClick
+              : onClose
+          }
+        >
+          Отлично
+        </button>
+      </div>
     </Modal>
   );
 }

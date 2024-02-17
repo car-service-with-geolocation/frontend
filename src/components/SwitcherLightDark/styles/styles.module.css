@@ -39,6 +39,7 @@
   border-radius: 20px;
   position: relative;
   transition: all 350ms ease-in;
+  cursor: pointer;
 }
 
 .switch__checkbox {

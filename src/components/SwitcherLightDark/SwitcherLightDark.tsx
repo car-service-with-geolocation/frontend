@@ -1,13 +1,8 @@
 import useTheme from '../../hooks/useTheme';
-import { Theme } from '../../utils/types';
+import { getThemeFromStorage } from '../../utils/utils';
 import styles from './styles/styles.module.css';
 
 function SwitchDarkLight() {
-  const getThemeFromStorage = (): Theme => {
-    const theme = localStorage.getItem('data-theme');
-    return (theme as Theme) || 'dark';
-  };
-
   const [theme, handleChange] = useTheme(getThemeFromStorage());
 
   return (

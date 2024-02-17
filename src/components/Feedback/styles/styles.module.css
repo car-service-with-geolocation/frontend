@@ -63,7 +63,7 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
-  color: var(--white-2);
+  color: #dedede;
   cursor: pointer;
 }
 

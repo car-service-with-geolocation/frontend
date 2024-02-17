@@ -23,25 +23,10 @@
   position: relative;
 }
 
-.ellipse {
-  position: absolute;
-  top: 55px;
-  left: -160px;
-  width: 395px;
-  height: 395px;
-  border-radius: 395px;
-  background: rgba(119, 0, 34, 0.3);
-  filter: blur(100px);
-}
-
 @media (max-width: 1439px) {
   .section {
     width: 87.337vw;
     padding-top: 100px;
-  }
-
-  .ellipse {
-    width: 87vw;
   }
 }
 

@@ -12,8 +12,9 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   align-items: center;
+  box-shadow: inset 0 0 3px -1px var(--black-dark);
 }
 
 .checkbox {
@@ -28,7 +29,8 @@
   content: '';
   min-width: 30px;
   height: 30px;
-  background-image: url(../../../images/checkbox.svg);
+  mask-image: url('../../../images/checkbox.svg');
+  background-color: var(--grayscale-2);
   margin: 0 10px 0 0;
 }
 
@@ -36,7 +38,7 @@
   content: '';
   min-width: 30px;
   height: 30px;
-  background-image: url(../../../images/checkbox-active.svg);
+  background-image: url('../../../images/checkbox-active.svg');
   margin: 0 10px 0 0;
 }
 

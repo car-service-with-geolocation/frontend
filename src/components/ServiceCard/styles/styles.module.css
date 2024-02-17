@@ -1,7 +1,7 @@
 .link {
   display: block;
   text-decoration: none;
-  color: var(--white-2);
+  color: #dedede;
   transition: opacity 0.6s ease;
 }
 
@@ -16,7 +16,8 @@
   width: 350px;
   height: 509px;
   border-radius: 20px;
-  background: var(--grayscale-2);
+  background: #dedede;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
 }
 
 .cardImg {
@@ -42,7 +43,7 @@
   height: 180px;
   padding: 30px 40px;
   border-radius: 0px 0px 20px 20px;
-  background: rgba(var(--black-dark-rgb), 0.7);
+  background: rgba(11, 10, 9, 0.7);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 }
@@ -95,12 +96,14 @@
     display: block;
     width: 73%;
     height: 181px;
-    background: rgba(var(--grayscale-1-rgb), var(--alfa-light));
+    background: rgba(123, 104, 126, 0.2);
     box-sizing: border-box;
     padding: 30px;
+    box-shadow: none;
   }
 
   .link {
+    color: var(--grayscale-2);
     width: 100%;
   }
 

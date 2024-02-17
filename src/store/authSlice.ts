@@ -105,7 +105,7 @@ export const fetchUserDataChange = createAsyncThunk<
         authorization: `Token ${token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, first_name, phone_number, password: 'qweqweqwe' }),
+      body: JSON.stringify({ email, first_name, phone_number }),
     });
     if (!response.ok) {
       return rejectWithValue('Server Error!');
@@ -139,18 +139,7 @@ export const fetchUserLogout = createAsyncThunk<
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    // setUser(state, action) {
-    //   state.email = action.payload.email;
-    //   state.id = action.payload.id;
-    //   state.isLoggedIn = true;
-    // },
-    // removeUser(state) {
-    //   state.email = null;
-    //   state.id = null;
-    //   state.isLoggedIn = false;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // FETCH-USER-LOGIN
     builder

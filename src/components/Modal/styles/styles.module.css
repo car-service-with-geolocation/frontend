@@ -39,10 +39,10 @@
   width: 40px;
   height: 40px;
   padding: 8px;
-  background-image: url(../../../images/closeButton.svg);
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: 50% 50%;
+  mask-image: url(../../../images/closeButton.svg);
+  mask-repeat: no-repeat;
+  background-color: var(--grayscale-2);
+  mask-position: 50% 50%;
   cursor: pointer;
   z-index: 7;
 }
@@ -60,7 +60,7 @@
   border-radius: 20px;
   border: none;
   background-color: var(--primary-accent-red);
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;

@@ -31,17 +31,6 @@
   height: 800px;
 }
 
-.eclipses {
-  position: absolute;
-  top: 351px;
-  right: 55px;
-  width: 395px;
-  height: 395px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  flex-shrink: 0;
-}
 .section {
   display: flex;
   flex-direction: column;
@@ -66,7 +55,7 @@
   height: 60px; /* Высота рисунка */
   display: flex; /* Блочный элемент */
   position: relative; /* Относительное позиционирование */
-  background-color: var(--grayscale-1);
+  background-color: rgba(var(--grayscale-1-rgb), var(--alfa-light));
   border-radius: 20px;
   cursor: pointer;
 }
@@ -78,10 +67,11 @@
 .mapping_span_card_image {
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
-  background-image: url('../../images/MapPageCardIcon.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 24px 24px;
+  mask-image: url('../../images/MapPageCardIcon.svg');
+  background-color: #dedede;
+  mask-size: 50%;
+  mask-repeat: no-repeat;
+  mask-position: center;
   width: 120px;
   height: 60px;
   z-index: 1;
@@ -90,10 +80,11 @@
 .mapping_span_map_image {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-image: url('../../images/MapPageMapIcon.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 24px 24px;
+  mask-image: url('../../images/MapPageMapIcon.svg');
+  background-color: var(--grayscale-2);
+  mask-size: 50%;
+  mask-repeat: no-repeat;
+  mask-position: center;
   width: 120px;
   height: 60px;
   z-index: 1;
@@ -124,6 +115,17 @@
   border-bottom-right-radius: 20px;
 }
 
+.mapping_input:checked + .mapping_span + .mapping_span_card_image {
+  background-color: var(--grayscale-2);
+}
+
+.mapping_input:checked
+  + .mapping_span
+  + .mapping_span_card_image
+  + .mapping_span_map_image {
+  background-color: #dedede;
+}
+
 .pagination {
   display: flex;
   align-self: center;
@@ -136,7 +138,7 @@
 .link {
   padding: 3px 12px;
   margin: 0 4px 0 0;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -146,9 +148,14 @@
 }
 
 .link_active {
-  color: var(--black-dark);
-  background-color: var(--white-2);
+  color: #0a0908;
+  background-color: var(--grayscale-2);
   border-radius: 5px;
+}
+
+[data-theme='light'] .link_active {
+  background-color: transparent;
+  border: 1px solid var(--grayscale-2);
 }
 
 .break {
@@ -163,17 +170,17 @@
   margin: 8px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-color: transparent;
+  background-color: var(--grayscale-2);
   border: none;
   cursor: pointer;
 }
 
 .prevlink {
-  background-image: url(../../images/prev-arrow.svg);
+  mask-image: url(../../images/prev-arrow.svg);
 }
 
 .nextlink {
-  background-image: url(../../images/next-arrow.svg);
+  mask-image: url(../../images/next-arrow.svg);
 }
 
 @media screen and (max-width: 1439px) {
@@ -184,12 +191,7 @@
     font-size: var(--global-title-font-mobile-size-1);
     width: 87.337vw;
   }
-  .ellipse {
-    width: 87.337vw;
-  }
-  .eclipses {
-    width: 87.337vw;
-  }
+
   .mapWrapper {
     width: 84.5vw;
     height: 95vw;
@@ -198,9 +200,13 @@
     width: 87.337vw;
   }
   .cardscontainer {
-    grid-template-columns: minmax(300px, 1fr);
-    grid-template-rows: auto;
     row-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cardscontainer {
+    grid-template-columns: minmax(300px, 1fr);
   }
 }
 
@@ -220,9 +226,6 @@
   .mapping_label {
     width: 80px; /* Ширина рисунка */
     height: 40px; /* Высота рисунка */
-    background-color: var(--grayscale-1);
-    border-radius: 20px;
-    cursor: pointer;
   }
   .mapping_input:checked + .mapping_span {
     left: 40px;

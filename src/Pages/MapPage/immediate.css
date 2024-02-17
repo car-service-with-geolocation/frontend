@@ -11,8 +11,12 @@
     transform: scale(1);
   }
 }
+
+[data-theme='light'] .immediate-select__control {
+  background-color: #fff !important;
+}
+
 .select {
-  color: #fff;
   .immediate-select__control {
     max-width: 273px;
     max-height: 30px;
@@ -38,7 +42,7 @@
   } */
 
   .immediate-select__single-value {
-    color: #fff;
+    color: var(--grayscale-2);
     font-family: var(--global-text-font);
     font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
@@ -47,7 +51,7 @@
   }
 
   .immediate-select__indicator {
-    color: var(--white-2);
+    color: var(--grayscale-2);
     padding-left: 10px;
     transform: rotate(180deg);
     transition: all 0.6s linear;
@@ -66,7 +70,7 @@
     width: 250px;
     left: 0;
     border-radius: 20px;
-    background: var(--white-2);
+    background: #dedede;
     animation: openMenu 0.35s ease-in-out;
   }
 
@@ -90,7 +94,7 @@
 
   /* ОПЦИЯ */
   .immediate-select__option {
-    color: var(--black-dark);
+    color: #0a0908;
     font-family: var(--global-text-font);
     font-size: var(--global-text-font-desktop-size-common);
     font-style: normal;
@@ -101,7 +105,7 @@
 
   /* ФОКУС ОПЦИИ */
   .immediate-select__option--is-focused {
-    background-color: var(--white-3);
+    background-color: var(--grayscale-3);
   }
 
   .immediate-select__option--is-focused:first-of-type {
@@ -115,8 +119,8 @@
   }
   /* АКТИНАЯ ОПЦИЯ*/
   .immediate-select__option--is-selected {
-    background-color: var(--primary-hover-red);
-    color: var(--white-2);
+    background-color: var(--primary-accent-red);
+    color: #dedede;
   }
 
   .immediate-select__option--is-selected:first-of-type {
@@ -132,7 +136,6 @@
 
 @media screen and (max-width: 500px) {
   .select {
-    color: #fff;
     .immediate-select__control {
       max-width: 180px;
       max-height: 30px;

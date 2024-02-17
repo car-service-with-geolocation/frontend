@@ -21,6 +21,7 @@ export const fetchAutoServiceByCoord = createAsyncThunk<
   { rejectValue: string }
 >(
   'autoServiceByCoord/fetchAutoServiceByCoord',
+  // eslint-disable-next-line func-names
   async function (coord, { rejectWithValue }) {
     const response = await fetch(
       `${baseUrl}autoservice/service/?latitude=${coord.lat}&longitude=${coord.lon}`

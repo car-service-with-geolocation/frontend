@@ -24,11 +24,11 @@
   border-radius: 40px;
   width: 261px;
   height: 10px;
-  background-color: var(--grayscale-1);
+  background-color: rgba(var(--grayscale-1-rgb), var(--alfa-light));
 }
 
 .scale {
   height: 100%;
-  background: var(--white-2);
+  background: var(--grayscale-2);
   border-radius: 40px;
 }

@@ -11,12 +11,8 @@ import { TService } from '../../../utils/types';
 type TBallonComponentProps = {
   point: TService;
 };
-let isOpenInfo = false;
 
 export function BallonComponent({ point }: TBallonComponentProps) {
-  if (point.openfrom && point.openuntil) {
-    isOpenInfo = true;
-  }
   return (
     <Link className="Ymap_link" to={`/service/${point.id}`}>
       <section className="Ymap">
@@ -33,11 +29,7 @@ export function BallonComponent({ point }: TBallonComponentProps) {
               {point.rating} ({point.votes})
             </p>
           </div>
-          <p className="Ymap__timeWork">
-            {isOpenInfo
-              ? `Открыто с ${Number(point.openfrom)} до ${Number(point.openuntil)}`
-              : 'Нет времени работы'}
-          </p>
+          <p className="Ymap__timeWork">{point.working_time_today}</p>
           <address className="Ymap__addres">{point.address}</address>
         </div>
       </section>

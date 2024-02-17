@@ -16,7 +16,7 @@
   font-style: normal;
   font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
-  color: #dedede;
+  color: var(--grayscale-2);
 }
 
 .modalSubtitle {
@@ -27,25 +27,13 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  color: var(--white-2);
+  color: var(--grayscale-2);
 }
 
 .modalImage {
   width: 50px;
   height: 50px;
   margin: 45px 0;
-}
-
-.ellipse {
-  position: absolute;
-  width: 395px;
-  height: 395px;
-  border-radius: 395px;
-  background: rgba(var(--primary-accent-red-rgb), var(--alfa-light));
-  filter: blur(100px);
-  top: calc(50% - 395px / 2);
-  left: calc(50% - 395px / 2);
-  z-index: 3;
 }
 
 .modalButton {
@@ -55,7 +43,7 @@
   border-radius: 20px;
   border: none;
   background-color: var(--primary-accent-red);
-  color: var(--white-2);
+  color: #dedede;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -63,6 +51,7 @@
   line-height: normal;
   cursor: pointer;
   z-index: 5;
+  transition: background-color 0.3s linear;
 }
 
 .modalButton:hover {

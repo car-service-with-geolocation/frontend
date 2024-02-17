@@ -2,7 +2,8 @@ import { SyntheticEvent } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router';
 
-import Err404 from '../../images/Err404.png';
+// import Err404 from '../../images/Err404.png';
+import Err404 from '../../images/car-photo-for-404.jpg';
 import style from './NotFound.module.css';
 
 function NotFound() {

@@ -1,15 +1,24 @@
 .footer {
-  width: 1120px;
+  width: 100%;
+  padding-block: 100px;
+  margin-block-start: 250px;
+}
+
+[data-theme='light'] .footer {
+  background: rgba(123, 104, 126, 0.2);
+}
+
+.footer__wrapper {
+  max-width: 1120px;
   height: 172px;
   display: flex;
-  padding-top: 350px;
-  padding-bottom: 100px;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .logo_wrapper {
   display: flex;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   text-decoration: none;
 }
 
@@ -52,7 +61,7 @@
 }
 
 .link {
-  color: var(--white-2);
+  color: var(--grayscale-2);
   text-decoration: none;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-big);
@@ -73,7 +82,7 @@
 
 .address_link {
   text-decoration: none;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-big);
   font-style: normal;
@@ -87,8 +96,8 @@
 }
 
 @media screen and (max-width: 1125px) {
-  .footer {
-    width: 87.337vw;
+  .footer__wrapper {
+    max-width: 87.337vw;
   }
 }
 
@@ -100,7 +109,6 @@
     display: none;
   }
   .address_link {
-    /* font-size: calc(1rem + 0.5vw); */
     font-size: var(--global-text-font-mobile-size-big);
   }
   .link {
@@ -110,8 +118,11 @@
 
 @media screen and (max-width: 500px) {
   .footer {
-    justify-content: start;
     padding-top: 100px;
+  }
+
+  .footer__wrapper {
+    justify-content: start;
   }
 
   .link {
