@@ -1,0 +1,58 @@
+.preloaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 25px;
+  width: 116px;
+  height: 36px;
+  border-radius: 20px;
+  border: 2px dashed var(--grayscale-2);
+}
+
+.preloaderLabel {
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 165%;
+  color: var(--grayscale-2);
+}
+
+.preloader {
+  width: 100%;
+  height: 4px;
+  position: relative;
+  border-radius: 2px;
+  background-color: var(--grayscale-4);
+  overflow: hidden;
+}
+
+.loader {
+  width: 100%;
+  height: 4px;
+  display: inline-block;
+  position: absolute;
+  background: var(--grayscale-2);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  width: 0;
+  height: 4px;
+  background: var(--grayscale-4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: animFw 1s linear infinite;
+}
+
+@keyframes animFw {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
