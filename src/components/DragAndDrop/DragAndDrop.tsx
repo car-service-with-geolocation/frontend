@@ -6,12 +6,20 @@ import useWindowWidth from '../../utils/windowWidth';
 import ProgressbarPreloader from '../Preloader/ProgressbarPreloader/ProgressbarPreloader';
 import styles from './styles/styles.module.css';
 
-function DragAndDrop() {
+export type TDragAndDropProps = {
+  onFilesDrop: (files: (File & { preview: string })[]) => void;
+};
+
+function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
   const [files, setFiles] = useState<(File & { preview: string })[]>([]);
   const [errorMsg, setErrorMsg] = useState('');
   const { width } = useWindowWidth();
   const [isLoading, setIsLoading] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  function handleDrop(files: (File & { preview: string })[]) {
+    onFilesDrop(files); // передает собранные файлы от дочернего компонента к родительскому
+  }
 
   const setImagePreloader = () => {
     setIsLoading(true);
@@ -48,6 +56,7 @@ function DragAndDrop() {
           setErrorMsg('Вы можете загрузить только 5 фотографий');
         } else {
           setFiles(newFiles);
+          handleDrop(newFiles); // вызываю колбэк функцию, чтобы передать собранные файлы в родительский компонент через пропсы
           removeImagePreloader();
           setErrorMsg('');
         }
