@@ -1,92 +1,78 @@
-.autoservice__wrapper {
-  width: inherit;
+.fieldset {
+  padding: 0;
+  margin: 0 0 100px 0;
+  border: 0;
 }
 
-.thumbsContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 16px;
-}
-
-.thumb {
-  display: inline-flex;
-  border-radius: 2px;
-  border: 1px solid #eaeaea;
-  margin-bottom: 8px;
-  margin-right: 8px;
-  width: 100px;
-  height: 100px;
-  padding: 4px;
-  box-sizing: border-box;
-}
-
-.thumbInner {
-  display: flex;
-  min-width: 0;
-  overflow: hidden;
-}
-
-.img {
-  display: block;
-  width: auto;
-  height: 100%;
-}
-
-.form {
-  max-width: 835px;
-  width: 100%;
-  margin-block-end: 150px;
-}
-
-.form__title {
+.title {
+  color: var(--grayscale-2);
   font-family: var(--global-title-font);
-  font-size: var(--global-title-font-desktop-size-2);
+  font-size: var(--global-title-font-desktop-size-3);
   font-style: normal;
   font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
-  margin: 0 0 40px;
+  margin-block: 0 15px;
 }
 
-.form__fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  gap: 13px 115px;
-}
-
-.form__label {
-  color: var(--white-2);
+.fieldset__note {
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-common);
+  font-size: var(--global-text-font-desktop-size-little);
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
-  line-height: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  line-height: normal;
+  margin-block: 0 20px;
 }
 
-.form__input {
-  width: 100%;
-  height: 60px;
-  color: var(--black-dark);
+.inputContainer {
+  max-width: 645px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--white-2);
+  border: 2px dashed var(--grayscale-2);
+  border-radius: 20px;
+  cursor: pointer;
+  margin-block-end: 15px;
+}
+
+.label_focus {
+  border-color: var(--primary-hover-red);
+}
+
+.input__note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-big);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+  margin: 0;
+}
+
+.input__note::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 36px;
+  background-color: var(--grayscale-2);
+  mask: url(../../../images/cameraIcon.svg) no-repeat center;
+}
+
+.input__dragNote {
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 20px;
-  padding: 15px 30px 15px 30px;
-}
-
-.form__input_error {
-  background-color: var(--common-alert-color);
+  margin: 0;
 }
 
 .input__error {
@@ -99,114 +85,53 @@
   line-height: normal;
 }
 
-.btn {
-  width: 100%;
-  height: 60px;
-  color: var(--white-2);
-  font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-common);
-  font-style: normal;
-  font-weight: var(--global-text-font-weight-normal);
-  line-height: normal;
+.thumbsContainer {
+  max-width: 645px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--primary-accent-red);
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.thumb {
+  position: relative;
+  display: inline-flex;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--grayscale-2);
+  box-sizing: border-box;
+}
+
+.thumb__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
   border: none;
-  border-radius: 20px;
+  border-radius: 50%;
+  background: no-repeat center/cover url(../../../images/cancel.png);
+  background-color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
-  padding: 0;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.5s linear;
 }
 
-.btn_grid {
-  margin-top: 40px;
-  grid-column: 2 / 3;
+.thumb__button:hover {
+  opacity: var(--alfa-medium);
 }
 
-.btn:hover {
-  opacity: var(--alfa-strong);
-}
-
-.btn_disabled {
-  color: var(--grayscale-2);
-  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
-  cursor: default;
-}
-
-.btn_disabled:hover {
-  opacity: 1;
-}
-
-.autoservice__title {
-  font-family: var(--global-title-font);
-  font-size: var(--global-title-font-desktop-size-3);
-  font-style: normal;
-  font-weight: var(--global-title-font-weight-bold);
-  line-height: normal;
-  margin: 0 0 40px;
-}
-
-.autoservice__list {
-  list-style: none;
+.thumb__inner {
   display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 0;
-  margin: 0;
-  margin-block-end: 33px;
+  min-width: 0;
+  overflow: hidden;
 }
 
-.form__label > div {
-  width: inherit;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.autoservice__input_modify {
-  width: clamp(240px, calc(100% - 60px), 740px);
-}
-
-.autoservice__trashBtn {
-  width: 40px;
-  height: 40px;
-  background-image: url(../../../images/icon-trash-delete.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.3s linear;
-}
-
-.autoservice__trashBtn:hover {
-  opacity: var(--alfa-strong);
-}
-
-.autoservice__addBtnWrapper {
-  max-width: 360px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.autoservice__addBtn {
-  color: var(--black-dark);
-  background-color: var(--white-3);
-}
-
-.autoservice__addBtnSignature {
-  height: 17px;
-  color: var(--white-2);
-  font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-little);
-  font-style: normal;
-  font-weight: var(--global-text-font-weight-normal);
-  line-height: normal;
-  margin: 0;
+.thumb__img {
+  display: block;
+  width: auto;
+  height: 100%;
 }
 
 @media (max-width: 1100px) {

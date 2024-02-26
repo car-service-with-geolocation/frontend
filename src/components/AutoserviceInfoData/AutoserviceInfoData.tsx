@@ -4,10 +4,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { REGEXP_PHONE_NUMBER } from '../../utils/constants';
-import FieldsetAutoserviceData from '../FieldsetAutoserviceData/FieldsetAutoserviceData';
+import {
+  ACCEPTED_IMAGE_TYPES,
+  MAX_FILE_SIZE,
+  REGEXP_PHONE_NUMBER,
+} from '../../utils/constants';
 // import { useAppDispatch, useAppSelector } from '../../store';
-// import FieldsetAutoserviceCTAbtn from '../FieldsetAutoserviceCTAbtn/FieldsetAutoserviceCTAbtn';
+import FieldsetAutoserviceCTAbtn from '../FieldsetAutoserviceCTAbtn/FieldsetAutoserviceCTAbtn';
+import FieldsetAutoserviceData from '../FieldsetAutoserviceData/FieldsetAutoserviceData';
 import FieldsetAutoserviceImgUpload from '../FieldsetAutoserviceImgUpload/FieldsetAutoserviceImgUpload';
 // import FieldsetAutoserviceAdress from '../FieldsetAutoserviceAdress/FieldsetAutoserviceAdress';
 // import FieldsetAutoserviceDescript from '../FieldsetAutoserviceDescript/FieldsetAutoserviceDescript';
@@ -32,6 +36,15 @@ import styles from './styles/styles.module.css';
 //   autoservice_work_time: string;
 //   autoservice_site_url: string;
 // }
+
+const fileSchema = z
+  .custom<File>()
+  .refine((file: File) => file instanceof File, 'Файл должен быть картинкой')
+  .refine((file: File) => file?.size <= MAX_FILE_SIZE.value, MAX_FILE_SIZE.message)
+  .refine(
+    (file) => ACCEPTED_IMAGE_TYPES.types.includes(file.type),
+    ACCEPTED_IMAGE_TYPES.message
+  );
 
 const autoserviceSchema = z.object({
   autoservice_name: z
@@ -60,7 +73,7 @@ const autoserviceSchema = z.object({
     .max(6)
     .optional(),
   autoservice_site: z.string().url({ message: 'Адрес сайта указан не корректно' }),
-  autoservice_img: z.any().optional(),
+  autoservice_img: z.array(fileSchema).max(10, 'Возможное колличество фото не больше 10'),
 });
 
 type TAutoserviceSchema = z.infer<typeof autoserviceSchema>;
@@ -74,6 +87,7 @@ function AutoserviceInfoData() {
       autoservice_phone: '+7 (969) 121-57-13',
       autoservice_work_time: [],
       autoservice_site: 'https://find-car-service.ru/',
+      autoservice_img: [],
     },
     mode: 'onChange',
   });
@@ -113,7 +127,7 @@ function AutoserviceInfoData() {
           <h1 className={styles.form__title}>Мой автосервис</h1>
           <FieldsetAutoserviceData />
           <FieldsetAutoserviceImgUpload />
-          {/* <FieldsetAutoserviceCTAbtn /> */}
+          <FieldsetAutoserviceCTAbtn />
           {/* <FieldsetAutoserviceDescript /> */}
           {/* <FieldsetAutoserviceAdress /> */}
           <button

@@ -2,7 +2,7 @@ import styles from './styles/styles.module.css';
 
 function FieldsetAutoserviceCTAbtn() {
   return (
-    <fieldset>
+    <fieldset className={styles.fieldset}>
       <h2>СТА-кнопка</h2>
       <p>
         Это кнопка, которая направляет пользователя позвонить, написать, оставить заявку.
