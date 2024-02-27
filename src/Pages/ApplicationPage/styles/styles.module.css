@@ -56,6 +56,7 @@
   display: flex;
   flex-direction: column;
   max-width: 645px;
+  width: 100%;
   margin: 0 115px 0 0;
   padding: 10px;
 }
@@ -80,10 +81,15 @@
   display: flex;
   flex-direction: column;
   max-width: 265px;
+  position: relative;
 }
 
 .info:first-of-type {
   margin: 0 60px 0 0;
+}
+
+.textareaWrapper {
+  position: relative;
 }
 
 .textAreaTitle {
@@ -113,13 +119,34 @@
   font-style: normal;
   font-weight: var(--global-text-font-weight-normal);
   line-height: 30px;
-  border: none;
-  color: var(--grayscale-2);
+  border: 1px solid #0a0908;
+  color: #7e7268;
   resize: none;
+}
+
+.formTextActive {
+  background-color: var(--common-alert-color);
 }
 
 .formText[id='problemDescription'] {
   height: 150px;
+}
+
+.error {
+  position: absolute;
+  top: 214px;
+  left: 0;
+  height: 16px;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-medium);
+  line-height: normal;
+  color: var(--common-alert-color);
+}
+
+.errorTextarea {
+  top: 186px;
 }
 
 .personalData {
@@ -140,62 +167,6 @@
   margin: -15px 0 20px;
 }
 
-.imageInputsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 20px;
-}
-
-.imageInput {
-  color: transparent;
-  width: 96px;
-  height: 48px;
-  margin: 0;
-  padding: 35px;
-  border-radius: 20px;
-  border: 2px dashed var(--grayscale-2);
-  background-image: url(../../../images/cameraIcon.svg);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  cursor: pointer;
-}
-
-.imageInput::-webkit-file-upload-button {
-  visibility: hidden;
-}
-
-.imageInput2 {
-  background-image: url(../../../images/imagePreloader.svg);
-  background-repeat: no-repeat;
-  background-position: 50% 66.66%;
-}
-
-.imageInput3 {
-  background-image: url(../../../images/imageLoaded.png);
-  background-repeat: no-repeat;
-  background-position: 50% 66.66%;
-}
-
-.inputPreloader {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.preloaderLabel {
-  position: absolute;
-  width: 86px;
-  height: 30px;
-  top: 40px;
-  left: 42px;
-  font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-common);
-  font-style: normal;
-  font-weight: var(--global-text-font-weight-normal);
-  line-height: 165%;
-  color: var(--grayscale-2);
-}
-
 .submitButton {
   margin: 20px 0 0;
   width: 100%;
@@ -204,14 +175,13 @@
   border: none;
   border-radius: 20px;
   background-color: var(--primary-accent-red);
-  color: #dedede;
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
-  font-weight: var(--global-text-font-weight-bold);
+  font-weight: var(--global-text-font-weight-normal);
   line-height: normal;
   cursor: pointer;
-  z-index: 6;
   transition: background-color 0.3s linear;
 }
 
@@ -229,13 +199,13 @@
   background-color: var(--primary-pressed-red);
 }
 
-.submitButton_disable {
+.submitButtonDisable {
   cursor: default;
   background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
   color: var(--grayscale-1);
 }
 
-.submitButton_disable:hover {
+.submitButtonDisable:hover {
   cursor: default;
   background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
   color: var(--grayscale-1);
@@ -288,7 +258,6 @@
     padding: 13px 25px 13px 30px;
     font-size: var(--global-text-font-mobile-size-common);
     line-height: 24px;
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
   }
 
   .formText[id='problemDescription'] {
@@ -296,6 +265,14 @@
     height: 99px;
     font-size: var(--global-text-font-mobile-size-big);
     line-height: 165%;
+  }
+
+  .error {
+    top: 178px;
+  }
+
+  .errorTextarea {
+    top: 132px;
   }
 
   .textRemark {
@@ -343,8 +320,16 @@
     max-width: calc(100% - 60px);
   }
 
+  .error {
+    top: 173px;
+  }
+
+  .errorTextarea {
+    top: 132px;
+  }
+
   .imageInputsContainer {
-    gap: 20px 15px;
+    gap: 18px 15px;
   }
 
   .imageInput {
@@ -353,7 +338,7 @@
   }
 
   .personalData {
-    margin: 25px 0 0;
+    margin: 2px 0 0;
   }
 
   .submitButton {
