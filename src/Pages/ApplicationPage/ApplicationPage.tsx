@@ -10,7 +10,8 @@ import Preloader from '../../components/Preloader/Preloader';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchAutoServiceId } from '../../store/autoServiceIdSlice';
-import { allCheckboxes, baseUrl, REGEXP_PHONE_NUMBER } from '../../utils/constants';
+import submitFormData from '../../utils/applicationApiUtils';
+import { allCheckboxes, REGEXP_PHONE_NUMBER } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import styles from './styles/styles.module.css';
 
@@ -69,9 +70,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
 
   async function handleOnSubmit(data: IApplicationData) {
     try {
-      const token = localStorage.getItem('JWT');
       const id = location?.id;
-      const boundary = '-'; // Создание уникальной строки в качестве разделителя
       const formData = new FormData();
       formData.append('car', data.carModel);
       formData.append('phone_number', data.tel);
@@ -79,25 +78,13 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
       if (typeof id === 'string') {
         formData.append('autoservice', id);
       }
-
       files.forEach((file, index) => {
         formData.append(`file_${index}`, file);
       });
 
-      const headers = new Headers();
-      headers.append('Authorization', `Token ${token}`);
-      headers.append('Content-Type', `multipart/form-data; boundary=${boundary}`);
-
-      const response = await fetch(`${baseUrl}orders/me/`, {
-        method: 'POST',
-        body: formData,
-        headers,
-      });
-
-      if (response.ok) {
+      const isSuccessful = await submitFormData(formData);
+      if (isSuccessful) {
         setIsSubmitSuccessful(true); // Display the Successful-Popup
-      } else {
-        throw new Error(`Ошибка: ${response.status}`);
       }
     } catch (error) {
       console.log(error);
