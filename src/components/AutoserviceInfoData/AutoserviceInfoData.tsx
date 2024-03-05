@@ -1,5 +1,4 @@
-// import { BaseSyntheticEvent, useState } from 'react';
-// import { SubmitHandler, useForm } from 'react-hook-form';
+// import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -16,26 +15,6 @@ import FieldsetAutoserviceImgUpload from '../FieldsetAutoserviceImgUpload/Fields
 // import FieldsetAutoserviceAdress from '../FieldsetAutoserviceAdress/FieldsetAutoserviceAdress';
 // import FieldsetAutoserviceDescript from '../FieldsetAutoserviceDescript/FieldsetAutoserviceDescript';
 import styles from './styles/styles.module.css';
-
-// interface IAutoserviceInfoData {
-//   autoservice_name: string;
-//   autoservice_email: string;
-//   autoservice_phone_number: string;
-//   autoservice_work_time: string;
-//   autoservice_site_url: string;
-// }
-
-// type TAutoserviceImgUpload {
-//   autoservice_img: File[];
-// }
-
-// interface IAutoserviceInfoData {
-//   autoservice_name: string;
-//   autoservice_email: string;
-//   autoservice_phone_number: string;
-//   autoservice_work_time: string;
-//   autoservice_site_url: string;
-// }
 
 const fileSchema = z
   .custom<File>()
@@ -74,6 +53,12 @@ const autoserviceSchema = z.object({
     .optional(),
   autoservice_site: z.string().url({ message: 'Адрес сайта указан не корректно' }),
   autoservice_img: z.array(fileSchema).max(10, 'Возможное колличество фото не больше 10'),
+  autoservice_phone_cta: z
+    .string()
+    .regex(REGEXP_PHONE_NUMBER, { message: 'Телефон указан не корректно' }),
+  autoservice_telegram: z.string().url({ message: 'Не верный формат ссылки' }),
+  autoservice_whatsapp: z.string().url({ message: 'Не верный формат ссылки' }),
+  autoservice_viber: z.string().url({ message: 'Не верный формат ссылки' }),
 });
 
 type TAutoserviceSchema = z.infer<typeof autoserviceSchema>;
@@ -91,26 +76,6 @@ function AutoserviceInfoData() {
     },
     mode: 'onChange',
   });
-  //   const currentAutoserviceName = 'Автосервис номер 1';
-  //   const currentAutoserviceEmail = 'ayautoservice1@mail.ru';
-  //   const currentAutoservicePhone = '+7 (952) 210 49 96';
-  //   const currentAutoserviceWorkTime = '+7 (952) 210 49 96';
-  //   const currentAutoserviceSiteURL = '7736340111';
-  // const currentImages: File[] = [];
-
-  // const {
-  // handleSubmit,
-  // formState: { isValid, isDirty },
-  // } = useForm<TFormValue>({
-  // defaultValues: {
-  //   autoservice_name: currentAutoserviceName,
-  //   autoservice_email: currentAutoserviceEmail,
-  //   autoservice_phone_number: currentAutoservicePhone,
-  //   autoservice_work_time: currentAutoserviceWorkTime,
-  //   autoservice_site_url: currentAutoserviceSiteURL,
-  // },
-  //   mode: 'onChange',
-  // });
 
   const onSubmit: SubmitHandler<TAutoserviceSchema> = (data) => console.log(data);
 
