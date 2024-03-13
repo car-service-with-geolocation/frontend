@@ -12,14 +12,17 @@ function FieldsetAutoserviceData() {
 
   return (
     <fieldset className={styles.form__fieldset}>
-      <label htmlFor="autoservice_name" className={styles.form__label}>
+      <label
+        htmlFor="autoservice_name"
+        className={`${styles.form__label} ${styles.label__name}`}
+      >
         Название автосервиса
         <input
           {...register('autoservice_name')}
           type="text"
           name="autoservice_name"
           id="autoservice_name"
-          className={`${styles.form__input}${
+          className={`${styles.form__input} ${
             !errors.autoservice_name ? '' : styles.form__input_error
           }`}
         />
@@ -34,7 +37,7 @@ function FieldsetAutoserviceData() {
           type="text"
           name="autoservice_email"
           id="autoservice_email"
-          className={`${styles.form__input}${
+          className={`${styles.form__input} ${
             !errors.autoservice_email ? '' : styles.form__input_error
           }`}
         />
@@ -49,7 +52,7 @@ function FieldsetAutoserviceData() {
           type="text"
           name="autoservice_phone"
           id="autoservice_phone"
-          className={`${styles.form__input}${
+          className={`${styles.form__input} ${
             !errors.autoservice_phone ? '' : styles.form__input_error
           }`}
         />
@@ -64,7 +67,7 @@ function FieldsetAutoserviceData() {
           type="text"
           name="autoservice_work_time"
           id="autoservice_work_time"
-          className={`${styles.form__input}${
+          className={`${styles.form__input} ${styles.input__workTime} ${
             !errors.autoservice_work_time ? '' : styles.form__input_error
           }`}
         />
@@ -79,7 +82,7 @@ function FieldsetAutoserviceData() {
           type="text"
           name="autoservice_site"
           id="autoservice_site"
-          className={`${styles.form__input}${
+          className={`${styles.form__input} ${
             !errors.autoservice_site ? '' : styles.form__input_error
           }`}
         />

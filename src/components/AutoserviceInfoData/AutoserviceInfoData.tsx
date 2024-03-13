@@ -11,9 +11,9 @@ import {
 // import { useAppDispatch, useAppSelector } from '../../store';
 import FieldsetAutoserviceCTAbtn from '../FieldsetAutoserviceCTAbtn/FieldsetAutoserviceCTAbtn';
 import FieldsetAutoserviceData from '../FieldsetAutoserviceData/FieldsetAutoserviceData';
-import FieldsetAutoserviceImgUpload from '../FieldsetAutoserviceImgUpload/FieldsetAutoserviceImgUpload';
 // import FieldsetAutoserviceAdress from '../FieldsetAutoserviceAdress/FieldsetAutoserviceAdress';
-// import FieldsetAutoserviceDescript from '../FieldsetAutoserviceDescript/FieldsetAutoserviceDescript';
+import FieldsetAutoserviceDescript from '../FieldsetAutoserviceDescript/FieldsetAutoserviceDescript';
+import FieldsetAutoserviceImgUpload from '../FieldsetAutoserviceImgUpload/FieldsetAutoserviceImgUpload';
 import styles from './styles/styles.module.css';
 
 const fileSchema = z
@@ -93,7 +93,7 @@ function AutoserviceInfoData() {
           <FieldsetAutoserviceData />
           <FieldsetAutoserviceImgUpload />
           <FieldsetAutoserviceCTAbtn />
-          {/* <FieldsetAutoserviceDescript /> */}
+          <FieldsetAutoserviceDescript />
           {/* <FieldsetAutoserviceAdress /> */}
           <button
             // className={`${styles.btn} ${styles.btn_grid} ${

@@ -1,11 +1,11 @@
-.autoservice__wrapper {
-  width: inherit;
-}
-
-.form {
-  max-width: 835px;
-  width: 100%;
-  margin-block-end: 150px;
+.form__fieldset {
+  border: none;
+  margin: 0 0 100px 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 13px 115px;
 }
 
 .form__title {
@@ -15,16 +15,6 @@
   font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
   margin: 0 0 40px;
-}
-
-.form__fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  gap: 13px 115px;
 }
 
 .form__label {

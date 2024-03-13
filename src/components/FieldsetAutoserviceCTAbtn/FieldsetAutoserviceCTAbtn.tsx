@@ -57,7 +57,9 @@ function FieldsetAutoserviceCTAbtn() {
             placeholder="+7(900)261-00-16"
             type="tel"
             id="autoservice_phone_cta"
-            className={`${styles.form__input}`}
+            className={`${styles.form__input} ${
+              !errors.autoservice_phone_cta ? '' : styles.form__input_error
+            }`}
           />
           <span className={styles.input__error}>
             {errors.autoservice_phone_cta?.message as ReactNode}
@@ -70,7 +72,9 @@ function FieldsetAutoserviceCTAbtn() {
             placeholder="https://t.me/Ваш ник"
             type="text"
             id="autoservice_telegram"
-            className={`${styles.form__input}`}
+            className={`${styles.form__input} ${
+              !errors.autoservice_telegram ? '' : styles.form__input_error
+            }`}
           />
           <span className={styles.input__error}>
             {errors.autoservice_telegram?.message as ReactNode}
@@ -83,7 +87,9 @@ function FieldsetAutoserviceCTAbtn() {
             placeholder="URL"
             type="text"
             id="autoservice_whatsapp"
-            className={`${styles.form__input}`}
+            className={`${styles.form__input} ${
+              !errors.autoservice_whatsapp ? '' : styles.form__input_error
+            }`}
           />
           <span className={styles.input__error}>
             {errors.autoservice_whatsapp?.message as ReactNode}
@@ -97,7 +103,9 @@ function FieldsetAutoserviceCTAbtn() {
             type="text"
             name="autoservice_viber"
             id="autoservice_viber"
-            className={`${styles.form__input}`}
+            className={`${styles.form__input} ${
+              !errors.autoservice_viber ? '' : styles.form__input_error
+            }`}
           />
           <span className={styles.input__error}>
             {errors.autoservice_viber?.message as ReactNode}
