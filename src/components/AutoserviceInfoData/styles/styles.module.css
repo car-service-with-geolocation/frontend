@@ -17,61 +17,10 @@
   margin: 0 0 40px;
 }
 
-.form__fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  gap: 13px 115px;
-}
-
-.form__label {
-  color: var(--white-2);
-  font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-common);
-  font-style: normal;
-  font-weight: var(--global-text-font-weight-normal);
-  line-height: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.form__input {
-  width: 100%;
-  height: 60px;
-  color: var(--black-dark);
-  font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-common);
-  font-style: normal;
-  font-weight: var(--global-text-font-weight-normal);
-  line-height: 165%;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 20px;
-  padding: 15px 30px 15px 30px;
-}
-
-.form__input_error {
-  background-color: var(--common-alert-color);
-}
-
-.input__error {
-  height: 17px;
-  color: var(--common-alert-color);
-  font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-little);
-  font-style: normal;
-  font-weight: var(--global-text-font-weight-normal);
-  line-height: normal;
-}
-
 .btn {
-  width: 100%;
+  width: 335px;
   height: 60px;
-  color: var(--white-2);
+  color: #dedede;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -88,100 +37,21 @@
   transition: opacity 0.3s linear;
 }
 
-.btn_grid {
-  margin-top: 40px;
-  grid-column: 2 / 3;
+.btn:hover {
+  background-color: var(--primary-hover-red);
 }
 
-.btn:hover {
-  opacity: var(--alfa-strong);
+.btn:active {
+  background-color: var(--primary-pressed-red);
 }
 
 .btn_disabled {
-  color: var(--grayscale-2);
   background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
   cursor: default;
 }
 
 .btn_disabled:hover {
-  opacity: 1;
-}
-
-.autoservice__title {
-  font-family: var(--global-title-font);
-  font-size: var(--global-title-font-desktop-size-3);
-  font-style: normal;
-  font-weight: var(--global-title-font-weight-bold);
-  line-height: normal;
-  margin: 0 0 40px;
-}
-
-.autoservice__list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 0;
-  margin: 0;
-  margin-block-end: 33px;
-}
-
-.form__label > div {
-  width: inherit;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.autoservice__input_modify {
-  width: clamp(240px, calc(100% - 60px), 740px);
-}
-
-.autoservice__trashBtn {
-  width: 40px;
-  height: 40px;
-  background-image: url(../../../images/icon-trash-delete.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.3s linear;
-}
-
-.autoservice__trashBtn:hover {
-  opacity: var(--alfa-strong);
-}
-
-.autoservice__addBtnWrapper {
-  max-width: 360px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.autoservice__addBtn {
-  color: var(--black-dark);
-  background-color: var(--white-3);
-}
-
-.autoservice__addBtnSignature {
-  height: 17px;
-  color: var(--white-2);
-  font-family: var(--global-text-font);
-  font-size: var(--global-text-font-desktop-size-little);
-  font-style: normal;
-  font-weight: var(--global-text-font-weight-normal);
-  line-height: normal;
-  margin: 0;
-}
-
-@media (max-width: 1100px) {
-  .form__fieldset {
-    gap: 13px 75px;
-  }
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
 }
 
 @media (max-width: 900px) {
@@ -202,20 +72,5 @@
   .form {
     max-width: 335px;
     align-self: center;
-  }
-
-  .form__label {
-    font-size: var(--global-text-font-mobile-size-common);
-    line-height: 150%;
-  }
-
-  .form__input {
-    height: 50px;
-    font-size: 16px;
-    line-height: 150%;
-  }
-
-  .btn_grid {
-    margin-top: 23px;
   }
 }

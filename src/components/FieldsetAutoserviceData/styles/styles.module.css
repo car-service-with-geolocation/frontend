@@ -9,7 +9,7 @@
 }
 
 .form__label {
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -29,7 +29,7 @@
 .form__input {
   width: 100%;
   height: 60px;
-  color: var(--black-dark);
+  color: #0a0908;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -41,8 +41,14 @@
   padding: 15px 30px 15px 30px;
 }
 
-.input__workTime {
+[data-theme='light'] .form__input {
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+}
+
+.input__textarea {
   height: 120px;
+  resize: none;
+  scrollbar-width: none;
 }
 
 .form__input_error {

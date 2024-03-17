@@ -8,10 +8,10 @@ import {
   MAX_FILE_SIZE,
   REGEXP_PHONE_NUMBER,
 } from '../../utils/constants';
+// import FieldsetAutoserviceAdress from '../FieldsetAutoserviceAdress/FieldsetAutoserviceAdress';
 // import { useAppDispatch, useAppSelector } from '../../store';
 import FieldsetAutoserviceCTAbtn from '../FieldsetAutoserviceCTAbtn/FieldsetAutoserviceCTAbtn';
 import FieldsetAutoserviceData from '../FieldsetAutoserviceData/FieldsetAutoserviceData';
-// import FieldsetAutoserviceAdress from '../FieldsetAutoserviceAdress/FieldsetAutoserviceAdress';
 import FieldsetAutoserviceDescript from '../FieldsetAutoserviceDescript/FieldsetAutoserviceDescript';
 import FieldsetAutoserviceImgUpload from '../FieldsetAutoserviceImgUpload/FieldsetAutoserviceImgUpload';
 import styles from './styles/styles.module.css';

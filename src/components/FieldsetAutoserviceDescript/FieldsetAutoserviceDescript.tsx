@@ -12,36 +12,36 @@ function FieldsetServiceDescript() {
   return (
     <fieldset className={styles.fieldset}>
       <h2 className={styles.form__title}>Описание автосервиса</h2>
-      <label htmlFor="autoservice_services" className={styles.form__label}>
-        Основные услуги:
-        <input
-          {...register('autoservice_services')}
-          placeholder="Автосервис СССР"
-          type="text"
-          id="autoservice_services"
-          className={`${styles.form__input} ${
-            !errors.autoservice_services ? '' : styles.form__input_error
-          }`}
-        />
-        <span className={styles.input__error}>
-          {errors.autoservice_site?.message as ReactNode}
-        </span>
-      </label>
-      <label htmlFor="autoservice_cars" className={styles.form__label}>
-        Марки обслуживаемых автомобилей:
-        <input
-          {...register('autoservice_cars')}
-          placeholder="Автосервис СССР"
-          type="text"
-          id="autoservice_cars"
-          className={`${styles.form__input} ${
-            !errors.autoservice_cars ? '' : styles.form__input_error
-          }`}
-        />
-        <span className={styles.input__error}>
-          {errors.autoservice_site?.message as ReactNode}
-        </span>
-      </label>
+      <div className={styles.areaContainer}>
+        <label htmlFor="autoservice_services" className={styles.form__label}>
+          Основные услуги:
+          <textarea
+            {...register('autoservice_services')}
+            placeholder="Автосервис СССР"
+            id="autoservice_services"
+            className={`${styles.form__textarea} ${
+              !errors.autoservice_services ? '' : styles.form__textarea_error
+            }`}
+          />
+          <span className={styles.textarea__error}>
+            {errors.autoservice_site?.message as ReactNode}
+          </span>
+        </label>
+        <label htmlFor="autoservice_cars" className={styles.form__label}>
+          Марки автомобилей:
+          <textarea
+            {...register('autoservice_cars')}
+            placeholder="Автосервис СССР"
+            id="autoservice_cars"
+            className={`${styles.form__textarea} ${
+              !errors.autoservice_cars ? '' : styles.form__textarea_error
+            }`}
+          />
+          <span className={styles.textarea__error}>
+            {errors.autoservice_site?.message as ReactNode}
+          </span>
+        </label>
+      </div>
     </fieldset>
   );
 }

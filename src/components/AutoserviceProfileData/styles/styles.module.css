@@ -28,7 +28,7 @@
 }
 
 .form__label {
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -42,7 +42,7 @@
 .form__input {
   width: 100%;
   height: 60px;
-  color: var(--black-dark);
+  color: #0a0908;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -52,6 +52,10 @@
   border: none;
   border-radius: 20px;
   padding: 15px 30px 15px 30px;
+}
+
+[data-theme='light'] .form__input {
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
 }
 
 .form__input_error {
@@ -71,7 +75,7 @@
 .btn {
   width: 100%;
   height: 60px;
-  color: var(--white-2);
+  color: #dedede;
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-common);
   font-style: normal;
@@ -163,13 +167,13 @@
 }
 
 .autoservice__addBtn {
-  color: var(--black-dark);
-  background-color: var(--white-3);
+  color: #0a0908;
+  background-color: var(--grayscale-3);
 }
 
 .autoservice__addBtnSignature {
   height: 17px;
-  color: var(--white-2);
+  color: var(--grayscale-2);
   font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-little);
   font-style: normal;

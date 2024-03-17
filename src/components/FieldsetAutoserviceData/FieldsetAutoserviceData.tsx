@@ -62,12 +62,11 @@ function FieldsetAutoserviceData() {
       </label>
       <label htmlFor="autoservice_work_time" className={styles.form__label}>
         Режим работы автосервиса
-        <input
+        <textarea
           {...register('autoservice_work_time')}
-          type="text"
           name="autoservice_work_time"
           id="autoservice_work_time"
-          className={`${styles.form__input} ${styles.input__workTime} ${
+          className={`${styles.form__input} ${styles.input__textarea} ${
             !errors.autoservice_work_time ? '' : styles.form__input_error
           }`}
         />

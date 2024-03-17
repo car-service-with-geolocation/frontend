@@ -11,17 +11,6 @@ function FieldsetAutoserviceAdress() {
       <label htmlFor="autoservice_name" className={styles.form__label}>
         Адресс автосервиса
         <input
-          // {...register('autoservice_name', {
-          //   required: 'Обязательное поле для заполнения',
-          //   minLength: {
-          //     value: 3,
-          //     message: 'Минимальное количество символов в поле 3',
-          //   },
-          //   maxLength: {
-          //     value: 30,
-          //     message: 'Максимальное количество символов в поле 30',
-          //   },
-          // })}
           placeholder="Москва, Красный Октябрь м-н, Киржач, Владимирская область, Пушкина ул. 27А"
           type="text"
           name="autoservice_name"
