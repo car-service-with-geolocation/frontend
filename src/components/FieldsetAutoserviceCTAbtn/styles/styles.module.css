@@ -182,11 +182,6 @@
 }
 
 @media (max-width: 640px) {
-  .form {
-    max-width: 335px;
-    align-self: center;
-  }
-
   .form__label {
     font-size: var(--global-text-font-mobile-size-common);
     line-height: 150%;

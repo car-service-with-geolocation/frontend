@@ -20,7 +20,6 @@ function FieldsetAutoserviceData() {
         <input
           {...register('autoservice_name')}
           type="text"
-          name="autoservice_name"
           id="autoservice_name"
           className={`${styles.form__input} ${
             !errors.autoservice_name ? '' : styles.form__input_error
@@ -35,7 +34,6 @@ function FieldsetAutoserviceData() {
         <input
           {...register('autoservice_email')}
           type="text"
-          name="autoservice_email"
           id="autoservice_email"
           className={`${styles.form__input} ${
             !errors.autoservice_email ? '' : styles.form__input_error
@@ -50,7 +48,6 @@ function FieldsetAutoserviceData() {
         <input
           {...register('autoservice_phone')}
           type="text"
-          name="autoservice_phone"
           id="autoservice_phone"
           className={`${styles.form__input} ${
             !errors.autoservice_phone ? '' : styles.form__input_error
@@ -64,7 +61,6 @@ function FieldsetAutoserviceData() {
         Режим работы автосервиса
         <textarea
           {...register('autoservice_work_time')}
-          name="autoservice_work_time"
           id="autoservice_work_time"
           className={`${styles.form__input} ${styles.input__textarea} ${
             !errors.autoservice_work_time ? '' : styles.form__input_error
@@ -79,7 +75,6 @@ function FieldsetAutoserviceData() {
         <input
           {...register('autoservice_site')}
           type="text"
-          name="autoservice_site"
           id="autoservice_site"
           className={`${styles.form__input} ${
             !errors.autoservice_site ? '' : styles.form__input_error

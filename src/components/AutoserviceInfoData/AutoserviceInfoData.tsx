@@ -8,7 +8,7 @@ import {
   MAX_FILE_SIZE,
   REGEXP_PHONE_NUMBER,
 } from '../../utils/constants';
-// import FieldsetAutoserviceAdress from '../FieldsetAutoserviceAdress/FieldsetAutoserviceAdress';
+import FieldsetAutoserviceAdress from '../FieldsetAutoserviceAdress/FieldsetAutoserviceAdress';
 // import { useAppDispatch, useAppSelector } from '../../store';
 import FieldsetAutoserviceCTAbtn from '../FieldsetAutoserviceCTAbtn/FieldsetAutoserviceCTAbtn';
 import FieldsetAutoserviceData from '../FieldsetAutoserviceData/FieldsetAutoserviceData';
@@ -59,6 +59,10 @@ const autoserviceSchema = z.object({
   autoservice_telegram: z.string().url({ message: 'Не верный формат ссылки' }),
   autoservice_whatsapp: z.string().url({ message: 'Не верный формат ссылки' }),
   autoservice_viber: z.string().url({ message: 'Не верный формат ссылки' }),
+  autoservice_geoloc: z.object({
+    lat: z.number(),
+    lon: z.number(),
+  }),
 });
 
 type TAutoserviceSchema = z.infer<typeof autoserviceSchema>;
@@ -94,7 +98,7 @@ function AutoserviceInfoData() {
           <FieldsetAutoserviceImgUpload />
           <FieldsetAutoserviceCTAbtn />
           <FieldsetAutoserviceDescript />
-          {/* <FieldsetAutoserviceAdress /> */}
+          <FieldsetAutoserviceAdress />
           <button
             // className={`${styles.btn} ${styles.btn_grid} ${
             //   isValid && isDirty ? '' : styles.btn_disabled
