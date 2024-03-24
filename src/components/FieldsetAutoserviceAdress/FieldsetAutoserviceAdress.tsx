@@ -55,10 +55,10 @@ function FieldsetAutoserviceAdress() {
 
   return (
     <fieldset className={styles.fieldset}>
-      <h2 className={styles.title}>Адресс</h2>
+      <h2 className={styles.title}>Адрес</h2>
       <input type="hidden" {...register('autoservice_geoloc')} />
       <label htmlFor="autoservice_name" className={styles.form__label}>
-        Адресс автосервиса
+        Адрес автосервиса
         <input
           placeholder="Москва, Красный Октябрь м-н, Киржач, Владимирская область, Пушкина ул. 27А"
           type="text"
@@ -69,7 +69,7 @@ function FieldsetAutoserviceAdress() {
         />
         <span className={styles.input__error}>{error}</span>
       </label>
-      <p className={styles.mapText}>Точный адресс на карте</p>
+      <p className={styles.mapText}>Точный адрес на карте</p>
       <div className={styles.mapWrapper}>
         <Ymap singleGeo={coord} />
       </div>
