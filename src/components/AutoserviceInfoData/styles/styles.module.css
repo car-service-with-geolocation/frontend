@@ -1,0 +1,76 @@
+.autoservice__wrapper {
+  width: inherit;
+}
+
+.form {
+  max-width: 835px;
+  width: 100%;
+  margin-block-end: 150px;
+}
+
+.form__title {
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-2);
+  font-style: normal;
+  font-weight: var(--global-title-font-weight-bold);
+  line-height: normal;
+  margin: 0 0 40px;
+}
+
+.btn {
+  width: 335px;
+  height: 60px;
+  color: #dedede;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-accent-red);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s linear;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover-red);
+}
+
+.btn:active {
+  background-color: var(--primary-pressed-red);
+}
+
+.btn_disabled {
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
+  cursor: default;
+}
+
+.btn_disabled:hover {
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
+}
+
+@media (max-width: 900px) {
+  .form__fieldset {
+    grid-template-columns: 1fr;
+    max-width: 335px;
+  }
+  .form__submitbtn {
+    grid-column: auto;
+  }
+
+  .btn_grid {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .form {
+    max-width: 335px;
+    align-self: center;
+  }
+}

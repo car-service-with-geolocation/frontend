@@ -8,7 +8,7 @@
   gap: 20px;
   flex-shrink: 0;
   border-radius: 16px;
-  background: rgba(var(--grayscale-1), var(--alfa-light));
+  background: rgba(var(--grayscale-1-rgb), var(--alfa-light));
 }
 
 .requestCard__title {

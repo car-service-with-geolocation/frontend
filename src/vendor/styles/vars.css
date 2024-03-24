@@ -76,15 +76,6 @@
   --primary-pressed-red: #3f0012;
   --primary-pressed-red-rgb: 63, 0, 18;
 
-  --common-alert-color: #ffb3b3;
-  --common-alert-color-rgb: 255, 179, 179;
-  --common-yellow: hsl(50, 100%, 50%);
-  --common-yellow-rgb: 255, 214, 0;
-  --common-green: #27ae60;
-  --common-green-rgb: 39, 174, 96;
-  --common-button-disabled: #7e7268;
-  --common-button-disabled-rgb-rgb: 126, 114, 104;
-
   /* Text */
   --grayscale-2: #0a0908;
   --grayscale-2-rgb: 10, 9, 8;

@@ -1,0 +1,195 @@
+.fieldset {
+  padding: 0;
+  margin: 0 0 100px 0;
+  border: 0;
+}
+
+.title {
+  color: var(--grayscale-2);
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
+  font-style: normal;
+  font-weight: var(--global-title-font-weight-bold);
+  line-height: normal;
+  margin-block: 0 15px;
+}
+
+.fieldset__note {
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+}
+
+.note_position {
+  margin-bottom: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.buttonView {
+  width: clamp(240px, calc(100% - 100px), 360px);
+  height: 60px;
+  color: #cbcbcb;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7a7a7a;
+  border-radius: 20px;
+  transition:
+    background-color 0.7s ease-in-out,
+    color 0.7s ease-in-out;
+}
+
+.buttonView_disabled {
+  color: var(--grayscale-1);
+  background-color: #dedede;
+}
+
+.checkbox_hide:checked + .buttonSwitcher {
+  background-color: var(--common-green);
+}
+
+.buttonSwitcher {
+  width: 95px;
+  height: 30px;
+  background-color: #840800;
+  color: #dedede;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-medium);
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.7s ease-in-out;
+}
+
+.buttonSwitcher::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #dedede;
+  transition: transform 0.7s ease-in-out;
+}
+
+.checkbox_hide:checked + .buttonSwitcher::before {
+  transform: translateX(65px);
+}
+
+.checkbox_hide {
+  display: none;
+}
+
+.title__extraBtns {
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-big);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-bold);
+  line-height: normal;
+  margin-bottom: 20px;
+}
+
+.contactsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 110px;
+}
+
+.form__label {
+  color: var(--grayscale-2);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form__input {
+  width: 100%;
+  height: 60px;
+  color: #0a0908;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 165%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 20px;
+  padding: 15px 30px 15px 30px;
+}
+
+[data-theme='light'] .form__input {
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form__input_error {
+  background-color: var(--common-alert-color);
+}
+
+.input__error {
+  height: 17px;
+  color: var(--common-alert-color);
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+}
+
+@media (max-width: 1100px) {
+  .contactsContainer {
+    column-gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contactsContainer {
+    grid-template-columns: 1fr;
+    max-width: 335px;
+  }
+
+  .title__extraBtns {
+    font-size: var(--global-text-font-desktop-size-common);
+    font-weight: var(--global-text-font-weight-medium);
+  }
+}
+
+@media (max-width: 640px) {
+  .form__label {
+    font-size: var(--global-text-font-mobile-size-common);
+    line-height: 150%;
+  }
+
+  .form__input {
+    height: 50px;
+    font-size: 16px;
+    line-height: 150%;
+  }
+}

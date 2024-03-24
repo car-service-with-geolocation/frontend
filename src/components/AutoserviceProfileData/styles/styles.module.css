@@ -1,6 +1,11 @@
+.autoservice__wrapper {
+  width: inherit;
+}
+
 .form {
   max-width: 835px;
   width: 100%;
+  margin-block-end: 150px;
 }
 
 .form__title {
@@ -9,13 +14,13 @@
   font-style: normal;
   font-weight: var(--global-title-font-weight-bold);
   line-height: normal;
-  margin: 0 0 30px;
+  margin: 0 0 40px;
 }
 
 .form__fieldset {
   border: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
@@ -50,7 +55,7 @@
 }
 
 [data-theme='light'] .form__input {
-  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
 }
 
 .form__input_error {
@@ -67,11 +72,7 @@
   line-height: normal;
 }
 
-[data-theme='light'] .input__error {
-  color: var(--primary-accent-red);
-}
-
-.form__submitbtn {
+.btn {
   width: 100%;
   height: 60px;
   color: #dedede;
@@ -88,28 +89,97 @@
   border-radius: 20px;
   cursor: pointer;
   padding: 0;
-  margin-top: 11px;
-  transition: background-color 0.3s linear;
+  transition: opacity 0.3s linear;
 }
 
-.form__submitbtn:hover {
-  background-color: var(--primary-hover-red);
+.btn_grid {
+  margin-top: 40px;
+  grid-column: 2 / 3;
 }
 
-.form__submitbtn:active {
-  background-color: var(--primary-pressed-red);
+.btn:hover {
+  opacity: var(--alfa-strong);
 }
 
-.form__submitbtn_disabled {
+.btn_disabled {
   color: var(--grayscale-2);
   background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
   cursor: default;
 }
 
-.form__submitbtn_disabled:hover {
+.btn_disabled:hover {
+  opacity: 1;
+}
+
+.autoservice__title {
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
+  font-style: normal;
+  font-weight: var(--global-title-font-weight-bold);
+  line-height: normal;
+  margin: 0 0 40px;
+}
+
+.autoservice__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+  margin-block-end: 33px;
+}
+
+.form__label > div {
+  width: inherit;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.autoservice__input_modify {
+  width: clamp(240px, calc(100% - 60px), 740px);
+}
+
+.autoservice__trashBtn {
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../images/icon-trash-delete.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s linear;
+}
+
+.autoservice__trashBtn:hover {
+  opacity: var(--alfa-strong);
+}
+
+.autoservice__addBtnWrapper {
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.autoservice__addBtn {
+  color: #0a0908;
+  background-color: var(--grayscale-3);
+}
+
+.autoservice__addBtnSignature {
+  height: 17px;
   color: var(--grayscale-2);
-  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
-  cursor: default;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+  margin: 0;
 }
 
 @media (max-width: 1100px) {
@@ -122,6 +192,13 @@
   .form__fieldset {
     grid-template-columns: 1fr;
     max-width: 335px;
+  }
+  .form__submitbtn {
+    grid-column: auto;
+  }
+
+  .btn_grid {
+    grid-column: auto;
   }
 }
 
@@ -142,7 +219,7 @@
     line-height: 150%;
   }
 
-  .form__submitbtn {
+  .btn_grid {
     margin-top: 23px;
   }
 }

@@ -36,6 +36,10 @@ function Ymap({ services, singleGeo }: TYmapProps) {
           center: [55.754346, 37.619855],
           zoom: 12,
         }}
+        state={{
+          center: [singleGeo?.latitude || 55.754346, singleGeo?.longitude || 37.619855],
+          zoom: 16,
+        }}
         width="100%"
         height="100%"
       >

@@ -1,0 +1,129 @@
+.autoserviceProfile {
+  max-width: 1120px;
+  width: 87.337vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 100px;
+  margin: 100px auto 0;
+}
+
+.autoserviceProfile_row {
+  flex-direction: column;
+  margin: 10px auto 0;
+}
+
+.autoserviceProfile__menu {
+  flex-basis: 170px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.menu_row {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.autoserviceProfile__menuTitle {
+  font-family: var(--global-title-font);
+  font-size: var(--global-title-font-desktop-size-3);
+  font-style: normal;
+  font-weight: var(--global-title-font-weight-bold);
+  line-height: normal;
+  margin: 0 0 30px;
+}
+
+.autoserviceProfile__menuTitleStroke {
+  margin: 0 0;
+}
+
+.autoserviceProfile__menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuList_row {
+  flex-direction: row;
+}
+
+.autoserviceProfile__menuItem {
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-common);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+  cursor: pointer;
+  transition: 0;
+  position: relative;
+}
+
+.autoserviceProfile__menuItem_active {
+  font-weight: var(--global-text-font-weight-medium);
+}
+
+.autoserviceProfile__menuLink {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+}
+
+.autoserviceProfile__menuLink:hover {
+  color: var(--primary-accent-red);
+}
+
+.autoserviceProfile__menuLink:global(.active) {
+  font-weight: var(--global-text-font-weight-bold);
+}
+
+.menuItem_redDotMessage {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-color: #d50000;
+  border-radius: 50%;
+  position: relative;
+  top: -9px;
+}
+
+@media (max-width: 1100px) {
+  .autoserviceProfile {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .autoserviceProfile {
+    justify-content: flex-start;
+    gap: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .autoserviceProfile {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    margin: 60px 20px 30px;
+  }
+
+  .autoserviceProfile__menuItem {
+    margin-bottom: 0;
+  }
+
+  .autoserviceProfile__menuList {
+    display: flex;
+    gap: 20px;
+  }
+
+  .autoserviceProfile__menuLink {
+    white-space: nowrap;
+  }
+}

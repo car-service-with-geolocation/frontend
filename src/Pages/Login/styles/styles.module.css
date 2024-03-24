@@ -201,6 +201,7 @@
 
 .submitButton_disable {
   background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
+  cursor: default;
 }
 
 .submitButton_disable:hover {

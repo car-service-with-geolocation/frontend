@@ -37,7 +37,8 @@ let baseUrl: string;
 
 switch (process.env.NODE_ENV) {
   case 'development':
-    baseUrl = 'https://127.0.0.1:8000/api/v1/';
+    // baseUrl = 'https://127.0.0.1:8000/api/v1/';
+    baseUrl = 'https://find-car-service.ru/api/v1/';
     break;
   case 'production':
     baseUrl = 'https://find-car-service.ru/api/v1/';
@@ -51,10 +52,20 @@ switch (process.env.NODE_ENV) {
 
 const servicesPerPage = 6;
 const userRequestPerPage = 5;
+const autoserviceRequestPerPage = 8;
 
 const allCheckboxes = [
   { name: 'Даю согласие на обработку персональных данных', checked: true },
 ];
+
+const MAX_FILE_SIZE = {
+  value: 10485760, // 10 mb
+  message: 'Размер одного файла не должен превышать 10 Мб.',
+};
+const ACCEPTED_IMAGE_TYPES = {
+  types: ['image/png', 'image/jpg', 'image/jpeg', 'image/png', 'image/svg', 'image/webp'],
+  message: 'Разрешены следующие типы файлов .jpg, .jpeg, .png, .svg и .webp.',
+};
 
 const initialFeedBack = [
   {
@@ -249,19 +260,23 @@ const initialFeedBack = [
 
 const REGEXP_EMAIL =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-
-const REGEXP_PHONE_NUMBER = /(?:\+|\d)[\d\-() ]{9,}\d/g;
+const REGEXP_PHONE_NUMBER = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/;
+const REGEXP_INN = /^(([0-9]{12})|([0-9]{10}))?$/;
 
 export {
+  ACCEPTED_IMAGE_TYPES,
   allCheckboxes,
+  autoserviceRequestPerPage,
   baseUrl,
   DADATA_API,
   DADATA_API_KEY,
   DADATA_SECRET_KEY,
   immediateOptions,
   initialFeedBack,
+  MAX_FILE_SIZE,
   navigatorOptions,
   REGEXP_EMAIL,
+  REGEXP_INN,
   REGEXP_PHONE_NUMBER,
   reviewOptions,
   servicesPerPage,
