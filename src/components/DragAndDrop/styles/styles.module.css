@@ -31,14 +31,17 @@
 }
 
 .textRemarkInput {
-  background-image: url(../../../images/cameraIcon.svg);
-  margin: 0 auto 25.5px;
+  font-family: var(--global-text-font);
   font-size: var(--global-text-font-desktop-size-big);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: 36px;
+  background-image: url(../../../images/cameraIcon.svg);
   background-repeat: no-repeat;
   background-position-x: 0px;
   width: 191px;
+  margin: 0 auto 25.5px;
   text-align: right;
-  line-height: 36px;
 }
 
 .imagePreviewContainer {
@@ -83,13 +86,14 @@
   margin-top: -15px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .textRemark {
+    font-size: var(--global-text-font-mobile-size-common);
     margin: -10px 0 25px;
   }
 
-  .textRemarkInput {
-    margin: 0 auto 25.5px;
+  .imagePreview {
+    width: 150px;
   }
 }
 
@@ -102,18 +106,8 @@
     padding-top: 40px;
   }
 
-  .textRemark {
-    margin-bottom: 20px;
-  }
-
   .textRemarkInput {
-    font-size: var(--global-text-font-desktop-size-common);
-    width: 177px;
     margin-bottom: 40px;
-  }
-
-  .imagePreview {
-    width: 150px;
   }
 
   .errorImage {

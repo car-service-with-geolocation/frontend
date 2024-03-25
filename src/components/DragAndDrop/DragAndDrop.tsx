@@ -2,24 +2,27 @@
 import { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+import { MAX_FILE_SIZE } from '../../utils/constants';
 import useWindowWidth from '../../utils/windowWidth';
 import ProgressbarPreloader from '../Preloader/ProgressbarPreloader/ProgressbarPreloader';
 import styles from './styles/styles.module.css';
 
+export type TImgFile = File;
+
 export type TDragAndDropProps = {
-  onFilesDrop: (files: (File & { preview: string })[]) => void;
+  onFilesChanged: (files: TImgFile[]) => void;
 };
 
-function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
-  const [files, setFiles] = useState<(File & { preview: string })[]>([]);
+export function DragAndDrop({ onFilesChanged }: TDragAndDropProps) {
+  const [files, setFiles] = useState<TImgFile[]>([]);
   const [errorMsg, setErrorMsg] = useState('');
   const { width } = useWindowWidth();
   const [isLoading, setIsLoading] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  function handleDrop(files: (File & { preview: string })[]) {
-    onFilesDrop(files); // передает собранные файлы от дочернего компонента к родительскому
-  }
+  useEffect(() => {
+    onFilesChanged(files);
+  }, [files, onFilesChanged]);
 
   const setImagePreloader = () => {
     setIsLoading(true);
@@ -42,21 +45,12 @@ function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
         removeImagePreloader();
         setErrorMsg('Вы уже добавили такой файл');
       } else {
-        const newFiles = [
-          ...files,
-          ...acceptedFiles.slice(0, 5 - files.length).map((file) => {
-            const fileWithPreview = Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            });
-            return fileWithPreview;
-          }),
-        ];
+        const newFiles = [...files, ...acceptedFiles.slice(0, 5 - files.length)];
         if (files.length + acceptedFiles.length > 5) {
           removeImagePreloader();
           setErrorMsg('Вы можете загрузить только 5 фотографий');
         } else {
           setFiles(newFiles);
-          handleDrop(newFiles); // вызываю колбэк функцию, чтобы передать собранные файлы в родительский компонент через пропсы
           removeImagePreloader();
           setErrorMsg('');
         }
@@ -65,7 +59,12 @@ function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: {
+      'image/*': ['.png', '.svg', '.jpeg', '.jpg', '.webp'],
+    },
+    maxSize: MAX_FILE_SIZE.value,
     onDrop,
+    multiple: true,
   });
 
   const thumbs = files.map((file, index) => (
@@ -75,7 +74,7 @@ function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
       ) : (
         <>
           <img
-            src={file.preview}
+            src={URL.createObjectURL(file)}
             className={styles.imagePreview}
             alt="фотография поломки"
             onLoad={() => setIsImageLoaded(true)}
@@ -96,7 +95,7 @@ function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
 
   useEffect(
     () => () => {
-      files.forEach((file) => URL.revokeObjectURL(file.preview)); // To revoke the Object URL to avoid memory leaks
+      // files.forEach((file) => URL.revokeObjectURL(file.preview)); // To revoke the Object URL to avoid memory leaks
       setIsLoading(false);
       setIsImageLoaded(true);
     },
@@ -113,8 +112,8 @@ function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
             : styles.dragAndDropInput
         }
       >
-        <input {...getInputProps()} type="file" name="images" multiple />
-        <p className={`${styles.textRemark} ${styles.textRemarkInput}`}>Добавить фото</p>
+        <input {...getInputProps()} type="file" multiple />
+        <p className={styles.textRemarkInput}>Добавить фото</p>
         {width >= 600 ? (
           <p className={styles.textRemark}>Можно перетащить его в эту рамку</p>
         ) : (
@@ -126,5 +125,3 @@ function DragAndDrop({ onFilesDrop }: TDragAndDropProps) {
     </div>
   );
 }
-
-export default DragAndDrop;
