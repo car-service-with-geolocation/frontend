@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
@@ -52,17 +53,17 @@ const autoserviceSchema = z.object({
     .max(6)
     .optional(),
   autoservice_site: z.string().url({ message: 'Адрес сайта указан не корректно' }),
-  autoservice_img: z.array(fileSchema).max(10, 'Возможное колличество фото не больше 10'),
-  autoservice_phone_cta: z
-    .string()
-    .regex(REGEXP_PHONE_NUMBER, { message: 'Телефон указан не корректно' }),
-  autoservice_telegram: z.string().url({ message: 'Не верный формат ссылки' }),
-  autoservice_whatsapp: z.string().url({ message: 'Не верный формат ссылки' }),
-  autoservice_viber: z.string().url({ message: 'Не верный формат ссылки' }),
-  autoservice_geoloc: z.object({
-    lat: z.number(),
-    lon: z.number(),
-  }),
+  autoservice_img: z.array(fileSchema).max(5, 'Возможное колличество фото не больше 5'),
+  // autoservice_phone_cta: z
+  //   .string()
+  //   .regex(REGEXP_PHONE_NUMBER, { message: 'Телефон указан не корректно' }),
+  // autoservice_telegram: z.string().url({ message: 'Не верный формат ссылки' }),
+  // autoservice_whatsapp: z.string().url({ message: 'Не верный формат ссылки' }),
+  // autoservice_viber: z.string().url({ message: 'Не верный формат ссылки' }),
+  // autoservice_geoloc: z.object({
+  //   lat: z.number(),
+  //   lon: z.number(),
+  // }),
 });
 
 type TAutoserviceSchema = z.infer<typeof autoserviceSchema>;
@@ -81,7 +82,10 @@ function AutoserviceInfoData() {
     mode: 'onChange',
   });
 
-  const onSubmit: SubmitHandler<TAutoserviceSchema> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<TAutoserviceSchema> = (data) => {
+    console.log(data);
+    console.log(data.autoservice_img[0]);
+  };
 
   return (
     <div className={styles.autoservice__wrapper}>
@@ -94,11 +98,11 @@ function AutoserviceInfoData() {
           noValidate
         >
           <h1 className={styles.form__title}>Мой автосервис</h1>
-          <FieldsetAutoserviceData />
+          {/* <FieldsetAutoserviceData /> */}
           <FieldsetAutoserviceImgUpload />
-          <FieldsetAutoserviceCTAbtn />
+          {/* <FieldsetAutoserviceCTAbtn />
           <FieldsetAutoserviceDescript />
-          <FieldsetAutoserviceAdress />
+          <FieldsetAutoserviceAdress /> */}
           <button
             // className={`${styles.btn} ${styles.btn_grid} ${
             //   isValid && isDirty ? '' : styles.btn_disabled
@@ -109,6 +113,7 @@ function AutoserviceInfoData() {
           >
             Сохранить
           </button>
+          <p>{}</p>
         </form>
       </FormProvider>
     </div>

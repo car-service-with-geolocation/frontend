@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useParams } from 'react-router-dom';
 
 import Checkbox from '../../components/Checkbox/Checkbox';
-import DragAndDrop from '../../components/DragAndDrop/DragAndDrop';
+import { DragAndDrop, TImgFile } from '../../components/DragAndDrop/DragAndDrop';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
 import Preloader from '../../components/Preloader/Preloader';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
@@ -29,7 +29,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
   const applicationService =
     serviceToRender || JSON.parse(sessionStorage.getItem('applicationService') ?? '{}');
   const [checkboxes, setCheckboxes] = useState(allCheckboxes);
-  const [files, setFiles] = useState<(File & { preview: string })[]>([]);
+  const [files, setFiles] = useState<TImgFile[]>([]);
   const { width } = useWindowWidth();
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
@@ -54,7 +54,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
     mode: 'onChange',
   });
 
-  const handleFilesDrop = (droppedFiles: (File & { preview: string })[]) => {
+  const handleFilesDrop = (droppedFiles: TImgFile[]) => {
     setFiles(droppedFiles);
   };
 
@@ -241,7 +241,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
               </div>
               <h3 className={styles.subtitle}>Прикрепите фотографии поломки</h3>
               <h4 className={styles.textRemark}>(по возможности)</h4>
-              <DragAndDrop onFilesDrop={handleFilesDrop} />
+              <DragAndDrop onFilesChanged={handleFilesDrop} />
               <fieldset className={styles.personalData}>
                 {checkboxes.map((checkbox, index) => {
                   return (
