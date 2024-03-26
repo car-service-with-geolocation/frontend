@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import Checkbox from '../../components/Checkbox/Checkbox';
 import DragAndDrop from '../../components/DragAndDrop/DragAndDrop';
+import ErrorPopup from '../../components/Popups/ErrorPopup/ErrorPopup';
 import ApplicationAcceptPopup from '../../components/Popups/ApplicationAcceptPopup/ApplicationAcceptPopup';
 import Preloader from '../../components/Preloader/Preloader';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
@@ -87,6 +88,7 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
         setIsSubmitSuccessful(true); // Display the Successful-Popup
       }
     } catch (error) {
+      setIsSubmitSuccessful(false);
       console.log(error);
     }
   }
@@ -287,7 +289,11 @@ function ApplicationPage({ isOpen, onClose, onClick }: TApplicationPageProps) {
           </div>
         </section>
       )}
-      {isSubmitSuccessful && <ApplicationAcceptPopup isOpen={isOpen} onClose={onClose} />}
+      {isSubmitSuccessful ? (
+        <ApplicationAcceptPopup isOpen={isOpen} onClose={onClose} />
+      ) : (
+        <ErrorPopup isOpen={isOpen} onClose={onClose} />
+      )}
     </div>
   );
 }
