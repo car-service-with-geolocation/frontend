@@ -2,8 +2,12 @@ import { useState } from 'react';
 
 import styles from './styles/styles.module.css';
 
-function StarRating() {
-  const [rating, setRating] = useState<number>(0);
+type TstarRatingProps = {
+  rating: number;
+  setRating: React.Dispatch<React.SetStateAction<number>>;
+};
+
+function StarRating({ rating, setRating }: TstarRatingProps) {
   const [hover, setHover] = useState<number>(0);
 
   return (

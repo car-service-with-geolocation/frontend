@@ -1,6 +1,6 @@
 import '../../index.css';
 
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Route, Routes } from 'react-router';
 
@@ -58,8 +58,7 @@ function App() {
     }
   }
 
-  const handleFeedbackSubmit = (evt: SyntheticEvent): void => {
-    evt.preventDefault();
+  const handleFeedbackSubmit = () => {
     setIsFeedbackPopupOpen(false);
     setIsServiceThanksPopupOpen(true);
   };

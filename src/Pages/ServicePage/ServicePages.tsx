@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-no-bind */
 import '../MapPage/immediate.css';
 
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
@@ -26,7 +26,7 @@ export type TServicePageProps = {
   isOpen: boolean;
   onClose: () => void;
   onClick: () => void;
-  handleFeedbackSubmit: (evt: SyntheticEvent) => void;
+  handleFeedbackSubmit: () => void;
   isServiceThanksOpen: boolean;
 };
 
