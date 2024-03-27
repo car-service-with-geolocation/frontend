@@ -7,6 +7,14 @@
   margin: 10px 100px 0;
   padding: 0;
   text-align: center;
+  height: 75vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.modalContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .modalTitle {
@@ -62,13 +70,33 @@
   font-weight: var(--global-text-font-weight-normal);
   line-height: 165%;
   border: none;
-  color: var(--grayscale-2);
+  color: #7e7268;
   resize: none;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
 }
 
+.input:focus {
+  outline: 1px solid black;
+}
+
 .input[id='feedback'] {
   height: 270px;
+}
+
+.input__active {
+  background-color: var(--common-alert-color);
+  box-shadow: inset 0px -45px 0px 20px var(--common-alert-color);
+}
+.input__error {
+  height: 17px;
+  padding-top: 4px;
+  text-align: start;
+  font-family: var(--global-text-font);
+  font-size: var(--global-text-font-desktop-size-little);
+  font-style: normal;
+  font-weight: var(--global-text-font-weight-normal);
+  line-height: normal;
+  color: var(--common-alert-color);
 }
 
 .imageInput {
@@ -92,7 +120,7 @@
 .modalButton {
   min-width: 276px;
   padding: 20px 100px;
-  margin: 70px 0 100px;
+  margin: 70px 0;
   border-radius: 20px;
   border: none;
   background-color: var(--primary-accent-red);
@@ -117,6 +145,11 @@
 
 .modalButton_main {
   margin: 0 0 65px;
+}
+
+.modalButton__disabled {
+  cursor: default;
+  background-color: rgba(var(--common-button-disabled-rgb), var(--alfa-medium));
 }
 
 @media screen and (max-width: 1120px) {
